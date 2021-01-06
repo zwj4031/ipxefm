@@ -1,0 +1,16 @@
+#!ipxe
+:efiramosgrub2
+kernel http://${booturl}/app/wimboot/wimboot gui ||
+initrd -n mapramosmem http://${booturl}/ ||
+initrd -n boot.ramos http://${booturl}${bootfile} ||
+initrd -n bootx64.efi http://${booturl}/app/${platform}/grub2toy.efi ||
+boot ||
+chain ${prefix}/init.ipxe ||
+
+:pcbiosramosg4d
+kernel http://${booturl}/app/${platform}/grub.exe ||
+initrd http://${booturl}${bootfile} ||
+initrd http://${booturl}/app/${platform}/512 ||
+imgargs grub.exe --config-file="map --mem --top (rd)+1 (hd0);map (hd0) (hd1);map --hook;root (hd0,0);chainloader /bootmgr;" ||
+boot ||
+chain ${prefix}/init.ipxe ||

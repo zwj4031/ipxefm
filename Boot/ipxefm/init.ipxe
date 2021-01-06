@@ -1,0 +1,165 @@
+#!ipxe
+##############初级止步！中级进阶用户修改区域######
+##射入pe的文件暂时可射5个，5个文件在/app/inject目录下(不能为空~会蓝屏!)
+##看得懂脚本的可以射数个(不能为空~会蓝屏!)
+##################################################
+#默认射入1：所有正常的pe都有winpeshl.ini  (一般人视角，一般pe)---此项射入后名称固定
+# 备用了一个winpeshl_winxshell.ini #适合一键批处理生成的骨头版wim
+set winpeshl winpeshl.ini
+#set winpeshl winpeshl_winxshell.ini
+# 默认射入2：默认批处理startup.bat,可修改
+set startup startup.bat
+# 选择smb共享的，需要默认共享本目录名称为PXE 
+# 使用共享功能，至少要把本目录也就是ipxeboot权限设置为everyone可读!
+# 以下是自定义射入的文件
+set inject0 0.exe
+#3.射入一个又大又粗的工具包，自定义，比如射个64位的ghost进去
+set inject1 1.exe
+#3.射入一个又大又粗的工具包，自定义，比如射个64位的ghost进去
+set inject2 2.exe
+#3.射入一个又大又粗的工具包，自定义，比如射个64位的ghost进去
+set inject3 ghostx64.exe
+#4.射入一个又大又粗的工具包，自定义，比如射个64位的netcopy进去
+set inject4 netcopyx64.exe
+#5.射入一个又大又粗的工具包，自定义，比如射个64位的CGI进去(备用)
+set inject5 cgix64.exe
+##############中级进阶用户修改区域结束###########
+
+##############中级止步!高级秃顶用户修改区域######
+#修改iscsi server的地址(默认是next-server)
+#set iscsiurl 169.254.1.1
+#修改本菜单的名称(默认是/ipxeboot.txt)
+set scriptfile /ipxeboot.txt
+#修改默认启动的文件类型(wim iso img)
+set ext-default wim
+#修改各类型默认启动的文件序号(0-9)
+set wimbootfile-default 0
+set isobootfile-default 0
+set imgbootfile-default 0
+set vhdbootfile-default 0
+set iqnbootfile-default 0
+set ramosbootfile-default 0
+#设置wim启动默认方式
+set pcbioswimbootmode wimboot #(不注入文件) 
+#set pcbioswimbootmode startup.bat #(注入默认的startup.bat文件)
+set efiwimbootmode wimboot
+#set efiwimbootmode  startup.bat #(注入默认的startup.bat文件)
+#设置iso启动默认方式
+set pcbiosisobootmode memdiskiso
+set efiisobootmode ${platform}isowithsanboot
+#设置img启动默认方式
+set pcbiosimgbootmode memdiskimg
+set efiimgbootmode ${platform}sanbootimg
+#设置vhd启动默认方式
+set pcbiosvhdbootmode ${platform}sanbootvhd
+set efivhdbootmode ${platform}sanbootvhd
+#设置IQN启动默认方式
+set pcbiosiqnbootmode ${platform}bootpe
+set efiiqnbootmode ${platform}install
+#设置ramos[ramos]启动默认方式
+set pcbiosramosbootmode ${platform}ramos
+set efiramosbootmode ${platform}ramos
+#设置第一个菜单的超时时间
+set ext-timeout 8000
+#设置第二个选择文件界面菜单的超时时间
+set bootfile-timeout 8000 
+##############高级秃顶用户修改区域结束######
+
+################系统设置开始####################
+#设置分辨率图片                           
+isset ${x} || set x 800   
+isset ${y} || set y 600     
+isset ${bg} || set bg 800x600.png                               
+#这句脚本是读取本地文件用，不用管
+ifopen net0
+#同上
+ifstat
+#这个我自己调试用的
+set getfile /ipxeboot.txt
+:boot
+#找不到next-server变量就把dhcp-server的变量值给它
+isset ${next-server} || set next-server ${dhcp-server}
+#找不到proxydhcp/next-server变量就把proxydhcp/dhcp-server的变量值给它
+isset ${proxydhcp/next-server} || set proxydhcp/next-server ${proxydhcp/dhcp-server}
+#如果proxydhcp/next-server变量值存在，那么赋给booturl，不然就使用next-server的变量值
+isset ${proxydhcp/next-server} && set booturl ${proxydhcp/next-server} || set booturl ${next-server}
+#备用 prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
+#没有设置iscsiurl就设置为booturl
+isset ${iscsiurl} || set iscsiurl ${booturl}
+console --x ${x} -y ${y}
+#console --picture http://${booturl}/app/config/ipxe.png --left 32 --right 32 --top 32 --bottom 48
+console --picture http://${booturl}/Boot/ipxefm/${bg} --left 32 --right 32 --top 32 --bottom 48
+#console --picture http://${booturl}/Boot/ipxefm/1024x768.png --left 32 --right 32 --top 32 --bottom 48
+set prefix http://${booturl}/Boot/ipxefm
+################系统设置结束##################
+
+#主菜单
+:menu
+ menu  iPXE's Boot Menu BootServer:http://${booturl} QQGroup(Qun):146859089
+   
+   item --gap -- Choose BootFile 
+   item --key 0 wim            0.  Boot Wimfile
+   item --key 1 iso            1.  Boot Isofile
+   item --key 2 img            2.  Boot Imgfile
+   item --key 3 vhd            3.  Boot Vhdfile
+   item --key 4 ramos          4.  Boot RamOS
+   item --key 5 iqn            5.  Boot IQN
+   item --gap -- Choose Advanced tools
+   item --key b burn           B.  Burn images
+   item --gap -- Advanced options 
+   item --key l reload         L.  Reload iPXE Menu
+   item --key c config   	   C.  Configure settings   
+   item --key s shell          S.  Drop to iPXE shell
+   item --key r reboot         R.  Reboot computer
+   item --key p poweroff       P.  Poweroff computer
+   item --key x exit           X.  Exit iPXE and continue BIOS boot  
+   item ratio                Resolution ratio [1920x1080 1024x768 800x600]     
+choose --timeout ${ext-timeout} --default ${ext-default} selected ||
+set ext ${selected} ||
+iseq ${selected} config && config ||
+iseq ${selected} shell && shell ||
+iseq ${selected} reboot && reboot ||
+iseq ${selected} poweroff && poweroff ||
+iseq ${selected} exit && exit ||
+iseq ${selected} ratio && goto ratio ||
+iseq ${selected} burn && chain ${prefix}/types/burn ||
+iseq ${selected} reload && chain http://${booturl}${scriptfile} ||
+
+
+#选项启动文件类型后的子菜单(列表)
+:boot
+ menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
+   item --gap --             ------------------------ choose  ${ext}file ---------------------------------
+   item --key 0 ${ext}0          0. Boot:${${ext}0}
+   item --key 1 ${ext}1          1. Boot:${${ext}1}
+   item --key 2 ${ext}2          2. Boot:${${ext}2}
+   item --key 3 ${ext}3          3. Boot:${${ext}3}
+   item --key 4 ${ext}4          4. Boot:${${ext}4}
+   item --key 5 ${ext}5          5. Boot:${${ext}5}
+   item --key 6 ${ext}6          6. Boot:${${ext}6}
+   item --key 7 ${ext}7          7. Boot:${${ext}7}
+   item --key 8 ${ext}8          8. Boot:${${ext}8}
+   item --key 9 ${ext}9          9. Boot:${${ext}9}
+   item --key m menu             M. Back to menu
+  choose --timeout ${bootfile-timeout} --default ${ext}${${ext}bootfile-default} selected
+  set sel  ${selected}
+  set bootfile ${${sel}}
+  iseq ${selected} menu && goto menu ||
+  chain ${prefix}/types/${ext} ||
+  goto ${ext} ||
+chain ${prefix}/init.ipxe ||
+
+ 
+#分辨率调整
+:ratio
+ menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
+   item --gap --             ------------------------ choose  ${ext}file ---------------------------------
+   item --key 0 1920x1080          0. 1920x1080
+   item --key 1 1024x768           1. 1024X768
+   item --key 2 800x600            2. 800x600
+   item --key m menu             M. Back to menu
+choose --timeout ${bootfile-timeout} --default 800x600 selected ||
+iseq ${selected} 1920x1080 && set x 1920 && set y 1080 && set bg 1920x1080.png ||
+iseq ${selected} 1024x768 && set x 1024 && set y 768 && set bg 1024x768.png ||
+iseq ${selected} 800x600 && set x 800 && set y 600 && set bg 800x600.png ||
+chain ${prefix}/init.ipxe ||

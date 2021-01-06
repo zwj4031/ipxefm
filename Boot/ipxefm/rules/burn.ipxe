@@ -1,0 +1,9 @@
+#!ipxe
+##################高级工具burnimg##################  
+:burn
+echo Burn ${img}........................
+kernel ${burnpath}${kernel} showmounts toram root=/dev/nfs initrd=${initrd} netboot=nfs nfsroot=${nfsroot} share=${share} img=${img} ip=dhcp ipv6.disable=1 ro splash biosdevname=0 ||
+initrd ${burnpath}${initrd} ||
+boot ||
+chain ${prefix}/init.ipxe ||
+##################高级工具##################  

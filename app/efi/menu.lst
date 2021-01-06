@@ -1,0 +1,86 @@
+﻿# 这是一个样品 menu.lst 文件。你应该对它做些改动。
+# 它必须是 UTF-8 编码，以支持多种语言。
+# 字体应该是 unifont.hex 格式。
+
+
+
+#设置倒计时(秒)
+timeout 30
+
+#设置第一项为默认值
+default 1
+
+#设置字符颜色(高32位是背景色，低32位是前景色)
+color normal=0xff9933 highlight=0xffff00 helptext=0xff00ff heading=0x66ff00
+
+#设置图形模式(可使用 graphicsmode 探测系统支持的图形模式)
+graphicsmode -1 800
+
+#加载背景图
+splashimage /efi/grub/splashimage.jpg || splashimage /boot/grub/splashimage.bmp
+
+#加载字体(如果不是 16*16 字体，需增加参数，如 --font-high=24)
+font /efi/grub/unifont.hex.gz
+
+#设置菜单举例
+setmenu --box x=4 w=60 y=6 h=9 l=2
+setmenu --keyhelp=1 --lang=zh
+setmenu --auto-num-on 
+setmenu --keyhelp=1=0x66ff00
+setmenu --string=m=2=0x0000000000ffff="G4D 维  护  菜  单"
+setmenu --string=s=1=0x8800000000ffff="date&time=yyyy-MM-dd  HH:mm:ss"
+setmenu --timeout=90=2=0x88000000ffff
+setmenu --hotkey -A [F4] commandline
+
+title 启动 efi 文件
+chainloader /efi/boot/grub2x64.efi
+
+title 启动虚拟光盘
+find --set-root /cdrom.iso
+map /cdrom.iso (0xff)
+chainloader (0xff)
+
+title 启动虚拟光盘(加载到内存)
+find --set-root /cdrom.iso
+map --mem /cdrom.iso (0xff)
+chainloader (0xff)
+
+title 启动存在的光盘(cd0)
+chainloader (cd0)
+
+title 启动虚拟硬盘
+find --set-root /boot/hdd.img
+map /boot/hdd.img (hd)
+chainloader (hd-1)
+
+title 启动虚拟硬盘(加载到内存)
+find --set-root /boot/hdd.img
+map --mem /boot/hdd.img (hd)
+chainloader (hd-1)
+
+title 启动存在的硬盘(hd0)
+chainloader (hd0)
+
+title 启动其他菜单
+configfile /efi/grub/menu2.lst
+
+title 启动 Linux Porteus 5.0 x86_64 openbox
+kernel /porteus/vmlinuz copy2ram
+initrd /porteus/initrd.xz
+
+title 命令行
+commandline
+
+title 退出grub4dos
+exit_g4d
+
+title 重启
+reboot
+
+title 关机
+halt
+
+
+
+
+

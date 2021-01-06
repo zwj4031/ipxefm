@@ -1,0 +1,57 @@
+#!ipxe
+goto ${bootmode} 
+
+:wimboot
+#假如取文件失败就换个地址
+kernel http://${booturl}/app/wimboot/wimboot || goto retryip
+#在bios和efi不同环境取相应的文件
+iseq ${platform} pcbios  && initrd http://${booturl}/app/wimboot/bootmgr  bootmgr ||
+iseq ${platform} efi  && initrd -n bootx64.efi http://${booturl}/app/wimboot/bootmgfw.efi ||
+initrd http://${booturl}/app/wimboot/BCD  BCD ||
+initrd http://${booturl}/app/wimboot/boot.sdi   boot.sdi ||
+iseq ${platform} pcbios  && initrd http://${booturl}${bootfile} boot.wim ||
+iseq ${platform} efi && initrd -n boot.wim http://${booturl}${bootfile} ||
+boot ||
+iseq ${selected} menu && chain ${prefix}/init.ipxe  ||
+
+:wimboot-inject
+#假如取文件失败就换个地址
+kernel http://${booturl}/app/wimboot/wimboot || goto retryip
+
+#在bios和efi不同环境取相应的启动文件
+iseq ${platform} pcbios && initrd http://${booturl}/app/wimboot/bootmgr  bootmgr ||
+iseq ${platform} efi && initrd -n bootx64.efi http://${booturl}/app/wimboot/bootmgfw.efi ||
+initrd http://${booturl}/app/wimboot/BCD BCD ||
+initrd http://${booturl}/app/wimboot/boot.sdi boot.sdi ||
+#前方高能！射入的文件最终会出现在你所有pe的X:\windows\system32目录下，不要再问来问去怎么启动pxeautorun.txt了！
+#只是启动个pe用的上面这段话请忽略!!
+#pcbios
+iseq ${platform} pcbios && initrd http://${booturl}/app/inject/${startup} startup.bat || 
+iseq ${platform} pcbios && initrd http://${booturl}/app/inject/${winpeshl} winpeshl.ini || 
+iseq ${platform} pcbios && initrd http://${booturl}/app/inject/sysx64.exe sysx64.exe || #补mode.com 有问题可删除!
+iseq ${platform} pcbios && initrd http://${booturl}/ serverip=${booturl} || #射入IP地址 有问题可删除!
+#uefi
+iseq ${platform} efi && initrd -n startup.bat http://${booturl}/app/inject/${startup} ||
+iseq ${platform} efi && initrd -n winpeshl.ini http://${booturl}/app/inject/${winpeshl} ||
+iseq ${platform} efi && initrd -n sysx64.exe http://${booturl}/app/inject/sysx64.exe || #补mode.com等缺少的文件 有问题可删除!
+iseq ${platform} efi && initrd -n serverip=${booturl} http://${booturl}/ || #射入IP地址 有问题可删除!
+#以下是自定义射入的文件
+#pcbios
+iseq ${platform} pcbios && initrd http://${booturl}/app/inject/${inject0} ${inject0} || 
+iseq ${platform} pcbios && initrd http://${booturl}/app/inject/${inject1} ${inject1} || 
+iseq ${platform} pcbios && initrd http://${booturl}/app/inject/${inject2} ${inject2} || 
+iseq ${platform} pcbios && initrd http://${booturl}/app/inject/${inject3} ${inject3} || 
+iseq ${platform} pcbios && initrd http://${booturl}/app/inject/${inject4} ${inject4} ||
+iseq ${platform} pcbios && initrd http://${booturl}/app/inject/${inject5} ${inject5} ||
+#uefi
+iseq ${platform} efi && initrd -n ${inject0} http://${booturl}/app/inject/${inject0} || 
+iseq ${platform} efi && initrd -n ${inject1} http://${booturl}/app/inject/${inject1} || 
+iseq ${platform} efi && initrd -n ${inject2} http://${booturl}/app/inject/${inject2} || 
+iseq ${platform} efi && initrd -n ${inject3} http://${booturl}/app/inject/${inject3} || 
+iseq ${platform} efi && initrd -n ${inject4} http://${booturl}/app/inject/${inject4} ||
+iseq ${platform} efi && initrd -n ${inject5} http://${booturl}/app/inject/${inject5} ||
+#在bios和efi不同环境给相应的PE 件改名
+iseq ${platform} pcbios && initrd http://${booturl}${bootfile} boot.wim ||
+iseq ${platform} efi && initrd -n boot.wim http://${booturl}${bootfile} ||
+boot ||
+iseq ${selected} menu && chain ${prefix}/init.ipxe  ||

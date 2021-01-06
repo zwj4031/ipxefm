@@ -1,0 +1,45 @@
+#!ipxe
+goto ${bootmode}
+:efiisowithimgboot
+initrd -n boot.iso http://${booturl}${bootfile} ||
+chain http://${booturl}/app/${platform}/imgboot.efi ||
+boot ||
+chain http://${prefix}/init.ipxe ||
+
+:pcbiosbootimg
+kernel http://${booturl}/app/${platform}/grub.exe ||
+initrd http://${booturl}${bootfile} ||
+initrd http://${booturl}/app/${platform}/512 ||
+imgargs grub.exe --config-file="map (rd)+1 (${diskmode}0);map --hook; root (${diskmode}0);chainloader (${diskmode}0)+1;boot" ||
+boot ||
+chain http://${prefix}/init.ipxe ||
+
+:efibootimg
+kernel http://${booturl}/app/wimboot/wimboot gui ||
+initrd -n bootmgfw.efi http://${booturl}/app/${platform}/grub4uefi.efi ||
+initrd -n menu.lst http://${booturl}/app/${platform}/menu.lst ||
+initrd -n boot.iso http://${booturl}${bootfile} ||
+boot ||
+chain http://${prefix}/init.ipxe ||
+#用memdisk来启动img(仅legacybios)
+:memdiskimg
+initrd http://${booturl}${bootfile} ||
+kernel ${boot-url}/app/${platform}/memdisk ||
+boot ||
+chain http://${prefix}/init.ipxe ||
+#启动img结束
+:pcbiosbootvhd
+kernel http://${booturl}/app/${platform}/grub.exe ||
+initrd http://${booturl}${bootfile} ||
+initrd http://${booturl}/app/${platform}/512 ||
+imgargs grub.exe --config-file="map (rd)+1 (hd0);map --hook;chainloader (hd0);boot" ||
+boot ||
+chain http://${prefix}/init.ipxe ||
+
+:efibootvhd
+kernel http://${booturl}/app/wimboot/wimboot gui ||
+initrd -n bootmgfw.efi http://${booturl}/app/${platform}/grubfmx64.efi ||
+initrd -n menu.lst http://${booturl}/app/${platform}/menu.lst ||
+initrd -n boot.iso http://${booturl}${bootfile} ||
+boot ||
+chain http://${prefix}/init.ipxe ||

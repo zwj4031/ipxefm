@@ -1,0 +1,17 @@
+#!ipxe
+goto ${bootmode}
+:pcbiosinstall
+set net0/gateway 0.0.0.0
+set keep-san 1
+sanhook iscsi:${iscsiurl}::::${bootfile} ||
+boot ||
+chain ${prefix}/init.ipxe ||
+
+
+:efiinstall
+set net0/gateway 0.0.0.0
+set keep-san 1
+sanhook iscsi:${iscsiurl}::::${bootfile} ||
+boot ||
+chain ${prefix}/init.ipxe ||
+

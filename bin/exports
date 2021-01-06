@@ -1,0 +1,7 @@
+
+# exports example
+
+C:\ftp -range 192.168.1.1 192.168.1.10
+c:\public -public -readonly
+c:\tools -readonly 192.168.1.4
+S:\ipxeboot\ctos -name:ctos -public -maproot:0

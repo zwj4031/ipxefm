@@ -1,0 +1,40 @@
+#!ipxe
+goto ${bootmode}
+
+#用memdisk来启动iso(仅legacybios)
+:pcbiosisowithmemdisk
+kernel ${boot-url}/app/${platform}/memdisk iso raw ||
+initrd http://${booturl}${bootfile} ||
+boot ||
+chain ${prefix}/init.ipxe  ||
+#启动iso结束
+
+
+
+:pcbiosisowithgrub
+kernel http://${booturl}/app/${platform}/grub.exe ||
+initrd http://${booturl}${bootfile} ||
+initrd http://${booturl}/app/${platform}/512 ||
+imgargs grub.exe --config-file="map (rd)+1 (0xff);map --hook;chainloader (255);boot" ||
+boot ||
+iseq ${selected} menu && chain ${prefix}/init.ipxe  ||
+:efiisowithgrub
+kernel http://${booturl}/app/wimboot/wimboot gui ||
+initrd -n mapiso http://${booturl}/ ||
+initrd -n boot.iso http://${booturl}${bootfile} ||
+initrd -n bootx64.efi http://${booturl}/app/${platform}/grub2toy.efi ||
+boot ||
+chain ${prefix}/init.ipxe  ||
+
+:efiisowithgrubmemrt #可以在安装了svbus驱动的pe里挂载iso
+kernel http://${booturl}/app/wimboot/wimboot gui ||
+initrd -n mapisomemrt http://${booturl}/ ||
+initrd -n boot.iso http://${booturl}${bootfile} ||
+initrd -n bootx64.efi http://${booturl}/app/${platform}/grub2toy.efi ||
+boot ||
+chain ${prefix}/init.ipxe  ||
+:efiisowithimgboot
+initrd -n boot.iso http://${booturl}${bootfile} ||
+chain http://${booturl}/app/${platform}/imgboot.efi ||
+boot ||
+chain ${prefix}/init.ipxe  ||
