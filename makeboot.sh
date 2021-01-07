@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 cd ~/git/ipxeboot
-cp -r ~/git/ipxeboot/* /mnt/s/ipxeboot/
-cp -r ~/git/ipxeboot/* /mnt/m/ipxeboot/
+cp -r ~/git/ipxefm/* /mnt/s/ipxefm/
+cp -r ~/git/ipxefm/* /mnt/m/ipxefm/

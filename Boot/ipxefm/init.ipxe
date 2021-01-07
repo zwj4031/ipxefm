@@ -69,7 +69,8 @@ set bootfile-timeout 8000
 #设置分辨率图片                           
 isset ${x} || set x 800   
 isset ${y} || set y 600     
-isset ${bg} || set bg 800x600.png                               
+isset ${bg} || set bg 800x600.png        
+isset ${ld} || set ld loading.png                              
 #这句脚本是读取本地文件用，不用管
 ifopen net0
 #同上
@@ -86,11 +87,14 @@ isset ${proxydhcp/next-server} && set booturl ${proxydhcp/next-server} || set bo
 #备用 prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
 #没有设置iscsiurl就设置为booturl
 isset ${iscsiurl} || set iscsiurl ${booturl}
-console --x ${x} -y ${y}
-#console --picture http://${booturl}/app/config/ipxe.png --left 32 --right 32 --top 32 --bottom 48
-console --picture http://${booturl}/Boot/ipxefm/${bg} --left 32 --right 32 --top 32 --bottom 48
-#console --picture http://${booturl}/Boot/ipxefm/1024x768.png --left 32 --right 32 --top 32 --bottom 48
+#设置永久环境变量
 set prefix http://${booturl}/Boot/ipxefm
+set themes http://${booturl}/Boot/ipxefm/themes/jnygc
+set quiet 1 #静默启动，1打开，注释掉不打开
+console --x ${x} -y ${y} ||
+console --picture ${themes}/${bg} --left 32 --right 32 --top 32 --bottom 48 ||
+
+
 ################系统设置结束##################
 
 #主菜单

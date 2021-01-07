@@ -1,6 +1,6 @@
 #!ipxe
+iseq ${quiet} 1 && console --x ${x} -y ${y} && cpair --foreground 0 0 || #静默背景
 goto ${bootmode} 
-
 :wimboot
 #假如取文件失败就换个地址
 kernel http://${booturl}/app/wimboot/wimboot || goto retryip
@@ -9,11 +9,11 @@ iseq ${platform} pcbios  && initrd http://${booturl}/app/wimboot/bootmgr  bootmg
 iseq ${platform} efi  && initrd -n bootx64.efi http://${booturl}/app/wimboot/bootmgfw.efi ||
 initrd http://${booturl}/app/wimboot/BCD  BCD ||
 initrd http://${booturl}/app/wimboot/boot.sdi   boot.sdi ||
+cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
 iseq ${platform} pcbios  && initrd http://${booturl}${bootfile} boot.wim ||
 iseq ${platform} efi && initrd -n boot.wim http://${booturl}${bootfile} ||
 boot ||
 iseq ${selected} menu && chain ${prefix}/init.ipxe  ||
-
 :wimboot-inject
 #假如取文件失败就换个地址
 kernel http://${booturl}/app/wimboot/wimboot || goto retryip
@@ -51,6 +51,7 @@ iseq ${platform} efi && initrd -n ${inject3} http://${booturl}/app/inject/${inje
 iseq ${platform} efi && initrd -n ${inject4} http://${booturl}/app/inject/${inject4} ||
 iseq ${platform} efi && initrd -n ${inject5} http://${booturl}/app/inject/${inject5} ||
 #在bios和efi不同环境给相应的PE 件改名
+cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
 iseq ${platform} pcbios && initrd http://${booturl}${bootfile} boot.wim ||
 iseq ${platform} efi && initrd -n boot.wim http://${booturl}${bootfile} ||
 boot ||

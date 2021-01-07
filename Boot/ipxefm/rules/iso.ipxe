@@ -1,40 +1,42 @@
 #!ipxe
-goto ${bootmode}
+iseq ${quiet} 1 && console --x ${x} -y ${y} && cpair --foreground 0 0 || #静默背景
+goto ${bootmode} ||
 
 #用memdisk来启动iso(仅legacybios)
 :pcbiosisowithmemdisk
 kernel ${boot-url}/app/${platform}/memdisk iso raw ||
+cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
 initrd http://${booturl}${bootfile} ||
-boot ||
-chain ${prefix}/init.ipxe  ||
+boot || chain ${prefix}/types/${ext} 
 #启动iso结束
-
-
 
 :pcbiosisowithgrub
 kernel http://${booturl}/app/${platform}/grub.exe ||
+cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
 initrd http://${booturl}${bootfile} ||
 initrd http://${booturl}/app/${platform}/512 ||
 imgargs grub.exe --config-file="map (rd)+1 (0xff);map --hook;chainloader (255);boot" ||
-boot ||
+boot || chain ${prefix}/types/${ext} 
+
 iseq ${selected} menu && chain ${prefix}/init.ipxe  ||
 :efiisowithgrub
 kernel http://${booturl}/app/wimboot/wimboot gui ||
 initrd -n mapiso http://${booturl}/ ||
+cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
 initrd -n boot.iso http://${booturl}${bootfile} ||
 initrd -n bootx64.efi http://${booturl}/app/${platform}/grub2toy.efi ||
-boot ||
-chain ${prefix}/init.ipxe  ||
+boot || chain ${prefix}/types/${ext} 
 
 :efiisowithgrubmemrt #可以在安装了svbus驱动的pe里挂载iso
 kernel http://${booturl}/app/wimboot/wimboot gui ||
 initrd -n mapisomemrt http://${booturl}/ ||
+cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
 initrd -n boot.iso http://${booturl}${bootfile} ||
 initrd -n bootx64.efi http://${booturl}/app/${platform}/grub2toy.efi ||
-boot ||
-chain ${prefix}/init.ipxe  ||
+boot || chain ${prefix}/types/${ext} 
+
 :efiisowithimgboot
+cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
 initrd -n boot.iso http://${booturl}${bootfile} ||
 chain http://${booturl}/app/${platform}/imgboot.efi ||
-boot ||
-chain ${prefix}/init.ipxe  ||
+boot || chain ${prefix}/types/${ext} 
