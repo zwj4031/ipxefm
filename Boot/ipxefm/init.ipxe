@@ -3,12 +3,13 @@
 ##射入pe的文件暂时可射5个，5个文件在/app/inject目录下(不能为空~会蓝屏!)
 ##看得懂脚本的可以射数个(不能为空~会蓝屏!)
 ##################################################
-#默认射入1：所有正常的pe都有winpeshl.ini  (一般人视角，一般pe)---此项射入后名称固定
-# 备用了一个winpeshl_winxshell.ini #适合一键批处理生成的骨头版wim
+#设置放置射入文件的文件夹名称，默认为inject下的default目录
+set injectdir default
+#默认射入1：所有正常的pe都有winpeshl.ini  (一般人视角，一般pe)---此项射入后名称固定  备用了一个winpeshl_winxshell.ini #适合一键批处理生成的骨头版wim
 set winpeshl winpeshl.ini
 #set winpeshl winpeshl_winxshell.ini
 # 默认射入2：默认批处理startup.bat,可修改
-set startup startup.bat
+set startup default/startup.bat
 # 选择smb共享的，需要默认共享本目录名称为PXE 
 # 使用共享功能，至少要把本目录也就是ipxeboot权限设置为everyone可读!
 # 以下是自定义射入的文件

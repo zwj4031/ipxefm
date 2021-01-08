@@ -3,15 +3,15 @@
 menu  iPXE's Boot Menu boot:${bootfile} QQGroup(Qun):146859089 ${platform} 
    item --gap --             ------------------------winpeshl:${winpeshl}-----------------------------
    item --key 0 wimboot                0. Boot with wimboot 
-   item --key 1 startup.bat            1. Boot with wimboot (inject files:startup.bat--> NetGhost])
-   item --key 2 startup_smb.bat        2. Boot with wimboot (inject files:startup_smb.bat--> SMB)
-   item --key 3 ${winpeshl}            3. Switch ${winpeshl} (winpeshl:${winpeshl}) 
+   item --key 1 netghost               1. Boot with wimboot (inject files->NetGhost])
+   item --key 2 smbcli                 2. Boot with wimboot (inject files->SMB)
+   item --key 3 ${winpeshl}            3. Switch ${winpeshl} (winpeshl->${winpeshl}) 
    item --key m menu                   M. Back to menu       
 choose --timeout 8000 --default ${${platform}wimbootmode} selected
 iseq ${selected} wimboot && set bootmode wimboot && chain ${prefix}/rules/wimboot.ipxe ||
 iseq ${selected} menu && chain ${prefix}/init.ipxe ||
 iseq ${selected} winpeshl.ini && set winpeshl winpeshl_winxshell.ini && set bootmode wimboot-inject && chain ${prefix}/types/wim ||
 iseq ${selected} winpeshl_winxshell.ini && set winpeshl winpeshl.ini && set bootmode wimboot-inject && chain ${prefix}/types/wim ||
-set startup ${selected} && set bootmode wimboot-inject && chain ${prefix}/rules/wimboot.ipxe ||
+set job ${selected} && set bootmode wimboot-inject && chain ${prefix}/rules/wimboot.ipxe ||
 chain ${prefix}/init.ipxe ||
  
