@@ -25,14 +25,14 @@ set ramos1 /win10.vhd.gz
 set wim1name minipe:netghost
 set wim1injectdir default
 set wim1job netghost
+
 set wim2name minipe:smbclient
 set wim2injectdir default
 set wim2job smbcli
+
 set wim3name netcopy.wim:smbclient
 set wim3injectdir netcopy
 set wim3inject0 star.ini
-set wim3inject1 star.ini
-set wim3inject2 star.ini
 set wim3job smbcli
 ##############中级进阶用户修改区域结束############
 ################启动##################

@@ -5,7 +5,7 @@
 ##################################################
 isset ${${sel}injectdir} && set injectdir ${${sel}injectdir} || set injectdir default 
 isset ${${sel}winpeshl} && set winpeshl ${${sel}winpeshl} || set winpeshl winpeshl.ini 
-  isset ${${sel}job} && set job ${${sel}job} ||
+isset ${${sel}job} && set job ${${sel}job} ||
 isset ${${sel}startup} && set startup ${${sel}startup} || set startup startup.bat
 isset ${${sel}inject0} && set inject0 ${${sel}inject0} || set inject0 0.exe          
 isset ${${sel}inject1} && set inject1 ${${sel}inject1} || set inject1 1.exe
