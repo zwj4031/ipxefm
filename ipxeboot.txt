@@ -33,7 +33,7 @@ set wim3injectdir netcopy
 set wim3inject0 star.ini
 set wim3inject1 star.ini
 set wim3inject2 star.ini
-#set wim3job smbcli
+set wim3job smbcli
 ##############中级进阶用户修改区域结束############
 ################启动##################
 chain /boot/ipxefm/init.ipxe
