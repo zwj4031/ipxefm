@@ -117,8 +117,6 @@ isset ${${ext}6name} && set title6 ${${ext}6name} || set title6 ${${ext}6}
 isset ${${ext}7name} && set title7 ${${ext}7name} || set title7 ${${ext}7}
 isset ${${ext}8name} && set title8 ${${ext}8name} || set title8 ${${ext}8}
 isset ${${ext}9name} && set title9 ${${ext}9name} || set title9 ${${ext}9}
-
-
 menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
    item --gap --             ------------------------ choose  ${ext}file ---------------------------------
    item --key 0 ${ext}0          0. ${title0}
@@ -138,6 +136,12 @@ menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
   isset ${${sel}injectdir} && set injectdir ${${sel}injectdir} || set injectdir default 
   isset ${${sel}winpeshl} && set winpeshl ${${sel}winpeshl} || set winpeshl winpeshl.ini 
   isset ${${sel}startup} && set startup ${${sel}startup} || set startup startup.bat
+  isset ${${sel}inject0} && set inject0 ${${sel}inject0} || set inject0 0.exe          
+  isset ${${sel}inject1} && set inject1 ${${sel}inject1} || set inject1 1.exe
+  isset ${${sel}inject2} && set inject2 ${${sel}inject2} || set inject2 2.exe
+  isset ${${sel}inject3} && set inject3 ${${sel}inject3} || set inject3 ghostx64.exe
+  isset ${${sel}inject4} && set inject4 ${${sel}inject4} || set inject4 netcopyx64.exe
+  isset ${${sel}inject5} && set inject5 ${${sel}inject5} || set inject5 cgix64.exe
   isset ${${sel}job} && set job ${${sel}job} ||
   iseq ${selected} menu && goto bootmenu ||
   chain ${prefix}/types/${ext} ||

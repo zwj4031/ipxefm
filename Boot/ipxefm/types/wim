@@ -5,19 +5,6 @@
 ##################################################
 # 选择smb共享的，需要默认共享本目录名称为PXE 
 # 使用共享功能，至少要把本目录也就是ipxeboot权限设置为everyone可读!
-# 以下是自定义射入的文件
-set inject0 0.exe
-#3.射入一个又大又粗的工具包，自定义，比如射个64位的ghost进去
-set inject1 1.exe
-#3.射入一个又大又粗的工具包，自定义，比如射个64位的ghost进去
-set inject2 2.exe
-#3.射入一个又大又粗的工具包，自定义，比如射个64位的ghost进去
-set inject3 ghostx64.exe
-#4.射入一个又大又粗的工具包，自定义，比如射个64位的netcopy进去
-set inject4 netcopyx64.exe
-#5.射入一个又大又粗的工具包，自定义，比如射个64位的CGI进去(备用)
-set inject5 cgix64.exe
-#如果存在job变量，直接启动wim文件
 isset ${job} && set bootmode wimboot-inject && chain ${prefix}/rules/wimboot.ipxe ||
 #wim类型文件启动菜单
 :wimmenu
@@ -26,8 +13,19 @@ menu  iPXE's Boot Menu boot:${bootfile} QQGroup(Qun):146859089 ${platform}
    item --key 1 netghost               1. Boot with wimboot (inject files->NetGhost])
    item --key 2 smbcli                 2. Boot with wimboot (inject files->SMB)
    item --key 3 ${winpeshl}            3. Switch ${winpeshl} (winpeshl->${winpeshl}) 
-   item --gap -- winpeshl->[${winpeshl} ]:startup->[${startup}]
    item --key m menu                   M. Back to menu 
+   item --gap -- --------------------------Wimboot Option----------------------------
+   item --gap -- Wimboot injectdir:${injectdir}
+   item --gap -- Wimboot job:${job}
+   item --gap -- Wimboot inject filelist:winpeshl --${winpeshl}
+   item --gap -- startup     --${startup}
+   item --gap -- inject0     --${inject0}
+   item --gap -- inject1     --${inject1}
+   item --gap -- inject2     --${inject2}
+   item --gap -- inject3     --${inject3}
+   item --gap -- inject4     --${inject4}
+   item --gap -- inject5     --${inject5}
+   
    choose --timeout 8000 --default ${${platform}wimbootmode} selected
 iseq ${selected} wimboot && set bootmode wimboot && chain ${prefix}/rules/wimboot.ipxe ||
 iseq ${selected} menu && chain ${prefix}/init.ipxe  ||

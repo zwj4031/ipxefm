@@ -21,6 +21,7 @@ set ramos1 /win10.vhd.gz
 #设置文件在菜单上显示的标题name，全类型支持
 #设置执行的任务名称job   (仅支持wim需要配合startup.bat内容使用)
 #设置射入文件所在目录injectdir (仅支持wim如netcopy，会从/inject/netcopy目录取文件，默认default
+#设置射入文件inject0-5
 set wim1name minipe:netghost
 set wim1injectdir default
 set wim1job netghost
@@ -29,7 +30,10 @@ set wim2injectdir default
 set wim2job smbcli
 set wim3name netcopy.wim:smbclient
 set wim3injectdir netcopy
-set wim3job smbcli
+set wim3inject0 star.ini
+set wim3inject1 star.ini
+set wim3inject2 star.ini
+#set wim3job smbcli
 ##############中级进阶用户修改区域结束############
 ################启动##################
 chain /boot/ipxefm/init.ipxe
