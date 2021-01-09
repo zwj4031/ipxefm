@@ -9,7 +9,7 @@ set injectdir default
 set winpeshl winpeshl.ini
 #set winpeshl winpeshl_winxshell.ini
 # 默认射入2：默认批处理startup.bat,可修改
-set startup default/startup.bat
+set startup startup.bat
 # 选择smb共享的，需要默认共享本目录名称为PXE 
 # 使用共享功能，至少要把本目录也就是ipxeboot权限设置为everyone可读!
 # 以下是自定义射入的文件
