@@ -1,9 +1,9 @@
 #!ipxe
-##############初级入门用户修改区域################
-#设置各种文件路径默认支持10个,自己修改
+##############初级入门用户修改区域开始################
+#设置各种文件路径默认各类型支持10个,自己修改
 set wim0 /mini.wim
-set wim1 /boot.wim
-set wim2 /win10newpe64(20201101).wim
+set wim1 /mini.wim
+set wim2 /mini.wim
 set iso0 /grubfm_multiarch.iso
 set iso1 /netpe_multiarch.iso
 set img0 /mhdd.img
@@ -15,5 +15,17 @@ set iqn1 iqn.1991-05.com.microsoft:target2
 set ramos0 /ramos.vhd.ramos
 set ramos1 /win10.vhd.gz
 ##############初级入门用户修改区域结束############
+
+##############中级进阶用户修改区域开始############
+#设置文件在菜单上显示的标题name，全类型支持
+#设置执行的任务名称job   (仅支持wim需要配合startup.bat内容使用)
+#设置射入文件所在目录injectdir (仅支持wim如netcopy，会从/inject/netcopy目录取文件，默认default
+set wim1name minipe:netghost
+set wim1injectdir default
+set wim1job netghost
+set wim2name minipe:smbcli
+set wim2injectdir default
+set wim2job smbcli
+##############中级进阶用户修改区域结束############
+################启动##################
 chain /boot/ipxefm/init.ipxe
-################系统设置结束##################

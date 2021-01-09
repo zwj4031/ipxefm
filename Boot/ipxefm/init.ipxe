@@ -1,30 +1,4 @@
 #!ipxe
-##############初级止步！中级进阶用户修改区域######
-##射入pe的文件暂时可射5个，5个文件在/app/inject目录下(不能为空~会蓝屏!)
-##看得懂脚本的可以射数个(不能为空~会蓝屏!)
-##################################################
-#设置放置射入文件的文件夹名称，默认为inject下的default目录
-set injectdir default
-#默认射入1：所有正常的pe都有winpeshl.ini  (一般人视角，一般pe)---此项射入后名称固定  备用了一个winpeshl_winxshell.ini #适合一键批处理生成的骨头版wim
-set winpeshl winpeshl.ini
-#set winpeshl winpeshl_winxshell.ini
-# 默认射入2：默认批处理startup.bat,可修改
-set startup startup.bat
-# 选择smb共享的，需要默认共享本目录名称为PXE 
-# 使用共享功能，至少要把本目录也就是ipxeboot权限设置为everyone可读!
-# 以下是自定义射入的文件
-set inject0 0.exe
-#3.射入一个又大又粗的工具包，自定义，比如射个64位的ghost进去
-set inject1 1.exe
-#3.射入一个又大又粗的工具包，自定义，比如射个64位的ghost进去
-set inject2 2.exe
-#3.射入一个又大又粗的工具包，自定义，比如射个64位的ghost进去
-set inject3 ghostx64.exe
-#4.射入一个又大又粗的工具包，自定义，比如射个64位的netcopy进去
-set inject4 netcopyx64.exe
-#5.射入一个又大又粗的工具包，自定义，比如射个64位的CGI进去(备用)
-set inject5 cgix64.exe
-##############中级进阶用户修改区域结束###########
 
 ##############中级止步!高级秃顶用户修改区域######
 #修改iscsi server的地址(默认是next-server)
@@ -99,7 +73,7 @@ console --picture ${themes}/${bg} --left 32 --right 32 --top 32 --bottom 48 ||
 ################系统设置结束##################
 
 #主菜单
-:menu
+:bootmenu
  menu  iPXE's Boot Menu BootServer:http://${booturl} QQGroup(Qun):146859089
    
    item --gap -- Choose BootFile 
@@ -132,24 +106,40 @@ iseq ${selected} reload && chain http://${booturl}${scriptfile} ||
 
 
 #选项启动文件类型后的子菜单(列表)
-:boot
- menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
+:extmenu
+isset ${${ext}0name} && set title0 ${${ext}0name} || set title0 ${${ext}0}
+isset ${${ext}1name} && set title1 ${${ext}1name} || set title1 ${${ext}1}
+isset ${${ext}2name} && set title2 ${${ext}2name} || set title2 ${${ext}2}
+isset ${${ext}3name} && set title3 ${${ext}3name} || set title3 ${${ext}3}
+isset ${${ext}4name} && set title4 ${${ext}4name} || set title4 ${${ext}4}
+isset ${${ext}5name} && set title5 ${${ext}5name} || set title5 ${${ext}5}
+isset ${${ext}6name} && set title6 ${${ext}6name} || set title6 ${${ext}6}
+isset ${${ext}7name} && set title7 ${${ext}7name} || set title7 ${${ext}7}
+isset ${${ext}8name} && set title8 ${${ext}8name} || set title8 ${${ext}8}
+isset ${${ext}9name} && set title9 ${${ext}9name} || set title9 ${${ext}9}
+
+
+menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
    item --gap --             ------------------------ choose  ${ext}file ---------------------------------
-   item --key 0 ${ext}0          0. Boot:${${ext}0}
-   item --key 1 ${ext}1          1. Boot:${${ext}1}
-   item --key 2 ${ext}2          2. Boot:${${ext}2}
-   item --key 3 ${ext}3          3. Boot:${${ext}3}
-   item --key 4 ${ext}4          4. Boot:${${ext}4}
-   item --key 5 ${ext}5          5. Boot:${${ext}5}
-   item --key 6 ${ext}6          6. Boot:${${ext}6}
-   item --key 7 ${ext}7          7. Boot:${${ext}7}
-   item --key 8 ${ext}8          8. Boot:${${ext}8}
-   item --key 9 ${ext}9          9. Boot:${${ext}9}
+   item --key 0 ${ext}0          0. ${title0}
+   item --key 1 ${ext}1          1. ${title1}
+   item --key 2 ${ext}2          2. ${title2}
+   item --key 3 ${ext}3          3. ${title3}
+   item --key 4 ${ext}4          4. ${title4}
+   item --key 5 ${ext}5          5. ${title5}
+   item --key 6 ${ext}6          6. ${title6}
+   item --key 7 ${ext}7          7. ${title7}
+   item --key 8 ${ext}8          8. ${title8}
+   item --key 9 ${ext}9          9. ${title9}
    item --key m menu             M. Back to menu
-  choose --timeout ${bootfile-timeout} --default ${ext}${${ext}bootfile-default} selected
-  set sel  ${selected}
-  set bootfile ${${sel}}
-  iseq ${selected} menu && goto menu ||
+  choose --timeout ${bootfile-timeout} --default ${ext}${${ext}bootfile-default} selected ||
+  set sel ${selected} ||
+  set bootfile ${${sel}} ||
+  isset ${${sel}injectdir} && set injectdir ${${sel}injectdir} || set injectdir default 
+  isset ${${sel}winpeshl} && set winpeshl ${${sel}winpeshl} || set winpeshl winpeshl.ini 
+  isset ${${sel}startup} && set startup ${${sel}startup} || set startup startup.bat
+  isset ${${sel}job} && set job ${${sel}job} ||
+  iseq ${selected} menu && goto bootmenu ||
   chain ${prefix}/types/${ext} ||
   goto ${ext} ||
 chain ${prefix}/init.ipxe ||
@@ -167,4 +157,4 @@ choose --timeout ${bootfile-timeout} --default 800x600 selected ||
 iseq ${selected} 1920x1080 && set x 1920 && set y 1080 && set bg 1920x1080.png ||
 iseq ${selected} 1024x768 && set x 1024 && set y 768 && set bg 1024x768.png ||
 iseq ${selected} 800x600 && set x 800 && set y 600 && set bg 800x600.png ||
-chain ${prefix}/init.ipxe ||
+iseq ${selected} menu && goto bootmenu ||
