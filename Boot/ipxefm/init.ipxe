@@ -63,7 +63,7 @@ isset ${proxydhcp/next-server} && set booturl ${proxydhcp/next-server} || set bo
 #没有设置iscsiurl就设置为booturl
 isset ${iscsiurl} || set iscsiurl ${booturl}
 #设置永久环境变量
-set prefix http://${booturl}/Boot/ipxefm
+set prefix /Boot/ipxefm
 set themes http://${booturl}/Boot/ipxefm/themes/jnygc
 set quiet 1 #静默启动，1打开，注释掉不打开
 console --x ${x} -y ${y} ||
@@ -133,16 +133,6 @@ menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
   choose --timeout ${bootfile-timeout} --default ${ext}${${ext}bootfile-default} selected ||
   set sel ${selected} ||
   set bootfile ${${sel}} ||
-  isset ${${sel}injectdir} && set injectdir ${${sel}injectdir} || set injectdir default 
-  isset ${${sel}winpeshl} && set winpeshl ${${sel}winpeshl} || set winpeshl winpeshl.ini 
-  isset ${${sel}startup} && set startup ${${sel}startup} || set startup startup.bat
-  isset ${${sel}inject0} && set inject0 ${${sel}inject0} || set inject0 0.exe          
-  isset ${${sel}inject1} && set inject1 ${${sel}inject1} || set inject1 1.exe
-  isset ${${sel}inject2} && set inject2 ${${sel}inject2} || set inject2 2.exe
-  isset ${${sel}inject3} && set inject3 ${${sel}inject3} || set inject3 ghostx64.exe
-  isset ${${sel}inject4} && set inject4 ${${sel}inject4} || set inject4 netcopyx64.exe
-  isset ${${sel}inject5} && set inject5 ${${sel}inject5} || set inject5 cgix64.exe
-  isset ${${sel}job} && set job ${${sel}job} ||
   iseq ${selected} menu && goto bootmenu ||
   chain ${prefix}/types/${ext} ||
   goto ${ext} ||
