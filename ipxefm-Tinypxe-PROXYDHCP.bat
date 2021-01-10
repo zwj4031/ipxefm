@@ -16,6 +16,8 @@ echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"
 exit /b
 :gotAdmin
 if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" ) 1>nul 2>nul
+::本目录给everyone添加权限
+Echo Y|CACLS \"%~dp0\*.*" /T /C /P Everyone:F
 (
 echo [arch]
 echo 00007=ipxe.efi
