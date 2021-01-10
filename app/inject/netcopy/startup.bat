@@ -1,16 +1,15 @@
 @echo off
-
+set root=X:\windows\system32
+if "%1" == "netghost" goto netghost
 cd /d "%ProgramFiles(x86)%"
 if exist "%ProgramFiles(x86)%\ghost\houx64.exe start "" "%ProgramFiles(x86)%\ghost\houx64.exe"
 if exist "%ProgramFiles(x86)%\student\student.exe" start "" /min "%ProgramFiles(x86)%\student\student.exe"
 
-set root=X:\windows\system32
 :::创建符号链接，避免32位程序运行不正常
 mklink %temp%\cmd.exe  C:\windows\system32\cmd.exe
 mode con cols=45 lines=8
 ::color 27
 %root%\pecmd.exe TEAM TEXT 正在初始化网络.......L204 T207 R1000 B768 $30^|wait 5000 
-ipconfig /renew>nul
 ipconfig /renew >nul
 @echo 初始化网卡完成.
 %root%\pecmd.exe TEAM TEXT 关闭防火墙.......L204 T207 R1000 B768 $30^|wait 5000 
@@ -19,11 +18,7 @@ wpeutil disablefirewall
 if exist %root%\sysx64.exe start /w "" sysx64.exe
 :::创建符号链接，避免32位程序运行不正常
 mklink %temp%\cmd.exe  C:\windows\system32\cmd.exe
-%root%\pecmd.exe LINK %Desktop%\ghostx64,%root%\ghostx64.exe
-%root%\pecmd.exe LINK %Desktop%\netcopy网络同传,%root%\netcopyx64.exe
-%root%\pecmd.exe LINK %Desktop%\CGI一键还原,%root%\cgix64.exe
-%root%\pecmd.exe LINK %Desktop%\文件共享盘,explorer.exe,B:\
-%root%\pecmd.exe LINK %Desktop%\连接共享,cmd.exe,"/c net use B: \\%ip%\pxe "" /user:guest&explorer.exe B:\"
+
 ::获得执行的任务名称%job%
 for /f "tokens=1-2 delims=@ " %%a in ('dir /b %root%\*@*') do (
 set %%a
@@ -55,8 +50,20 @@ if not exist X:\windows\system32\ip.txt @echo 文件不存在.dhcp作为服务器地址...&&
 :runtask
 cd /d "%ProgramFiles(x86)%"
 %root%\pecmd.exe TEAM TEXT 得到服务器IP为%ip% L204 T207 R1000 B768 $30^|wait 2000 
+::下载三大程序
+for %%d in (ghostx64.exe netcopyx64.exe cgix64.exe) do (
+%root%\pecmd.exe TEAM TEXT 正在下载%%d L204 T207 R1000 B768 $30^|wait 5000 
+if not exist %%d tftp -i %ip% get /app/inject/default/%%d %root%\%%d 
+)
+
+%root%\pecmd.exe LINK %Desktop%\ghostx64,%root%\ghostx64.exe
+%root%\pecmd.exe LINK %Desktop%\netcopy网络同传,%root%\netcopyx64.exe
+%root%\pecmd.exe LINK %Desktop%\CGI一键还原,%root%\cgix64.exe
+%root%\pecmd.exe LINK %Desktop%\史上最伟大自动克隆,%root%\startup.bat,netghost
+%root%\pecmd.exe LINK %Desktop%\文件共享盘,explorer.exe,B:\
+%root%\pecmd.exe LINK %Desktop%\文件共享盘,WinXshell.exe,B:\
+%root%\pecmd.exe LINK %Desktop%\连接共享,cmd.exe,"/c net use B: \\%ip%\pxe "" /user:guest&explorer.exe B:\"
 start "" "X:\windows\syswow64\client\DbntCli.exe" %ip% 21984
-start "" "%ProgramFiles(x86)%\ghost\netcopyx86.exe"
 echo 
 cls
 
@@ -100,5 +107,7 @@ if "%errorlevel%"=="0" (
 goto runtask
 )
 exit
-
+:netcopy
+%root%\pecmd.exe TEAM TEXT 正在启动网络同传netcopy…… L204 T207 R1000 B768 $30^|wait 2000 
+start "" "%ProgramFiles(x86)%\ghost\netcopyx86.exe"
 

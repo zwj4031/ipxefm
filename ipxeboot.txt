@@ -32,7 +32,7 @@ set wim2job smbcli
 
 set wim3name netcopy.wim:smbclient
 set wim3injectdir netcopy
-set wim3inject0 star.ini
+set wim3inject0 start.ini
 set wim3job smbcli
 ##############中级进阶用户修改区域结束############
 ################启动##################

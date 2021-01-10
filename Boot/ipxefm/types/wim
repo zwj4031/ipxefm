@@ -7,12 +7,12 @@ isset ${${sel}injectdir} && set injectdir ${${sel}injectdir} || set injectdir de
 isset ${${sel}winpeshl} && set winpeshl ${${sel}winpeshl} || set winpeshl winpeshl.ini 
 isset ${${sel}job} && set job ${${sel}job} ||
 isset ${${sel}startup} && set startup ${${sel}startup} || set startup startup.bat
-isset ${${sel}inject0} && set inject0 ${${sel}inject0} || set inject0 0.exe          
-isset ${${sel}inject1} && set inject1 ${${sel}inject1} || set inject1 1.exe
-isset ${${sel}inject2} && set inject2 ${${sel}inject2} || set inject2 2.exe
-isset ${${sel}inject3} && set inject3 ${${sel}inject3} || set inject3 ghostx64.exe
-isset ${${sel}inject4} && set inject4 ${${sel}inject4} || set inject4 netcopyx64.exe
-isset ${${sel}inject5} && set inject5 ${${sel}inject5} || set inject5 cgix64.exe
+isset ${${sel}inject0} && set inject0 ${${sel}inject0} || 
+isset ${${sel}inject1} && set inject1 ${${sel}inject1} ||
+isset ${${sel}inject2} && set inject2 ${${sel}inject2} ||
+isset ${${sel}inject3} && set inject3 ${${sel}inject3} ||
+isset ${${sel}inject4} && set inject4 ${${sel}inject4} ||
+isset ${${sel}inject5} && set inject5 ${${sel}inject5} ||
 # 选择smb共享的，需要默认共享本目录名称为PXE 
 # 使用共享功能，至少要把本目录也就是ipxeboot权限设置为everyone可读!
 isset ${job} && set bootmode wimboot-inject && chain ${prefix}/rules/wimboot.ipxe ||

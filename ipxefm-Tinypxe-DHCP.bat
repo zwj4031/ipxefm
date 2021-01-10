@@ -30,7 +30,7 @@ echo smb=1
 echo poolsize=998
 echo root=%~dp0
 echo filename=ipxe.bios
-echo altfilename=ipxefm.txt
+echo altfilename=ipxeboot.txt
 )>%~dp0bin\config.INI
 
 ::::start "" /min %~dp0bin\hfs.exe -c active=yes -a %~dp0bin\myhfs.ini
