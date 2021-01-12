@@ -33,7 +33,6 @@ initrd http://${booturl}/app/inject/default/netcopyx64.exe netcopyx64.exe || #ne
 iseq ${platform} pcbios && initrd http://${booturl}/ @ip=${booturl}@job=${job} || #射入IP地址 有问题可删除!
 iseq ${platform} efi && initrd -n @ip=${booturl}@job=${job} http://${booturl}/ || #射入IP地址 有问题可删除!
 #以下是自定义射入的文件
-isset ${inject0} && initrd http://${booturl}/app/inject/${injectdir}/${inject0} ${inject0} || 
 isset ${inject1} && initrd http://${booturl}/app/inject/${injectdir}/${inject1} ${inject1} || 
 isset ${inject2} && initrd http://${booturl}/app/inject/${injectdir}/${inject2} ${inject2} || 
 isset ${inject3} && initrd http://${booturl}/app/inject/${injectdir}/${inject3} ${inject3} || 

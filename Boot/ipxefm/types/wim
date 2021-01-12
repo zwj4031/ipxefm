@@ -7,7 +7,6 @@ isset ${${sel}injectdir} && set injectdir ${${sel}injectdir} || set injectdir de
 isset ${${sel}winpeshl} && set winpeshl ${${sel}winpeshl} || set winpeshl winpeshl.ini 
 isset ${${sel}job} && set job ${${sel}job} ||
 isset ${${sel}startup} && set startup ${${sel}startup} || set startup startup.bat
-isset ${${sel}inject0} && set inject0 ${${sel}inject0} || 
 isset ${${sel}inject1} && set inject1 ${${sel}inject1} ||
 isset ${${sel}inject2} && set inject2 ${${sel}inject2} ||
 isset ${${sel}inject3} && set inject3 ${${sel}inject3} ||
@@ -19,17 +18,16 @@ isset ${job} && set bootmode wimboot-inject && chain ${prefix}/rules/wimboot.ipx
 #wim类型文件启动菜单
 :wimmenu
 menu  iPXE's Boot Menu boot:${bootfile} QQGroup(Qun):146859089 ${platform} 
-   item --key 0 wimboot                0. Boot with wimboot 
-   item --key 1 netghost               1. Boot with wimboot (inject files->NetGhost])
-   item --key 2 smbcli                 2. Boot with wimboot (inject files->SMB)
-   item --key 3 ${winpeshl}            3. Switch ${winpeshl} (winpeshl->${winpeshl}) 
+   item --key 1 wimboot                1. Boot with wimboot 
+   item --key 2 netghost               2. Boot with wimboot (inject files->NetGhost])
+   item --key 3 smbcli                 3. Boot with wimboot (inject files->SMB)
+   item --key 4 ${winpeshl}            4. Switch ${winpeshl} (winpeshl->${winpeshl}) 
    item --key m menu                   M. Back to menu 
    item --gap -- --------------------------Wimboot Option----------------------------
    item --gap -- Wimboot injectdir:${injectdir}
    item --gap -- Wimboot job:${job}
    item --gap -- Wimboot inject filelist:winpeshl --${winpeshl}
    item --gap -- startup     --${startup}
-   item --gap -- inject0     --${inject0}
    item --gap -- inject1     --${inject1}
    item --gap -- inject2     --${inject2}
    item --gap -- inject3     --${inject3}

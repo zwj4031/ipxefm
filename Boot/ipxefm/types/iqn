@@ -4,10 +4,10 @@ goto ${platform}iqn
 :pcbiosiqn
 menu  iPXE's Boot Menu boot:${bootfile} QQGroup(Qun):146859089
    item --gap --             ------------------------${platform} boot:${bootfile} -----------------------------
-   item --key 1 ${platform}bootpe   0. Boot PE from iscsi server ${iscsiurl}
-   item --key 0 ${platform}bootwin  1. Boot Win from iscsi server ${iscsiurl}
-   item --key 1 ${platform}install  2. Install Win to iscsi server ${iscsiurl}
-   item --key 3 menu                M. back to menu       
+   item --key 1 ${platform}bootpe   1. Boot PE from iscsi server ${iscsiurl}
+   item --key 2 ${platform}bootwin  2. Boot Win from iscsi server ${iscsiurl}
+   item --key 3 ${platform}install  3. Install Win to iscsi server ${iscsiurl}
+   item --key m menu                M. back to menu       
  choose --timeout 8000 --default ${${platform}iscsibootmode} selected
  iseq ${selected} menu && chain ${prefix}/init.ipxe ||
 iseq ${selected} pcbiosbootpe && set keep-san 1 && sanboot --no-describe iscsi:${iscsiurl}::::${bootfile} ||
@@ -20,10 +20,10 @@ chain ${prefix}/Boot/ipxefm/rules/iscsi.ipxe ||
 :efiiqn
 menu  iPXE's Boot Menu boot:${bootfile} QQGroup(Qun):146859089
    item --gap --             ------------------------${platform} boot:${bootfile} -----------------------------
-   item --key 1 ${platform}bootpe   0. Boot PE from iscsi server ${iscsiurl}
-   item --key 0 ${platform}bootwin  1. Boot Win from iscsi server ${iscsiurl}
-   item --key 1 ${platform}install  2. Install Win to iscsi server ${iscsiurl}
-   item --key 3 menu                M. back to menu       
+   item --key 1 ${platform}bootpe   1. Boot PE from iscsi server ${iscsiurl}
+   item --key 2 ${platform}bootwin  2. Boot Win from iscsi server ${iscsiurl}
+   item --key 3 ${platform}install  3. Install Win to iscsi server ${iscsiurl}
+   item --key m menu                M. back to menu       
  choose --timeout 8000 --default ${${platform}iscsibootmode} selected
 iseq ${selected} menu && chain ${prefix}/init.ipxe ||
 iseq ${selected} pcbiosbootpe && set keep-san 1 && sanboot --no-describe iscsi:${iscsiurl}::::${bootfile}} ||

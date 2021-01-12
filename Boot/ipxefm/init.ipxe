@@ -77,12 +77,12 @@ console --picture ${themes}/${bg} --left 32 --right 32 --top 32 --bottom 48 ||
  menu  iPXE's Boot Menu BootServer:http://${booturl} QQGroup(Qun):146859089
    
    item --gap -- Choose BootFile 
-   item --key 0 wim            0.  Boot Wimfile
-   item --key 1 iso            1.  Boot Isofile
-   item --key 2 img            2.  Boot Imgfile
-   item --key 3 vhd            3.  Boot Vhdfile
-   item --key 4 ramos          4.  Boot RamOS
-   item --key 5 iqn            5.  Boot IQN
+   item --key 1 wim            1.  Boot Wimfile
+   item --key 2 iso            2.  Boot Isofile
+   item --key 3 img            3.  Boot Imgfile
+   item --key 4 vhd            4.  Boot Vhdfile
+   item --key 5 ramos          5.  Boot RamOS
+   item --key 6 iqn            6.  Boot IQN
    item --gap -- Choose Advanced tools
    item --key b burn           B.  Burn images
    item --gap -- Advanced options 
@@ -107,7 +107,6 @@ iseq ${selected} reload && chain http://${booturl}${scriptfile} ||
 
 #选项启动文件类型后的子菜单(列表)
 :extmenu
-isset ${${ext}0name} && set title0 ${${ext}0name} || set title0 ${${ext}0}
 isset ${${ext}1name} && set title1 ${${ext}1name} || set title1 ${${ext}1}
 isset ${${ext}2name} && set title2 ${${ext}2name} || set title2 ${${ext}2}
 isset ${${ext}3name} && set title3 ${${ext}3name} || set title3 ${${ext}3}
@@ -119,7 +118,6 @@ isset ${${ext}8name} && set title8 ${${ext}8name} || set title8 ${${ext}8}
 isset ${${ext}9name} && set title9 ${${ext}9name} || set title9 ${${ext}9}
 menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
    item --gap --             ------------------------ choose  ${ext}file ---------------------------------
-   item --key 0 ${ext}0          0. ${title0}
    item --key 1 ${ext}1          1. ${title1}
    item --key 2 ${ext}2          2. ${title2}
    item --key 3 ${ext}3          3. ${title3}
@@ -143,9 +141,9 @@ chain ${prefix}/init.ipxe ||
 :ratio
  menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
    item --gap --             ------------------------ choose  ${ext}file ---------------------------------
-   item --key 0 1920x1080          0. 1920x1080
-   item --key 1 1024x768           1. 1024X768
-   item --key 2 800x600            2. 800x600
+   item --key 1 1920x1080          0. 1920x1080
+   item --key 2 1024x768           1. 1024X768
+   item --key 3 800x600            2. 800x600
    item --key m menu             M. Back to menu
 choose --timeout ${bootfile-timeout} --default 800x600 selected ||
 iseq ${selected} 1920x1080 && set x 1920 && set y 1080 && set bg 1920x1080.png ||
