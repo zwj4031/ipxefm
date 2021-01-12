@@ -4,6 +4,8 @@
 set wim1 /mini.wim
 set wim2 /mini.wim
 set wim3 /netcopy.wim
+set wim4 /chobitpe.wim
+set wim5 /chobitpe.wim
 set iso1 /netpe_multiarch.iso
 set img1 /max.img
 set vhd1 /ventoyx.vhd
@@ -28,6 +30,12 @@ set wim3name netcopy.wim:smbclient
 set wim3injectdir netcopy
 set wim3inject1 start.ini
 set wim3job smbcli
+
+set wim4name chobitpe:smbclient
+set wim4injectdir chobitpe
+set wim4inject1 start.ini
+set wim4job smbcli
+
 ##############中级进阶用户修改区域结束############
 ################启动##################
 chain /boot/ipxefm/init.ipxe
