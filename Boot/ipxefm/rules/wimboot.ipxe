@@ -30,6 +30,7 @@ initrd -n winpeshl.ini http://${booturl}/app/inject/${injectdir}/${winpeshl} win
 initrd http://${booturl}/app/inject/default/sysx64.exe sysx64.exe || #是个自解压包，补mode.com wget aira2等缺少的文件 有问题可删除!
 initrd http://${booturl}/app/inject/default/ghostx64.exe ghostx64.exe || #netghost文件 有问题可删除!
 initrd http://${booturl}/app/inject/default/netcopyx64.exe netcopyx64.exe || #netcopy网络同传 有问题可删除!
+initrd http://${booturl}/app/inject/default/cgix64.exe cgix64.exe || #netcopy网络同传 有问题可删除!
 iseq ${platform} pcbios && initrd http://${booturl}/ @ip=${booturl}@job=${job} || #射入IP地址 有问题可删除!
 iseq ${platform} efi && initrd -n @ip=${booturl}@job=${job} http://${booturl}/ || #射入IP地址 有问题可删除!
 #以下是自定义射入的文件
