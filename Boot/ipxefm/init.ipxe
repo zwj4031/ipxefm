@@ -141,12 +141,13 @@ chain ${prefix}/init.ipxe ||
 :ratio
  menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
    item --gap --             ------------------------ choose  ${ext}file ---------------------------------
-   item --key 1 1920x1080          0. 1920x1080
-   item --key 2 1024x768           1. 1024X768
-   item --key 3 800x600            2. 800x600
+   item --key 1 1920x1080          1. 1920x1080
+   item --key 2 1024x768           2. 1024X768
+   item --key 3 800x600            3. 800x600
    item --key m menu             M. Back to menu
 choose --timeout ${bootfile-timeout} --default 800x600 selected ||
 iseq ${selected} 1920x1080 && set x 1920 && set y 1080 && set bg 1920x1080.png ||
 iseq ${selected} 1024x768 && set x 1024 && set y 768 && set bg 1024x768.png ||
 iseq ${selected} 800x600 && set x 800 && set y 600 && set bg 800x600.png ||
 iseq ${selected} menu && goto bootmenu ||
+chain ${prefix}/init.ipxe ||
