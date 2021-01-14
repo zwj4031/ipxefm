@@ -4,8 +4,9 @@
 set wim1 /mini.wim
 set wim2 /mini.wim
 set wim3 /netcopy.wim
-set wim4 /chobitpe.wim
+set wim4 /netcopy.wim
 set wim5 /chobitpe.wim
+set wim6 /chobitpe.wim
 set iso1 /netpe_multiarch.iso
 set img1 /max.img
 set vhd1 /ventoyx.vhd
@@ -18,24 +19,38 @@ set ramos1 /win10.vhd.gz
 #设置执行的任务名称job   (仅支持wim需要配合startup.bat内容使用)
 #设置射入文件所在目录injectdir (仅支持wim如netcopy，会从/inject/netcopy目录取文件，默认default
 #设置射入文件inject0-5
-set wim1name minipe:netghost
-set wim1injectdir default
-set wim1job netghost
+
+##所谓minipe就是本包附赠的迷你pe
+set wim1name minipe:netghost #标题
+set wim1injectdir default #射入文件目录，对应各种pe
+set wim1job netghost #pe进入桌面后要执行的任务，对应批处理startup.bat内容
 
 set wim2name minipe:smbclient
 set wim2injectdir default
 set wim2job smbcli
 
+
+##所谓netcopy.wim是那个netpe_multiarch.iso中的pe
 set wim3name netcopy.wim:smbclient
 set wim3injectdir netcopy
 set wim3inject1 start.ini
 set wim3job smbcli
 
-set wim4name chobitpe:smbclient
-set wim4injectdir chobitpe
+set wim4name netcopy.wim:netghost
+set wim4injectdir netcopy
 set wim4inject1 start.ini
-set wim4job smbcli
+set wim4job netghost
 
+##所谓chobitpe是那个64位的史上最伟大网克pe
+set wim5name chobitpe:smbclient
+set wim5injectdir chobitpe
+set wim5inject1 start.ini
+set wim5job smbcli
+
+set wim6name chobitpe:netghost
+set wim6injectdir chobitpe
+set wim6inject1 start.ini
+set wim6job netghsot
 ##############中级进阶用户修改区域结束############
 ################启动##################
 chain /boot/ipxefm/init.ipxe
