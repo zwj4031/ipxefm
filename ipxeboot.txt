@@ -15,20 +15,19 @@ set ramos1 /win10.vhd.gz
 ##############初级入门用户修改区域结束############
 
 ##############中级进阶用户修改区域开始############
+##############WIM#################################
 #设置文件在菜单上显示的标题name，全类型支持
-#设置执行的任务名称job   (仅支持wim需要配合startup.bat内容使用)
-#设置射入文件所在目录injectdir (仅支持wim如netcopy，会从/inject/netcopy目录取文件，默认default
-#设置射入文件inject0-5
-
+#设置执行的任务名称job:仅支持wim需要配合startup.bat内容使用，目前只支持netghost(网克)、smbcli(挂载共享)
+#设置射入文件所在目录injectdir:仅支持wim如netcopy，会从/inject/netcopy目录取文件，默认default
+#设置射入文件inject:0-5
 ##所谓minipe就是本包附赠的迷你pe
-set wim1name minipe:netghost #标题
+set wim1name minipe:smbclient  #标题
 set wim1injectdir default #射入文件目录，对应各种pe
-set wim1job netghost #pe进入桌面后要执行的任务，对应批处理startup.bat内容
+set wim1job smbcli #pe进入桌面后要执行的任务，对应批处理startup.bat内容
 
-set wim2name minipe:smbclient
-set wim2injectdir default
-set wim2job smbcli
-
+set wim2name minipe:netghost
+set wim2injectdir default 
+set wim2job netghost 
 
 ##所谓netcopy.wim是那个netpe_multiarch.iso中的pe
 set wim3name netcopy.wim:smbclient
@@ -41,7 +40,7 @@ set wim4injectdir netcopy
 set wim4inject1 start.ini
 set wim4job netghost
 
-##所谓chobitpe是那个64位的史上最伟大网克pe
+##所谓chobitpe是那个64位的史上最伟大网克pe 理论上也支持ljycslg的PE（64位)
 set wim5name chobitpe:smbclient
 set wim5injectdir chobitpe
 set wim5inject1 start.ini
@@ -51,6 +50,7 @@ set wim6name chobitpe:netghost
 set wim6injectdir chobitpe
 set wim6inject1 start.ini
 set wim6job netghsot
+##############WIM#################################
 ##############中级进阶用户修改区域结束############
 ################启动##################
 chain /boot/ipxefm/init.ipxe
