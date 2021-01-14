@@ -49,8 +49,7 @@ set wim5job smbcli
 set wim6name chobitpe:netghost
 set wim6injectdir chobitpe
 set wim6inject1 start.ini
-set wim6job netghsot
-##############WIM#################################
+set wim6job netghost
 ##############中级进阶用户修改区域结束############
 ################启动##################
 chain /boot/ipxefm/init.ipxe
