@@ -1,78 +1,78 @@
 #!ipxe
 
-##############ÖĞ¼¶Ö¹²½!¸ß¼¶Íº¶¥ÓÃ»§ĞŞ¸ÄÇøÓò######
-#ĞŞ¸Äiscsi serverµÄµØÖ·(Ä¬ÈÏÊÇnext-server)
+##############ä¸­çº§æ­¢æ­¥!é«˜çº§ç§ƒé¡¶ç”¨æˆ·ä¿®æ”¹åŒºåŸŸ######
+#ä¿®æ”¹iscsi serverçš„åœ°å€(é»˜è®¤æ˜¯next-server)
 #set iscsiurl 169.254.1.1
-#ĞŞ¸Ä±¾²Ëµ¥µÄÃû³Æ(Ä¬ÈÏÊÇ/ipxeboot.txt)
+#ä¿®æ”¹æœ¬èœå•çš„åç§°(é»˜è®¤æ˜¯/ipxeboot.txt)
 set scriptfile /ipxeboot.txt
-#ĞŞ¸ÄÄ¬ÈÏÆô¶¯µÄÎÄ¼şÀàĞÍ(wim iso img)
+#ä¿®æ”¹é»˜è®¤å¯åŠ¨çš„æ–‡ä»¶ç±»å‹(wim iso img)
 set ext-default wim
-#ĞŞ¸Ä¸÷ÀàĞÍÄ¬ÈÏÆô¶¯µÄÎÄ¼şĞòºÅ(0-9)
+#ä¿®æ”¹å„ç±»å‹é»˜è®¤å¯åŠ¨çš„æ–‡ä»¶åºå·(0-9)
 set wimbootfile-default 0
 set isobootfile-default 0
 set imgbootfile-default 0
 set vhdbootfile-default 0
 set iqnbootfile-default 0
 set ramosbootfile-default 0
-#ÉèÖÃwimÆô¶¯Ä¬ÈÏ·½Ê½
-set pcbioswimbootmode wimboot #(²»×¢ÈëÎÄ¼ş) 
-#set pcbioswimbootmode startup.bat #(×¢ÈëÄ¬ÈÏµÄstartup.batÎÄ¼ş)
+#è®¾ç½®wimå¯åŠ¨é»˜è®¤æ–¹å¼
+set pcbioswimbootmode wimboot #(ä¸æ³¨å…¥æ–‡ä»¶) 
+#set pcbioswimbootmode startup.bat #(æ³¨å…¥é»˜è®¤çš„startup.batæ–‡ä»¶)
 set efiwimbootmode wimboot
-#set efiwimbootmode  startup.bat #(×¢ÈëÄ¬ÈÏµÄstartup.batÎÄ¼ş)
-#ÉèÖÃisoÆô¶¯Ä¬ÈÏ·½Ê½
+#set efiwimbootmode  startup.bat #(æ³¨å…¥é»˜è®¤çš„startup.batæ–‡ä»¶)
+#è®¾ç½®isoå¯åŠ¨é»˜è®¤æ–¹å¼
 set pcbiosisobootmode memdiskiso
 set efiisobootmode ${platform}isowithsanboot
-#ÉèÖÃimgÆô¶¯Ä¬ÈÏ·½Ê½
+#è®¾ç½®imgå¯åŠ¨é»˜è®¤æ–¹å¼
 set pcbiosimgbootmode memdiskimg
 set efiimgbootmode ${platform}sanbootimg
-#ÉèÖÃvhdÆô¶¯Ä¬ÈÏ·½Ê½
+#è®¾ç½®vhdå¯åŠ¨é»˜è®¤æ–¹å¼
 set pcbiosvhdbootmode ${platform}sanbootvhd
 set efivhdbootmode ${platform}sanbootvhd
-#ÉèÖÃIQNÆô¶¯Ä¬ÈÏ·½Ê½
+#è®¾ç½®IQNå¯åŠ¨é»˜è®¤æ–¹å¼
 set pcbiosiqnbootmode ${platform}bootpe
 set efiiqnbootmode ${platform}install
-#ÉèÖÃramos[ramos]Æô¶¯Ä¬ÈÏ·½Ê½
+#è®¾ç½®ramos[ramos]å¯åŠ¨é»˜è®¤æ–¹å¼
 set pcbiosramosbootmode ${platform}ramos
 set efiramosbootmode ${platform}ramos
-#ÉèÖÃµÚÒ»¸ö²Ëµ¥µÄ³¬Ê±Ê±¼ä
+#è®¾ç½®ç¬¬ä¸€ä¸ªèœå•çš„è¶…æ—¶æ—¶é—´
 set ext-timeout 8000
-#ÉèÖÃµÚ¶ş¸öÑ¡ÔñÎÄ¼ş½çÃæ²Ëµ¥µÄ³¬Ê±Ê±¼ä
+#è®¾ç½®ç¬¬äºŒä¸ªé€‰æ‹©æ–‡ä»¶ç•Œé¢èœå•çš„è¶…æ—¶æ—¶é—´
 set bootfile-timeout 8000 
-##############¸ß¼¶Íº¶¥ÓÃ»§ĞŞ¸ÄÇøÓò½áÊø######
+##############é«˜çº§ç§ƒé¡¶ç”¨æˆ·ä¿®æ”¹åŒºåŸŸç»“æŸ######
 
-################ÏµÍ³ÉèÖÃ¿ªÊ¼####################
-#ÉèÖÃ·Ö±æÂÊÍ¼Æ¬                           
+################ç³»ç»Ÿè®¾ç½®å¼€å§‹####################
+#è®¾ç½®åˆ†è¾¨ç‡å›¾ç‰‡                           
 isset ${x} || set x 800   
 isset ${y} || set y 600     
 isset ${bg} || set bg 800x600.png        
 isset ${ld} || set ld loading.png                              
-#Õâ¾ä½Å±¾ÊÇ¶ÁÈ¡±¾µØÎÄ¼şÓÃ£¬²»ÓÃ¹Ü
+#è¿™å¥è„šæœ¬æ˜¯è¯»å–æœ¬åœ°æ–‡ä»¶ç”¨ï¼Œä¸ç”¨ç®¡
 ifopen net0
-#Í¬ÉÏ
+#åŒä¸Š
 ifstat
-#Õâ¸öÎÒ×Ô¼ºµ÷ÊÔÓÃµÄ
+#è¿™ä¸ªæˆ‘è‡ªå·±è°ƒè¯•ç”¨çš„
 set getfile /ipxeboot.txt
 :boot
-#ÕÒ²»µ½next-server±äÁ¿¾Í°Ñdhcp-serverµÄ±äÁ¿Öµ¸øËü
+#æ‰¾ä¸åˆ°next-serverå˜é‡å°±æŠŠdhcp-serverçš„å˜é‡å€¼ç»™å®ƒ
 isset ${next-server} || set next-server ${dhcp-server}
-#ÕÒ²»µ½proxydhcp/next-server±äÁ¿¾Í°Ñproxydhcp/dhcp-serverµÄ±äÁ¿Öµ¸øËü
+#æ‰¾ä¸åˆ°proxydhcp/next-serverå˜é‡å°±æŠŠproxydhcp/dhcp-serverçš„å˜é‡å€¼ç»™å®ƒ
 isset ${proxydhcp/next-server} || set proxydhcp/next-server ${proxydhcp/dhcp-server}
-#Èç¹ûproxydhcp/next-server±äÁ¿Öµ´æÔÚ£¬ÄÇÃ´¸³¸øbooturl£¬²»È»¾ÍÊ¹ÓÃnext-serverµÄ±äÁ¿Öµ
+#å¦‚æœproxydhcp/next-serverå˜é‡å€¼å­˜åœ¨ï¼Œé‚£ä¹ˆèµ‹ç»™booturlï¼Œä¸ç„¶å°±ä½¿ç”¨next-serverçš„å˜é‡å€¼
 isset ${proxydhcp/next-server} && set booturl ${proxydhcp/next-server} || set booturl ${next-server}
-#±¸ÓÃ prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
-#Ã»ÓĞÉèÖÃiscsiurl¾ÍÉèÖÃÎªbooturl
+#å¤‡ç”¨ prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
+#æ²¡æœ‰è®¾ç½®iscsiurlå°±è®¾ç½®ä¸ºbooturl
 isset ${iscsiurl} || set iscsiurl ${booturl}
-#ÉèÖÃÓÀ¾Ã»·¾³±äÁ¿
+#è®¾ç½®æ°¸ä¹…ç¯å¢ƒå˜é‡
 set prefix /Boot/ipxefm
 set themes http://${booturl}/Boot/ipxefm/themes/jnygc
-set quiet 1 #¾²Ä¬Æô¶¯£¬1´ò¿ª£¬×¢ÊÍµô²»´ò¿ª
+set quiet 1 #é™é»˜å¯åŠ¨ï¼Œ1æ‰“å¼€ï¼Œæ³¨é‡Šæ‰ä¸æ‰“å¼€
 console --x ${x} -y ${y} ||
 console --picture ${themes}/${bg} --left 32 --right 32 --top 32 --bottom 48 ||
 
 
-################ÏµÍ³ÉèÖÃ½áÊø##################
+################ç³»ç»Ÿè®¾ç½®ç»“æŸ##################
 
-#Ö÷²Ëµ¥
+#ä¸»èœå•
 :bootmenu
  menu  iPXE's Boot Menu BootServer:http://${booturl} QQGroup(Qun):146859089
    
@@ -85,6 +85,10 @@ console --picture ${themes}/${bg} --left 32 --right 32 --top 32 --bottom 48 ||
    item --key 6 iqn            6.  Boot IQN
    item --gap -- Choose Advanced tools
    item --key b burn           B.  Burn images
+   item --gap -- Cloud Boot
+   item  RyanBoot              RyanBoot
+   item  netboot.xyz.${platform}  netboot.xyz
+   
    item --gap -- Advanced options 
    item --key l reload         L.  Reload iPXE Menu
    item --key c config   	   C.  Configure settings   
@@ -101,11 +105,14 @@ iseq ${selected} reboot && reboot ||
 iseq ${selected} poweroff && poweroff ||
 iseq ${selected} exit && exit ||
 iseq ${selected} ratio && goto ratio ||
+iseq ${selected} RyanBoot && chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe ||
+iseq ${selected} netboot.xyz.pcbios && chain --autofree https://boot.netboot.xyz/ipxe/netboot.xyz.lkrn ||
+iseq ${selected} netboot.xyz.efi && chain --autofree https://boot.netboot.xyz/ipxe/netboot.xyz.efi ||
 iseq ${selected} burn && chain ${prefix}/types/burn ||
 iseq ${selected} reload && chain http://${booturl}${scriptfile} ||
 
 
-#Ñ¡ÏîÆô¶¯ÎÄ¼şÀàĞÍºóµÄ×Ó²Ëµ¥(ÁĞ±í)
+#é€‰é¡¹å¯åŠ¨æ–‡ä»¶ç±»å‹åçš„å­èœå•(åˆ—è¡¨)
 :extmenu
 isset ${${ext}1name} && set title1 ${${ext}1name} || set title1 ${${ext}1}
 isset ${${ext}2name} && set title2 ${${ext}2name} || set title2 ${${ext}2}
@@ -137,7 +144,7 @@ menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
 chain ${prefix}/init.ipxe ||
 
  
-#·Ö±æÂÊµ÷Õû
+#åˆ†è¾¨ç‡è°ƒæ•´
 :ratio
  menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
    item --gap --             ------------------------ choose  ${ext}file ---------------------------------
