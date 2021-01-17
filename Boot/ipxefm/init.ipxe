@@ -96,7 +96,7 @@ console --picture ${themes}/${bg} --left 32 --right 32 --top 32 --bottom 48 ||
    item --key r reboot         R.  Reboot computer
    item --key p poweroff       P.  Poweroff computer
    item --key x exit           X.  Exit iPXE and continue BIOS boot  
-   item ratio                Resolution ratio [1920x1080 1024x768 800x600]     
+   item ratio                Resolution ratio [1920x1080 1024x768 800x600]    
 choose --timeout ${ext-timeout} --default ${ext-default} selected ||
 set ext ${selected} ||
 iseq ${selected} config && config ||
@@ -147,7 +147,7 @@ chain ${prefix}/init.ipxe ||
 #分辨率调整
 :ratio
  menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
-   item --gap --             ------------------------ choose  ${ext}file ---------------------------------
+   item --gap Choose Resolution ratio
    item --key 1 1920x1080          1. 1920x1080
    item --key 2 1024x768           2. 1024X768
    item --key 3 800x600            3. 800x600
