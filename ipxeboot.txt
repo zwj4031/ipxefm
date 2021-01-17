@@ -7,6 +7,7 @@ set wim3 /netcopy.wim
 set wim4 /netcopy.wim
 set wim5 /chobitpe.wim
 set wim6 /chobitpe.wim
+set wim7 /minix64.wim
 set iso1 /netpe_multiarch.iso
 set img1 /max.img
 set vhd1 /ventoyx.vhd
@@ -50,6 +51,12 @@ set wim6name chobitpe:netghost
 set wim6injectdir chobitpe
 set wim6inject1 start.ini
 set wim6job netghost
+
+##下面这个pe是7秒一键生成的那个，用的winxshell 和mini.wim一样对应default目录
+set wim7name minix64.wim:smbclient
+set wim7injectdir default 
+set wim7job smbcli 
+
 ##############中级进阶用户修改区域结束############
 ################启动##################
 chain /boot/ipxefm/init.ipxe

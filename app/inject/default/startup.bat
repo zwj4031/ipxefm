@@ -1,5 +1,11 @@
 @echo off
 set root=X:\windows\system32
+if defined desktop (
+    echo desktop ok!
+) else (
+%root%\pecmd.exe TEAM TEXT desktop变量不存在，创建中 L204 T207 R1000 B768 $30^|wait 5000 
+set desktop=%USERPROFILE%\desktop
+)
 ::补丁缺少的系统组件
 if exist %root%\sysx64.exe start /w "" sysx64.exe
 :::创建符号链接，避免32位程序运行不正常
@@ -8,6 +14,7 @@ mklink %temp%\cmd.exe  C:\windows\system32\cmd.exe
 %root%\pecmd.exe LINK %Desktop%\netcopy网络同传,%root%\netcopyx64.exe
 %root%\pecmd.exe LINK %Desktop%\CGI一键还原,%root%\cgix64.exe
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,explorer.exe,B:\
+%root%\pecmd.exe LINK %Desktop%\文件共享盘,"%programfiles%\explorer.exe", B:\
 %root%\pecmd.exe LINK %Desktop%\连接共享,cmd.exe,"/c net use B: \\%ip%\pxe "" /user:guest&explorer.exe B:\"
 ::获得执行的任务名称%job%
 for /f "tokens=1-2 delims=@ " %%a in ('dir /b %root%\*@*') do (
