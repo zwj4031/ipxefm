@@ -60,9 +60,12 @@ isset ${proxydhcp/next-server} || set proxydhcp/next-server ${proxydhcp/dhcp-ser
 #如果proxydhcp/next-server变量值存在，那么赋给booturl，不然就使用next-server的变量值
 isset ${proxydhcp/next-server} && set booturl ${proxydhcp/next-server} || set booturl ${next-server}
 #备用 prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
+
+#设置永久环境变量
+#修改booturl的地址(默认是自动获取，要生效就去掉#号) 
+#set booturl 169.254.1.1:8080
 #没有设置iscsiurl就设置为booturl
 isset ${iscsiurl} || set iscsiurl ${booturl}
-#设置永久环境变量
 set prefix /Boot/ipxefm
 set themes http://${booturl}/Boot/ipxefm/themes/jnygc
 set quiet 1 #静默启动，1打开，注释掉不打开
