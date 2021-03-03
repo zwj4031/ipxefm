@@ -43,7 +43,8 @@ cd /d "%ProgramFiles(x86)%"
 %root%\pecmd.exe LINK %Desktop%\ghostx64,%root%\ghostx64.exe
 %root%\pecmd.exe LINK %Desktop%\netcopy网络同传,%root%\netcopyx64.exe
 %root%\pecmd.exe LINK %Desktop%\CGI一键还原,%root%\cgix64.exe
-%root%\pecmd.exe LINK %Desktop%\分区管理镜像挂载,%root%\ShowDrives_Gui_x64.exe
+%root%\pecmd.exe LINK %Desktop%\ImDisk_Gui镜像挂载,%root%\ShowDrives_Gui_x64.exe
+%root%\pecmd.exe LINK %Desktop%\DG分区工具3.5,%root%\DiskGeniusx64.exe
 %root%\pecmd.exe LINK %Desktop%\史上最伟大自动克隆,%root%\startup.bat,netghost
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,explorer.exe,B:\
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,WinXshell.exe,B:\
