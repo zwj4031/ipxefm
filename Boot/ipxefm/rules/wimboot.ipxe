@@ -31,6 +31,7 @@ initrd http://${booturl}/app/inject/default/sysx64.exe sysx64.exe || #是个自解压
 initrd http://${booturl}/app/inject/default/ghostx64.exe ghostx64.exe || #netghost文件 有问题可删除!
 initrd http://${booturl}/app/inject/default/netcopyx64.exe netcopyx64.exe || #netcopy网络同传 有问题可删除!
 initrd http://${booturl}/app/inject/default/cgix64.exe cgix64.exe || #netcopy网络同传 有问题可删除!
+initrd http://${booturl}/app/inject/default/ShowDrives_Gui_x64.exe ShowDrives_Gui_x64.exe || #分区管理和镜像挂载 有问题可删除!
 iseq ${platform} pcbios && initrd http://${booturl}/ @ip=${booturl}@job=${job} || #射入IP地址 有问题可删除!
 iseq ${platform} efi && initrd -n @ip=${booturl}@job=${job} http://${booturl}/ || #射入IP地址 有问题可删除!
 #以下是自定义射入的文件
