@@ -48,7 +48,7 @@ set wim5injectdir netcopy
 set wim5inject1 start.ini
 set wim5job netghost
 
-set wim6name netcopy.wim:netghost
+set wim6name netcopy.wim:netcopy
 set wim6injectdir netcopy
 set wim6inject1 start.ini
 set wim6job netcopy
