@@ -62,6 +62,14 @@ ghostx64.exe -ja=mousedos -batch >nul
 if errorlevel 1 goto netghost
 exit
 
+::::::执行任务
+:netcopy
+%root%\pecmd.exe TEAM TEXT 正在准备netcopy网络同传,接收端可以取消后切换成发送模式…… L204 T207 R1000 B768 $30^|wait 2000 
+X:\windows\system32\pecmd.exe kill netcopyx64.exe >nul
+cd /d "X:\windows\system32" >nul
+netcopyx64.exe
+exit
+
 :smbcli
 net use * /delete /y >nul
 %root%\pecmd.exe TEAM TEXT 正在连接共享\\%ip%\pxe为B盘....L204 T207 R1000 B768 $30^|wait 8000

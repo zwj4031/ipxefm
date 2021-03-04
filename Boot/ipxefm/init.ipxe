@@ -8,12 +8,12 @@ set scriptfile /ipxeboot.txt
 #修改默认启动的文件类型(wim iso img)
 set ext-default wim
 #修改各类型默认启动的文件序号(0-9)
-set wimbootfile-default 0
-set isobootfile-default 0
-set imgbootfile-default 0
-set vhdbootfile-default 0
-set iqnbootfile-default 0
-set ramosbootfile-default 0
+set wimbootfile-default 1
+set isobootfile-default 1
+set imgbootfile-default 1
+set vhdbootfile-default 1
+set iqnbootfile-default 1
+set ramosbootfile-default 1
 #设置wim启动默认方式
 set pcbioswimbootmode wimboot #(不注入文件) 
 #set pcbioswimbootmode startup.bat #(注入默认的startup.bat文件)
@@ -126,6 +126,7 @@ isset ${${ext}6name} && set title6 ${${ext}6name} || set title6 ${${ext}6}
 isset ${${ext}7name} && set title7 ${${ext}7name} || set title7 ${${ext}7}
 isset ${${ext}8name} && set title8 ${${ext}8name} || set title8 ${${ext}8}
 isset ${${ext}9name} && set title9 ${${ext}9name} || set title9 ${${ext}9}
+isset ${${ext}0name} && set title0 ${${ext}0name} || set title0 ${${ext}0}
 menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
    item --gap --             ------------------------ choose  ${ext}file ---------------------------------
    item --key 1 ${ext}1          1. ${title1}
@@ -137,6 +138,7 @@ menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
    item --key 7 ${ext}7          7. ${title7}
    item --key 8 ${ext}8          8. ${title8}
    item --key 9 ${ext}9          9. ${title9}
+   item --key 0 ${ext}0          0. ${title0}
    item --key m menu             M. Back to menu
   choose --timeout ${bootfile-timeout} --default ${ext}${${ext}bootfile-default} selected ||
   set sel ${selected} ||
