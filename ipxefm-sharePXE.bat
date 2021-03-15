@@ -3,6 +3,7 @@ mode con cols=50 lines=4
 title=sharePXE......
 
 cd /d %~dp0
+if not "%SystemDrive%" == "C:" echo WinPE&&goto start 
 :: 获取管理员权限运行批处理
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
 if '%errorlevel%' NEQ '0' (
@@ -15,6 +16,7 @@ echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"
 exit /b
 :gotAdmin
 if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" ) 1>nul 2>nul
+:start
 ::本目录给everyone添加权限
 echo Y|cacls %~dp0. /t /p everyone:f
 echo Y|cacls %~dp0*.* /t /p everyone:f
