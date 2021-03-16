@@ -26,7 +26,7 @@ set %%b
 echo 服务器IP地址为  %ip%
 echo 本次执行的任务  %job%
 ::动画化批处理
-#color b0 
+color b0 
 set a=50
 set b=34
 :re

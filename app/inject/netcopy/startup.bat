@@ -3,7 +3,7 @@
 mklink %temp%\cmd.exe  C:\windows\system32\cmd.exe
 set root=X:\windows\system32
 ::动画化批处理
-#color b0 
+color b0 
 set a=50
 set b=34
 :re
