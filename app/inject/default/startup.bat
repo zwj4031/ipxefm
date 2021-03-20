@@ -9,7 +9,7 @@ set desktop=%USERPROFILE%\desktop
 ::补丁缺少的系统组件
 if exist %root%\sysx64.exe start /w "" sysx64.exe
 :::创建符号链接，避免32位程序运行不正常
-mklink %temp%\cmd.exe  C:\windows\system32\cmd.exe
+mklink %temp%\cmd.exe x:\windows\system32\cmd.exe
 %root%\pecmd.exe LINK %Desktop%\ghostx64,%root%\ghostx64.exe
 %root%\pecmd.exe LINK %Desktop%\netcopy网络同传,%root%\netcopyx64.exe
 %root%\pecmd.exe LINK %Desktop%\CGI一键还原,%root%\cgix64.exe
@@ -17,12 +17,17 @@ mklink %temp%\cmd.exe  C:\windows\system32\cmd.exe
 %root%\pecmd.exe LINK %Desktop%\DG分区工具3.5,%root%\DiskGeniusx64.exe
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,explorer.exe,B:\
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,"%programfiles%\explorer.exe", B:\
-%root%\pecmd.exe LINK %Desktop%\连接共享,cmd.exe,"/c net use B: \\%ip%\pxe "" /user:guest&explorer.exe B:\"
+%root%\pecmd.exe LINK %Desktop%\Ghost自动网克,"%root%\startup.bat",netghost
+%root%\pecmd.exe LINK %Desktop%\连接共享,"%root%\startup.bat",smbcli
+%root%\pecmd.exe LINK %Desktop%\多播接收,"%root%\startup.bat",cloud
+%root%\pecmd.exe LINK %Desktop%\多播发送,"%root%\uftp.exe",-R 800000
+
 ::获得执行的任务名称%job%
 for /f "tokens=1-2 delims=@ " %%a in ('dir /b %root%\*@*') do (
 set %%a
 set %%b
 )
+if not "%1" == "" set job=%1
 echo 服务器IP地址为  %ip%
 echo 本次执行的任务  %job%
 ::动画化批处理
@@ -71,6 +76,23 @@ goto runtask
 exit
 
 ::::::执行任务
+:cloud
+color 07
+mode con: cols=40 lines=4 
+%root%\pecmd.exe TEAM TEXT 正在准备多播接收端…… L204 T207 R1000 B768 $30^|wait 2000 
+X:\windows\system32\pecmd.exe kill uftp.exe >nul
+X:\windows\system32\pecmd.exe kill uftpd.exe >nul
+cd /d "X:\windows\system32" >nul
+if exist I:\ (
+echo 存在I盘,多播到I:\
+start "" uftpd -B 2097152 -D I:\
+) else (
+echo 不存在I盘,多播到X:\
+start "" uftpd -B 2097152 -D X:\
+)
+exit
+
+::::::执行任务
 :netghost
 %root%\pecmd.exe TEAM TEXT 正在连接会话名称为mousedos的ghostsrv…… L204 T207 R1000 B768 $30^|wait 2000 
 X:\windows\system32\pecmd.exe kill ghostx64.exe >nul
@@ -87,6 +109,7 @@ cd /d "X:\windows\system32" >nul
 netcopyx64.exe
 exit
 
+::::::执行任务
 :smbcli
 net use * /delete /y >nul
 %root%\pecmd.exe TEAM TEXT 正在连接共享\\%ip%\pxe为B盘....L204 T207 R1000 B768 $30^|wait 8000

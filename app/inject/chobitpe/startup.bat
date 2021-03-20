@@ -24,6 +24,7 @@ for /f "tokens=1-2 delims=@ " %%a in ('dir /b %root%\*@*') do (
 set %%a
 set %%b
 )
+if "%1" == "smbcli" set job=smbcli
 %root%\pecmd.exe TEAM TEXT 得到服务器IP为%ip% L204 T207 R1000 B768 $30^|wait 2000 
 %root%\pecmd.exe TEAM TEXT 本次执行的任务%job% L204 T207 R1000 B568 $30^|wait 2000 
 %root%\pecmd.exe TEAM TEXT 关闭防火墙.......L204 T207 R1000 B768 $30^|wait 5000 

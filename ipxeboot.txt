@@ -10,7 +10,7 @@ set wim6 /netcopy.wim
 set wim7 /chobitpe.wim
 set wim8 /chobitpe.wim
 set wim9 /chobitpe.wim
-set wim0 /minix64.wim
+set wim0 /mini.wim
 set iso1 /netpe_multiarch.iso
 set img1 /max.img
 set vhd1 /ventoyx.vhd
@@ -68,10 +68,10 @@ set wim9name chobitpe:netcopy
 set wim9injectdir chobitpe
 set wim9inject1 start.ini
 set wim9job netcopy
-##下面这个pe是7秒一键生成的那个，用的winxshell 和mini.wim一样对应default目录
-set wim0name minix64.wim:smbclient
+##下面这个pe可以是7秒一键生成的那个，用的winxshell 和mini.wim一样对应default目录 任务多播
+set wim0name minipe:cloud
 set wim0injectdir default 
-set wim0job smbcli 
+set wim0job cloud
 
 ##############中级进阶用户修改区域结束############
 ################启动##################
