@@ -85,10 +85,10 @@ X:\windows\system32\pecmd.exe kill uftpd.exe >nul
 cd /d "X:\windows\system32" >nul
 if exist I:\ (
 echo 存在I盘,多播到I:\
-start "" uftpd -B 2097152 -D I:\
+start "" uftpd -B 2097152 -L %temp%\uftpd.log -D I:\
 ) else (
 echo 不存在I盘,多播到X:\
-start "" uftpd -B 2097152 -D X:\
+start "" uftpd -B 2097152 -L %temp%\uftpd.log -D X:\
 )
 exit
 
