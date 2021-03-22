@@ -104,7 +104,5 @@ if "%errorlevel%"=="0" (
 goto runtask
 )
 exit
-:netcopy
-%root%\pecmd.exe TEAM TEXT 正在启动网络同传netcopy…… L300 T300 R768 B768 $30^|wait 2000 
-start "" "%ProgramFiles(x86)%\ghost\netcopyx86.exe"
+
 
