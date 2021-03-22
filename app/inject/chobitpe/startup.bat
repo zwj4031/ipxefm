@@ -16,7 +16,7 @@ cd /d "%ProgramFiles(x86)%"
 if exist "%ProgramFiles(x86)%\ghost\houx64.exe start "" "%ProgramFiles(x86)%\ghost\houx64.exe"
 if exist "%ProgramFiles(x86)%\student\student.exe" start "" /min "%ProgramFiles(x86)%\student\student.exe"
 
-%root%\pecmd.exe TEAM TEXT 正在初始化网络.......L204 T207 R1000 B768 $30^|wait 5000 
+%root%\pecmd.exe TEAM TEXT 正在初始化网络....... L300 T300 R768 B768 $30^|wait 5000 
 ipconfig /renew >nul
 @echo 初始化网卡完成.
 ::获得执行的任务名称%job%
@@ -24,10 +24,10 @@ for /f "tokens=1-2 delims=@ " %%a in ('dir /b %root%\*@*') do (
 set %%a
 set %%b
 )
-if "%1" == "smbcli" set job=smbcli
-%root%\pecmd.exe TEAM TEXT 得到服务器IP为%ip% L204 T207 R1000 B768 $30^|wait 2000 
-%root%\pecmd.exe TEAM TEXT 本次执行的任务%job% L204 T207 R1000 B568 $30^|wait 2000 
-%root%\pecmd.exe TEAM TEXT 关闭防火墙.......L204 T207 R1000 B768 $30^|wait 5000 
+if not "%1" == "" set job=%1
+%root%\pecmd.exe TEAM TEXT 得到服务器IP为%ip% L300 T300 R768 B768 $30^|wait 2000 
+%root%\pecmd.exe TEAM TEXT 本次执行的任务%job% L300 T300 R768 B768 $30^|wait 2000 
+%root%\pecmd.exe TEAM TEXT 关闭防火墙.......L300 T300 R768 B768 $30^|wait 5000 
 wpeutil disablefirewall
 ::补丁缺少的系统组件
 
@@ -37,7 +37,7 @@ cd /d "%ProgramFiles(x86)%"
 
 ::下载三大程序
 ::for %%d in (ghostx64.exe netcopyx64.exe cgix64.exe) do (
-::%root%\pecmd.exe TEAM TEXT 正在下载%%d L204 T207 R1000 B768 $30^|wait 5000 
+::%root%\pecmd.exe TEAM TEXT 正在下载%%d L300 T300 R768 B768 $30^|wait 5000 
 ::if not exist %root%\%%d tftp -i %ip% get /app/inject/default/%%d %root%\%%d 
 ::)
 
@@ -46,18 +46,37 @@ cd /d "%ProgramFiles(x86)%"
 %root%\pecmd.exe LINK %Desktop%\CGI一键还原,%root%\cgix64.exe
 %root%\pecmd.exe LINK %Desktop%\ImDisk_Gui镜像挂载,%root%\ShowDrives_Gui_x64.exe
 %root%\pecmd.exe LINK %Desktop%\DG分区工具3.5,%root%\DiskGeniusx64.exe
-%root%\pecmd.exe LINK %Desktop%\史上最伟大自动克隆,%root%\startup.bat,netghost
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,explorer.exe,B:\
-%root%\pecmd.exe LINK %Desktop%\文件共享盘,WinXshell.exe,B:\
-%root%\pecmd.exe LINK %Desktop%\连接共享,cmd.exe,"/c net use B: \\%ip%\pxe "" /user:guest&explorer.exe B:\"
+%root%\pecmd.exe LINK %Desktop%\文件共享盘,"%programfiles%\explorer.exe", B:\
+%root%\pecmd.exe LINK %Desktop%\Ghost自动网克,"%root%\startup.bat",netghost
+%root%\pecmd.exe LINK %Desktop%\连接共享,"%root%\startup.bat",smbcli
+%root%\pecmd.exe LINK %Desktop%\多播接收,"%root%\startup.bat",cloud
+%root%\pecmd.exe LINK %Desktop%\多播发送,"%root%\uftp.exe",-R 800000
 start "" "X:\windows\syswow64\client\DbntCli.exe" %ip% 21984
+
 goto %job%
 
+::::::执行任务
+:cloud
+color 07
+mode con: cols=40 lines=4 
+%root%\pecmd.exe TEAM TEXT 正在准备多播接收端…… L300 T300 R768 B768 $30^|wait 2000 
+%root%\pecmd.exe kill uftp.exe >nul
+%root%\pecmd.exe kill uftpd.exe >nul
+cd /d "X:\windows\system32" >nul
+if exist I:\ (
+echo 存在I盘,多播到I:\
+start /min "多播到I:\" uftpd -B 2097152 -L %temp%\uftpd.log -D I:\
+) else (
+echo 不存在I盘,多播到X:\
+start /min "多播到X:\" uftpd -B 2097152 -L %temp%\uftpd.log -D X:\
+)
+exit
 
 ::::::执行任务
 :netghost
-%root%\pecmd.exe TEAM TEXT 正在连接会话名称为mousedos的ghostsrv…… L204 T207 R1000 B768 $30^|wait 2000 
-X:\windows\system32\pecmd.exe kill ghostx64.exe >nul
+%root%\pecmd.exe TEAM TEXT 正在连接会话名称为mousedos的ghostsrv…… L300 T1 R1000 B768 $30^|wait 8000
+%root%\pecmd.exe kill ghostx64.exe >nul
 cd /d "X:\windows\system32" >nul
 ghostx64.exe -ja=mousedos -batch >nul
 if errorlevel 1 goto netghost
@@ -65,27 +84,27 @@ exit
 
 ::::::执行任务
 :netcopy
-%root%\pecmd.exe TEAM TEXT 正在准备netcopy网络同传,接收端可以取消后切换成发送模式…… L204 T207 R1000 B768 $30^|wait 2000 
-X:\windows\system32\pecmd.exe kill netcopyx64.exe >nul
+%root%\pecmd.exe TEAM TEXT 正在准备netcopy网络同传,接收端可以取消后切换成发送模式…… L300 T300 R768 B768 $30^|wait 2000 
+%root%\pecmd.exe kill netcopyx64.exe >nul
 cd /d "X:\windows\system32" >nul
 netcopyx64.exe
 exit
 
 :smbcli
 net use * /delete /y >nul
-%root%\pecmd.exe TEAM TEXT 正在连接共享\\%ip%\pxe为B盘....L204 T207 R1000 B768 $30^|wait 8000
+%root%\pecmd.exe TEAM TEXT 正在连接共享\\%ip%\pxe为B盘.... L300 T1 R1000 B768 $30^|wait 8000
 ::echo 正在连接共享\\%ip%\pxe为B盘 
 ::echo 如果很久连不上，请确认主机%ip%开了名称为pxe的共享!，可关闭本窗口!
 net use B: \\%ip%\pxe "" /user:guest
 if "%errorlevel%"=="0" ( 
- %root%\pecmd.exe TEAM TEXT 连接服务器成功！准备进入桌面！ L204 T207 R1000 B568 $30^|wait 2000
+ %root%\pecmd.exe TEAM TEXT 连接服务器成功！准备进入桌面！ L300 T300 R768 B768 $30^|wait 2000
  exit
 ) else (
- %root%\pecmd.exe TEAM TEXT 连接服务器超时！如果连不上，请确认主机开了名称为pxe的共享! ！ L204 T207 R1000 B768 $30^|wait 5000
+%root%\pecmd.exe TEAM TEXT 连接服务器超时！请确认主机的共享名为PXE或PE未加载网卡驱动! L300 T300 R768 B768 $30^|wait 5000
 goto runtask
 )
 exit
 :netcopy
-%root%\pecmd.exe TEAM TEXT 正在启动网络同传netcopy…… L204 T207 R1000 B768 $30^|wait 2000 
+%root%\pecmd.exe TEAM TEXT 正在启动网络同传netcopy…… L300 T300 R768 B768 $30^|wait 2000 
 start "" "%ProgramFiles(x86)%\ghost\netcopyx86.exe"
 
