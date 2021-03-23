@@ -12,6 +12,7 @@ mklink %temp%\cmd.exe x:\windows\system32\cmd.exe
 %root%\pecmd.exe LINK %Desktop%\ghostx64,%root%\ghostx64.exe
 %root%\pecmd.exe LINK %Desktop%\netcopy网络同传,%root%\netcopyx64.exe
 %root%\pecmd.exe LINK %Desktop%\CGI一键还原,%root%\cgix64.exe
+%root%\pecmd.exe LINK %Desktop%\BT服务端,%root%\btx64.exe
 %root%\pecmd.exe LINK %Desktop%\ImDisk_Gui镜像挂载,%root%\ShowDrives_Gui_x64.exe
 %root%\pecmd.exe LINK %Desktop%\DG分区工具3.5,%root%\DiskGeniusx64.exe
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,explorer.exe,B:\

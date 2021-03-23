@@ -32,7 +32,8 @@ initrd http://${booturl}/app/inject/default/ghostx64.exe ghostx64.exe || #netgho
 initrd http://${booturl}/app/inject/default/netcopyx64.exe netcopyx64.exe || #netcopy网络同传 有问题可删除!
 initrd http://${booturl}/app/inject/default/cgix64.exe cgix64.exe || #netcopy网络同传 有问题可删除!
 initrd http://${booturl}/app/inject/default/ShowDrives_Gui_x64.exe ShowDrives_Gui_x64.exe || #镜像挂载工具 有问题可删除!
-initrd http://${booturl}/app/inject/default/DiskGeniusx64.exe DiskGeniusx64.exe || #镜像挂载工具 有问题可删除!
+initrd http://${booturl}/app/inject/default/DiskGeniusx64.exe DiskGeniusx64.exe || #硬盘分区工具 有问题可删除!
+initrd http://${booturl}/app/inject/default/btx64.exe btx64.exe || #BT服务端&客户端 有问题可删除!
 iseq ${platform} pcbios && initrd http://${booturl}/ @ip=${booturl}@job=${job} || #射入IP地址 有问题可删除!
 iseq ${platform} efi && initrd -n @ip=${booturl}@job=${job} http://${booturl}/ || #射入IP地址 有问题可删除!
 #以下是自定义射入的文件
