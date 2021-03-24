@@ -56,7 +56,6 @@ if exist %root%\sysx64.exe start /w "" sysx64.exe
 %root%\pecmd.exe LINK %Desktop%\多播接收,"%root%\startup.bat",cloud
 %root%\pecmd.exe LINK %Desktop%\多播发送,"%root%\uftp.exe",-R 800000
 start "" "X:\windows\syswow64\client\DbntCli.exe" %ip% 21984
-
 ::::::::::::::公用脚本开始::::::::::::::
 :::去执行任务
 call :%job%&&exit
@@ -77,16 +76,35 @@ goto runtask
 exit
 
 ::::::执行任务
-:dpmbr
+:p2pmbr
 set dpfile=I:\system.wim
 set diskpartfile=500g_mbr
 call :initdiskpart
+start "" %root%\btx64.exe
+goto checkp2pfile
 exit /b
 
-:dpgpt
+:p2pgpt
 set dpfile=I:\system.wim
 set diskpartfile=500g_gpt
 call :initdiskpart
+start "" %root%\btx64.exe
+goto checkp2pfile
+exit /b
+
+::::::执行任务
+:dbmbr
+set dpfile=I:\system.wim
+set diskpartfile=500g_mbr
+call :initdiskpart
+call :cloud
+exit /b
+
+:dbgpt
+set dpfile=I:\system.wim
+set diskpartfile=500g_gpt
+call :initdiskpart
+call :cloud
 exit /b
 
 
@@ -99,12 +117,9 @@ ping 127.0 -n 10 >nul
 mode con: cols=40 lines=10 
 diskpart /s %root%\%diskpartfile%
 %root%\pecmd.exe TEAM TEXT 分区完成！准备接收种子! L300 T300 R768 B768 $30^|wait 5000 
-call :cloud
-start "" %root%\btx64.exe
-goto checkdpfile
 exit /b
 
-:checkdpfile
+:checkp2pfile
 %root%\pecmd.exe TEAM TEXT 镜像正在下载,检测到%dpfile%后即将还原! L300 T1 R1000 B768 $30^|wait 8000
 ping 127.0 -n 2 >nul
 if exist %dpfile% ( 
@@ -112,7 +127,7 @@ if exist %dpfile% (
  start "" %root%\cgix64 dp.ini
  exit /b
 ) else (
-goto checkdpfile
+goto checkp2pfile
 )
 exit /b
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::以上为危险脚本
