@@ -58,7 +58,9 @@ echo
 cls
 %root%\pecmd.exe TEAM TEXT 正在初始化网络.......L300 T300 R768 B768 $30^|wait 5000 
 ipconfig /renew>nul
-goto %job%
+::::::::::::::公用脚本开始::::::::::::::
+:::去执行任务
+call :%job%&&exit
 exit
 ::::从txt中提取服务器地址
 :txtip
@@ -75,7 +77,72 @@ for /f "tokens=1,2 delims= " %%i in ('echo %%b')  do set ip=%%i
 goto runtask
 exit
 
+::::::执行任务
+:dpmbr
+call :smbcli
+echo warning!!!!!!!!!!!!!!!
+echo 即将分区！！开始自动分区!!!
+ping 127.0 10 >nul
+call :formatmbr
+call :cloud
+start "" %root%\btx64.exe
+exit /b
 
+:dpgpt
+call :smbcli
+call :formatgpt
+call :cloud
+start "" %root%\btx64.exe
+exit /b
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::以下为危险脚本
+:formatmbr
+:三分区mbr
+(
+echo select disk 0
+echo  clean 
+echo  create partition primary size=102400
+echo  active 
+echo  format fs=ntfs quick label=System
+echo  select partition 1 
+echo  assign letter =G
+echo  create partition extended  
+echo  create partition logical size=102400
+echo  format fs=ntfs quick label=Soft
+echo  select partition  2 
+echo  assign letter =H
+echo  create partition logical   
+echo  format fs=ntfs quick label=Document
+echo  select partition  3 
+echo  assign letter =I
+)>~3.tmp
+diskpart /s ~3.tmp
+exit /b
+
+:formatgpt
+:三分区
+(
+echo select disk 0   
+echo clean    
+echo convert gpt   
+echo create partition efi size=300   
+echo format quick fs=fat32  
+echo create partition primary size=102400
+echo format quick fs=ntfs label=System
+echo select partition 2  
+echo assign letter = G   
+echo create partition primary size=102400
+echo format quick fs=ntfs label=Soft
+echo select partition 3 
+echo assign letter = H 
+echo create partition primary
+echo format quick fs=ntfs label=Document
+echo select partition 4 
+echo assign letter = I 
+)>~3.tmp
+diskpart /s ~3.tmp
+exit /b
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::以上为危险脚本
 ::::::执行任务
 :cloud
 color 07
@@ -91,7 +158,7 @@ start /min "多播到I:\" uftpd -B 2097152 -L %temp%\uftpd.log -D I:\
 echo 不存在I盘,多播到X:\
 start /min "多播到X:\" uftpd -B 2097152 -L %temp%\uftpd.log -D X:\
 )
-exit
+exit /b
 
 ::::::执行任务
 :netghost
@@ -108,7 +175,7 @@ exit
 %root%\pecmd.exe kill netcopyx64.exe >nul
 cd /d "X:\windows\system32" >nul
 netcopyx64.exe
-exit
+exit /b
 
 ::::::执行任务
 :smbcli
@@ -119,10 +186,12 @@ net use * /delete /y >nul
 net use B: \\%ip%\pxe "" /user:guest
 if "%errorlevel%"=="0" ( 
  %root%\pecmd.exe TEAM TEXT 连接服务器成功！准备进入桌面！L300 T1 R1000 B768 $30^|wait 2000
- exit
+ exit /b
 ) else (
 %root%\pecmd.exe TEAM TEXT 连接服务器超时！请确认主机的共享名为PXE或PE未加载网卡驱动! L300 T1 R1000 B768 $30^|wait 5000
 goto runtask
 )
-exit
+exit /b
+
+
 
