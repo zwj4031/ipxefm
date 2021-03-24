@@ -69,9 +69,9 @@ set wim9injectdir chobitpe
 set wim9inject1 start.ini
 set wim9job netcopy
 ##下面这个pe可以是7秒一键生成的那个，用的winxshell 和mini.wim一样对应default目录 任务多播
-set wim0name minipe:dpmbr
+set wim0name minipe:dpmbr #dpgpt
 set wim0injectdir default 
-set wim0job dpmbr
+set wim0job dpmbr #dpgpt
 
 ##############中级进阶用户修改区域结束############
 ################启动##################

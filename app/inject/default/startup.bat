@@ -17,6 +17,7 @@ mklink %temp%\cmd.exe x:\windows\system32\cmd.exe
 %root%\pecmd.exe LINK %Desktop%\DG分区工具3.5,%root%\DiskGeniusx64.exe
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,explorer.exe,B:\
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,"%programfiles%\explorer.exe", B:\
+%root%\pecmd.exe LINK %Desktop%\文件共享盘,"%windir%\winxshell.exe", B:\
 %root%\pecmd.exe LINK %Desktop%\Ghost自动网克,"%root%\startup.bat",netghost
 %root%\pecmd.exe LINK %Desktop%\连接共享,"%root%\startup.bat",smbcli
 %root%\pecmd.exe LINK %Desktop%\多播接收,"%root%\startup.bat",cloud
@@ -56,7 +57,7 @@ cd /d "%ProgramFiles(x86)%"
 %root%\pecmd.exe TEAM TEXT 得到服务器IP为%ip% L300 T300 R768 B768 $30^|wait 2000 
 echo 
 cls
-%root%\pecmd.exe TEAM TEXT 正在初始化网络.......L300 T300 R768 B768 $30^|wait 5000 
+%root%\pecmd.exe TEAM TEXT 正在初始化网络！L300 T300 R768 B768 $30^|wait 9000 
 ipconfig /renew>nul
 ::::::::::::::公用脚本开始::::::::::::::
 :::去执行任务
@@ -67,7 +68,7 @@ exit
 cd /d X:\windows\system32
 for /f %%a in (ip.txt) do set ip=%%a
 echo %ip%
-%root%\pecmd.exe TEAM TEXT 初始化完成！准备执行相关任务…… L300 T300 R768 B768 $30^|wait 3000 
+%root%\pecmd.exe TEAM TEXT 初始化完成！准备执行相关任务！L300 T300 R768 B768 $30^|wait 3000 
 goto runtask
 :::从dhcp中提取服务器地址
 :dhcpip
@@ -79,27 +80,45 @@ exit
 
 ::::::执行任务
 :dpmbr
-call :smbdp
-echo warning!!!!!!!!!!!!!!!
-echo 即将分区！！开始自动分区!!!
-ping 127.0 10 >nul
-diskpart /s 500g_mbr
-call :cloud
-start "" %root%\btx64.exe
+set dpfile=I:\system.wim
+set diskpartfile=500g_mbr
+call :initdiskpart
 exit /b
 
 :dpgpt
-call :smbdp
-echo warning!!!!!!!!!!!!!!!
-echo 即将分区！！开始自动分区!!!
-ping 127.0 10 >nul
-diskpart /s 500g_gpt
-call :cloud
-start "" %root%\btx64.exe
+set dpfile=I:\system.wim
+set diskpartfile=500g_gpt
+call :initdiskpart
 exit /b
 
+
+:initdiskpart
+%root%\pecmd.exe TEAM TEXT 正在准备部署系统_%diskpartfile% L300 T300 R768 B768 $30^|wait 5000 
+call :smbdp
+%root%\pecmd.exe TEAM TEXT 警告！即将分区！硬盘数据丢失!!!! L300 T300 R768 B768 $30^|wait 5000 
+ping 127.0 -n 10 >nul
+%root%\pecmd.exe TEAM TEXT 正在分区，请稍候！  L300 T300 R768 B768 $30^|wait 5000
+mode con: cols=40 lines=10 
+diskpart /s %root%\%diskpartfile%
+%root%\pecmd.exe TEAM TEXT 分区完成！准备接收种子! L300 T300 R768 B768 $30^|wait 5000 
+call :cloud
+start "" %root%\btx64.exe
+goto checkdpfile
+exit /b
+
+:checkdpfile
+%root%\pecmd.exe TEAM TEXT 镜像正在下载,检测到%dpfile%后即将还原! L300 T1 R1000 B768 $30^|wait 8000
+ping 127.0 -n 2 >nul
+if exist %dpfile% ( 
+ %root%\pecmd.exe TEAM TEXT 下载完成！准备还原%dpfile%！L300 T1 R1000 B768 $30^|wait 8000
+ start "" %root%\cgix64 dp.ini
+ exit /b
+) else (
+goto checkdpfile
+)
+exit /b
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::以上为危险脚本
-::::::执行任务
+::::::执行多播任务
 :cloud
 color 07
 mode con: cols=40 lines=4 
@@ -110,13 +129,15 @@ cd /d "X:\windows\system32" >nul
 if exist I:\ (
 echo 存在I盘,多播到I:\
 start /min "多播到I:\" uftpd -B 2097152 -L %temp%\uftpd.log -D I:\
+exit /b
 ) else (
 echo 不存在I盘,多播到X:\
 start /min "多播到X:\" uftpd -B 2097152 -L %temp%\uftpd.log -D X:\
+exit /b
 )
 exit /b
 
-::::::执行任务
+::::::执行ghost网克任务
 :netghost
 %root%\pecmd.exe TEAM TEXT 正在连接会话名称为mousedos的ghostsrv…… L300 T1 R1000 B768 $30^|wait 8000
 %root%\pecmd.exe kill ghostx64.exe >nul
@@ -125,7 +146,7 @@ ghostx64.exe -ja=mousedos -batch >nul
 if errorlevel 1 goto netghost
 exit
 
-::::::执行任务
+::::::执行netcopy同传任务
 :netcopy
 %root%\pecmd.exe TEAM TEXT 正在准备netcopy网络同传,接收端可以取消后切换成发送模式…… L300 T300 R768 B768 $30^|wait 2000 
 %root%\pecmd.exe kill netcopyx64.exe >nul
@@ -133,7 +154,7 @@ cd /d "X:\windows\system32" >nul
 netcopyx64.exe
 exit /b
 
-::::::执行任务
+::::::执行多次尝试映射共享任务
 :smbcli
 net use * /delete /y >nul
 %root%\pecmd.exe TEAM TEXT 正在连接共享\\%ip%\pxe为B盘.... L300 T1 R1000 B768 $30^|wait 8000
@@ -148,7 +169,7 @@ if "%errorlevel%"=="0" (
 goto runtask
 )
 exit /b
-::::::执行任务
+::::::执行一次性尝试映射任务
 :smbdp
 net use * /delete /y >nul
 %root%\pecmd.exe TEAM TEXT 正在连接共享\\%ip%\pxe为B盘.... L300 T1 R1000 B768 $30^|wait 8000
