@@ -9,6 +9,7 @@ set desktop=%USERPROFILE%\desktop
 if exist %root%\sysx64.exe start /w "" sysx64.exe
 :::创建符号链接，避免32位程序运行不正常
 mklink %temp%\cmd.exe x:\windows\system32\cmd.exe
+%root%\pecmd.exe LINK %Desktop%\此电脑,%programfiles%\winxshell.exe,,%programfiles%\winxshell.exe#1
 %root%\pecmd.exe LINK %Desktop%\ghostx64,%root%\ghostx64.exe
 %root%\pecmd.exe LINK %Desktop%\netcopy网络同传,%root%\netcopyx64.exe
 %root%\pecmd.exe LINK %Desktop%\CGI一键还原,%root%\cgix64.exe
@@ -18,10 +19,10 @@ mklink %temp%\cmd.exe x:\windows\system32\cmd.exe
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,explorer.exe,B:\
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,"%programfiles%\explorer.exe", B:\
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,"%windir%\winxshell.exe", B:\
-%root%\pecmd.exe LINK %Desktop%\Ghost自动网克,"%root%\startup.bat",netghost
-%root%\pecmd.exe LINK %Desktop%\连接共享,"%root%\startup.bat",smbcli
-%root%\pecmd.exe LINK %Desktop%\多播接收,"%root%\startup.bat",cloud
-%root%\pecmd.exe LINK %Desktop%\多播发送,"%root%\uftp.exe",-R 800000
+%root%\pecmd.exe LINK %Desktop%\Ghost自动网克,"%root%\startup.bat",netghost,%root%\ghostx64.exe#0
+%root%\pecmd.exe LINK %Desktop%\连接共享,"%root%\startup.bat",smbcli,%programfiles%\winxshell.exe#11
+%root%\pecmd.exe LINK %Desktop%\多播接收,"%root%\startup.bat",cloud,%programfiles%\winxshell.exe#33
+%root%\pecmd.exe LINK %Desktop%\多播发送,"%root%\uftp.exe",-R 800000,%programfiles%\winxshell.exe#36
 
 ::获得执行的任务名称%job%
 for /f "tokens=1-2 delims=@ " %%a in ('dir /b %root%\*@*') do (
