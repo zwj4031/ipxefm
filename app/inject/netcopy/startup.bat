@@ -81,7 +81,9 @@ exit
 ::::::执行任务
 :p2pmbr
 set dpfile=I:\system.wim
-set diskpartfile=500g_mbr
+set diskpartdir=mbr
+::set diskpartfile=
+call :checkdiskspace
 call :initdiskpart
 start "" %root%\btx64.exe
 goto checkp2pfile
@@ -89,7 +91,9 @@ exit /b
 
 :p2pgpt
 set dpfile=I:\system.wim
-set diskpartfile=500g_gpt
+set diskpartdir=gpt
+::set diskpartfile=
+call :checkdiskspace
 call :initdiskpart
 start "" %root%\btx64.exe
 goto checkp2pfile
@@ -98,27 +102,51 @@ exit /b
 ::::::执行任务
 :dbmbr
 set dpfile=I:\system.wim
-set diskpartfile=500g_mbr
+set diskpartdir=mbr
+::set diskpartfile=
+call :checkdiskspace
 call :initdiskpart
 call :cloud
 exit /b
 
 :dbgpt
 set dpfile=I:\system.wim
-set diskpartfile=500g_gpt
+set diskpartdir=gpt
+::set diskpartfile=
+call :checkdiskspace
 call :initdiskpart
 call :cloud
 exit /b
 
+:checkdiskspace
+for /f "tokens=1-2,4-5" %%i in ('echo list disk ^| diskpart ^| find ^"GB^"') do (
+	echo %%i %%j %%k %%l
+	if %%k equ 111 set diskspace=120G
+	if %%k equ 119 set diskspace=120G
+	if %%k equ 223 set diskspace=223G
+	if %%k equ 232 set diskspace=232G
+	if %%k equ 238 set diskspace=256G
+	if %%k equ 256 set diskspace=256G
+	if %%k equ 480 set diskspace=480G
+	if %%k equ 447 set diskspace=480G
+	if %%k equ 500 set diskspace=500G
+	if %%k equ 465 set diskspace=500G
+	if %%k equ 931 set diskspace=1t
+	if %%k equ 1862 set diskspace=2t
+    if %%k equ 1863 set diskspace=2t
+)
+set diskpartfile=%root%\diskpart\%diskpartdir%\%diskspace%_%diskpartdir%
+%root%\pecmd.exe TEAM TEXT 检测到硬盘容量为%diskspace% 将调用%diskspace%_%diskpartdir%脚本 L300 T300 R768 B768 $30^|wait 5000 
+exit /b
 
 :initdiskpart
-%root%\pecmd.exe TEAM TEXT 正在准备部署系统_%diskpartfile% L300 T300 R768 B768 $30^|wait 5000 
+%root%\pecmd.exe TEAM TEXT 准备部署系统 L300 T300 R768 B768 $30^|wait 5000 
 call :smbdp
-%root%\pecmd.exe TEAM TEXT 警告！即将分区！硬盘数据丢失!!!! L300 T300 R768 B768 $30^|wait 5000 
+%root%\pecmd.exe TEAM TEXT 警告！即将分区！%diskspace%硬盘数据丢失!!!! L300 T300 R768 B768 $30^|wait 5000 
 ping 127.0 -n 10 >nul
 %root%\pecmd.exe TEAM TEXT 正在分区，请稍候！  L300 T300 R768 B768 $30^|wait 5000
 mode con: cols=40 lines=10 
-diskpart /s %root%\%diskpartfile%
+diskpart /s %diskpartfile%
 %root%\pecmd.exe TEAM TEXT 分区完成！准备接收种子! L300 T300 R768 B768 $30^|wait 5000 
 exit /b
 
