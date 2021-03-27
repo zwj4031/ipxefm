@@ -87,6 +87,7 @@ set diskpartdir=mbr
 call :checkdiskspace
 call :initdiskpart
 start "" %root%\btx64.exe
+call :cloud
 goto checkp2pfile
 exit /b
 
@@ -98,6 +99,7 @@ call :checkdiskspace
 call :initdiskpart
 start "" %root%\btx64.exe
 goto checkp2pfile
+call :cloud
 exit /b
 
 ::::::Ö´ÐÐÈÎÎñ
