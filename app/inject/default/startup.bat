@@ -121,40 +121,65 @@ call :initdiskpart
 call :cloud
 exit /b
 
+::::::执行检测硬盘容量任务
 :checkdiskspace
-for /f "tokens=1-2,4-5" %%i in ('echo list disk ^| diskpart ^| find ^"GB^"') do (
-	echo %%i %%j %%k %%l
-	if %%k equ 111 set diskspace=120G
-	if %%k equ 119 set diskspace=120G
-	if %%k equ 223 set diskspace=223G
-	if %%k equ 232 set diskspace=232G
-	if %%k equ 238 set diskspace=256G
-	if %%k equ 256 set diskspace=256G
-	if %%k equ 480 set diskspace=480G
-	if %%k equ 447 set diskspace=480G
-	if %%k equ 500 set diskspace=500G
-	if %%k equ 465 set diskspace=500G
-	if %%k equ 931 set diskspace=1t
-	if %%k equ 1862 set diskspace=2t
-    if %%k equ 1863 set diskspace=2t
+set seldisk=masterdisk&&set disknum=0&&call :checkdisk
+set seldisk=slaverdisk&&set disknum=1&&call :checkdisk
+::[主盘]
+if not "%masterdisk%"=="" (
+set masterdiskpartfile=%root%\diskpart\%diskpartdir%\master\%masterdisk%_%diskpartdir%
+%root%\pecmd.exe TEAM TEXT 检测到主盘容量为%masterdisk% 将调用%masterdisk%_%diskpartdir%脚本 L300 T300 R768 B768 $30^|wait 5000 
+) else (
+%root%\pecmd.exe TEAM TEXT 检测不到主硬盘容量，请手工分区指定最大分区为I盘 L300 T300 R768 B768 $30^|wait 5000
 )
-set diskpartfile=%root%\diskpart\%diskpartdir%\%diskspace%_%diskpartdir%
-%root%\pecmd.exe TEAM TEXT 检测到硬盘容量为%diskspace% 将调用%diskspace%_%diskpartdir%脚本 L300 T300 R768 B768 $30^|wait 5000 
+::[从盘]
+if not "%slaverdisk%"=="" (
+set slaverdiskpartfile=%root%\diskpart\%diskpartdir%\slaver\%slaverdisk%_%diskpartdir%
+%root%\pecmd.exe TEAM TEXT 检测到从盘容量为%slaverdisk% 将调用%slaverdisk%_%diskpartdir%脚本 L300 T300 R768 B768 $30^|wait 5000
+) else (
+%root%\pecmd.exe TEAM TEXT 检测不到从硬盘容量 L300 T300 R768 B768 $30^|wait 5000 
+echo .
+)
 exit /b
 
+::::::执行检测硬盘容量任务
+:checkdisk
+for /f "tokens=1-2,4-5" %%i in ('echo list disk ^| diskpart ^| find ^"磁盘 %disknum%^"') do (
+	echo %%i %%j %%k %%l
+	if %%k gtr 101 if %%k lss 121 set %seldisk%=120G
+	if %%k gtr 222 if %%k lss 233 set %seldisk%=240G
+    if %%k gtr 238 if %%k lss 257 set %seldisk%=256G
+    if %%k gtr 446 if %%k lss 481 set %seldisk%=480G
+    if %%k gtr 482 if %%k lss 501 set %seldisk%=500G
+    if %%k gtr 882 if %%k lss 999 set %seldisk%=1t
+    if %%k gtr 1862 if %%k lss 1999 set %seldisk%=2t
+)>nul
+exit /b
+::::::执行分区任务
 :initdiskpart
-%root%\pecmd.exe TEAM TEXT 准备部署系统 L300 T300 R768 B768 $30^|wait 5000 
-call :smbdp
-%root%\pecmd.exe TEAM TEXT 警告！即将分区！%diskspace%硬盘数据丢失!!!! L300 T300 R768 B768 $30^|wait 5000 
-ping 127.0 -n 10 >nul
-%root%\pecmd.exe TEAM TEXT 正在分区，请稍候！  L300 T300 R768 B768 $30^|wait 5000
 mode con: cols=40 lines=10 
-diskpart /s %diskpartfile%
+%root%\pecmd.exe TEAM TEXT 正在分区，请稍候！  L300 T300 R768 B768 $30^|wait 5000
+call :smbdp
+
+if not "%masterdisk%"== "" (
+%root%\pecmd.exe TEAM TEXT 警告！即将分区！主硬盘%masterdisk%数据将丢失!!!! L300 T300 R768 B768 $30^|wait 5000 
+ping 127.0 -n 10 >nul
+diskpart /s %masterdiskpartfile%
+) else (
+TEAM TEXT 检测不到主硬盘容量，请手工分区指定最大分区为I盘 L300 T300 R768 B768 $30^|wait 5000
+)
+if not "%slaverdisk%"== "" (
+%root%\pecmd.exe TEAM TEXT 警告！即将分区！从盘%slaverdisk%数据将丢失!!!! L300 T300 R768 B768 $30^|wait 5000 
+ping 127.0 -n 10 >nul
+diskpart /s %slaverdiskpartfile%
+) else (
+echo ..
+)
 %root%\pecmd.exe TEAM TEXT 分区完成！准备接收种子! L300 T300 R768 B768 $30^|wait 5000 
 exit /b
 
 :checkp2pfile
-%root%\pecmd.exe TEAM TEXT 镜像正在下载,检测到%dpfile%后即将还原! L300 T1 R1000 B768 $30^|wait 8000
+%root%\pecmd.exe TEAM TEXT 正在下载%dpfile%，请等待........! L300 T1 R1000 B768 $30^|wait 8000
 ping 127.0 -n 2 >nul
 if exist %dpfile% ( 
  %root%\pecmd.exe TEAM TEXT 下载完成！准备还原%dpfile%！L300 T1 R1000 B768 $30^|wait 8000
