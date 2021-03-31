@@ -81,22 +81,26 @@ exit
 
 ::::::执行任务
 :p2pmbr
-set dpfile=I:\system.wim
+set p2pfile=I:\system.wim
+set smbfile=b:\system.wim
 set diskpartdir=mbr
 ::set diskpartfile=
 call :checkdiskspace
 call :initdiskpart
+call :checksmbfile
 start "" %root%\btx64.exe
 call :cloud
 goto checkp2pfile
 exit /b
 
 :p2pgpt
-set dpfile=I:\system.wim
+set p2pfile=I:\system.wim
+set smbfile=b:\system.wim
 set diskpartdir=gpt
 ::set diskpartfile=
 call :checkdiskspace
 call :initdiskpart
+call :checksmbfile
 start "" %root%\btx64.exe
 goto checkp2pfile
 call :cloud
@@ -104,20 +108,24 @@ exit /b
 
 ::::::执行任务
 :dbmbr
-set dpfile=I:\system.wim
+set p2pfile=I:\system.wim
+set smbfile=b:\system.wim
 set diskpartdir=mbr
 ::set diskpartfile=
 call :checkdiskspace
 call :initdiskpart
+call :checksmbfile
 call :cloud
 exit /b
 
 :dbgpt
-set dpfile=I:\system.wim
+set p2pfile=I:\system.wim
+set smbfile=b:\system.wim
 set diskpartdir=gpt
 ::set diskpartfile=
 call :checkdiskspace
 call :initdiskpart
+call :checksmbfile
 call :cloud
 exit /b
 
@@ -178,14 +186,25 @@ call :smbdp
 exit /b
 
 :checkp2pfile
-%root%\pecmd.exe TEAM TEXT 正在下载%dpfile%，请等待........! L300 T1 R1000 B768 $30^|wait 8000
+%root%\pecmd.exe TEAM TEXT 正在下载%p2pfile%，请等待........! L300 T1 R1000 B768 $30^|wait 8000
 ping 127.0 -n 2 >nul
-if exist %dpfile% ( 
- %root%\pecmd.exe TEAM TEXT 下载完成！准备还原%dpfile%！L300 T1 R1000 B768 $30^|wait 8000
+if exist %p2pfile% ( 
+ %root%\pecmd.exe TEAM TEXT 下载完成！准备还原%p2pfile%！L300 T1 R1000 B768 $30^|wait 8000
  start "" %root%\cgix64 dp.ini
  exit /b
 ) else (
 goto checkp2pfile
+)
+exit /b
+
+:checksmbfile
+if exist %smbfile% ( 
+%root%\pecmd.exe TEAM TEXT B盘发现%smbfile%,准备还原%smbfile%！L300 T1 R1000 B768 $30^|wait 8000
+cd /d "X:\windows\system32" >nul
+start "" /w %root%\cgix64.exe dp.ini
+exit 
+) else (
+exit /b
 )
 exit /b
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::以上为危险脚本
