@@ -11,6 +11,8 @@ set wim7 /chobitpe.wim
 set wim8 /chobitpe.wim
 set wim9 /chobitpe.wim
 set wim0 /mini.wim
+set wima /mini.wim
+set wimb /mini.wim
 set iso1 /netpe_multiarch.iso
 set img1 /max.img
 set vhd1 /ventoyx.vhd
@@ -70,9 +72,14 @@ set wim9injectdir chobitpe
 set wim9inject1 start.ini
 set wim9job netcopy
 ##下面这个pe可以是7秒一键生成的那个，用的winxshell 和mini.wim一样对应default目录 任务多播
-set wim0name minipe:p2pmbr #p2pgpt
-set wim0injectdir default 
-set wim0job p2pmbr #p2pgpt
+set wimaname minipe:p2pmbr->Warning: diskdata_destory #p2pgpt
+set wimainjectdir default 
+set wimajob p2pmbr #p2pgpt
+
+set wimbname minipe:p2pgpt->Warning: diskdata_destory
+set wimbinjectdir default 
+set wimbjob p2pgpt
+
 
 ##############中级进阶用户修改区域结束############
 ################启动##################

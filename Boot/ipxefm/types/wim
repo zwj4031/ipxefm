@@ -19,9 +19,15 @@ isset ${job} && set bootmode wimboot-inject && chain ${prefix}/rules/wimboot.ipx
 :wimmenu
 menu  iPXE's Boot Menu boot:${bootfile} QQGroup(Qun):146859089 ${platform} 
    item --key 1 wimboot                1. Boot with wimboot 
-   item --key 2 netghost               2. Boot with wimboot (inject files->NetGhost])
-   item --key 3 smbcli                 3. Boot with wimboot (inject files->SMB)
-   item --key 4 ${winpeshl}            4. Switch ${winpeshl} (winpeshl->${winpeshl}) 
+   item --key 2 netghost               2. Boot with wimboot (job->NetGhost->safely)
+   item --key 3 smbcli                 3. Boot with wimboot (job->SMB->safely)
+   item --key 4 cloud                  4. Boot with wimboot (job->cloud->safely)
+   item --gap -- Universal Deployment System
+   item --key a p2pmbr                 a. Boot with wimboot (job->p2pmbr->Warning: diskdata_destory)
+   item --key b p2pgpt                 b. Boot with wimboot (job->p2pgpt->Warning: diskdata_destory)
+   item --key c dbmbr                  c. Boot with wimboot (job->dbmbr->Warning: diskdata_destory)
+   item --key d dbpgpt                 d. Boot with wimboot (job->dbgpt->Warning: diskdata_destory)
+   item --key 9 ${winpeshl}            9. Switch ${winpeshl} (winpeshl->${winpeshl}) 
    item --key m menu                   M. Back to menu 
    item --gap -- --------------------------Wimboot Option----------------------------
    item --gap -- Wimboot injectdir:${injectdir}

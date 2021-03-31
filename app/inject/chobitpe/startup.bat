@@ -146,9 +146,9 @@ exit /b
 :checkdisk
 for /f "tokens=1-2,4-5" %%i in ('echo list disk ^| diskpart ^| find ^"磁盘 %disknum%^"') do (
 	echo %%i %%j %%k %%l
-	if %%k gtr 101 if %%k lss 121 set %seldisk%=120G
+	if %%k gtr 101 if %%k lss 221 set %seldisk%=120G
 	if %%k gtr 222 if %%k lss 233 set %seldisk%=240G
-    if %%k gtr 238 if %%k lss 257 set %seldisk%=256G
+    if %%k gtr 234 if %%k lss 257 set %seldisk%=256G
     if %%k gtr 446 if %%k lss 481 set %seldisk%=480G
     if %%k gtr 482 if %%k lss 501 set %seldisk%=500G
     if %%k gtr 882 if %%k lss 999 set %seldisk%=1t
@@ -158,15 +158,13 @@ exit /b
 ::::::执行分区任务
 :initdiskpart
 mode con: cols=40 lines=10 
-%root%\pecmd.exe TEAM TEXT 正在分区，请稍候！  L300 T300 R768 B768 $30^|wait 5000
-call :smbdp
 
 if not "%masterdisk%"== "" (
 %root%\pecmd.exe TEAM TEXT 警告！即将分区！主硬盘%masterdisk%数据将丢失!!!! L300 T300 R768 B768 $30^|wait 5000 
 ping 127.0 -n 10 >nul
 diskpart /s %masterdiskpartfile%
 ) else (
-TEAM TEXT 检测不到主硬盘容量，请手工分区指定最大分区为I盘 L300 T300 R768 B768 $30^|wait 5000
+%root%\pecmd.exe TEAM TEXT 检测不到主硬盘容量，请手工分区指定最大分区为I盘 L300 T300 R768 B768 $30^|wait 5000
 )
 if not "%slaverdisk%"== "" (
 %root%\pecmd.exe TEAM TEXT 警告！即将分区！从盘%slaverdisk%数据将丢失!!!! L300 T300 R768 B768 $30^|wait 5000 
@@ -175,6 +173,7 @@ diskpart /s %slaverdiskpartfile%
 ) else (
 echo ..
 )
+call :smbdp
 %root%\pecmd.exe TEAM TEXT 分区完成！准备接收种子! L300 T300 R768 B768 $30^|wait 5000 
 exit /b
 
