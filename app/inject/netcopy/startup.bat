@@ -156,8 +156,7 @@ for /f "tokens=1-2,4-5" %%i in ('echo list disk ^| diskpart ^| find ^"╢еел %disk
 	if %%k gtr 101 if %%k lss 221 set %seldisk%=120G
 	if %%k gtr 222 if %%k lss 233 set %seldisk%=240G
     if %%k gtr 234 if %%k lss 257 set %seldisk%=256G
-    if %%k gtr 446 if %%k lss 481 set %seldisk%=480G
-    if %%k gtr 482 if %%k lss 501 set %seldisk%=500G
+    if %%k gtr 446 if %%k lss 501 set %seldisk%=500G
     if %%k gtr 882 if %%k lss 999 set %seldisk%=1t
     if %%k gtr 1862 if %%k lss 1999 set %seldisk%=2t
 )>nul

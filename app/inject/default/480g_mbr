@@ -1,0 +1,16 @@
+select disk 0
+ clean 
+ create partition primary size=102400
+ active 
+ format fs=ntfs quick label=System
+ select partition 1 
+ assign letter =G
+ create partition extended  
+ create partition logical size=102400
+ format fs=ntfs quick label=Soft
+ select partition  2 
+ assign letter =H
+ create partition logical   
+ format fs=ntfs quick label=Document
+ select partition  3 
+ assign letter =I
