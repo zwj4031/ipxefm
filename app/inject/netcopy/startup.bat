@@ -57,6 +57,7 @@ mklink %temp%\cmd.exe x:\windows\system32\cmd.exe
 %root%\pecmd.exe LINK %Desktop%\连接共享,"%root%\startup.bat",smbcli,%programfiles%\winxshell.exe#11
 %root%\pecmd.exe LINK %Desktop%\多播接收,"%root%\startup.bat",cloud,%programfiles%\winxshell.exe#33
 %root%\pecmd.exe LINK %Desktop%\多播发送,"%root%\uftp.exe",-R 800000,%programfiles%\winxshell.exe#36
+%root%\pecmd.exe LINK %Desktop%\TightVNC Viewer,"%root%\tightvnc\tvnviewer.exe" 
 
 start "" "X:\windows\syswow64\client\DbntCli.exe" %ip% 21984
 ::::::::::::::公用脚本开始::::::::::::::
