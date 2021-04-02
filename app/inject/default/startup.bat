@@ -62,6 +62,16 @@ cls
 ipconfig /renew>nul
 ::::::::::::::公用脚本开始::::::::::::::
 :::去执行任务
+::::启动tightvnc
+::密码reg add "HKCU\SOFTWARE\TightVNC\Server" /v Password /t REG_BINARY /d F0E43164F6C2E373 /f
+reg add "HKCU\SOFTWARE\TightVNC\Server" /v UseVncAuthentication /t REG_DWORD /d 0x0 /f
+reg add "HKCU\SOFTWARE\TightVNC\Server" /v UseControlAuthentication /t REG_DWORD /d 0x0 /f
+reg add "HKCU\SOFTWARE\TightVNC\Server" /v DisconnectClients /t REG_DWORD /d 0x0 /f
+reg add "HKCU\SOFTWARE\TightVNC\Server" /v DisconnectAction /t REG_DWORD /d 0x0 /f
+start "" %root%\tightvnc\tvnserver.exe -run
+::反向连接模式start "" "%root%\tightvnc\tvnserver.exe" -controlapp -connect %ip%
+::::启动githtvnc
+
 call :%job%&&exit
 exit
 ::::从txt中提取服务器地址
