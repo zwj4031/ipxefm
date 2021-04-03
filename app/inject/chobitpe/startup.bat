@@ -44,6 +44,8 @@ cd /d "%ProgramFiles(x86)%"
 if exist %root%\sysx64.exe start /w "" sysx64.exe
 :::创建符号链接，避免32位程序运行不正常
 mklink %temp%\cmd.exe x:\windows\system32\cmd.exe
+::注册很方便的右键菜单
+if exist %root%\ShowDrives_Gui_x64.exe start "" %root%\ShowDrives_Gui_x64.exe --Reg-All
 %root%\pecmd.exe LINK %Desktop%\此电脑,%programfiles%\winxshell.exe,,%programfiles%\winxshell.exe#1
 %root%\pecmd.exe LINK %Desktop%\ghostx64,%root%\ghostx64.exe
 %root%\pecmd.exe LINK %Desktop%\netcopy网络同传,%root%\netcopyx64.exe
