@@ -1,5 +1,14 @@
 @echo off
 set root=X:\windows\system32
+::动画化批处理
+color b0 
+set a=51
+set b=35
+:re
+set /a a-=2
+set /a b-=2
+mode con: cols=%a% lines=%b% 
+if %a% geq 16 if %b% geq 1 goto re
 if defined desktop (
     echo desktop ok!
 ) else (
@@ -35,15 +44,7 @@ set %%b
 if not "%1" == "" set job=%1
 echo 服务器IP地址为  %ip%
 echo 本次执行的任务  %job%
-::动画化批处理
-color b0 
-set a=50
-set b=34
-:re
-set /a a-=1
-set /a b-=1
-mode con: cols=%a% lines=%b% 
-if %a% geq 16 if %b% geq 1 goto re
+
 :::旧的查找ip方式
 :::for /f "tokens=2 delims==" %%a in ('dir /b %root%\serverip*') do set ip=%%a
 :判断ip值
@@ -66,6 +67,7 @@ ipconfig /renew>nul
 ::::::::::::::公用脚本开始::::::::::::::
 :::去执行任务
 ::::启动tightvnc
+%root%\pecmd.exe kill tvnserver.exe
 ::密码reg add "HKCU\SOFTWARE\TightVNC\Server" /v Password /t REG_BINARY /d F0E43164F6C2E373 /f
 reg add "HKCU\SOFTWARE\TightVNC\Server" /v UseVncAuthentication /t REG_DWORD /d 0x0 /f
 reg add "HKCU\SOFTWARE\TightVNC\Server" /v UseControlAuthentication /t REG_DWORD /d 0x0 /f
@@ -73,7 +75,7 @@ reg add "HKCU\SOFTWARE\TightVNC\Server" /v DisconnectClients /t REG_DWORD /d 0x0
 reg add "HKCU\SOFTWARE\TightVNC\Server" /v DisconnectAction /t REG_DWORD /d 0x0 /f
 start "" %root%\tightvnc\tvnserver.exe -run
 ::反向连接模式start "" "%root%\tightvnc\tvnserver.exe" -controlapp -connect %ip%
-::::启动githtvnc
+::::启动tightvnc
 
 call :%job%&&exit
 exit
