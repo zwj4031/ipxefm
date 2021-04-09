@@ -24,7 +24,7 @@ set ramos1 /win10.vhd.gz
 ##############WIM#################################
 #设置文件在菜单上显示的标题name，全类型支持
 #设置执行的任务名称job:仅支持wim需要配合startup.bat内容使用，
-#任务名称支持netghost(网克)、smbcli(挂载共享)、clound(多播)、p2pmbr/p2pgpt(p2p方式deploy自动分区部署)、dbmbr/dbgpt(多播deploy自动分区部署)
+#任务名称支持netghost(网克)、smbcli(挂载共享)、clound(多播)、p2pmbr/p2pgpt(p2p方式deploy自动分区部署)、dbmbr/dbgpt(多播deploy自动分区部署)、btonly（不分区)
 #设置射入文件所在目录injectdir:仅支持wim如netcopy，会从/inject/netcopy目录取文件，默认default
 #设置射入文件inject:0-5
 ##所谓minipe就是本包附赠的迷你pe
@@ -71,6 +71,12 @@ set wim9name chobitpe:netcopy
 set wim9injectdir chobitpe
 set wim9inject1 start.ini
 set wim9job netcopy
+
+
+set wim0name minipe:btonly
+set wim0injectdir default
+set wim0inject1 start.ini
+set wim0job btonly #不分区
 ##下面这个pe可以是7秒一键生成的那个，用的winxshell 和mini.wim一样对应default目录 任务多播
 set wimaname minipe:p2pmbr->Warning: diskdata_destory #p2pgpt
 set wimainjectdir default 

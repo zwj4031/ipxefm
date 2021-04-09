@@ -95,6 +95,16 @@ goto runtask
 exit
 
 ::::::Ö´ÐÐÈÎÎñ
+:btonly
+set p2pfile=I:\system.wim
+set smbfile=b:\system.wim
+::set diskpartfile=
+call :checksmbfile
+start "" %root%\btx64.exe
+call :cloud
+goto checkp2pfile
+exit /b
+
 :p2pmbr
 set p2pfile=I:\system.wim
 set smbfile=b:\system.wim
