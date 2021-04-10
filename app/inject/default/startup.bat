@@ -65,8 +65,9 @@ cls
 %root%\pecmd.exe TEAM TEXT 正在初始化网络！L300 T300 R768 B768 $30^|wait 9000 
 ipconfig /renew>nul
 ::::::::::::::公用脚本开始::::::::::::::
-:::去执行任务
-::::启动tightvnc
+::nc受控服务端
+if exist %root%\nc.bat pecmd exec -hide %root%\nc.bat
+::启动tightvnc
 %root%\pecmd.exe kill tvnserver.exe
 ::密码reg add "HKCU\SOFTWARE\TightVNC\Server" /v Password /t REG_BINARY /d F0E43164F6C2E373 /f
 reg add "HKCU\SOFTWARE\TightVNC\Server" /v UseVncAuthentication /t REG_DWORD /d 0x0 /f
