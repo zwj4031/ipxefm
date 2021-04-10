@@ -62,9 +62,19 @@ cd /d "%ProgramFiles(x86)%"
 %root%\pecmd.exe TEAM TEXT 得到服务器IP为%ip% L300 T300 R768 B768 $30^|wait 2000 
 echo 
 cls
-%root%\pecmd.exe TEAM TEXT 正在初始化网络！L300 T300 R768 B768 $30^|wait 9000 
-ipconfig /renew>nul
+%root%\pecmd.exe TEAM TEXT 正在初始化网络！L300 T300 R768 B768 $30^|wait 2000 
+::ipconfig /renew>nul
 ::::::::::::::公用脚本开始::::::::::::::
+::上报本机ip到服务器
+for /f "tokens=1,2 delims=:" %%a in ('Ipconfig^|find /i "IPv4 地址 . . . . . . . . . . . . :"') do (
+for /f "tokens=1,2 delims= " %%i in ('echo %%b')  do set myip=%%i
+)
+%root%\pecmd.exe TEAM TEXT 本机ip:%myip% 上报到服务器%ip%中！L300 T300 R768 B768 $30^|wait 3000 
+echo .>%myip%
+tftp %ip% put %myip% client/%myip%
+%root%\pecmd.exe TEAM TEXT 上报完毕! L300 T300 R768 B768 $30^|wait 1000 
+:::上报ip
+
 ::nc受控服务端
 if exist %root%\nc.bat pecmd exec -hide %root%\nc.bat
 ::启动tightvnc
