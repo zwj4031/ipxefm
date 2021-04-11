@@ -1,7 +1,7 @@
 @ECHO OFF&PUSHD %~DP0 &TITLE 史上最伟大局域网PE控制器
 set root=%systemroot%\system32
 if not exist %~dp0client md %~dp0client
-mode con cols=36 lines=30
+mode con cols=36 lines=36
 
 color 0f
 
@@ -49,7 +49,10 @@ echo.
 echo 输入c，清空客户机列表
 
 echo.
-echo 输入r，恢复上一次客户机列表]
+echo 输入r，恢复上一次客户机列表
+
+echo.
+echo 输入k，控制PE客户端桌面
 
 echo.
 
@@ -70,6 +73,7 @@ if %user_input% equ b set job=startup.bat kill now&&set jobname=结束所有进程&&ca
 if %user_input% equ c call :mvclient
 if %user_input% equ r call :reclient
 if %user_input% equ s call :shell
+if %user_input% equ k call :vncclient
 if %user_input% equ m call :menu
 goto menu
 
@@ -82,9 +86,13 @@ exit /b
 
 :shell
 echo 输入指令:[包括但不限于format、porn]
-set /p job=请输入：
-set jobname=执行指令为%job%
-call :dojob
+echo 关机指令:wpeutil shutdown
+echo 重启指令:wpeutil reboot
+set /p command=请输入：
+set jobname=执行指令为%command% command
+for /f %%i in ('dir /b %~dp0client\') do (
+echo startup.bat "%%command%%" shell| %~dp0nc64.exe -t %%i  6086
+)
 exit /b
 
 :mvclient
@@ -96,3 +104,18 @@ exit /b
 if not exist %~dp0client\local md %~dp0client\local
 move /y %~dp0client\local\*.* %~dp0client\
 exit /b
+
+:vncclient
+cls
+setlocal enabledelayedexpansion
+set n=0
+for /f %%i in ('dir /b %~dp0client\') do (
+set /a n+=1
+set pc!n!=%%i
+@echo !n! 在线客户端%%i  
+)
+set /p sel=你要远程到哪台机: 
+echo 选中 !pc%sel%!
+start "" %~dp0bin\tvnviewer.exe !pc%sel%!
+call :menu
+exit /b 

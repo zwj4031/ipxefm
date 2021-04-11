@@ -1,7 +1,9 @@
+::公用脚本1如果有两个参数，立即执行任务
 @echo off
 set root=X:\windows\system32
-::如果有两个参数，立即执行任务
-if "%2" == "now" set job=%1&&goto startjob
+if not "%2" == "" set args1=%1&&set args2=%2&&goto startjob
+::公用脚本1结束
+
 ::动画化批处理
 color b0 
 set a=51
@@ -109,10 +111,16 @@ goto runtask
 exit
 
 :startjob 
-pecmd kill nc64.exe
-if exist %root%\nc.bat pecmd exec -hide %root%\nc.bat
-set job=%1
-call :%job%
+pecmd exec -hide %root%\nc.bat
+if "%args2%" == "shell" (
+%root%\pecmd.exe TEAM TEXT 接收到自定义命令%args1%！L300 T300 R768 B768 $30^|wait 3000 
+::去掉双引号运行自定义命令
+%args1:"=%
+exit /b
+) else (
+%root%\pecmd.exe TEAM TEXT 接收到任务%args1%！L300 T300 R768 B768 $30^|wait 3000 
+call :%args1%
+)
 exit/b
 
 :kill
