@@ -1,8 +1,9 @@
 @ECHO OFF&PUSHD %~DP0 &TITLE 史上最伟大局域网PE控制器
+set root=%systemroot%\system32
 if not exist %~dp0client md %~dp0client
-mode con cols=46 lines=20
+mode con cols=36 lines=30
 
-color 2f
+color 0f
 
 :menu
 
@@ -27,7 +28,21 @@ echo.
 echo 输入3，全自动分区-P2P部署[MBR]
 
 echo.
+echo 输入4，全自动分区-P2P部署[GPT]
 
+echo.
+echo 输入5，全自动分区-多播部署[MBR]
+
+echo.
+echo 输入6，全自动分区-多播部署[GPT]
+
+echo.
+echo 输入7，仅P2P部署[不分区]
+
+echo.
+echo 输入b，强制终止当前任务
+
+echo.
 echo 输入s，自定义执行命令[cmd命令]
 
 echo.
@@ -44,31 +59,33 @@ for /f %%i in ('dir /b %~dp0client\') do (
 @echo 在线客户端%%i  
 )
 set /p user_input=请输入：
-if %user_input% equ 1 call :netghost
-if %user_input% equ 2 call :netcopy
-if %user_input% equ 3 call :p2pmbr
+if %user_input% equ 1 set job=startup.bat netghost now&&set jobname=网络克隆-ghost&&call :dojob
+if %user_input% equ 2 set job=startup.bat netcopy now&&set jobname=网络同传-netcopy&&call :dojob
+if %user_input% equ 3 set job=startup.bat p2pmbr now&&echo 数据将丢失!回车三次确认&&pause&&pause&&pause&&set jobname=P2P自动部署-MBR&&call :dojob
+if %user_input% equ 4 set job=startup.bat p2pgpt now&&echo 数据将丢失!回车三次确认&&pause&&pause&&pause&&set jobname=P2P自动部署-GPT&&call :dojob
+if %user_input% equ 5 set job=startup.bat dbmbr now&&echo 数据将丢失!回车三次确认&&pause&&pause&&pause&&set jobname=多播自动部署-MBR&&call :dojob
+if %user_input% equ 6 set job=startup.bat dbgpt now&&echo 数据将丢失!回车三次确认&&pause&&pause&&pause&&set jobname=多播自动部署-GPT&&call :dojob
+if %user_input% equ 7 set job=startup.bat btonly now&&set jobname=仅P2P部署[不分区]&&call :dojob
+if %user_input% equ b set job=startup.bat kill now&&set jobname=结束所有进程&&call :dojob
 if %user_input% equ c call :mvclient
 if %user_input% equ r call :reclient
 if %user_input% equ s call :shell
 if %user_input% equ m call :menu
-
 goto menu
 
-:netghost
-echo 执行网络克隆-ghost任务
+:dojob
+echo 执行%jobname%任务
 for /f %%i in ('dir /b %~dp0client\') do (
-echo startup.bat netghost| %~dp0nc64.exe -t %%i  6086
+echo %%job%%| %~dp0nc64.exe -t %%i  6086
 )
 exit /b
 
 :shell
 echo 输入指令:[包括但不限于format、porn]
-set /p shell=请输入：
-for /f %%i in ('dir /b %~dp0client\') do (
-echo %%shell%%| %~dp0nc64.exe -t %%i  6086
-)
+set /p job=请输入：
+set jobname=执行指令为%job%
+call :dojob
 exit /b
-
 
 :mvclient
 if not exist %~dp0client\local md %~dp0client\local
