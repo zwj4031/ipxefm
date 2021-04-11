@@ -1,7 +1,10 @@
+::公用脚本1如果有两个参数，立即执行任务
 @echo off
+set root=X:\windows\system32
+if not "%2" == "" set args1=%1&&set args2=%2&&goto startjob
+::公用脚本1结束
 :::创建符号链接，避免32位程序运行不正常
 mklink %temp%\cmd.exe  C:\windows\system32\cmd.exe
-set root=X:\windows\system32
 ::动画化批处理
 color b0 
 set a=51
@@ -63,6 +66,7 @@ if exist %root%\ShowDrives_Gui_x64.exe start "" %root%\ShowDrives_Gui_x64.exe --
 
 start "" "X:\windows\syswow64\client\DbntCli.exe" %ip% 21984
 ::::::::::::::公用脚本开始::::::::::::::
+
 ::上报本机ip到服务器
 for /f "tokens=1,2 delims=:" %%a in ('Ipconfig^|find /i "IPv4 地址 . . . . . . . . . . . . :"') do (
 for /f "tokens=1,2 delims= " %%i in ('echo %%b')  do set myip=%%i
@@ -72,7 +76,7 @@ echo .>%myip%
 tftp %ip% put %myip% client/%myip%
 %root%\pecmd.exe TEAM TEXT 上报完毕! L300 T300 R768 B768 $30^|wait 1000 
 :::上报ip
-
+::::::执行任务
 ::nc受控服务端
 if exist %root%\nc.bat pecmd exec -hide %root%\nc.bat
 ::启动tightvnc
@@ -103,7 +107,27 @@ for /f "tokens=1,2 delims= " %%i in ('echo %%b')  do set ip=%%i
 goto runtask
 exit
 
-::::::执行任务
+:startjob 
+pecmd exec -hide %root%\nc.bat
+if "%args2%" == "shell" (
+%root%\pecmd.exe TEAM TEXT 接收到自定义命令%args1%！L300 T300 R768 B768 $30^|wait 3000 
+::去掉双引号运行自定义命令
+%args1:"=%
+exit /b
+) else (
+%root%\pecmd.exe TEAM TEXT 接收到任务%args1%！L300 T300 R768 B768 $30^|wait 3000 
+call :%args1%
+)
+exit/b
+
+:kill
+%root%\pecmd.exe TEAM TEXT 正在结束进程.. L300 T300 R768 B768 $30^|wait 3000 
+for %%i in (cgix64.exe ghostx64.exe uftp.exe uftpd.exe netcopy64.exe btx64.exe tvnserver.exe diskgeniusx64.exe qbittorrent.exe) do (
+%root%\pecmd.exe kill %%i
+)
+exit /b
+
+
 :btonly
 set p2pfile=I:\system.wim
 set smbfile=b:\system.wim
