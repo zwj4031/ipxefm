@@ -91,7 +91,7 @@ echo 重启指令:wpeutil reboot
 set /p command=请输入：
 set jobname=执行指令为%command% command
 for /f %%i in ('dir /b %~dp0client\') do (
-echo startup.bat "%%command%%" shell| %~dp0nc64.exe -t %%i  6086
+echo startup.bat "%%command%%" shell| %~dp0bin\nc64.exe -t %%i  6086
 )
 exit /b
 
@@ -107,12 +107,13 @@ exit /b
 
 :vncclient
 cls
+echo 当前在线客户端:
 setlocal enabledelayedexpansion
 set n=0
 for /f %%i in ('dir /b %~dp0client\') do (
 set /a n+=1
 set pc!n!=%%i
-@echo !n! 在线客户端%%i  
+@echo !n!.%%i  
 )
 set /p sel=你要远程到哪台机: 
 echo 选中 !pc%sel%!
