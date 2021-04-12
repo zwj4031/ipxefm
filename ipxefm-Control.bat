@@ -80,7 +80,7 @@ goto menu
 :dojob
 echo Ö´ÐÐ%jobname%ÈÎÎñ
 for /f %%i in ('dir /b %~dp0client\') do (
-echo %%job%%| %~dp0nc64.exe -t %%i  6086
+echo %%job%%| %~dp0bin\nc64.exe -t %%i  6086
 )
 exit /b
 
