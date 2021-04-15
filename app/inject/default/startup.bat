@@ -139,7 +139,6 @@ if "%args2%" == "shell" (
 %xsay%
 ::去掉双引号运行自定义命令
 %args1:"=%
-exit /b
 ) else (
 %say% "接收到任务%args1%" %font%
 %wait%
