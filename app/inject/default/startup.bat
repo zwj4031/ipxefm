@@ -67,7 +67,7 @@ echo 本次执行的任务  %job%
 if defined ip (
     goto runtask
 ) else (
-%say% "提取服务器IP中，检测系统目录下有无:ip.txt" %font%
+%say% "提取服务器IP中，检测系统目录下的ip.txt" %font%
 if exist X:\windows\system32\ip.txt @echo 文件存在.准备提取...&&goto txtip
 if not exist X:\windows\system32\ip.txt @echo 文件不存在.dhcp作为服务器地址...&&goto dhcpip
 )
@@ -119,7 +119,7 @@ exit
 cd /d X:\windows\system32
 for /f %%a in (ip.txt) do set ip=%%a
 echo %ip%
-%say% "初始化完成！准备执行相关任务" %font%
+%say% "初始化完成，准备执行相关任务！" %font%
 %wait%
 %xsay%
 goto runtask
@@ -134,13 +134,13 @@ exit
 :startjob 
 pecmd exec -hide %root%\nc.bat
 if "%args2%" == "shell" (
-%say% "接收到自定义命令%args1%" %font%
+%say% "接收到自定义命令[%args1%]" %font%
 %wait%
 %xsay%
 ::去掉双引号运行自定义命令
 %args1:"=%
 ) else (
-%say% "接收到任务%args1%" %font%
+%say% "接收到任务[%args1%]" %font%
 %wait%
 %xsay%
 call :%args1%
@@ -148,11 +148,9 @@ call :%args1%
 exit/b
 
 :kill
-
 %say% "正在结束进程" %font%
 %wait%
 %xsay%
-
 for %%i in (cgix64.exe ghostx64.exe uftp.exe uftpd.exe netcopy64.exe btx64.exe tvnserver.exe diskgeniusx64.exe qbittorrent.exe) do (
 %root%\pecmd.exe kill %%i
 )
@@ -166,6 +164,7 @@ set smbfile=b:\system.wim
 call :checksmbfile
 start "" %root%\btx64.exe
 call :cloud
+%say% "正在下载%p2pfile%，请等待..." %font%
 goto checkp2pfile
 exit /b
 
@@ -179,6 +178,7 @@ call :initdiskpart
 call :checksmbfile
 start "" %root%\btx64.exe
 call :cloud
+%say% "正在下载%p2pfile%，请等待..." %font%
 goto checkp2pfile
 exit /b
 
@@ -191,6 +191,7 @@ call :checkdiskspace
 call :initdiskpart
 call :checksmbfile
 start "" %root%\btx64.exe
+%say% "正在下载%p2pfile%，请等待..." %font%
 goto checkp2pfile
 call :cloud
 exit /b
@@ -220,31 +221,26 @@ exit /b
 
 ::::::执行检测硬盘容量任务
 :checkdiskspace
+%xsay%
 set seldisk=masterdisk&&set disknum=0&&call :checkdisk
 set seldisk=slaverdisk&&set disknum=1&&call :checkdisk
 ::[主盘]
-if not "%masterdisk%"=="" (
+if not "%masterdisk%" == "" (
 set masterdiskpartfile=%root%\diskpart\%diskpartdir%\master\%masterdisk%_%diskpartdir%
 %say% "检测到主盘容量为%masterdisk% 将调用%masterdisk%_%diskpartdir%脚本" %font%
 %wait%
-%xsay%
-
 ) else (
 %say% "检测不到主硬盘容量，请手工分区指定最大分区为I盘" %font%
 %wait%
-%xsay%
-
 )
 ::[从盘]
-if not "%slaverdisk%"=="" (
+%xsay%
+if not "%slaverdisk%" == "" (
 set slaverdiskpartfile=%root%\diskpart\%diskpartdir%\slaver\%slaverdisk%_%diskpartdir%
 %say% "检测到从盘容量为%slaverdisk% 将调用%slaverdisk%_%diskpartdir%脚本" %font%
 %wait%
-%xsay%
 ) else (
 %say% "检测不到从硬盘容量" %font%
-
-echo .
 )
 exit /b
 
@@ -262,67 +258,56 @@ for /f "tokens=1-2,4-5" %%i in ('echo list disk ^| diskpart ^| find ^"磁盘 %disk
 exit /b
 ::::::执行分区任务
 :initdiskpart
-mode con: cols=40 lines=10 
-
-if not "%masterdisk%"== "" (
-%say% "警告！即将分区！主硬盘%masterdisk%数据将丢失!!!!" %font%
-%wait%
 %xsay%
-
+mode con: cols=40 lines=10 
+if not "%masterdisk%" == "" (
+%say% "警告，即将分区,主硬盘%masterdisk%数据将丢失!!!!" %font%
 ping 127.0 -n 10 >nul
 diskpart /s %masterdiskpartfile%
 ) else (
-%say% "检测不到主硬盘容量，请手工分区指定最大分区为I盘" %font%
+%say% "检测不到主硬盘容量，请手工分区指定I盘[放镜像]" %font%
 %wait%
-%xsay%
-
 )
-if not "%slaverdisk%"== "" (
-%say% "警告！即将分区！从盘%slaverdisk%数据将丢失!!!!" %font%
-%wait%
 %xsay%
-
+if not "%slaverdisk%" == "" (
+%say% "警告，即将分区,从硬盘%slaverdisk%数据将丢失!!!!" %font%
 ping 127.0 -n 10 >nul
-diskpart /s %slaverdiskpartfile%
-) else (
-echo ..
-)
-call :smbdp
-%say% "分区完成！准备接收种子!" %font%
-%wait%
 %xsay%
-
+%say% "正在分区……" %font%
+diskpart /s %slaverdiskpartfile%
+%wait%
+exit /b
+) else (
+%say% "检测不到从硬盘容量" %font%
+%wait%
+)
+%xsay%
+call :smbdp
+%xsay%
+%say% "分区完成，准备接收种子!" %font%
+%xsay%
 exit /b
 
 :checkp2pfile
-%say% "正在下载%p2pfile%，请等待........!" %font%
-%wait%
-%xsay%
-
 ping 127.0 -n 2 >nul
 if exist %p2pfile% ( 
 %say% "下载完成！准备还原%p2pfile%" %font%
-%wait%
-%xsay%
-
- start "" %root%\cgix64 dp.ini
- exit /b
+start "" %root%\cgix64 dp.ini
+exit /b
 ) else (
 goto checkp2pfile
 )
 exit /b
 
 :checksmbfile
+%xsay%
 if exist %smbfile% ( 
 %say% "B盘发现%smbfile%,准备还原%smbfile%" %font%
 %wait%
-%xsay%
-
 cd /d "X:\windows\system32" >nul
 start "" /w %root%\cgix64.exe dp.ini
-exit 
 ) else (
-exit /b
+echo ..
 )
 exit /b
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::以上为危险脚本
@@ -330,10 +315,9 @@ exit /b
 :cloud
 color 07
 mode con: cols=40 lines=4 
-%say% "正在准备多播接收端……" %font%
+%say% "正在准备多播接收端..." %font%
 %wait%
 %xsay%
-
 %root%\pecmd.exe kill uftp.exe >nul
 %root%\pecmd.exe kill uftpd.exe >nul
 cd /d "X:\windows\system32" >nul
@@ -353,7 +337,6 @@ exit /b
 %say% "连接会话名称为mousedos的ghostsrv……" %font%
 %wait%
 %xsay%
-
 %root%\pecmd.exe kill ghostx64.exe >nul
 cd /d "X:\windows\system32" >nul
 ghostx64.exe -ja=mousedos -batch >nul
@@ -362,7 +345,7 @@ exit
 
 ::::::执行netcopy同传任务
 :netcopy
-%say% "正在准备netcopy网络同传,接收端可以取消后切换成发送模式……" %font%
+%say% "正在准备netcopy客户端,可取消切换成发送模式." %font%
 %wait%
 %xsay%
 
@@ -374,7 +357,6 @@ exit /b
 ::::::执行多次尝试映射共享任务
 :smbcli
 net use * /delete /y >nul
-%wait%
 %say% "连接\\%ip%\pxe为B盘" %font%
 %wait%
 %xsay%
@@ -386,7 +368,7 @@ if "%errorlevel%" == "0" (
 %xsay%
 exit /b
 ) else (
-%say% "连接超时！确认主机共享名为PXE或PE未加载网卡驱动!" %font%
+%say% "连接超时！请确认共享名为PXE或PE未加载网卡驱动!" %font%
 %wait%
 %xsay%
 %xsay%

@@ -1,8 +1,20 @@
 ::公用脚本1如果有两个参数，立即执行任务
 @echo off
 set root=X:\windows\system32
+set wait=pecmd wait 2000 
+if not exist "X:\Program Files\WinXShell.exe" (
+set say=%root%\pecmd.exe TEAM TEXT "
+set font="L300 T300 R768 B768 $30^|wait 2000 
+set wait=::::
+set xsay=::::
+) else (
+set say=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_led.zip -text
+set xsay=start "" "X:\Program Files\WinXShell.exe" -code QuitWindow(nil,'UI_LED'^)
+set wait=%root%\pecmd.exe wait 2000
+)
 if not "%2" == "" set args1=%1&&set args2=%2&&goto startjob
 ::公用脚本1结束
+
 :::创建符号链接，避免32位程序运行不正常
 mklink %temp%\cmd.exe  C:\windows\system32\cmd.exe
 ::动画化批处理
@@ -71,10 +83,16 @@ start "" "X:\windows\syswow64\client\DbntCli.exe" %ip% 21984
 for /f "tokens=1,2 delims=:" %%a in ('Ipconfig^|find /i "IPv4 地址 . . . . . . . . . . . . :"') do (
 for /f "tokens=1,2 delims= " %%i in ('echo %%b')  do set myip=%%i
 )
-%root%\pecmd.exe TEAM TEXT 本机ip:%myip% 上报到服务器%ip%中！L300 T300 R768 B768 $30^|wait 3000 
+
+%say% "本机ip:%myip% 上报中" %font%
+%wait%
+%xsay%
 echo .>%myip%
 tftp %ip% put %myip% client/%myip%
-%root%\pecmd.exe TEAM TEXT 上报完毕! L300 T300 R768 B768 $30^|wait 1000 
+
+%say% "上报完毕!" %font%
+%wait%
+%xsay%
 :::上报ip
 ::::::执行任务
 ::nc受控服务端
@@ -89,7 +107,6 @@ reg add "HKCU\SOFTWARE\TightVNC\Server" /v DisconnectAction /t REG_DWORD /d 0x0 
 start "" %root%\tightvnc\tvnserver.exe -run
 ::反向连接模式start "" "%root%\tightvnc\tvnserver.exe" -controlapp -connect %ip%
 ::::启动tightvnc
-
 call :%job%&&exit
 exit
 ::::从txt中提取服务器地址
@@ -97,7 +114,9 @@ exit
 cd /d X:\windows\system32
 for /f %%a in (ip.txt) do set ip=%%a
 echo %ip%
-%root%\pecmd.exe TEAM TEXT 初始化完成！准备执行相关任务！L300 T300 R768 B768 $30^|wait 3000 
+%say% "初始化完成，准备执行相关任务！" %font%
+%wait%
+%xsay%
 goto runtask
 :::从dhcp中提取服务器地址
 :dhcpip
@@ -110,18 +129,23 @@ exit
 :startjob 
 pecmd exec -hide %root%\nc.bat
 if "%args2%" == "shell" (
-%root%\pecmd.exe TEAM TEXT 接收到自定义命令%args1%！L300 T300 R768 B768 $30^|wait 3000 
+%say% "接收到自定义命令[%args1%]" %font%
+%wait%
+%xsay%
 ::去掉双引号运行自定义命令
 %args1:"=%
-exit /b
 ) else (
-%root%\pecmd.exe TEAM TEXT 接收到任务%args1%！L300 T300 R768 B768 $30^|wait 3000 
+%say% "接收到任务[%args1%]" %font%
+%wait%
+%xsay%
 call :%args1%
 )
 exit/b
 
 :kill
-%root%\pecmd.exe TEAM TEXT 正在结束进程.. L300 T300 R768 B768 $30^|wait 3000 
+%say% "正在结束进程" %font%
+%wait%
+%xsay%
 for %%i in (cgix64.exe ghostx64.exe uftp.exe uftpd.exe netcopy64.exe btx64.exe tvnserver.exe diskgeniusx64.exe qbittorrent.exe) do (
 %root%\pecmd.exe kill %%i
 )
@@ -135,6 +159,7 @@ set smbfile=b:\system.wim
 call :checksmbfile
 start "" %root%\btx64.exe
 call :cloud
+%say% "正在下载%p2pfile%，请等待..." %font%
 goto checkp2pfile
 exit /b
 
@@ -148,6 +173,7 @@ call :initdiskpart
 call :checksmbfile
 start "" %root%\btx64.exe
 call :cloud
+%say% "正在下载%p2pfile%，请等待..." %font%
 goto checkp2pfile
 exit /b
 
@@ -160,6 +186,7 @@ call :checkdiskspace
 call :initdiskpart
 call :checksmbfile
 start "" %root%\btx64.exe
+%say% "正在下载%p2pfile%，请等待..." %font%
 goto checkp2pfile
 call :cloud
 exit /b
@@ -189,22 +216,26 @@ exit /b
 
 ::::::执行检测硬盘容量任务
 :checkdiskspace
+%xsay%
 set seldisk=masterdisk&&set disknum=0&&call :checkdisk
 set seldisk=slaverdisk&&set disknum=1&&call :checkdisk
 ::[主盘]
-if not "%masterdisk%"=="" (
+if not "%masterdisk%" == "" (
 set masterdiskpartfile=%root%\diskpart\%diskpartdir%\master\%masterdisk%_%diskpartdir%
-%root%\pecmd.exe TEAM TEXT 检测到主盘容量为%masterdisk% 将调用%masterdisk%_%diskpartdir%脚本 L300 T300 R768 B768 $30^|wait 5000 
+%say% "检测到主盘容量为%masterdisk% 将调用%masterdisk%_%diskpartdir%脚本" %font%
+%wait%
 ) else (
-%root%\pecmd.exe TEAM TEXT 检测不到主硬盘容量，请手工分区指定最大分区为I盘 L300 T300 R768 B768 $30^|wait 5000
+%say% "检测不到主硬盘容量，请手工分区指定最大分区为I盘" %font%
+%wait%
 )
 ::[从盘]
-if not "%slaverdisk%"=="" (
+%xsay%
+if not "%slaverdisk%" == "" (
 set slaverdiskpartfile=%root%\diskpart\%diskpartdir%\slaver\%slaverdisk%_%diskpartdir%
-%root%\pecmd.exe TEAM TEXT 检测到从盘容量为%slaverdisk% 将调用%slaverdisk%_%diskpartdir%脚本 L300 T300 R768 B768 $30^|wait 5000
+%say% "检测到从盘容量为%slaverdisk% 将调用%slaverdisk%_%diskpartdir%脚本" %font%
+%wait%
 ) else (
-%root%\pecmd.exe TEAM TEXT 检测不到从硬盘容量 L300 T300 R768 B768 $30^|wait 5000 
-echo .
+%say% "检测不到从硬盘容量" %font%
 )
 exit /b
 
@@ -222,46 +253,56 @@ for /f "tokens=1-2,4-5" %%i in ('echo list disk ^| diskpart ^| find ^"磁盘 %disk
 exit /b
 ::::::执行分区任务
 :initdiskpart
+%xsay%
 mode con: cols=40 lines=10 
-
-if not "%masterdisk%"== "" (
-%root%\pecmd.exe TEAM TEXT 警告！即将分区！主硬盘%masterdisk%数据将丢失!!!! L300 T300 R768 B768 $30^|wait 5000 
+if not "%masterdisk%" == "" (
+%say% "警告，即将分区,主硬盘%masterdisk%数据将丢失!!!!" %font%
 ping 127.0 -n 10 >nul
 diskpart /s %masterdiskpartfile%
 ) else (
-%root%\pecmd.exe TEAM TEXT 检测不到主硬盘容量，请手工分区指定最大分区为I盘 L300 T300 R768 B768 $30^|wait 5000
+%say% "检测不到主硬盘容量，请手工分区指定I盘[放镜像]" %font%
+%wait%
 )
-if not "%slaverdisk%"== "" (
-%root%\pecmd.exe TEAM TEXT 警告！即将分区！从盘%slaverdisk%数据将丢失!!!! L300 T300 R768 B768 $30^|wait 5000 
+%xsay%
+if not "%slaverdisk%" == "" (
+%say% "警告，即将分区,从硬盘%slaverdisk%数据将丢失!!!!" %font%
 ping 127.0 -n 10 >nul
+%xsay%
+%say% "正在分区……" %font%
 diskpart /s %slaverdiskpartfile%
+%wait%
+exit /b
 ) else (
-echo ..
+%say% "检测不到从硬盘容量" %font%
+%wait%
 )
+%xsay%
 call :smbdp
-%root%\pecmd.exe TEAM TEXT 分区完成！准备接收种子! L300 T300 R768 B768 $30^|wait 5000 
+%xsay%
+%say% "分区完成，准备接收种子!" %font%
+%xsay%
 exit /b
 
 :checkp2pfile
-%root%\pecmd.exe TEAM TEXT 正在下载%p2pfile%，请等待........! L300 T1 R1000 B768 $30^|wait 8000
 ping 127.0 -n 2 >nul
 if exist %p2pfile% ( 
- %root%\pecmd.exe TEAM TEXT 下载完成！准备还原%p2pfile%！L300 T1 R1000 B768 $30^|wait 8000
- start "" %root%\cgix64 dp.ini
- exit /b
+%say% "下载完成！准备还原%p2pfile%" %font%
+start "" %root%\cgix64 dp.ini
+exit /b
 ) else (
 goto checkp2pfile
 )
 exit /b
 
 :checksmbfile
+%xsay%
 if exist %smbfile% ( 
-%root%\pecmd.exe TEAM TEXT B盘发现%smbfile%,准备还原%smbfile%！L300 T1 R1000 B768 $30^|wait 8000
+%say% "B盘发现%smbfile%,准备还原%smbfile%" %font%
+%wait%
 cd /d "X:\windows\system32" >nul
 start "" /w %root%\cgix64.exe dp.ini
-exit 
 ) else (
-exit /b
+echo ..
 )
 exit /b
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::以上为危险脚本
@@ -269,7 +310,9 @@ exit /b
 :cloud
 color 07
 mode con: cols=40 lines=4 
-%root%\pecmd.exe TEAM TEXT 正在准备多播接收端…… L300 T300 R768 B768 $30^|wait 2000 
+%say% "正在准备多播接收端..." %font%
+%wait%
+%xsay%
 %root%\pecmd.exe kill uftp.exe >nul
 %root%\pecmd.exe kill uftpd.exe >nul
 cd /d "X:\windows\system32" >nul
@@ -286,7 +329,9 @@ exit /b
 
 ::::::执行ghost网克任务
 :netghost
-%root%\pecmd.exe TEAM TEXT 正在连接会话名称为mousedos的ghostsrv…… L300 T1 R1000 B768 $30^|wait 8000
+%say% "连接会话名称为mousedos的ghostsrv……" %font%
+%wait%
+%xsay%
 %root%\pecmd.exe kill ghostx64.exe >nul
 cd /d "X:\windows\system32" >nul
 ghostx64.exe -ja=mousedos -batch >nul
@@ -295,7 +340,10 @@ exit
 
 ::::::执行netcopy同传任务
 :netcopy
-%root%\pecmd.exe TEAM TEXT 正在准备netcopy网络同传,接收端可以取消后切换成发送模式…… L300 T300 R768 B768 $30^|wait 2000 
+%say% "正在准备netcopy客户端,可取消切换成发送模式." %font%
+%wait%
+%xsay%
+
 %root%\pecmd.exe kill netcopyx64.exe >nul
 cd /d "X:\windows\system32" >nul
 netcopyx64.exe
@@ -304,23 +352,31 @@ exit /b
 ::::::执行多次尝试映射共享任务
 :smbcli
 net use * /delete /y >nul
-%root%\pecmd.exe TEAM TEXT 正在连接共享\\%ip%\pxe为B盘.... L300 T1 R1000 B768 $30^|wait 8000
-::echo 正在连接共享\\%ip%\pxe为B盘 
-::echo 如果很久连不上，请确认主机%ip%开了名称为pxe的共享!，可关闭本窗口!
+%say% "连接\\%ip%\pxe为B盘" %font%
+%wait%
+%xsay%
 net use B: \\%ip%\pxe "" /user:guest
-if "%errorlevel%"=="0" ( 
- %root%\pecmd.exe TEAM TEXT 连接服务器成功！准备进入桌面！L300 T1 R1000 B768 $30^|wait 2000
- exit /b
+if "%errorlevel%" == "0" ( 
+%say% "连接服务器成功！进入桌面!" %font%
+%wait%
+%xsay%
+%xsay%
+exit /b
 ) else (
-%root%\pecmd.exe TEAM TEXT 连接服务器超时！请确认主机的共享名为PXE或PE未加载网卡驱动! L300 T1 R1000 B768 $30^|wait 5000
+%say% "连接超时！请确认共享名为PXE或PE未加载网卡驱动!" %font%
+%wait%
+%xsay%
+%xsay%
 goto runtask
 )
 exit /b
 ::::::执行一次性尝试映射任务
 :smbdp
 net use * /delete /y >nul
-%root%\pecmd.exe TEAM TEXT 正在连接共享\\%ip%\pxe为B盘.... L300 T1 R1000 B768 $30^|wait 8000
+%say% "连接\\%ip%\pxe为B盘" %font%
 net use B: \\%ip%\pxe "" /user:guest
+%xsay%
+%xsay%
 exit /b
 
 
