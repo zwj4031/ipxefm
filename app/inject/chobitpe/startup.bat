@@ -1,4 +1,4 @@
-::公用脚本1如果有两个参数，立即执行任务
+:::公用脚本1如果有两个参数，立即执行任务
 @echo off
 set root=X:\windows\system32
 set wait=pecmd wait 2000 
@@ -9,7 +9,7 @@ set wait=::::
 set xsay=::::
 ) else (
 set say=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_led.zip -text
-set xsay=start "" "X:\Program Files\WinXShell.exe" -code QuitWindow(nil,'UI_LED'^)
+set xsay=start "" "X:\Program Files\WinXShell.exe" -code "QuitWindow(nil,'UI_LED')"
 set wait=%root%\pecmd.exe wait 2000
 )
 if not "%2" == "" set args1=%1&&set args2=%2&&goto startjob
@@ -85,13 +85,11 @@ start "" "X:\windows\syswow64\client\DbntCli.exe" %ip% 21984
 for /f "tokens=1,2 delims=:" %%a in ('Ipconfig^|find /i "IPv4 地址 . . . . . . . . . . . . :"') do (
 for /f "tokens=1,2 delims= " %%i in ('echo %%b')  do set myip=%%i
 )
-
 %say% "本机ip:%myip% 上报中" %font%
 %wait%
 %xsay%
 echo .>%myip%
 tftp %ip% put %myip% client/%myip%
-
 %say% "上报完毕!" %font%
 %wait%
 %xsay%

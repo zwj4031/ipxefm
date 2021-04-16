@@ -40,6 +40,9 @@ echo.
 echo 输入7，仅P2P部署[不分区]
 
 echo.
+echo 输入8，仅多播接收[不分区]
+
+echo.
 echo 输入b，强制终止当前任务
 
 echo.
@@ -69,6 +72,7 @@ if %user_input% equ 4 set job=startup.bat p2pgpt now&&echo 数据将丢失!回车三次确
 if %user_input% equ 5 set job=startup.bat dbmbr now&&echo 数据将丢失!回车三次确认&&pause&&pause&&pause&&set jobname=多播自动部署-MBR&&call :dojob
 if %user_input% equ 6 set job=startup.bat dbgpt now&&echo 数据将丢失!回车三次确认&&pause&&pause&&pause&&set jobname=多播自动部署-GPT&&call :dojob
 if %user_input% equ 7 set job=startup.bat btonly now&&set jobname=仅P2P部署[不分区]&&call :dojob
+if %user_input% equ 7 set job=startup.bat cloud now&&set jobname=仅多播接收[不分区]&&call :dojob
 if %user_input% equ b set job=startup.bat kill now&&set jobname=结束所有进程&&call :dojob
 if %user_input% equ c call :mvclient
 if %user_input% equ r call :reclient
