@@ -7,8 +7,10 @@ set say=%root%\pecmd.exe TEAM TEXT "
 set font="L300 T300 R768 B768 $30^|wait 2000 
 set wait=::::
 set xsay=::::
+set show=::::
 ) else (
 set say=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_led.zip -text
+set show=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_show.zip -text
 set xsay=start "" "X:\Program Files\WinXShell.exe" -code "QuitWindow(nil,'UI_LED')"
 set wait=%root%\pecmd.exe wait 2000
 )
@@ -88,6 +90,7 @@ cls
 for /f "tokens=1,2 delims=:" %%a in ('Ipconfig^|find /i "IPv4 地址 . . . . . . . . . . . . :"') do (
 for /f "tokens=1,2 delims= " %%i in ('echo %%b')  do set myip=%%i
 )
+%show% %myip% 
 %say% "本机ip:%myip% 上报中" %font%
 %wait%
 %xsay%

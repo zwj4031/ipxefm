@@ -1,4 +1,4 @@
-:::公用脚本1如果有两个参数，立即执行任务
+::公用脚本1如果有两个参数，立即执行任务
 @echo off
 set root=X:\windows\system32
 set wait=pecmd wait 2000 
@@ -7,14 +7,15 @@ set say=%root%\pecmd.exe TEAM TEXT "
 set font="L300 T300 R768 B768 $30^|wait 2000 
 set wait=::::
 set xsay=::::
+set show=::::
 ) else (
 set say=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_led.zip -text
+set show=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_show.zip -text
 set xsay=start "" "X:\Program Files\WinXShell.exe" -code "QuitWindow(nil,'UI_LED')"
 set wait=%root%\pecmd.exe wait 2000
 )
 if not "%2" == "" set args1=%1&&set args2=%2&&goto startjob
 ::公用脚本1结束
-
 
 :::创建符号链接，避免32位程序运行不正常
 mklink %temp%\cmd.exe  C:\windows\system32\cmd.exe
@@ -85,6 +86,7 @@ start "" "X:\windows\syswow64\client\DbntCli.exe" %ip% 21984
 for /f "tokens=1,2 delims=:" %%a in ('Ipconfig^|find /i "IPv4 地址 . . . . . . . . . . . . :"') do (
 for /f "tokens=1,2 delims= " %%i in ('echo %%b')  do set myip=%%i
 )
+%show% %myip% 
 %say% "本机ip:%myip% 上报中" %font%
 %wait%
 %xsay%
