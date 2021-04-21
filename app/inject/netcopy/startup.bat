@@ -1,21 +1,23 @@
 ::公用脚本1如果有两个参数，立即执行任务
 @echo off
 set root=X:\windows\system32
-set wait=pecmd wait 2000 
+set wait=pecmd wait 1000 
 if not exist "X:\Program Files\WinXShell.exe" (
 set say=%root%\pecmd.exe TEAM TEXT "
-set font="L300 T300 R768 B768 $30^|wait 2000 
+set font="L300 T300 R768 B768 $30^|wait 800 
 set wait=::::
 set xsay=::::
 set show=::::
 ) else (
 set say=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_led.zip -text
+:::set say=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_led.zip -wait 5 -scroll -top -text
 set show=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_show.zip -text
 set xsay=start "" "X:\Program Files\WinXShell.exe" -code "QuitWindow(nil,'UI_LED')"
-set wait=%root%\pecmd.exe wait 2000
+set wait=%root%\pecmd.exe wait 800
 )
 if not "%2" == "" set args1=%1&&set args2=%2&&goto startjob
 ::公用脚本1结束
+
 
 :::创建符号链接，避免32位程序运行不正常
 mklink %temp%\cmd.exe  C:\windows\system32\cmd.exe
@@ -80,7 +82,6 @@ if exist %root%\ShowDrives_Gui_x64.exe start "" %root%\ShowDrives_Gui_x64.exe --
 
 start "" "X:\windows\syswow64\client\DbntCli.exe" %ip% 21984
 ::::::::::::::公用脚本开始::::::::::::::
-
 ::上报本机ip到服务器
 for /f "tokens=1,2 delims=:" %%a in ('Ipconfig^|find /i "IPv4 地址 . . . . . . . . . . . . :"') do (
 for /f "tokens=1,2 delims= " %%i in ('echo %%b')  do set myip=%%i
@@ -94,10 +95,11 @@ tftp %ip% put %myip% client/%myip%
 %say% "上报完毕!" %font%
 %wait%
 %xsay%
-:::上报ip
-::::::执行任务
+
+
 ::nc受控服务端
 if exist %root%\nc.bat pecmd exec -hide %root%\nc.bat
+
 ::启动tightvnc
 %root%\pecmd.exe kill tvnserver.exe
 ::密码reg add "HKCU\SOFTWARE\TightVNC\Server" /v Password /t REG_BINARY /d F0E43164F6C2E373 /f
@@ -147,7 +149,7 @@ exit/b
 %say% "正在结束进程" %font%
 %wait%
 %xsay%
-for %%i in (cgix64.exe ghostx64.exe uftp.exe uftpd.exe netcopy64.exe btx64.exe tvnserver.exe diskgeniusx64.exe qbittorrent.exe) do (
+for %%i in (cgix64.exe ghostx64.exe uftp.exe uftpd.exe netcopy64.exe btx64.exe diskgeniusx64.exe qbittorrent.exe) do (
 %root%\pecmd.exe kill %%i
 )
 exit /b
@@ -256,18 +258,21 @@ exit /b
 :initdiskpart
 %xsay%
 mode con: cols=40 lines=10 
+::主盘
 if not "%masterdisk%" == "" (
 %say% "警告，即将分区,主硬盘%masterdisk%数据将丢失!!!!" %font%
-ping 127.0 -n 10 >nul
+call :daojishi
+%say% "正在分区……" %font%
 diskpart /s %masterdiskpartfile%
 ) else (
 %say% "检测不到主硬盘容量，请手工分区指定I盘[放镜像]" %font%
 %wait%
 )
 %xsay%
+::从盘
 if not "%slaverdisk%" == "" (
 %say% "警告，即将分区,从硬盘%slaverdisk%数据将丢失!!!!" %font%
-ping 127.0 -n 10 >nul
+call :daojishi
 %xsay%
 %say% "正在分区……" %font%
 diskpart /s %slaverdiskpartfile%
@@ -285,7 +290,7 @@ call :smbdp
 exit /b
 
 :checkp2pfile
-ping 127.0 -n 2 >nul
+%wait%
 if exist %p2pfile% ( 
 %say% "下载完成！准备还原%p2pfile%" %font%
 start "" %root%\cgix64 dp.ini
@@ -379,5 +384,13 @@ net use B: \\%ip%\pxe "" /user:guest
 %xsay%
 %xsay%
 exit /b
+
+:daojishi
+%xsay%
+for /l %%i in (15,-1,1) do (
+%say% "倒时计:%%i秒后开始分区，停止请关闭任务栏的黑框批处理或关掉关掉关掉关掉" %font%
+%wait%
+%xsay%
+)
 
 
