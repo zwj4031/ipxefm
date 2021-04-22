@@ -81,26 +81,49 @@ if exist %root%\ShowDrives_Gui_x64.exe start "" %root%\ShowDrives_Gui_x64.exe --
 %root%\pecmd.exe LINK %Desktop%\TightVNC Viewer,"%root%\tightvnc\tvnviewer.exe" 
 
 start "" "X:\windows\syswow64\client\DbntCli.exe" %ip% 21984
-::::::::::::::公用脚本开始::::::::::::::
 
+::::::::::::::公用脚本开始::::::::::::::
+::::::::::::::检测IP脚本开始::::::::::::::
+set n=0
+:checkip
+%xsay%
 ::上报本机ip到服务器
 for /f "tokens=1,2 delims=:" %%a in ('Ipconfig^|find /i "IPv4 地址 . . . . . . . . . . . . :"') do (
 for /f "tokens=1,2 delims= " %%i in ('echo %%b')  do set myip=%%i
 )
+ipconfig /renew>nul
+set /a n=%n%+1
+%say% "第%n%(15)次获取IP" %font% 
+%wait%::循环开始
+if not "%myip%" == "" goto getipok
+if "%n%" == "15" goto getipbuok
+goto checkip
+::获取ip成功
+:getipok
 %show% %myip% 
-%say% "本机ip:%myip% 上报中" %font%
+%say% "获取IP成功！本机ip:%myip% 上报中......" %font%
 %wait%
-%xsay%
 echo .>%myip%
 tftp %ip% put %myip% client/%myip%
+%xsay%
 %say% "上报完毕!" %font%
 %wait%
 %xsay%
+goto init
+
+::获取IP失败
+:getipbuok
+%say% "获取IP失败，DHCP服务不常，或没有网卡驱动" %font%
+%wait%
+%xsay%
+%show% %myip% 
+goto init
+::::::::::::::检测IP脚本结束::::::::::::::
 
 
+:init
 ::nc受控服务端
 if exist %root%\nc.bat pecmd exec -hide %root%\nc.bat
-
 ::启动tightvnc
 %root%\pecmd.exe kill tvnserver.exe
 ::密码reg add "HKCU\SOFTWARE\TightVNC\Server" /v Password /t REG_BINARY /d F0E43164F6C2E373 /f
@@ -374,7 +397,8 @@ exit /b
 %wait%
 %xsay%
 %xsay%
-goto runtask
+ipconfig /renew>nul
+goto smbcli
 )
 exit /b
 ::::::执行一次性尝试映射任务
@@ -389,10 +413,9 @@ exit /b
 :daojishi
 %xsay%
 for /l %%i in (15,-1,1) do (
-%say% "倒时计:%%i秒后开始分区，停止请关闭任务栏的黑框批处理或关掉关掉关掉关掉" %font%
+%say% "倒时计:%%i秒后开始分区!如需中断，请关闭批处理或关机..........." %font%
 %wait%
 %xsay%
 )
-
 
 
