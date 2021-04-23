@@ -5,9 +5,9 @@ set wait=pecmd wait 1000
 if not exist "X:\Program Files\WinXShell.exe" (
 set say=%root%\pecmd.exe TEAM TEXT "
 set font="L300 T300 R768 B768 $30^|wait 800 
-set wait=::::
-set xsay=::::
-set show=::::
+set wait=echo ...
+set xsay=echo ...
+set show=echo ...
 ) else (
 set say=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_led.zip -text
 :::set say=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_led.zip -wait 5 -scroll -top -text
