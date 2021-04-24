@@ -11,3 +11,6 @@ ipxeboot.pcbios和ipxeboot.efi为通用启动文件，各种网启启动器通�
 ![image](https://github.com/zwj4031/ipxefm/blob/main/bin/ipxefm.gif)
 
 应用视频https://www.bilibili.com/video/BV1Sf4y1x7ea
+
+如果pe无法取得IP地址是因为缺少网卡驱动，可以加入你的驱动目录到app\inject\default下的   drivers.7z
+或者直接把你的驱动包改名为drivers.7z

@@ -44,6 +44,7 @@ initrd http://${booturl}/app/inject/default/cgix64.exe cgix64.exe || #netcopyÍøÂ
 initrd http://${booturl}/app/inject/default/ShowDrives_Gui_x64.exe ShowDrives_Gui_x64.exe || #¾µÏñ¹ÒÔØ¹¤¾ß ÓĞÎÊÌâ¿ÉÉ¾³ı!
 initrd http://${booturl}/app/inject/default/DiskGeniusx64.exe DiskGeniusx64.exe || #Ó²ÅÌ·ÖÇø¹¤¾ß ÓĞÎÊÌâ¿ÉÉ¾³ı!
 initrd http://${booturl}/app/inject/default/btx64.exe btx64.exe || #BT·şÎñ¶Ë&¿Í»§¶Ë ÓĞÎÊÌâ¿ÉÉ¾³ı!
+initrd http://${booturl}/app/inject/default/drivers.7z drivers.7z || #×¢ÈëÇı¶¯ ²»ĞèÒª¿ÉÉ¾³ı
 iseq ${platform} pcbios && initrd http://${booturl}/ @ip=${booturl}@job=${job} || #ÉäÈëIPµØÖ· ÓĞÎÊÌâ¿ÉÉ¾³ı!
 iseq ${platform} efi && initrd -n @ip=${booturl}@job=${job} http://${booturl}/ || #ÉäÈëIPµØÖ· ÓĞÎÊÌâ¿ÉÉ¾³ı!
 #ÒÔÏÂÊÇ×Ô¶¨ÒåÉäÈëµÄÎÄ¼ş

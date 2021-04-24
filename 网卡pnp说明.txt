@@ -1,0 +1,2 @@
+如果pe无法取得IP地址是因为缺少网卡驱动，可以加入你的驱动目录到app\inject\default下的drivers.7z
+或者直接把你的驱动包改名为drivers.7z替换原文件
