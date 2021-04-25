@@ -8,11 +8,13 @@ set font="L300 T300 R768 B768 $30^|wait 800
 set wait=echo ...
 set xsay=echo ...
 set show=echo ...
+set xshow=echo ...
 ) else (
 set say=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_led.zip -text
 :::set say=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_led.zip -wait 5 -scroll -top -text
 set show=start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_show.zip -text
 set xsay=start "" "X:\Program Files\WinXShell.exe" -code "QuitWindow(nil,'UI_LED')"
+set xshow=start "" "X:\Program Files\WinXShell.exe" -code "QuitWindow(nil,'UI_show')"
 set wait=%root%\pecmd.exe wait 800
 )
 if not "%2" == "" set args1=%1&&set args2=%2&&goto startjob
@@ -104,6 +106,7 @@ if "%n%" == "15" goto getipbuok
 goto checkip
 ::获取ip成功
 :getipok
+%xshow%
 %show% %myip% 
 %say% "获取IP成功！本机ip:%myip% 上报中......" %font%
 %wait%
@@ -117,6 +120,7 @@ goto init
 
 ::获取IP失败
 :getipbuok
+%xshow%
 %say% "获取IP失败，DHCP服务不常，或没有网卡驱动" %font%
 %wait%
 %xsay%
