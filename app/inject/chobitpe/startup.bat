@@ -1,3 +1,5 @@
+mklink "X:\program files\winxshell.exe" X:\windows\winxshell.exe>nul
+mklink /d "X:\program files\wxsUI" X:\windows\wxsUI>nul
 ::公用脚本1如果有两个参数，立即执行任务
 @echo off
 set root=X:\windows\system32
