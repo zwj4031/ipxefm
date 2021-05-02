@@ -74,7 +74,7 @@ if exist %root%\ShowDrives_Gui_x64.exe start "" %root%\ShowDrives_Gui_x64.exe --
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,explorer.exe,B:\
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,"%programfiles%\explorer.exe", B:\
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,"%windir%\winxshell.exe", B:\
-%root%\pecmd.exe LINK %Desktop%\Ghost自动网克,"%root%\startup.bat",netghost,%root%\ghostx64.exe
+%root%\pecmd.exe LINK %Desktop%\Ghost自动网克,"%root%\startup.bat",netghost,%root%\ico\ghost32.ico
 %root%\pecmd.exe LINK %Desktop%\连接共享,"%root%\startup.bat",smbcli,%root%\ico\smbcli.ico
 %root%\pecmd.exe LINK %Desktop%\多播接收,"%root%\startup.bat",cloud,%root%\ico\uftpd.ico
 %root%\pecmd.exe LINK %Desktop%\多播发送,"%root%\uftp.exe",-R 800000,%root%\ico\uftp.ico
