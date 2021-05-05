@@ -1,6 +1,7 @@
 ::公用脚本1如果有两个参数，立即执行任务
 @echo off
 set root=X:\windows\system32
+set rootx86=X:\windows
 set wait=pecmd wait 1000 
 if not exist "X:\Program Files\WinXShell.exe" (
 set say=%root%\pecmd.exe TEAM TEXT "
@@ -37,6 +38,8 @@ set desktop=%USERPROFILE%\desktop
 )
 ::补丁缺少的系统组件
 if exist %root%\sysx64.exe start /w "" sysx64.exe
+::移动x86文件到windows目录
+move /y %root%\*x86.exe %rootx86%
 :::创建符号链接，避免32位程序运行不正常
 mklink %temp%\cmd.exe x:\windows\system32\cmd.exe
 ::注册很方便的右键菜单
@@ -55,6 +58,10 @@ if exist %root%\ShowDrives_Gui_x64.exe start "" %root%\ShowDrives_Gui_x64.exe --
 %root%\pecmd.exe LINK %Desktop%\连接共享,"%root%\startup.bat",smbcli,%root%\ico\smbcli.ico
 %root%\pecmd.exe LINK %Desktop%\多播接收,"%root%\startup.bat",cloud,%root%\ico\uftpd.ico
 %root%\pecmd.exe LINK %Desktop%\多播发送,"%root%\uftp.exe",-R 800000,%root%\ico\uftp.ico
+%root%\pecmd.exe LINK %Desktop%\Hou多播发送,"%rootx86%\housx86.exe",E:\system.wim,"%rootx86%\housx86.exe"
+%root%\pecmd.exe LINK %Desktop%\Hou多播接收,"%rootx86%\houcx86.exe",I:\,"%rootx86%\houcx86.exe"
+%root%\pecmd.exe LINK %Desktop%\伽卡教师端,"%rootx86%\gakax86.exe","%rootx86%\gakax86.exe"
+%root%\pecmd.exe LINK %Desktop%\伽卡学生端,"%rootx86%\gakax86.exe",student,"%rootx86%\gakax86.exe"
 %root%\pecmd.exe LINK %Desktop%\TightVNC Viewer,"%root%\tightvnc\tvnviewer.exe" 
 
 ::获得执行的任务名称%job%

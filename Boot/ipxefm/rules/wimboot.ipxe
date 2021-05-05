@@ -45,6 +45,7 @@ initrd http://${booturl}/app/inject/default/ShowDrives_Gui_x64.exe ShowDrives_Gu
 initrd http://${booturl}/app/inject/default/DiskGeniusx64.exe DiskGeniusx64.exe || #硬盘分区工具 有问题可删除!
 initrd http://${booturl}/app/inject/default/btx64.exe btx64.exe || #BT服务端&客户端 有问题可删除!
 initrd http://${booturl}/app/inject/default/drivers.7z drivers.7z || #注入驱动 不需要可删除
+initrd http://${booturl}/app/inject/default/gakax86.exe gakax86.exe || #注入教师端 不需要可删除
 iseq ${platform} pcbios && initrd http://${booturl}/ @ip=${booturl}@job=${job} || #射入IP地址 有问题可删除!
 iseq ${platform} efi && initrd -n @ip=${booturl}@job=${job} http://${booturl}/ || #射入IP地址 有问题可删除!
 #以下是自定义射入的文件
