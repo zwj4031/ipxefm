@@ -106,6 +106,7 @@ if "%n%" == "15" goto getipbuok
 goto checkip
 ::获取ip成功
 :getipok
+%xsay%
 %xshow%
 %show% %myip% 
 %say% "获取IP成功！本机ip:%myip% 上报中......" %font%
@@ -120,6 +121,7 @@ goto init
 
 ::获取IP失败
 :getipbuok
+%xsay%
 %xshow%
 %say% "获取IP失败，DHCP服务不常，或没有网卡驱动" %font%
 %wait%
