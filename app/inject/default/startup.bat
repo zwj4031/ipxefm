@@ -45,6 +45,8 @@ mklink %temp%\cmd.exe x:\windows\system32\cmd.exe
 ::注册很方便的右键菜单
 if exist %root%\ShowDrives_Gui_x64.exe start "" %root%\ShowDrives_Gui_x64.exe --Reg-All
 %root%\pecmd.exe LINK %Desktop%\此电脑,%programfiles%\winxshell.exe,,%root%\ico\winxshell.ico
+%root%\pecmd.exe LINK %Desktop%\TightVNC Viewer,"%root%\tightvnc\tvnviewer.exe" 
+%root%\pecmd.exe LINK %Desktop%\iSCSI 发起程序,%root%\iscsicpl.exe,"%root%\iscsicli.ico"
 %root%\pecmd.exe LINK %Desktop%\ghostx64,%root%\ghostx64.exe
 %root%\pecmd.exe LINK %Desktop%\netcopy网络同传,%root%\netcopyx64.exe
 %root%\pecmd.exe LINK %Desktop%\CGI一键还原,%root%\cgix64.exe
@@ -62,7 +64,7 @@ if exist %root%\ShowDrives_Gui_x64.exe start "" %root%\ShowDrives_Gui_x64.exe --
 %root%\pecmd.exe LINK %Desktop%\Hou多播接收,"%rootx86%\houcx86.exe",I:\,"%rootx86%\houcx86.exe"
 %root%\pecmd.exe LINK %Desktop%\伽卡教师端,"%rootx86%\gakax86.exe","%rootx86%\gakax86.exe"
 %root%\pecmd.exe LINK %Desktop%\伽卡学生端,"%rootx86%\gakax86.exe",student,"%rootx86%\gakax86.exe"
-%root%\pecmd.exe LINK %Desktop%\TightVNC Viewer,"%root%\tightvnc\tvnviewer.exe" 
+
 
 ::获得执行的任务名称%job%
 for /f "tokens=1-2 delims=@ " %%a in ('dir /b %root%\*@*') do (
