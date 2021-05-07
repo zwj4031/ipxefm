@@ -46,7 +46,7 @@ mklink %temp%\cmd.exe x:\windows\system32\cmd.exe
 if exist %root%\ShowDrives_Gui_x64.exe start "" %root%\ShowDrives_Gui_x64.exe --Reg-All
 %root%\pecmd.exe LINK %Desktop%\此电脑,%programfiles%\winxshell.exe,,%root%\ico\winxshell.ico
 %root%\pecmd.exe LINK %Desktop%\TightVNC Viewer,"%root%\tightvnc\tvnviewer.exe" 
-%root%\pecmd.exe LINK %Desktop%\iSCSI 发起程序,%root%\iscsicpl.exe,"%root%\iscsicli.ico"
+%root%\pecmd.exe LINK %Desktop%\iSCSI 发起程序,%root%\iscsicpl.exe,,%root%\ico\iscsicli.ico
 %root%\pecmd.exe LINK %Desktop%\ghostx64,%root%\ghostx64.exe
 %root%\pecmd.exe LINK %Desktop%\netcopy网络同传,%root%\netcopyx64.exe
 %root%\pecmd.exe LINK %Desktop%\CGI一键还原,%root%\cgix64.exe
