@@ -131,6 +131,9 @@ isset ${${ext}aname} && set titlea ${${ext}aname} || set titlea ${${ext}a}
 isset ${${ext}bname} && set titleb ${${ext}bname} || set titleb ${${ext}b}
 isset ${${ext}cname} && set titlec ${${ext}cname} || set titlec ${${ext}c}
 isset ${${ext}dname} && set titled ${${ext}dname} || set titled ${${ext}d}
+isset ${${ext}ename} && set titlee ${${ext}cname} || set titlee ${${ext}e}
+isset ${${ext}fname} && set titlef ${${ext}dname} || set titlef ${${ext}f}
+isset ${${ext}gname} && set titleg ${${ext}dname} || set titleg ${${ext}g}
 menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
    item --gap -- Choose  ${ext}file 
    item --key 1 ${ext}1          1. ${title1}
@@ -148,6 +151,9 @@ menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
    item --key b ${ext}b          b. ${titleb}
    item --key c ${ext}c          c. ${titlec}
    item --key d ${ext}d          d. ${titled}
+   item --key e ${ext}e          e. ${titlee}
+   item --key f ${ext}f          f. ${titlef}
+   item --key g ${ext}g          g. ${titleg}
    item --key m menu             M. Back to menu
   choose --timeout ${bootfile-timeout} --default ${ext}${${ext}bootfile-default} selected ||
   set sel ${selected} ||
