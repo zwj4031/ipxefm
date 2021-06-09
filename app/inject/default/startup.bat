@@ -197,6 +197,13 @@ for %%i in (cgix64.exe ghostx64.exe uftp.exe uftpd.exe netcopy64.exe btx64.exe d
 )
 exit /b
 
+
+:gaka
+if exist "%rootx86%\gakax86.exe" start "" /min "%rootx86%\gakax86.exe" student
+call :smbcli
+exit /b
+
+
 :houmbr
 set dbfile=i:\system.wim
 set diskpartdir=mbr
@@ -420,28 +427,31 @@ cd /d "X:\windows\system32" >nul
 netcopyx64.exe
 exit /b
 
-::::::执行多次尝试映射共享任务
+::::::执行5次尝试映射共享任务
 :smbcli
+%xsay%
 net use * /delete /y >nul
-%say% "连接\\%ip%\pxe为B盘" %font%
-%wait%
-%xsay%
+set /a n=%n%+1
+%say% "第%n%(5)次连接\\%ip%\pxe为B盘"
+if "%n%" == "5" %xsay%&&%say% "到达尝试次数上限!" &&%wait%&&%xsay%&&exit /b
 net use B: \\%ip%\pxe "" /user:guest
-if "%errorlevel%" == "0" ( 
-%say% "连接服务器成功！进入桌面!" %font%
-%wait%
+if "%errorlevel%" == "0" (
 %xsay%
+%say% "连接服务器成功！进入桌面!"
+%wait%
 %xsay%
 exit /b
 ) else (
-%say% "连接超时！请确认共享名为PXE或PE未加载网卡驱动!" %font%
 %wait%
 %xsay%
-%xsay%
+%say% "连接超时！请确认共享名为PXE或PE未加载网卡驱动!"
 ipconfig /renew>nul
+%wait%
+%xsay%
 goto smbcli
 )
 exit /b
+
 ::::::执行一次性尝试映射任务
 :smbdp
 net use * /delete /y >nul
