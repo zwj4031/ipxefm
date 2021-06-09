@@ -62,7 +62,7 @@ if exist %root%\ShowDrives_Gui_x64.exe start "" %root%\ShowDrives_Gui_x64.exe --
 %root%\pecmd.exe LINK %Desktop%\多播发送,"%root%\uftp.exe",-R 800000,%root%\ico\uftp.ico
 %root%\pecmd.exe LINK %Desktop%\Hou多播发送,"%rootx86%\housx86.exe",E:\system.wim,"%rootx86%\housx86.exe"
 %root%\pecmd.exe LINK %Desktop%\Hou多播接收,"%rootx86%\houcx86.exe",I:\,"%rootx86%\houcx86.exe"
-%root%\pecmd.exe LINK %Desktop%\伽卡教师端,"%rootx86%\gakax86.exe","%rootx86%\gakax86.exe"
+%root%\pecmd.exe LINK %Desktop%\伽卡教师端,"%rootx86%\gakax86.exe",,"%rootx86%\gakax86.exe"
 %root%\pecmd.exe LINK %Desktop%\伽卡学生端,"%rootx86%\gakax86.exe",student,"%rootx86%\gakax86.exe"
 
 
