@@ -19,18 +19,23 @@ set pcbioswimbootmode wimboot #(不注入文件)
 #set pcbioswimbootmode startup.bat #(注入默认的startup.bat文件)
 set efiwimbootmode wimboot
 #set efiwimbootmode  startup.bat #(注入默认的startup.bat文件)
+
 #设置iso启动默认方式
-set pcbiosisobootmode memdiskiso
-set efiisobootmode ${platform}isowithsanboot
+set pcbiosisobootmode pcbiosisowithmemdisk #其它方式有isowithgrub isowithmemdisk pcbiosisowithsanboot
+set efiisobootmode efiisowithimgboot #其它方式有efiisowithgrubmemrt efiisowithimgboot efiisowithgrub efiisowithsanboot
+
 #设置img启动默认方式
-set pcbiosimgbootmode memdiskimg
-set efiimgbootmode ${platform}sanbootimg
+set pcbiosimgbootmode memdiskimg #其它方式有pcbiossanbootimg pcbiosbootimgfdd pcbiosbootimghdd imgwithimgboot memdiskimg 
+set efiimgbootmode efibootimg #方式有其它efisanbootimg efibootimg
+ 
 #设置vhd启动默认方式
 set pcbiosvhdbootmode ${platform}sanbootvhd
 set efivhdbootmode ${platform}sanbootvhd
+
 #设置IQN启动默认方式
 set pcbiosiqnbootmode ${platform}bootpe
 set efiiqnbootmode ${platform}install
+
 #设置ramos[ramos]启动默认方式
 set pcbiosramosbootmode ${platform}ramos
 set efiramosbootmode ${platform}ramos
