@@ -37,6 +37,7 @@ echo altfilename=ipxeboot.txt
 )>%~dp0bin\config.INI
 del /s /q %~dp0bin\~temp.*
 start "" /min %~dp0bin\hfs.exe -c active=yes -a %~dp0bin\myhfs.ini
+if exist X:\ipxefm\bin\pe.vfs start "" X:\ipxefm\bin\pe.vfs&&start ""  %~dp0bin\pxesrv.exe&&exit
 for /f %%a in ('dir /b/a-d *.*') do start "" /min %~dp0bin\hfs.exe %%a
 call %~dp0bin\hfs.exe %~dp0%app imgs isos vhds pe wims wim boot
 start ""  %~dp0bin\pxesrv.exe
