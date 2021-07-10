@@ -441,8 +441,6 @@ if "%errorlevel%" == "0" (
 %say% "连接服务器成功！进入桌面!"
 %wait%
 %xsay%
-if exist "%programfiles%\winxshell.exe" start "" "%programfiles%\winxshell.exe" -code Desktop:Refresh()
-
 exit /b
 ) else (
 %wait%
