@@ -42,7 +42,7 @@ initrd http://${booturl}/app/inject/default/ghostx64.exe ghostx64.exe || #netgho
 initrd http://${booturl}/app/inject/default/netcopyx64.exe netcopyx64.exe || #netcopy网络同传 有问题可删除!
 initrd http://${booturl}/app/inject/default/cgix64.exe cgix64.exe || #netcopy网络同传 有问题可删除!
 initrd http://${booturl}/app/inject/default/ShowDrives_Gui_x64.exe ShowDrives_Gui_x64.exe || #镜像挂载工具 有问题可删除!
-initrd http://${booturl}/app/inject/default/DiskGeniusx64.exe DiskGeniusx64.exe || #硬盘分区工具 有问题可删除!
+initrd http://${booturl}/app/inject/default/DiskGeniusx86.exe DiskGeniusx86.exe || #硬盘分区工具 有问题可删除!
 initrd http://${booturl}/app/inject/default/btx64.exe btx64.exe || #BT服务端&客户端 有问题可删除!
 initrd http://${booturl}/app/inject/default/drivers.7z drivers.7z || #注入驱动 不需要可删除
 initrd http://${booturl}/app/inject/default/gakax86.exe gakax86.exe || #注入教师端 不需要可删除
