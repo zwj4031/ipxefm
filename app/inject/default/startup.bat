@@ -52,7 +52,7 @@ if exist %root%\ShowDrives_Gui_x64.exe start "" %root%\ShowDrives_Gui_x64.exe --
 %root%\pecmd.exe LINK %Desktop%\CGI一键还原,%root%\cgix64.exe
 %root%\pecmd.exe LINK %Desktop%\BT客户端,%root%\btx64.exe
 %root%\pecmd.exe LINK %Desktop%\ImDisk_Gui镜像挂载,%root%\ShowDrives_Gui_x64.exe
-%root%\pecmd.exe LINK %Desktop%\DG分区工具,%root%\DiskGeniusx64.exe
+::%root%\pecmd.exe LINK %Desktop%\DG分区工具,%root%\DiskGeniusx64.exe
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,explorer.exe,B:\
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,"%programfiles%\explorer.exe", B:\
 %root%\pecmd.exe LINK %Desktop%\文件共享盘,"%windir%\winxshell.exe", B:\
@@ -64,6 +64,7 @@ if exist %root%\ShowDrives_Gui_x64.exe start "" %root%\ShowDrives_Gui_x64.exe --
 %root%\pecmd.exe LINK %Desktop%\Hou多播接收,"%rootx86%\houcx86.exe",I:\,"%rootx86%\houcx86.exe"
 %root%\pecmd.exe LINK %Desktop%\伽卡教师端,"%rootx86%\gakax86.exe",,"%rootx86%\gakax86.exe"
 %root%\pecmd.exe LINK %Desktop%\伽卡学生端,"%rootx86%\gakax86.exe",student,"%rootx86%\gakax86.exe"
+%root%\pecmd.exe LINK %Desktop%\DG分区工具,"%rootx86%\DiskGeniusx86.exe"
 
 
 ::获得执行的任务名称%job%
