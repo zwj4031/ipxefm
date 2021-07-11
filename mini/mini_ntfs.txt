@@ -1,5 +1,9 @@
+\ipxefm\bin\hfs.exe
+\ipxefm\bin\hfs.ini
+\ipxefm\bin\pe.vfs
 \Program Files\BatchTools
 \Program files\PENetwork
+\Windows\System32\browcli.dll
 \Windows\System32\systray.exe
 \Windows\System32\ico
 \Windows\System32\chkdsk.exe
