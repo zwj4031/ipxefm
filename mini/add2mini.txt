@@ -1,0 +1,2 @@
+add bin\pecmd.lua "\Program Files\pecmd.lua"
+add bin\DRIVERS  \Windows\system32\config\DRIVERS
