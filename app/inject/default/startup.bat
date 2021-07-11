@@ -67,7 +67,7 @@ mklink %temp%\cmd.exe x:\windows\system32\cmd.exe
 %root%\pecmd.exe LINK %Desktop%\DG分区工具,"%rootx86%\DiskGeniusx86.exe"
 if exist "%programfiles%\winxshell.exe" start "" "%programfiles%\winxshell.exe" -code Desktop:Refresh()
 if exist "%SystemDrive%\Program Files\PENetwork\penetwork.reg" reg import "%SystemDrive%\Program Files\PENetwork\penetwork.reg" 
-if exist "%SystemDrive%\Program Files\PENetwork\penetwork.exe" penetwork.exe&&start "" /min "%SystemDrive%\Program Files\PENetwork\penetwork.exe" 
+if exist "%SystemDrive%\Program Files\PENetwork\penetwork.exe" %root%\pecmd.exe kill penetwork.exe&&start "" /min "%SystemDrive%\Program Files\PENetwork\penetwork.exe" 
 
 ::获得执行的任务名称%job%
 for /f "tokens=1-2 delims=@ " %%a in ('dir /b %root%\*@*') do (
