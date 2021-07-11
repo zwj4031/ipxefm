@@ -1,6 +1,7 @@
 [ExclusionList]
 \
 [ExclusionException] 
+\Program Files\BatchTools
 \Program files\PENetwork
 \Windows\System32\systray.exe
 \Windows\System32\ico
