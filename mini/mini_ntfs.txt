@@ -1,18 +1,3 @@
-\windows\system32\cryptnet.dll
-\windows\system32\drivers\hwpolicy.sys
-\Windows\System32\d3d12.dll
-\Windows\System32\CoreMessaging.dll
-\Windows\System32\CoreUIComponents.dll
-\Windows\System32\d3d10warp.dll
-\Windows\System32\D3DCompiler_47.dll
-\Windows\System32\dwm.exe
-\Windows\System32\dwmcore.dll
-\Windows\System32\dwminit.dll
-\Windows\System32\dwmredir.dll
-\Windows\System32\ISM.dll
-\Windows\System32\pdh.dll
-\Windows\System32\uDWM.dll
-\Windows\System32\Windows.UI.Immersive.dll
 \ipxefm\bin\hfs.exe
 \ipxefm\bin\hfs.ini
 \ipxefm\bin\pe.vfs
@@ -54,9 +39,9 @@
 \Program Files\wxsUI\UI_Calendar.zip
 \Program Files\wxsUI\UI_Launcher.zip
 \Program Files\wxsUI\UI_LED.zip
-\Program Files\wxsUI\UI_LED原.zip
-\Program Files\wxsUI\UI_LED改备.zip
-\Program Files\wxsUI\UI_LED透明.zip
+\Program Files\wxsUI\UI_LEDԭ.zip
+\Program Files\wxsUI\UI_LED�ı�.zip
+\Program Files\wxsUI\UI_LED͸��.zip
 \Program Files\wxsUI\UI_Logon.zip
 \Program Files\wxsUI\UI_NotifyInfo.zip
 \Program Files\wxsUI\UI_Resolution.zip
