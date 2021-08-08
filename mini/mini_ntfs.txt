@@ -17,7 +17,9 @@
 \Windows\System32\findstr.exe
 \Windows\System32\cacls.exe
 \Windows\smb.bat
+
 \Program files\Explorer.exe
+
 \Program files\LED_TEST.bat
 \Program files\LUA_TEST.bat
 \Program files\UI_TEST.bat
