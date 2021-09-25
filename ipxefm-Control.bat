@@ -42,6 +42,9 @@ echo ÊäÈë7£¬½öP2P²¿Êğ[²»·ÖÇø]
 echo.
 echo ÊäÈë8£¬½ö¶à²¥½ÓÊÕ[²»·ÖÇø]
 
+echo .
+echo ÊäÈë9, ½öHOU¶à²¥½ÓÊÕ[²»·ÖÇø]
+
 echo.
 echo ÊäÈëb£¬Ç¿ÖÆÖÕÖ¹µ±Ç°ÈÎÎñ
 
@@ -73,6 +76,7 @@ if %user_input% equ 5 set job=startup.bat dbmbr now&&echo Êı¾İ½«¶ªÊ§!»Ø³µÈı´ÎÈ·È
 if %user_input% equ 6 set job=startup.bat dbgpt now&&echo Êı¾İ½«¶ªÊ§!»Ø³µÈı´ÎÈ·ÈÏ&&pause&&pause&&pause&&set jobname=¶à²¥×Ô¶¯²¿Êğ-GPT&&call :dojob
 if %user_input% equ 7 set job=startup.bat btonly now&&set jobname=½öP2P²¿Êğ[²»·ÖÇø]&&call :dojob
 if %user_input% equ 8 set job=startup.bat cloud now&&set jobname=½ö¶à²¥½ÓÊÕ[²»·ÖÇø]&&call :dojob
+if %user_input% equ 9 call :houc
 if %user_input% equ b set job=startup.bat kill now&&set jobname=½áÊøËùÓĞ½ø³Ì&&call :dojob
 if %user_input% equ c call :mvclient
 if %user_input% equ r call :reclient
@@ -98,6 +102,16 @@ for /f %%i in ('dir /b %~dp0client\') do (
 echo startup.bat "%%command%%" shell| %~dp0bin\nc64.exe -t %%i  6086
 )
 exit /b
+
+:houc
+echo HOU¶à²¥µ½I:\
+set command=start "" houcx86 I:\
+set jobname=Ö´ĞĞÖ¸ÁîÎª%command% command
+for /f %%i in ('dir /b %~dp0client\') do (
+echo startup.bat "%%command%%" shell| %~dp0bin\nc64.exe -t %%i  6086
+)
+exit /b
+
 
 :mvclient
 if not exist %~dp0client\local md %~dp0client\local
