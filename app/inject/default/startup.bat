@@ -65,7 +65,7 @@ mklink %temp%\cmd.exe x:\windows\system32\cmd.exe
 %root%\pecmd.exe LINK %Desktop%\伽卡教师端,"%rootx86%\gakax86.exe",,"%rootx86%\gakax86.exe"
 %root%\pecmd.exe LINK %Desktop%\伽卡学生端,"%rootx86%\gakax86.exe",student,"%rootx86%\gakax86.exe"
 %root%\pecmd.exe LINK %Desktop%\DG分区工具,"%rootx86%\DiskGeniusx86.exe"
-if exist "%programfiles%\winxshell.exe" start "" "%programfiles%\winxshell.exe" -code Desktop:Refresh()
+::if exist "%programfiles%\winxshell.exe" start "" "%programfiles%\winxshell.exe" -code Desktop:Refresh()
 %root%\pecmd.exe kill penetwork.exe
 if exist "%SystemDrive%\Program Files\PENetwork\penetwork.reg" reg import "%SystemDrive%\Program Files\PENetwork\penetwork.reg" 
 if exist "%SystemDrive%\Program Files\PENetwork\penetwork.exe" start "" /min "%SystemDrive%\Program Files\PENetwork\penetwork.exe" 
