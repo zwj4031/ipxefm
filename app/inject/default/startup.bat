@@ -121,6 +121,7 @@ goto checkip
 :getipok
 %xsay%
 %xshow%
+::显示ip-newbeepe中要注释掉下面一行
 %show% %myip% 
 %say% "获取IP成功！本机ip:%myip% 上报中......" %font%
 %wait%
@@ -139,12 +140,14 @@ goto init
 %say% "获取IP失败，DHCP服务不常，或没有网卡驱动" %font%
 %wait%
 %xsay%
+::显示ip-newbeepe中要注释掉下面一行
 %show% %myip% 
 goto init
 ::::::::::::::检测IP脚本结束::::::::::::::
 
 
 :init
+if exist "X:\Program Files\wxsUI\UI_info\nbinfo.lua" start "" "X:\Program Files\wxsUI\UI_info\nbinfo.lua"
 ::nc受控服务端
 if exist %root%\nc.bat pecmd exec -hide %root%\nc.bat
 ::启动tightvnc
@@ -473,4 +476,19 @@ for /l %%i in (15,-1,1) do (
 %xsay%
 )
 
+:xrun
+%xsay%
+%say% "下载并运行%ip%上的%args2%" %font%
+if exist X:\%args2% del /q X:\%args2%
+tftp -i %ip% get %args2% X:\%args2%
+if exist X:\%args2% start "" X:\%args2%
+%xsay%
+exit /b
 
+:xdown
+%xsay%
+%say% "下载%ip%上的%args2%" %font%
+if exist X:\%args2% del /q X:\%args2%
+tftp -i %ip% get %args2% X:\%args2%
+%xsay%
+exit /b
