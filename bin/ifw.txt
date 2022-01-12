@@ -1,0 +1,156 @@
+MulticastSender
+Instructions
+TeraByte Unlimited
+Las Vegas, Nevada, USA
+http://www.terabyteunlimited.com
+MulticastSender Page 2
+Table of Contents
+INTRODUCTION & REQUIREMENTS....................................................................................... 3
+REQUIREMENTS ....................................................................................................................... 3
+USING MULTICASTSENDER IN WINDOWS ............................................................................ 3
+SETTINGS ................................................................................................................................ 4
+CONTROL & LOG ...................................................................................................................... 5
+CLIENTS .................................................................................................................................. 5
+USING MULTICASTSENDER IN LINUX.................................................................................... 7
+CONNECTING TO MULTICASTSENDER ................................................................................. 8
+USING IMAGE FOR WINDOWS .................................................................................................... 8
+USING IMAGE FOR LINUX .......................................................................................................... 9
+MulticastSender Page 3
+Introduction & Requirements
+MulticastSender is an easy to use program provided by TeraByte Unlimited to facilitate
+multicasting backup images. This allows you to deploy or restore many systems simultaneously
+with reduced network bandwidth.
+Requirements
+• The Windows version of MulticastSender requires an NT-based version of Windows.
+• The Windows (or third-party) firewall may need to be opened to allow the required
+network traffic.
+• Image for Windows or Image for Linux version 2.96 or later.
+• A working knowledge of multicasting and its network requirements and configuration.
+Using MulticastSender in Windows
+After downloading the MulticastSender zip file, extract the contents to the folder of your choice.
+This folder contains the license and documentation files as well as the Windows program files:
+multicastsender.exe Windows x86 version
+multicastsender64.exe Windows x64 version
+The programs do not require elevated privileges and can be run directly from Explorer or a
+Command Prompt.
+If desired, command line parameters can be specified (parameters not specified will use default
+values):
+multicastsender <filename> <multicastsessionname> <password> <autostart>
+<packetsize> <tcpport> <multicastaddress> <multicastport> <packetdelay>
+<resolverport>
+For example:
+multicastsender G:\Backups\Win7x64-Base Office pswd 5
+Any parameters that contain spaces must be surrounded by quotes.
+Note: The server will start automatically when command line parameters are used.
+MulticastSender Page 4
+The MulticastSender window consists of three main sections: settings, control & log, and clients.
+Settings
+Settings can be accessed by selecting the item and clicking Edit or by double-clicking the item.
+You normally just need to supply the filename, session name (if used), and password (if used)
+as the default values for the rest of the settings will work in most cases.
+Filename – Browse for the Full image file (.tbi) to use (incremental and differential images are
+not supported). When selected, the filename and size will be displayed.
+Session Name – Specify the session name. Leave blank to not use a session name.
+Password – Specify the password for the session. Leave blank to not use a password.
+Auto Start – If you wish MulticastSender to automatically start multicasting once a certain
+number of clients connect, specify that number here. Set to 0 to disable auto start. Use a
+negative value to have the program exit after the multicast session ends.
+MulticastSender Page 5
+TCP Port – Specify the TCP port number to use. The default is 0 to let the OS choose an
+unused port.
+Multicast Address – Specify the multicast address to use. This address must be in the
+allowed range for multicasting. The default is 239.198.10.10.
+Multicast Port – Specify the multicast port number to use. The default is 0 to let the OS
+choose an unused port.
+Packet Size – Specify the packet size to use. The default is 1472. Better performance may be
+achieved by using a larger packet size. The maximum size is around 65000.
+Packet Delay – Specify the delay value that should be used between sending each packet.
+The default is 0 (no delay). The maximum delay value is 0.1 (100ms).
+Resolver Port – Specify the port the client can use to resolve the TCP port by Session Name.
+This makes it easy to have a single server running multiple instances. The default is 31527.
+Control & Log
+Log entries are displayed in the log box. Server and multicasting status are indicated as active
+(green) or inactive (red).
+Start Server – Starts the multicast server. If any required conditions are not met the issues
+will be logged.
+Server IPs – Click to display a dialog showing the IP addresses of the server.
+Start Multicast – Starts the multicast operation. Events will be shown in the log area.
+Progress is indicated in the title bar and on the progress bar just above the Clients area. Once
+started, this button will change to Stop Multicast.
+Exit – Exits the program.
+Clear Log – This small button is located just above the top-left of the log box (under the
+program icon). Click it to clear the log.
+Pause Multicast – This button is located just above the top-right of the log box. Click it to
+pause multicasting. Any clients that are behind and requesting data will still be sent the data
+while paused.
+Clients
+Lists connected clients and shows status and details for each.
+Disconnect Client – Disconnects the client currently selected in the list. Clients can also be
+disconnected by right-clicking on them in the list and selecting Disconnect from the pop-up
+menu. From the client side you can disconnect by canceling the operation in Image for Windows
+or Image for Linux.
+MulticastSender Page 6
+An example is shown below with a validation in progress with two clients.
+MulticastSender Page 7
+Using MulticastSender in Linux
+After downloading the MulticastSender zip file, extract the contents to the folder of your choice.
+This folder contains the license and documentation files as well as the Linux program file:
+multicastsender Linux x86 console version
+From Linux, start a terminal and run the program. The main menu will be displayed. In the
+screenshot below the program is running in Ubuntu.
+Note: The Live Linux environment of Image for Linux does not support running multicastsender. A normal
+Linux installation is required.
+The settings available are the same as those detailed for the Windows version. To edit a setting,
+type its corresponding number and press Enter. Then type in the new value and press Enter.
+The menu will be refreshed with the new value.
+You can also specify the settings as command line parameters when you run the program.
+Parameters not specified will use default values. You will need to specify the filename extension
+if it’s not .tbi (e.g. .TBI).
+multicastsender <filename> <multicastsessionname> <password> <autostart>
+<packetsize> <tcpport> <multicastaddress> <multicastport> <packetdelay>
+<resolverport>
+For example:
+multicastsender /backups/win7x64-base office
+Note: The server will start automatically when command line parameters are used.
+MulticastSender Page 8
+To start the server, type S and press Enter.
+From this secondary menu you can select from the following options:
+Stop TCP Server – Stop the server and return to the main menu.
+Multicast Start – Start the multicast operation. After the operation starts this option will
+change to Multicast Stop.
+List Clients – Display a list of connected clients along with status and details. An example is
+shown below:
+Drop Client – Select a client to drop by entering its ID number.
+IP List – Display the IP addresses of the server.
+Quit – Exit the program.
+Connecting to MulticastSender
+You can connect to MulticastSender using either Image for Windows or Image for Linux. The
+operation type can be a restore or a validation.
+Using Image for Windows
+/f:\\\server[:resolverport]*tcpport*sessionname*password
+MulticastSender Page 9
+Examples:
+imagew /v /f:\\\192.168.0.16**session name*
+imagew /v /f:\\\192.168.0.16*12345**
+imagew /v /f:"\\\OfficeServer**Win8 Clean*pswd"
+imagew /r /f:\\\192.168.0.16**Win7Base* /d:w0
+imagew /r /f:\\\MyServer:12345**Custom Resolver Port Session* /d:w0
+Use quotes (around the entire /f switch) if any of the values contain a space. Default values will
+be used for resolverport, sessionname, and password if not specified. resolverport only applies
+when tcpport is zero. In addition to the server, at minimum, you must provide either the tcpport
+or sessionname.
+Note: If using Image for Windows from TBWinPE/RE you will need to disable the Windows firewall to
+allow the connection. This can be done via TBLauncher (File menu) or by selecting the applicable option
+when creating the build.
+Using Image for Linux
+--f:\\\\\\server*port*sessionname*password
+Examples:
+imagel -v --f:\\\\\\192.168.0.16**session name*
+imagel -v --f:\\\\\\192.168.0.16*12345**
+imagel -v --f:"\\\\\\OfficeServer**Win8 Clean*pswd"
+imagel -r --f:\\\\\\192.168.0.16**Win7Base* --d:l0
+imagew -r --f:\\\\\\MyServer:12345**Custom Resolver Port Session* /d:w0
+Use quotes (around the entire –f switch) if any of the values contain a space. Default values will
+be used for resolverport, sessionname, and password if not specified. resolverport only applies
+when tcpport is zero. In addition to the server, at minimum, you must provide either the tcpport
+or sessionname.

@@ -23,6 +23,7 @@ echo ==============================
 echo 输入7，仅P2P部署[不分区]
 echo 输入8，仅多播接收[不分区]
 echo 输入9, 仅HOU多播接收[不分区]
+echo 输入i, 仅IFW多播接收[不分区]
 echo ==============================
 
 echo 输入s，自定义执行命令[CMD命令]
@@ -56,11 +57,13 @@ if %user_input% equ k call :vncclient
 if %user_input% equ m call :menu
 if %user_input% equ x call :xrun
 if %user_input% equ d call :xdown
+if %user_input% equ i set job=startup.bat ifw now&&set jobname=仅多播接收[不分区]&&call :dojob
 goto menu
 
 :dojob
 echo 执行%jobname%任务
 for /f %%i in ('dir /b %~dp0client\') do (
+echo %%i执行%jobname%任务
 echo %%job%%| %~dp0bin\nc64.exe -t %%i  6086
 )
 exit /b
@@ -104,9 +107,12 @@ echo HOU多播到I:\
 set command=start "" houcx86 I:\
 set jobname=执行指令为%command% command
 for /f %%i in ('dir /b %~dp0client\') do (
+echo %%i执行%command%
 echo startup.bat "%%command%%" shell| %~dp0bin\nc64.exe -t %%i  6086
 )
 exit /b
+
+
 
 
 :mvclient
