@@ -1,3 +1,7 @@
+imagew64.exe /r /o /f:\\\10.10.10.88**1* /d:w0 /rb:0 还原完成不做任何操作
+imagew64.exe /r /o /f:\\\10.10.10.88**1* /d:w0 /rb:1 还原完成自动重启
+imagew64.exe /r /o /f:\\\10.10.10.88**1* /d:w0 /rb:8 还原完成自动关机
+
 MulticastSender
 Instructions
 TeraByte Unlimited
