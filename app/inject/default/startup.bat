@@ -497,6 +497,9 @@ exit /b
 :ifw
 %xsay%
 %say% "连接%ip%上名称为mousedos的IFW多播服务器" %font%
-start "" imagew64 /r /f:\\\%ip%**mousedos*
+start "" imagew64 /r /o /f:\\\%ip%**mousedos* /d:w0 /rb:0
+rem imagew64.exe /r /o /f:\\\10.10.10.88**1* /d:w0 /rb:0 还原完成不做任何操作
+rem imagew64.exe /r /o /f:\\\10.10.10.88**1* /d:w0 /rb:1 还原完成自动重启
+rem imagew64.exe /r /o /f:\\\10.10.10.88**1* /d:w0 /rb:8 还原完成自动关机
 %xsay%
 exit /b
