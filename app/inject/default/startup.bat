@@ -493,9 +493,10 @@ tftp -i %ip% get %args2% X:\%args2%
 %xsay%
 exit /b
 
+
 :ifw
 %xsay%
 %say% "连接%ip%上名称为mousedos的IFW多播服务器" %font%
-start "" imagew64 /v /f:\\\%ip%**mousedos*
+start "" imagew64 /r /f:\\\%ip%**mousedos*
 %xsay%
 exit /b
