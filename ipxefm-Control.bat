@@ -83,7 +83,7 @@ echo 输入指令:[包括但不限于format、porn]
 echo 关机指令:wpeutil shutdown
 echo 重启指令:wpeutil reboot
 echo 格式化指令:format /q /x /y I:
-set /p command=请输入：
+if "%command%" == "" set /p command=请输入：
 set jobname=执行指令为%command% command
 for /f %%i in ('dir /b %~dp0client\') do (
 echo %%i执行%command%
@@ -158,12 +158,14 @@ cls
 echo 输入1，什么都不做
 echo 输入2，恢复后重启
 echo 输入3，恢复后关机
+echo 输入4, 只启动imagew64
 echo ==============================
 echo 输入0，返回主菜单
 set /p user_input=IFW多播还原完成后执行什么操作？:
 if %user_input% equ 1 set job=startup.bat ifw now 0&&set jobname=ifw多播接收[恢复后什么都不做]&&call :dojob
 if %user_input% equ 2 set job=startup.bat ifw now 1&&set jobname=ifw多播接收[恢复后重启]&&call :dojob
 if %user_input% equ 3 set job=startup.bat ifw now 8&&set jobname=ifw多播接收[恢复后关机]&&call :dojob
+if %user_input% equ 4 set command=imagew64&&goto shell
 if %user_input% equ 0 call :menu
 
 
