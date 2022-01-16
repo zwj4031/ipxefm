@@ -19,13 +19,13 @@ echo 输入3，全自动分区-P2P部署[MBR]
 echo 输入4，全自动分区-P2P部署[GPT]
 echo 输入5，全自动分区-多播部署[MBR]
 echo 输入6，全自动分区-多播部署[GPT]
+echo 输入z  磁盘操作[清空分区、格式化]
 echo ==============================
 echo 输入7，仅P2P部署[不分区]
 echo 输入8，仅多播接收[不分区]
 echo 输入9, 仅HOU多播接收[不分区]
 echo 输入i, IFW多播接收-i[0 1 8]
 echo ==============================
-
 echo 输入s，自定义执行命令[CMD命令]
 echo 输入x，下载文件并执行[PE客户端]
 echo 输入d  下载文件到PE  [PE客户端]
@@ -36,9 +36,12 @@ echo 输入r，恢复上一次客户机列表
 echo ==============================
 echo 输入k，控制PE客户端桌面
 echo ==============================
+echo [按回车刷新]
 for /f %%i in ('dir /b %~dp0client\') do (
 @echo 在线客户端%%i  
 )
+
+set user_input=no
 set /p user_input=请输入：
 if %user_input% equ 1 set job=startup.bat netghost now&&set jobname=网络克隆-ghost&&call :dojob
 if %user_input% equ 2 set job=startup.bat netcopy now&&set jobname=网络同传-netcopy&&call :dojob
@@ -58,9 +61,11 @@ if %user_input% equ m call :menu
 if %user_input% equ x call :xrun
 if %user_input% equ d call :xdown
 if %user_input% equ i call :ifw
+if %user_input% equ z goto disk_tools
 if %user_input% equ i0 set job=startup.bat ifw now 0&&set jobname=ifw多播接收[恢复后什么都不做]&&call :dojob
 if %user_input% equ i1 set job=startup.bat ifw now 1&&set jobname=ifw多播接收[恢复后重启]&&call :dojob
 if %user_input% equ i8 set job=startup.bat ifw now 8&&set jobname=ifw多播接收[恢复后关机]&&call :dojob
+if %user_input% equ no goto menu
 goto menu
 
 :dojob
@@ -88,15 +93,18 @@ exit /b
 
 
 :xrun
+cls
 echo 下载并执行文件 【批处理、EXE文件】
-set /p xrunfile=输入要下载执行的文件：
+if "%xrunfile%" == "" set /p xrunfile=输入要下载执行的文件：
 for /f %%i in ('dir /b %~dp0client\') do (
 echo %%i下载%xrunfile%
 echo startup.bat xrun %xrunfile%| %~dp0bin\nc64.exe -t %%i  6086
 )
+if exist %~dp0_temp.bat del /q /f %~dp0_temp.bat
 exit /b
 
 :xdown
+cls
 echo 仅下载文件到X:\ 【分区脚本、种子】
 set /p xrunfile=输入要下载的文件：
 for /f %%i in ('dir /b %~dp0client\') do (
@@ -105,6 +113,34 @@ echo startup.bat xdown %xrunfile%| %~dp0bin\nc64.exe -t %%i  6086
 )
 exit /b
 
+::::::::::::::::危险的磁盘操作任务
+:disk_tools
+cls
+echo 对所有客户机磁盘执行什么操作？
+echo 输入"d0"表示清空主磁盘分区
+echo ==============================
+echo 输入d[n]，清空磁盘所有分区
+echo ==============================
+echo 输入0，   返回主菜单
+set user_input=no
+set /p user_input=请输入：
+if %user_input% equ d0 set diskn=0&&call :clean_disk
+if %user_input% equ 0 goto menu
+exit /b
+
+:clean_disk
+(
+::如果不是pe就退出
+echo if not exist X: exit
+echo ^( 
+echo echo sel disk %diskn%
+echo echo clean
+echo ^)^|diskpart
+echo exit
+)>%~dp0_temp.bat
+set xrunfile=_temp.bat&&call :xrun
+exit /b
+::::::::::::::::危险的磁盘操作任务
 
 
 :houc
@@ -122,6 +158,7 @@ cls
 echo 输入1，什么都不做
 echo 输入2，恢复后重启
 echo 输入3，恢复后关机
+echo ==============================
 echo 输入0，返回主菜单
 set /p user_input=IFW多播还原完成后执行什么操作？:
 if %user_input% equ 1 set job=startup.bat ifw now 0&&set jobname=ifw多播接收[恢复后什么都不做]&&call :dojob
@@ -133,13 +170,13 @@ if %user_input% equ 0 call :menu
 
 :mvclient
 if not exist %~dp0client\local md %~dp0client\local
-attrib +h %~dp0client
+::attrib +h %~dp0client
 move /y %~dp0client\*.* %~dp0client\local.
 exit /b
 
 :reclient
 if not exist %~dp0client\local md %~dp0client\local
-attrib +h %~dp0client
+::attrib +h %~dp0client
 move /y %~dp0client\local\*.* %~dp0client\
 exit /b
 
