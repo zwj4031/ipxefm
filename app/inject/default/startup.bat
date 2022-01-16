@@ -18,6 +18,7 @@ set xsay=start "" "X:\Program Files\WinXShell.exe" -code "QuitWindow(nil,'UI_LED
 set xshow=start "" "X:\Program Files\WinXShell.exe" -code "QuitWindow(nil,'UI_show')"
 set wait=%root%\pecmd.exe wait 800
 )
+if not "%3" == "" set args3=%3
 if not "%2" == "" set args1=%1&&set args2=%2&&goto startjob
 ::公用脚本1结束
 
@@ -497,9 +498,10 @@ exit /b
 :ifw
 %xsay%
 %say% "连接%ip%上名称为mousedos的IFW多播服务器" %font%
-start "" imagew64 /r /o /f:\\\%ip%**mousedos* /d:w0 /rb:0
-rem imagew64.exe /r /o /f:\\\10.10.10.88**1* /d:w0 /rb:0 还原完成不做任何操作
-rem imagew64.exe /r /o /f:\\\10.10.10.88**1* /d:w0 /rb:1 还原完成自动重启
-rem imagew64.exe /r /o /f:\\\10.10.10.88**1* /d:w0 /rb:8 还原完成自动关机
+if "args3" == "" set args3=0
+start "" imagew /r /o /f:\\\%ip%**mousedos* /d:w0 /rb:%args3%
+rem start "" imagew /r /o /f:\\\%ip%**mousedos* /d:w0 /rb:0 还原完成不做任何操作
+rem start "" imagew /r /o /f:\\\%ip%**mousedos* /d:w0 /rb:1 还原完成自动重启
+rem start "" imagew /r /o /f:\\\%ip%**mousedos* /d:w0 /rb:8 还原完成自动关机
 %xsay%
 exit /b

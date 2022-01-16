@@ -23,7 +23,7 @@ echo ==============================
 echo 输入7，仅P2P部署[不分区]
 echo 输入8，仅多播接收[不分区]
 echo 输入9, 仅HOU多播接收[不分区]
-echo 输入i, 仅IFW多播接收[不分区]
+echo 输入i, IFW多播接收-i[0 1 8]
 echo ==============================
 
 echo 输入s，自定义执行命令[CMD命令]
@@ -57,10 +57,15 @@ if %user_input% equ k call :vncclient
 if %user_input% equ m call :menu
 if %user_input% equ x call :xrun
 if %user_input% equ d call :xdown
-if %user_input% equ i set job=startup.bat ifw now&&set jobname=仅多播接收[不分区]&&call :dojob
+if %user_input% equ i call :ifw
+if %user_input% equ i0 set job=startup.bat ifw now 0&&set jobname=ifw多播接收[恢复后什么都不做]&&call :dojob
+if %user_input% equ i1 set job=startup.bat ifw now 1&&set jobname=ifw多播接收[恢复后重启]&&call :dojob
+if %user_input% equ i8 set job=startup.bat ifw now 8&&set jobname=ifw多播接收[恢复后关机]&&call :dojob
 goto menu
 
 :dojob
+cls
+echo 执行任务中……
 echo 执行%jobname%任务
 for /f %%i in ('dir /b %~dp0client\') do (
 echo %%i执行%jobname%任务
@@ -112,6 +117,17 @@ echo startup.bat "%%command%%" shell| %~dp0bin\nc64.exe -t %%i  6086
 )
 exit /b
 
+:ifw
+cls
+echo 输入1，什么都不做
+echo 输入2，恢复后重启
+echo 输入3，恢复后关机
+echo 输入0，返回主菜单
+set /p user_input=IFW多播还原完成后执行什么操作？:
+if %user_input% equ 1 set job=startup.bat ifw now 0&&set jobname=ifw多播接收[恢复后什么都不做]&&call :dojob
+if %user_input% equ 2 set job=startup.bat ifw now 1&&set jobname=ifw多播接收[恢复后重启]&&call :dojob
+if %user_input% equ 3 set job=startup.bat ifw now 8&&set jobname=ifw多播接收[恢复后关机]&&call :dojob
+if %user_input% equ 0 call :menu
 
 
 
