@@ -1,3 +1,13 @@
+;bcdboot
+\Windows\System32\bcdboot.exe
+\Windows\System32\zh-CN\bcdboot.exe.mui
+;mountvol
+\Windows\System32\mountvol.exe
+\Windows\System32\zh-CN\mountvol.exe.mui
+;UI_info
+\Program Files\wxsUI\UI_info
+\windows\nwinfo.exe
+;UI_info_END
 \ipxefm\bin\hfs.exe
 \ipxefm\bin\hfs.ini
 \ipxefm\bin\pe.vfs
@@ -215,6 +225,7 @@
 \Windows\System32\BrokerLib.dll
 \Windows\System32\cabinet.dll
 \Windows\System32\calc.exe
+\Windows\System32\pcwum.dll
 \Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\HyperV-Guest-KMCL-Package~31bf3856ad364e35~amd64~~10.0.19041.1.cat
 \Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\HyperV-Guest-Storage-Synthetic-merged-Package~31bf3856ad364e35~amd64~~10.0.19041.1.cat
 \Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\HyperV-Guest-VmBus-merged-Package~31bf3856ad364e35~amd64~~10.0.19041.662.cat
