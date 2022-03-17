@@ -142,7 +142,7 @@ goto init
 %wait%
 %xsay%
 ::显示ip-newbeepe中要注释掉下面一行
-%show% %myip% 
+::%show% %myip% 
 goto init
 ::::::::::::::检测IP脚本结束::::::::::::::
 
