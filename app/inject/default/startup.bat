@@ -123,7 +123,7 @@ goto checkip
 %xsay%
 %xshow%
 ::显示ip-newbeepe中要注释掉下面一行
-%show% %myip% 
+:::%show% %myip% 
 %say% "获取IP成功！本机ip:%myip% 上报中......" %font%
 %wait%
 echo .>%myip%
