@@ -38,7 +38,7 @@ echo filename=ipxe.bios
 echo altfilename=ipxeboot.txt
 )>%~dp0bin\config.INI
 del /s /q %~dp0bin\~temp.*
-mkdir %~dp0bin\log
+mkdir %~dp0bin\logs
 mkdir %~dp0bin\temp
 start ""  %~dp0bin\pxesrv.exe
 title Nginx WEB服务 运行中
