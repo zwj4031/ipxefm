@@ -1,0 +1,77 @@
+命令使用：
+
+1.为目录内所有文件产生一个文件清单
+
+lsmgr scn dir
+
+例子：
+lsmgr scn C:\windows > aa.lst
+
+2.合并不同的清单
+
+lsmgr cat list [...]
+
+例子：
+lsmgr cat aa.lst bb.lst > cc.lst
+
+3.在a和b两个清单中查找出相同文件
+
+lsmgr and list_a list_b
+
+例子：
+
+lsmgr and aa.lst bb.lst > cc.lst
+
+4. Find files in a but not in b
+
+lsmgr sub list_a list_b
+
+4.查找出在a不在b中的文件
+
+lsmgr sub list_a list_b
+
+例子：
+
+lsmgr sub aa.lst bb.lst > cc.lst
+
+5.复制在清单里的文件到另一个目录
+
+lsmgr cpy list mapping
+
+例子：
+
+lsmgr cpy aa.lst C:=D:
+
+这个命令复制 aa.lst 中的文件从C: 到 D: ,  例如,  把 C:\WINDOWS\explorer.exe 复制到 D:\WINDOWS\explorer.exe
+
+6.删除清单里的文件
+
+lsmgr del list
+
+例子：
+
+lsmgr del aa.lst
+
+7. 映射
+
+You can use the -m option to map directories, for example:
+
+lsmgr -m C:=D: scn C:\WINDOWS
+
+你可以用 -m 选项去映射目录，例如：
+
+lsmgr -m C:=D: scn C:\WINDOWS
+
+在写入到输出之前，这命令会扫描所有在 C:\WINDOWS的文件和将C: 改为 D: 
+
+lsmgr -m E:\I386=C:\WINDOWS and aa.lst bb.lst
+
+这命令列出在 aa.lst 和 bb.lst里共同的文件，但是这两个清单有不同的前缀; 在比较前, 用-m 将 E:\I386 改为 C:\WINDOWS 。
+
+8.使用%SystemRoot%变数
+
+你可以用 %SystemRoot% 变数去处理不同的系统目录，例如：
+
+lsmgr -m C:\WINDOWS=%SystemRoot% cat aa.lst > bb.lst
+
+在 aa.lst  里的路径名称将会被适当地映射。

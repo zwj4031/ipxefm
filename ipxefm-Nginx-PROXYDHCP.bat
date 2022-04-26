@@ -42,6 +42,31 @@ mkdir %~dp0bin\logs
 mkdir %~dp0bin\temp
 start ""  %~dp0bin\pxesrv.exe
 title Nginx WEB服务 运行中
+:buildnginxconf
+(
+echo worker_processes  1;
+echo events {
+echo     worker_connections  1024;
+echo }
+echo http {
+echo     include       mime.types;
+echo     default_type  application/octet-stream;
+echo     sendfile        on;
+echo     keepalive_timeout  65;
+echo     server {
+echo         listen       80;
+echo         server_name  localhost;
+echo         location / {
+echo             root  %cd%;
+echo             index  index.html index.htm;
+echo         }
+echo         error_page   500 502 503 504  /50x.html;
+echo         location = /50x.html {
+echo             root   html;
+echo         }
+echo     }
+echo }
+)>%~dp0bin\conf\nginx.conf
 cd /d %~dp0bin
 nginx.exe
 exit
