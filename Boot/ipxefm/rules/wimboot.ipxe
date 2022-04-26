@@ -46,8 +46,8 @@ initrd http://${booturl}/app/inject/default/DiskGeniusx86.exe DiskGeniusx86.exe 
 initrd http://${booturl}/app/inject/default/btx64.exe btx64.exe || #BT服务端&客户端 有问题可删除!
 initrd http://${booturl}/app/inject/default/drivers.7z drivers.7z || #注入驱动 不需要可删除
 initrd http://${booturl}/app/inject/default/gakax86.exe gakax86.exe || #注入教师端 不需要可删除
-iseq ${platform} pcbios && initrd http://${booturl}/ @ip=${booturl}@job=${job} || #射入IP地址 有问题可删除!
-iseq ${platform} efi && initrd -n @ip=${booturl}@job=${job} http://${booturl}/ || #射入IP地址 有问题可删除!
+iseq ${platform} pcbios && initrd http://${booturl}/ipxeboot.txt @ip=${booturl}@job=${job} || #射入IP地址 有问题可删除!
+iseq ${platform} efi && initrd -n @ip=${booturl}@job=${job} http://${booturl}/ipxeboot.txt || #射入IP地址 有问题可删除!
 #以下是自定义射入的文件
 isset ${inject1} && initrd http://${booturl}/app/inject/${injectdir}/${inject1} ${inject1} || 
 isset ${inject2} && initrd http://${booturl}/app/inject/${injectdir}/${inject2} ${inject2} || 
