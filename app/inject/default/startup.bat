@@ -79,6 +79,7 @@ set %%b
 if not "%1" == "" set job=%1
 echo 服务器IP地址为  %ip%
 echo 本次执行的任务  %job%
+echo 本次执行的任务参数  %args2%
 
 :::旧的查找ip方式
 :::for /f "tokens=2 delims==" %%a in ('dir /b %root%\serverip*') do set ip=%%a
@@ -415,12 +416,14 @@ exit /b
 
 ::::::执行ghost网克任务
 :netghost
-%say% "连接会话名称为mousedos的ghostsrv……" %font%
+set srvname=mousedos
+if not "%args2%" == "" set srvname=%args2%
+%say% "连接会话名称为%srvname%的ghostsrv……" %font%
 %wait%
 %xsay%
 %root%\pecmd.exe kill ghostx64.exe >nul
 cd /d "X:\windows\system32" >nul
-ghostx64.exe -ja=mousedos -batch >nul
+ghostx64.exe -ja=%srvname% -batch >nul
 if errorlevel 1 goto netghost
 exit
 

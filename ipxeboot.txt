@@ -38,9 +38,10 @@ set wim1name minipe:smbclient  #标题
 set wim1injectdir default #射入文件目录，对应各种pe
 set wim1job smbcli #pe进入桌面后要执行的任务，对应批处理startup.bat内容
 
-set wim2name minipe:netghost
+set wim2name minipe:netghost_mousedos
 set wim2injectdir default 
 set wim2job netghost #ghost网络任务
+set wim1args2 mousedos #自定义会话名称，可以用来多配置情况下的无人值守点播克隆
 
 set wim3name minipe:netcopy 
 set wim3injectdir default 

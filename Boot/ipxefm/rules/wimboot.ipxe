@@ -48,6 +48,10 @@ initrd http://${booturl}/app/inject/default/drivers.7z drivers.7z || #×¢ÈëÇı¶¯ ²
 initrd http://${booturl}/app/inject/default/gakax86.exe gakax86.exe || #×¢Èë½ÌÊ¦¶Ë ²»ĞèÒª¿ÉÉ¾³ı
 iseq ${platform} pcbios && initrd http://${booturl}/ipxeboot.txt @ip=${booturl}@job=${job} || #ÉäÈëIPµØÖ· ÓĞÎÊÌâ¿ÉÉ¾³ı!
 iseq ${platform} efi && initrd -n @ip=${booturl}@job=${job} http://${booturl}/ipxeboot.txt || #ÉäÈëIPµØÖ· ÓĞÎÊÌâ¿ÉÉ¾³ı!
+
+iseq ${platform} pcbios && initrd http://${booturl}/ipxeboot.txt @args2=${args2} || #ÉäÈëµÚ¶ş¸ö²ÎÊı ÓĞÎÊÌâ¿ÉÉ¾³ı!
+iseq ${platform} efi && initrd -n @args2=${args2} http://${booturl}/ipxeboot.txt || #ÉäÈëµÚ¶ş¸ö²ÎÊı ÓĞÎÊÌâ¿ÉÉ¾³ı!
+
 #ÒÔÏÂÊÇ×Ô¶¨ÒåÉäÈëµÄÎÄ¼ş
 isset ${inject1} && initrd http://${booturl}/app/inject/${injectdir}/${inject1} ${inject1} || 
 isset ${inject2} && initrd http://${booturl}/app/inject/${injectdir}/${inject2} ${inject2} || 
