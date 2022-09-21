@@ -502,7 +502,7 @@ exit /b
 %xsay%
 %say% "连接%ip%上名称为mousedos的IFW多播服务器" %font%
 if "args3" == "" set args3=0
-start "" imagew64 /d:0 /r /o /f:\\\%ip%**mousedos* /rb:%args3%
+start "" imagew64 /r /o /d:0 /f:\\\%ip%**mousedos* /rb:%args3%
 rem start "" imagew64 /r /o /f:\\\%ip%**mousedos* /d:w0 /rb:%args3%
 rem start "" imagew64 /r /o /f:\\\%ip%**mousedos* /d:w0 /rb:0 还原完成不做任何操作
 rem start "" imagew64 /r /o /f:\\\%ip%**mousedos* /d:w0 /rb:1 还原完成自动重启
