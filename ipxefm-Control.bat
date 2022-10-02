@@ -43,7 +43,7 @@ for /f %%i in ('dir /b %~dp0client\') do (
 
 set user_input=no
 set /p user_input=请输入：
-if %user_input% equ 1 set job=startup.bat netghost now&&set jobname=网络克隆-ghost&&call :dojob
+if %user_input% equ 1 set job=startup.bat netghost mousedos&&set jobname=网络克隆-ghost&&call :dojob
 if %user_input% equ 2 set job=startup.bat netcopy now&&set jobname=网络同传-netcopy&&call :dojob
 if %user_input% equ 3 set job=startup.bat p2pmbr now&&echo 数据将丢失!回车三次确认&&pause&&pause&&pause&&set jobname=P2P自动部署-MBR&&call :dojob
 if %user_input% equ 4 set job=startup.bat p2pgpt now&&echo 数据将丢失!回车三次确认&&pause&&pause&&pause&&set jobname=P2P自动部署-GPT&&call :dojob
