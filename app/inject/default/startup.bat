@@ -270,9 +270,9 @@ call :checkdiskspace
 call :initdiskpart
 call :checksmbfile
 start "" %root%\btx64.exe
+call :cloud
 %say% "正在下载%p2pfile%，请等待..." %font%
 goto checkp2pfile
-call :cloud
 exit /b
 
 ::::::执行任务
