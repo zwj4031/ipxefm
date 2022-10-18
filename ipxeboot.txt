@@ -7,7 +7,7 @@ set wim2 /mini.wim
 set wim3 /mini.wim
 set wim4 /mini.wim
 set wim5 /mini.wim
-set wim6 
+set wim6 /mini.wim
 set wim7 
 set wim8 
 set wim9 
@@ -38,12 +38,12 @@ set wim1name minipe:smbclient  #标题
 set wim1injectdir default #射入文件目录，对应各种pe
 set wim1job smbcli #pe进入桌面后要执行的任务，对应批处理startup.bat内容
 
-set wim2name minipe:netghost_mousedos
+set wim2name minipe:Netghost_mousedos
 set wim2injectdir default 
 set wim2job netghost #ghost网络任务
 set wim2args2 mousedos #自定义会话名称，可以用来多配置情况下的无人值守点播克隆
 
-set wim3name minipe:netcopy 
+set wim3name minipe:Netcopy 
 set wim3injectdir default 
 set wim3job netcopy #netcopy网络同传任务
 
@@ -51,11 +51,15 @@ set wim4name minipe:Gakataka Student
 set wim4injectdir default 
 set wim4job gaka #伽卡它卡学生端任务
 
-set wim5name minipe:btonly
+set wim5name minipe:Btonly
 set wim5injectdir default
 set wim5inject1 start.ini
 set wim5job btonly #仅p2p下载的任务，不分区
 
+set wim6name minipe:IFW_Multicast
+set wim6injectdir default
+set wim6inject1 start.ini
+set wim6job ifw #ifw多播镜像
 ##注释备用,初学者止步:所谓netcopy.wim是那个netpe_multiarch.iso中的pe
 #set wim4name netcopy.wim:smbclient
 #set wim4injectdir netcopy
