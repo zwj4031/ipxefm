@@ -1,3 +1,17 @@
+;jiyu
+\Windows\SysWOW64\msdmo.dll
+\Windows\SysWOW64\d3d10warp.dll
+;vc
+\Windows\WinSxS\x86_microsoft.vc80.*
+\Windows\WinSxS\Manifests\x86_microsoft.vc80.*
+\Windows\WinSxS\Manifests\x86_policy.8.0.microsoft.vc80.*
+\Windows\WinSxS\amd64_microsoft.vc80.*
+\Windows\WinSxS\Manifests\amd64_microsoft.vc80.*
+\Windows\WinSxS\Manifests\amd64_microsoft.vc80.*
+\Windows\WinSxS\Manifests\amd64_policy.8.0.microsoft.vc80.*
+;QQsoftmgr_no
+\Windows\WinSxS\x86_microsoft.vc80.atl_*
+\Windows\WinSxS\x86_microsoft.vc80.crt_*
 ;dwm
 \Windows\System32\hid.dll
 \Windows\System32\CoreMessaging.dll
@@ -105,9 +119,6 @@
 \Program Files\wxsUI\UI_info
 \windows\nwinfo.exe
 ;UI_info_END
-\ipxefm\bin\hfs.exe
-\ipxefm\bin\hfs.ini
-\ipxefm\bin\pe.vfs
 \Program Files\BatchTools
 \Program files\PENetwork
 \Windows\System32\browcli.dll
