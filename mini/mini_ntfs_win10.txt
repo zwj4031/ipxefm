@@ -1,6 +1,8 @@
 ;jiyu
 \Windows\SysWOW64\msdmo.dll
 \Windows\SysWOW64\d3d10warp.dll
+\Windows\SysWOW64\netapi32.dll
+\Windows\SysWOW64\netutils.dll
 ;vc
 \Windows\WinSxS\x86_microsoft.vc80.*
 \Windows\WinSxS\Manifests\x86_microsoft.vc80.*
