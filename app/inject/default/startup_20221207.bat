@@ -301,7 +301,6 @@ exit /b
 ::::::执行检测硬盘容量任务
 :checkdiskspace
 %xsay%
-::如果发现固态变成从盘来分了，请自行修改disknum后的数字， =0为主盘，
 set seldisk=masterdisk&&set disknum=0&&call :checkdisk
 set seldisk=slaverdisk&&set disknum=1&&call :checkdisk
 ::[主盘]
@@ -328,8 +327,7 @@ exit /b
 :checkdisk
 for /f "tokens=1-2,4-5" %%i in ('echo list disk ^| diskpart ^| find ^"磁盘 %disknum%^"') do (
 	echo %%i %%j %%k %%l
-	rem if %%k gtr 101 if %%k lss 221 set %seldisk%=120G
-	if %%k gtr 1 if %%k lss 221 set %seldisk%=single
+	if %%k gtr 101 if %%k lss 221 set %seldisk%=120G
 	if %%k gtr 222 if %%k lss 233 set %seldisk%=240G
     if %%k gtr 234 if %%k lss 257 set %seldisk%=256G
     if %%k gtr 446 if %%k lss 501 set %seldisk%=500G
