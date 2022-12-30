@@ -512,37 +512,3 @@ rem start "" imagew64 /r /o /f:\\\%ip%**mousedos* /d:w0 /rb:1 还原完成自动重启
 rem start "" imagew64 /r /o /f:\\\%ip%**mousedos* /d:w0 /rb:8 还原完成自动关机
 %xsay%
 exit /b
-
-:iscsi
-set iscsiip=%ip%
-set iscsiport=3260
-%say% "启动iscsi服务................" %font%
-net start msiscsi
-%xsay%
-call :iscsi_login
-exit/b
-
-:iscsi_login
-iscsicli AddTargetPortal %iscsiip% %iscsiport%
-start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_led.zip -wait 6 -top -text "连接%iscsiip%的iscsi服务........."
-for /f %%a in ('iscsicli ListTargets ^|find "iqn"') do (
-start /w /min iscsicli LoginTarget %%a T * * * * * * * * * * * * * * * 0
-if "%errorlevel%" == "0" %say% "此次连上iscsi服务器 %%a" %font%
-%wait%
-%xsay%
-)
-
-
-exit /b
-
-
-
-:iscsi_logout
-for /f "tokens=3 delims=: " %%i in ('iscsicli SessionList ^|find "会话 ID"') do (
-%say% "此次断开iscsi会话ID: %%i" %font%
-iscsicli LogoutTarget %%i
-%xsay%
-)
-iscsicli RemoveTargetPortal %iscsiip% %iscsiport%
-iscsicli listtargets t 
-exit /b
