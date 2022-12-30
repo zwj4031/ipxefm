@@ -8,7 +8,7 @@ set wim3 /mini.wim
 set wim4 /mini.wim
 set wim5 /mini.wim
 set wim6 /mini.wim
-set wim7 
+set wim7 /mini.wim
 set wim8 
 set wim9 
 set wim0 
@@ -30,7 +30,7 @@ set ramos1 /win10.vhd.gz
 ##数字菜单一般为映射共享、仅p2p下载、ghost、远程集中控制之类的远程安全脚本
 #题name，全类型支持
 #任务名称job: 仅支持wim需要配合startup.bat内容使用，
-#任务名称支持netghost(网克)、smbcli(挂载共享)、clound(多播)、p2pmbr/p2pgpt(p2p方式deploy自动分区部署)、dbmbr/dbgpt(多播deploy自动分区部署)、btonly（不分区)、houmbr/hougpt（hou多播自动分区部署)
+#任务名称支持netghost(网克)、smbcli(挂载共享)、clound(多播)、p2pmbr/p2pgpt(p2p方式deploy自动分区部署)、dbmbr/dbgpt(多播deploy自动分区部署)、btonly（不分区)、houmbr/hougpt（hou多播自动分区部署)、iscsi(自动连接iscsi服务)
 #设置射入文件所在目录injectdir:仅支持wim如netcopy，会从/inject/netcopy目录取文件，默认default
 #设置射入文件inject:0-5
 ##所谓minipe就是本包附赠的迷你pe 以后脚本以这个为主
@@ -60,6 +60,11 @@ set wim6name minipe:IFW_Multicast
 set wim6injectdir default
 set wim6inject1 start.ini
 set wim6job ifw #ifw多播镜像
+
+set wim7name minipe:ISCSI_Client
+set wim7injectdir default
+set wim7inject1 start.ini
+set wim7job iscsi #iscsi连接所有服务器目标
 ##注释备用,初学者止步:所谓netcopy.wim是那个netpe_multiarch.iso中的pe
 #set wim4name netcopy.wim:smbclient
 #set wim4injectdir netcopy
