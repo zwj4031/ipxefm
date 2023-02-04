@@ -520,6 +520,9 @@ set iscsiport=3260
 net start msiscsi
 %xsay%
 call :iscsi_login
+rem 自动恢复iscsi盘下的系统镜像  第一个参数表示路径，第二个参数表示卷 默认1  第三个参数表示目标盘符，默认C:
+::call :builddp \64位零售中文版.esd 5 C:
+::call :restore_image
 exit/b
 
 :iscsi_login
@@ -545,4 +548,30 @@ iscsicli LogoutTarget %%i
 )
 iscsicli RemoveTargetPortal %iscsiip% %iscsiport%
 iscsicli listtargets t 
+exit /b
+
+
+
+:builddp
+set restore_file=%1
+set wim_index=%2
+set Drive_Letter=%3
+(
+echo [operation]
+echo action=restore
+echo silent=1
+echo [source]
+rem 在|后面的表示分卷，这里是第1卷
+echo %restore_file%^|%wim_index%
+echo [destination]
+echo DriveLetter = %Drive_Letter%
+echo [miscellaneous]
+echo format = 1
+echo fixboot=auto
+echo shutdown=2
+)>dp.ini
+exit /b
+
+:restore_image
+start "" %root%\cgix64 dp.ini
 exit /b
