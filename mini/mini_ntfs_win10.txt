@@ -1,3 +1,25 @@
+;copy
+\Windows\System32\Actxprxy.dll
+\Windows\System32\chartv.dll
+\Windows\System32\OneCoreUAPCommonProxyStub.dll
+\Windows\System32\zh-CN\Actxprxy.dll.mui
+\Windows\System32\zh-CN\chartv.dll.mui
+\Windows\System32\zh-CN\OneCoreUAPCommonProxyStub.dll.mui
+;newfastcopy
+;\Windows\System32\msftedit.dll 
+;\Windows\System32\zh-CN\msftedit.dll.mui
+;\Program Files\FastCopy
+;Qbittorrent_4.5.0_need
+\Windows\System32\DbgModel.dll
+\Windows\System32\dbgeng.dll
+;dg_test
+\Windows\System32\swprv.dll
+\Windows\System32\oledlg.dll
+\Windows\SysWOW64\oledlg.dll
+\Windows\System32\zh-CN\swprv.dll.mui
+\Windows\System32\zh-CN\oledlg.dll.mui
+\Windows\SysWOW64\zh-CN\oledlg.dll.mui
+
 ;jiyu
 \Windows\SysWOW64\msdmo.dll
 \Windows\SysWOW64\d3d10warp.dll
