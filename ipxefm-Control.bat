@@ -100,7 +100,6 @@ for /f %%i in ('dir /b %~dp0client\') do (
 echo %%i下载%xrunfile%
 echo startup.bat xrun %xrunfile%| %~dp0bin\nc64.exe -t %%i  6086
 )
-if exist %~dp0_temp.bat del /q /f %~dp0_temp.bat
 exit /b
 
 :xdown
@@ -139,6 +138,7 @@ echo ^)^|diskpart
 echo exit
 )>%~dp0_temp.bat
 set xrunfile=_temp.bat&&call :xrun
+if exist %~dp0_temp.bat del /q /f %~dp0_temp.bat
 exit /b
 ::::::::::::::::危险的磁盘操作任务
 
