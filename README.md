@@ -1,4 +1,11 @@
 # ipxefm
+IPXE File Manager! Support WIM, ISO, IMG, RAMOS, ISCSI network boot templates (BIOS/UEFI)
+Using ipxe, automatically determine legacybios and uefi (64-bit) environments and boot WIM, ISO, IMG, RAMOS in different ways
+ipxe.bios and ipxe.efi are dedicated files for tinypxe or pxegrub menus (original without embedded scripts) 
+The files in the nas directory are suitable for use in router system environments such as Linux
+ipxeboot.pcbios and ipxeboot.efi are universal boot files, suitable for various network boot loaders (Synology & openwrt, etc.)
+You can download the complete ipxefm.7z package from Tencent QQ group 146859089, which contains the demo mini.wim （已编辑
+
 IPXE文件管理器!支持启动WIM、ISO、IMG、RAMOS、ISCSI的网启模板(BIOS/UEFI) 
 使用ipxe，自动判断legacybios和uefi(64位)环境，用不同方式启动WIM、ISO、IMG、RAMOS
 
@@ -13,7 +20,9 @@ ipxeboot.pcbios和ipxeboot.efi为通用启动文件，各种网启启动器通�
 
  
 ![image](https://github.com/zwj4031/ipxefm/blob/main/bin/ipxefm.gif)
-
+Application video https://www.bilibili.com/video/BV1Sf4y1x7ea 
+If PE cannot obtain an IP address due to missing network card drivers, you can add your driver directory to app\inject\default\drivers.7z 
+Or rename your driver package directly to drivers.7z （已编辑） 
 应用视频https://www.bilibili.com/video/BV1Sf4y1x7ea
 
 如果pe无法取得IP地址是因为缺少网卡驱动，可以加入你的驱动目录到app\inject\default下的   drivers.7z
