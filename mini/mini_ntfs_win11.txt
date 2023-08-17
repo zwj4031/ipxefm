@@ -4,8 +4,12 @@
 \Windows\nkpage.exe
 \Windows\app.ico
 \Windows\rxprd.exe
+\Windows\INF\fancyrd.inf
 \Windows\System32\drivers\fancyrd.sys
 \Windows\System32\drivers\deviodrv.sys
+\Windows\System32\driverstore\FileRepository\fancyrd.inf_amd64_6a91bcfdc8ca1b0c
+\Windows\System32\catroot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\fancyrd.cat
+
 ;copy
 \Windows\System32\Actxprxy.dll
 \Windows\System32\chartv.dll
