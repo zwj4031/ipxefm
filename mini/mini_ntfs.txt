@@ -1,3 +1,9 @@
+;Qbittorrent_4.5.0_need
+\Windows\System32\DbgModel.dll
+\Windows\System32\dbgeng.dll
+;iscsi_iscsicli.exe
+\windows\system32\iscsicli.exe
+\Windows\System32\zh-CN\iscsicli.exe
 ;hyper-v
 \Windows\INF\bnxtnd.inf
 \Windows\System32\DriverStore\FileRepository\bnxtnd.inf_amd64_507d8c54ff12abe0

@@ -1,6 +1,8 @@
 [ExclusionList]
 \
 [ExclusionException]
+\windows\system32\iscsicli.exe
+\Windows\System32\zh-CN\iscsicli.exe
 \ipxefm\bin\hfs.exe
 \ipxefm\bin\hfs.ini
 \ipxefm\bin\pe.vfs

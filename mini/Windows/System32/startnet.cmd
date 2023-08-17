@@ -104,9 +104,11 @@ devcon enable *pnp%%a*
 :installdrivers
 %say% "正在安装驱动..."
 echo 解压驱动……
-if exist %systemroot%\system32\drivers.7z  (
+if exist %systemroot%\system32\drivers.index (
 :::::7z x drivers.7z -o%temp%\pe-driver\drivers
 DriverIndexer.exe load-driver drivers.7z drivers.index
+) else (
+DriverIndexer.exe load-driver drivers.7z
 )
 %xsay%
 
@@ -193,6 +195,23 @@ reg add "HKCR\Directory\shell\MaxCab" /f /ve /t REG_SZ /d "CAB最大压缩"
 reg add "HKCR\Directory\shell\MaxCab" /f /v "Icon" /t REG_SZ /d "\"X:\Windows\System32\pecmd.exe\",9"
 reg add "HKCR\Directory\shell\MaxCab\command" /f /ve /t REG_SZ /d "\"X:\Windows\System32\pecmd.exe\" --MaxCab \"%%1\""
 
+
+
+echo 关联一下NBP应用程序包
+reg add "HKCR\.nbp" /f /ve /t REG_SZ /d "nbpfile"
+reg add "HKCR\nbpfile" /f /ve /t REG_SZ /d "NBP应用程序包"
+reg add "HKCR\nbpfile\DefaultIcon" /f /ve /t REG_SZ /d "\"X:\windows\app.ico\""
+reg add "HKCR\nbpfile\shell\open\command" /f /ve /t REG_SZ /d "\"X:\windows\nbp.bat\" \"%%1\""
+
+
+echo 目录制作成NBP应用程序包
+reg add "HKCR\folder\shell\制作NBP应用程序包" /f /v "icon" /t REG_SZ /d "\"X:\windows\app.ico\""
+reg add "HKCR\folder\shell\制作NBP应用程序包\command" /f /ve /t REG_SZ /d "\"X:\windows\mknbp.bat\" \"%%1\""
+
+
+echo 目录制作成NBP应用程序包固实高压缩
+reg add "HKCR\folder\shell\制作NBP应用程序包(固实高压缩)" /f /v "icon" /t REG_SZ /d "\"X:\windows\app.ico\""
+reg add "HKCR\folder\shell\制作NBP应用程序包(固实高压缩)\command" /f /ve /t REG_SZ /d "\"X:\windows\mknbp.bat\" \"%%1\",solid"
 
 
 %say% "正在加载外置..."

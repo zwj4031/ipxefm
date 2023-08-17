@@ -1,3 +1,11 @@
+;nbpsupport
+\Windows\nbp.bat
+\Windows\mknbp.bat
+\Windows\nkpage.exe
+\Windows\app.ico
+\Windows\rxprd.exe
+\Windows\System32\drivers\fancyrd.sys
+\Windows\System32\drivers\deviodrv.sys
 ;copy
 \Windows\System32\Actxprxy.dll
 \Windows\System32\chartv.dll
