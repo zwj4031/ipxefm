@@ -2,6 +2,8 @@
 \Windows\nbp.bat
 \Windows\mknbp.bat
 \Windows\nkpage.exe
+\Program Files\GhostCGI\wimlib64\libwim-15.dll
+\Program Files\GhostCGI\wimlib64\wimlib-imagex.exe
 \Windows\app.ico
 \Windows\rxprd.exe
 \Windows\INF\fancyrd.inf
