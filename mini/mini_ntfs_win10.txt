@@ -5,6 +5,7 @@
 \Windows\app.ico
 \Windows\rxprd.exe
 \Windows\INF\fancyrd.inf
+\Windows\System32\drivers\rxbsknl.sys
 \Windows\System32\drivers\fancyrd.sys
 \Windows\System32\drivers\deviodrv.sys
 \Windows\System32\driverstore\FileRepository\fancyrd.inf_amd64_6a91bcfdc8ca1b0c
