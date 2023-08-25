@@ -1,3 +1,5 @@
+;nwinfo_gnwinfo
+\Windows\System32\pdh.dll
 ;nbpsupport
 \Windows\nbp.bat
 \Windows\mknbp.bat

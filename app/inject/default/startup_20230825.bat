@@ -45,11 +45,27 @@ move /y %root%\*x86.exe %rootx86%
 mklink %temp%\cmd.exe x:\windows\system32\cmd.exe
 ::注册很方便的右键菜单
 ::if exist %root%\ShowDrives_Gui_x64.exe start "" %root%\ShowDrives_Gui_x64.exe --Reg-All
-::创建快捷方式
-if exist %root%\ipxefmlink.lua %root%\ipxefmlink.lua
-if not exist %root%\ipxefmlink.lua call :oldpxelink
-
-
+%root%\pecmd.exe LINK %Desktop%\此电脑,%programfiles%\winxshell.exe,,%root%\ico\winxshell.ico
+%root%\pecmd.exe LINK %Desktop%\TightVNC Viewer,"%root%\tightvnc\tvnviewer.exe" 
+%root%\pecmd.exe LINK %Desktop%\iSCSI 发起程序,%root%\iscsicpl.exe,,%root%\ico\iscsicli.ico
+%root%\pecmd.exe LINK %Desktop%\ghostx64,%root%\ghostx64.exe
+%root%\pecmd.exe LINK %Desktop%\netcopy网络同传,%root%\netcopyx64.exe
+%root%\pecmd.exe LINK %Desktop%\CGI一键还原,%root%\cgix64.exe
+%root%\pecmd.exe LINK %Desktop%\BT客户端,%root%\btx64.exe
+%root%\pecmd.exe LINK %Desktop%\ImDisk_Gui镜像挂载,%root%\ShowDrives_Gui_x64.exe
+::%root%\pecmd.exe LINK %Desktop%\DG分区工具,%root%\DiskGeniusx64.exe
+%root%\pecmd.exe LINK %Desktop%\文件共享盘,explorer.exe,B:\
+%root%\pecmd.exe LINK %Desktop%\文件共享盘,"%programfiles%\explorer.exe", B:\
+%root%\pecmd.exe LINK %Desktop%\文件共享盘,"%windir%\winxshell.exe", B:\
+%root%\pecmd.exe LINK %Desktop%\Ghost自动网克,"%root%\startup.bat",netghost,%root%\ico\ghost32.ico
+%root%\pecmd.exe LINK %Desktop%\连接共享,"%root%\startup.bat",smbcli,%root%\ico\smbcli.ico
+%root%\pecmd.exe LINK %Desktop%\多播接收,"%root%\startup.bat",cloud,%root%\ico\uftpd.ico
+%root%\pecmd.exe LINK %Desktop%\多播发送,"%root%\uftp.exe",-R 800000,%root%\ico\uftp.ico
+%root%\pecmd.exe LINK %Desktop%\Hou多播发送,"%rootx86%\housx86.exe",E:\system.wim,"%rootx86%\housx86.exe"
+%root%\pecmd.exe LINK %Desktop%\Hou多播接收,"%rootx86%\houcx86.exe",I:\,"%rootx86%\houcx86.exe"
+%root%\pecmd.exe LINK %Desktop%\伽卡教师端,"%rootx86%\gakax86.exe",,"%rootx86%\gakax86.exe"
+%root%\pecmd.exe LINK %Desktop%\伽卡学生端,"%rootx86%\gakax86.exe",student,"%rootx86%\gakax86.exe"
+%root%\pecmd.exe LINK %Desktop%\DG分区工具,"%rootx86%\DiskGeniusx86.exe"
 ::if exist "%programfiles%\winxshell.exe" start "" "%programfiles%\winxshell.exe" -code Desktop:Refresh()
 %root%\pecmd.exe kill penetwork.exe
 if exist "%SystemDrive%\Program Files\PENetwork\penetwork.reg" reg import "%SystemDrive%\Program Files\PENetwork\penetwork.reg" 
@@ -133,7 +149,7 @@ goto init
 
 
 :init
-
+if exist "X:\Program Files\wxsUI\UI_info\nbinfo.lua" start "" "X:\Program Files\wxsUI\UI_info\nbinfo.lua"
 ::nc受控服务端
 if exist %root%\nc.bat pecmd exec -hide %root%\nc.bat
 ::启动tightvnc
@@ -535,6 +551,7 @@ iscsicli listtargets t
 exit /b
 
 
+
 :builddp
 set restore_file=%1
 set wim_index=%2
@@ -557,20 +574,4 @@ exit /b
 
 :restore_image
 start "" %root%\cgix64 dp.ini
-exit /b
-
-::预加载快捷方式
-:oldlink
-start "" %root%\pecmd.exe LINK %Desktop%\iSCSI 发起程序,%root%\iscsicpl.exe,,%root%\ico\iscsicli.ico
-start "" %root%\pecmd.exe LINK %Desktop%\iSCSI 服务端,%ProgramFiles%\Others\iscsiconsole.exe
-start "" %root%\pecmd.exe LINK %Desktop%\PE 网络管理,%ProgramFiles%\PENetwork\PENetwork.exe
-start "" %root%\pecmd.exe LINK %Desktop%\SkyIAR 驱动注入,%ProgramFiles%\Others\skyiar.exe
-start "" %root%\pecmd.exe LINK %Desktop%\SoftMgr 软件管理,%ProgramFiles%\SoftMgr\QQPCSoftMgr.exe
-start "" %root%\pecmd.exe LINK %Desktop%\远程工具,"%ProgramFiles%\winxshell.exe","%ProgramFiles%\Remote Control Tool",%root%\ico\remote.ico
-start "" %root%\pecmd.exe LINK "%Desktop%\BatchTools 特色小工具","%ProgramFiles%\winxshell.exe","%ProgramFiles%\BatchTools",%root%\ico\batch.ico
-start "" %root%\pecmd.exe LINK "%ProgramFiles%\Remote Control Tool\mstsc远程_console","%WinDir%\mstsc.exe",/console,"%WinDir%\mstsc.exe"
-start "" %root%\pecmd.exe LINK "%ProgramFiles%\Remote Control Tool\mstsc远程","%WinDir%\mstsc.exe",,"%WinDir%\mstsc.exe"
-start "" %root%\pecmd.exe LINK "%Desktop%\Microsoft Edge","%ProgramFiles%\edge\edge.bat",,"%ProgramFiles%\edge\edge.ico"
-start "" %root%\pecmd.exe LINK "%Desktop%\腾讯QQ","%ProgramFiles%\qq\qq.bat",,"%ProgramFiles%\QQ\QQ.ico"
-start "" %root%\pecmd.exe LINK "%Desktop%\微信","%ProgramFiles%\Wechat\Wechat.bat",,"%ProgramFiles%\Wechat\WeChat.ico"
 exit /b
