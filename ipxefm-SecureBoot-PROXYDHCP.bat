@@ -1,5 +1,5 @@
 @echo off
-mode con cols=90 lines=8
+mode con cols=90 lines=15
 title=building......
 @taskkill /f /im pxesrv.exe
 @taskkill /f /im hfs.exe
@@ -25,7 +25,7 @@ cd /d %~dp0
 cls
 call :buildwim
 call :makejob
-
+call Secure_BCD.bat
 
 (
 echo [arch]
