@@ -1,6 +1,7 @@
 @echo off
 mode con cols=90 lines=15
-title=building......
+title=安全启动模式网启服务端配置......
+if "%SystemDrive%"== "X:" pecmd -kill pxesrv.cmd&&pecmd -kill hfs.exe
 @taskkill /f /im pxesrv.exe
 @taskkill /f /im hfs.exe
 cd /d %~dp0
@@ -89,7 +90,18 @@ for /f %%i in ('dir /b app\inject\default\*.*') do (
 echo 注入%%i 到boot.wim!
 %wimlib% update %~dp0sources\boot.wim --command="add 'app\inject\default\%%i' '\Windows\system32\%%i'"
 )
+if "%SystemDrive%"== "X:" (
+rem 写入原软链接文件
+%wimlib% update %~dp0sources\boot.wim --command="add '\Program Files\DiskGenius\DiskGenius.exe' '\Windows\system32\DiskGeniusx86.exe'"
+%wimlib% update %~dp0sources\boot.wim --command="add '\Program Files\GhostCGI\CGI-plus_x64.exe' '\Windows\system32\cgix64.exe'"
+%wimlib% update %~dp0sources\boot.wim --command="add '\Program Files\GhostCGI\ghost64.exe' '\Windows\system32\ghostx64.exe'"
+%wimlib% update %~dp0sources\boot.wim --command="add '\Windows\System32\pecmd.exe' '\Windows\system32\ShowDrives_Gui_x64.exe'"
+%wimlib% update %~dp0sources\boot.wim --command="add '\Windows\System32\drivers.7z' '\Windows\system32\drivers.7z'"
+)
 exit /b
+
+
+
 
 :wtip
 echo 写入ip和任务
