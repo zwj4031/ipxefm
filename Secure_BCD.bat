@@ -1,14 +1,30 @@
 @echo off
 :: 检查当前路径是否包含C:
-if "%CD:~0,2%" == "C:" (
+set cu_path=%~dp0
+if "%cu_path:~0,2%" == "C:" (
 echo 禁止在C盘运行本批处理! 当前路径包含C:，禁止运行此批处理！
 pause
 exit /b
 )
-
+cd /d %~dp0
+if not "%SystemDrive%" == "C:" echo WinPE&&goto start 
+:: 获取管理员权限运行批处理
+>nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system"
+if '%errorlevel%' NEQ '0' (
+goto UACPrompt
+) else ( goto gotAdmin )
+:UACPrompt
+echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
+echo UAC.ShellExecute "%~s0", "", "", "runas", 1 >> "%temp%\getadmin.vbs"
+"%temp%\getadmin.vbs" 1>nul 2>nul
+exit /b
+:gotAdmin
+if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" ) 1>nul 2>nul
+cd /d %~dp0
+:start
 mode con cols=65 lines=30
 set bootwim=sources\boot.wim
-title TFTP传输速率调整,当前启动\%bootwim%
+title TFTP传输速率调整,当前启动:"\%bootwim%"
 set "result=!path:~0,2!"
 if exist %~dp0Boot\BCD del /q /f %~dp0Boot\BCD
 :bd_bcd
@@ -33,7 +49,7 @@ bcdedit /store Boot\BCD /set %pxeid% bootmenupolicy legacy
 cls
 echo 创建BCD引导菜单完成...
 :tftpblocksizemenu
-title TFTP传输速率调整,当前启动\%bootwim%
+title TFTP传输速率调整,当前启动:"\%bootwim%"
 echo 修改传输速率，请选择一个选项!
 echo --------------------- 
 echo 1. 超高速 [可能不稳定]
