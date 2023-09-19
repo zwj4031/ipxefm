@@ -103,7 +103,7 @@ console --picture ${themes}/${bg} --left 32 --right 32 --top 32 --bottom 48 ||
    item --key s shell          S.  Drop to iPXE shell
    item --key r reboot         R.  Reboot computer
    item --key p poweroff       P.  Poweroff computer
-   item --key x exit           X.  Exit iPXE and continue BIOS boot  
+   item --key x bootlocal      X.  Exit iPXE and continue BIOS boot  
    item ratio                Resolution ratio [1920x1080 1024x768 800x600]    
 choose --timeout ${ext-timeout} --default ${ext-default} selected ||
 set ext ${selected} ||
@@ -111,7 +111,7 @@ iseq ${selected} config && config ||
 iseq ${selected} shell && shell ||
 iseq ${selected} reboot && reboot ||
 iseq ${selected} poweroff && poweroff ||
-iseq ${selected} exit && exit ||
+iseq ${selected} bootlocal && goto ${platform}bootlocal
 iseq ${selected} ratio && goto ratio ||
 iseq ${selected} RyanBoot && chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe ||
 iseq ${selected} netboot.xyz.pcbios && chain --autofree https://boot.netboot.xyz/ipxe/netboot.xyz.lkrn ||
@@ -183,3 +183,15 @@ iseq ${selected} 1024x768 && set x 1024 && set y 768 && set bg 1024x768.png ||
 iseq ${selected} 800x600 && set x 800 && set y 600 && set bg 800x600.png ||
 iseq ${selected} menu && goto bootmenu ||
 chain ${prefix}/init.ipxe ||
+
+#从本地启动
+:efibootlocal
+kernel http://${booturl}/app/wimboot/wimboot gui ||
+initrd -n bootlocal http://${booturl}/ ||
+cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
+initrd -n bootx64.efi http://${booturl}/app/${platform}/grub2toy.efi ||
+boot ||
+chain ${prefix}/init.ipxe ||
+
+:biosbootlocal
+exit
