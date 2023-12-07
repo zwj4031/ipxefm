@@ -1,9 +1,22 @@
+;fix_explorer++_reflesh
+\Program Files\FileExpRefresh
+;fix_startnet_Qos
+\Windows\System32\drivers\pacer.sys
+;pecmd_setip
+\Windows\System32\netshell.dll
+\Windows\System32\NetSetupApi.dll
+\Windows\System32\netman.dll
+\Windows\System32\ipconfig.exe
+\Program Files\wxsUI
+\Program Files\AppStore
 ;nwinfo_gnwinfo
 \Windows\System32\pdh.dll
+\Windows\gnwinfo.exe
+\Windows\gnwinfo.ini
 ;nbpsupport
 \Windows\nbp.bat
 \Windows\mknbp.bat
-\Windows\nkpage.exe
+;\Windows\nkpage.exe
 \Program Files\GhostCGI\wimlib64\libwim-15.dll
 \Program Files\GhostCGI\wimlib64\wimlib-imagex.exe
 \Windows\app.ico
@@ -182,8 +195,8 @@
 \Program files\UI_TEST.bat
 \Program files\wallpaper.jpg
 \Program files\WinXShell*
-\Program files\wxsStub.dll
-\Program files\wxsStub32.dll
+\Program files\wxsStub*.dll
+\Program files\wxsStub32*.dll
 \Program Files\wxsUI
 \Program files\WiFi.BAT
 \Program files (x86)\Common Files

@@ -100,11 +100,13 @@ ipconfig /renew>nul
 set /a n=%n%+1
 %say% "第%n%(15)次获取IP" %font% 
 %wait%::循环开始
-if not "%myip%" == "" goto getipok
+if not "%myip%" == ""  goto getipok
 if "%n%" == "15" goto getipbuok
 goto checkip
 ::获取ip成功
 :getipok
+rem 修改动态ip地址为固定，防止dhcp服务器崩溃时无法传输文件
+if exist "X:\Program Files\wxsUI\UI_AppStore\PEwtip.lua" start "" /w "X:\Program Files\wxsUI\UI_AppStore\PEwtip.lua"
 %xsay%
 %xshow%
 ::显示ip-newbeepe中要注释掉下面一行

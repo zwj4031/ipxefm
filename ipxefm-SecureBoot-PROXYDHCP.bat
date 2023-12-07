@@ -35,6 +35,7 @@ echo [dhcp]
 echo start=1
 echo proxydhcp=1
 echo httpd=0
+echo smb=1
 echo bind=1
 echo poolsize=998
 echo root=%~dp0
@@ -59,7 +60,18 @@ exit /b
 :makejob
 set wimlib="bin\wimlib.exe"
 if "%SystemDrive%" == "X:" set wimlib="X:\Program Files\GhostCGI\wimlib64\wimlib-imagex.exe"
-echo 输入你要执行的任务名称:netghost;netcopy;smbcli;p2pmbr;p2pgpt;dbmbr;dbp2p;btonly;
+cls
+echo 任务名称支持:(详细自行分析startup.bat或参考ipxeboot.txt)
+echo netghost(网克)、smbcli(挂载共享)、cloud(多播)
+echo p2pmbr/p2pgpt(p2p方式自动分区部署)
+echo dbmbr/dbgpt(多播自动分区部署)
+echo smbdp(共享恢复)、btonly（不分区)、
+echo houmbr/hougpt（hou多播自动分区部署)、iscsi(自动连iscsi服务)
+echo gaka(嘎卡/极域电子教室客户端)
+echo -----------------------------------------------------------
+echo 输入你要执行的任务名称:
+echo netghost;netcopy;smbcli;p2pmbr;p2pgpt
+echo dbmbr;dbp2p;btonly;smbdp;iscsi;gaka
 set /p job=
 ::设置ip(共享B盘用)
 ::设置ip(共享B盘用)

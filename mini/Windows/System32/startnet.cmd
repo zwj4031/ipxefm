@@ -41,20 +41,6 @@ if exist "X:\Program Files\wifi.wcs" start "" %root%\pecmd.exe LINK "%QuickLaunc
 ::start "" "X:\Program Files\WinXShell.exe" -ui -jcfg wxsUI\UI_WIFI\main.jcfg -hidewindow
 
 
-::预加载快捷方式
-start "" %root%\pecmd.exe LINK %Desktop%\iSCSI 发起程序,%root%\iscsicpl.exe,,%root%\ico\iscsicli.ico
-start "" %root%\pecmd.exe LINK %Desktop%\iSCSI 服务端,%ProgramFiles%\Others\iscsiconsole.exe
-start "" %root%\pecmd.exe LINK %Desktop%\PE 网络管理,%ProgramFiles%\PENetwork\PENetwork.exe
-start "" %root%\pecmd.exe LINK %Desktop%\SkyIAR 驱动注入,%ProgramFiles%\Others\skyiar.exe
-start "" %root%\pecmd.exe LINK %Desktop%\SoftMgr 软件管理,%ProgramFiles%\SoftMgr\QQPCSoftMgr.exe
-start "" %root%\pecmd.exe LINK %Desktop%\远程工具,"%ProgramFiles%\winxshell.exe","%ProgramFiles%\Remote Control Tool",%root%\ico\remote.ico
-start "" %root%\pecmd.exe LINK "%Desktop%\BatchTools 特色小工具","%ProgramFiles%\winxshell.exe","%ProgramFiles%\BatchTools",%root%\ico\batch.ico
-start "" %root%\pecmd.exe LINK "%ProgramFiles%\Remote Control Tool\mstsc远程_console","%WinDir%\mstsc.exe",/console,"%WinDir%\mstsc.exe"
-start "" %root%\pecmd.exe LINK "%ProgramFiles%\Remote Control Tool\mstsc远程","%WinDir%\mstsc.exe",,"%WinDir%\mstsc.exe"
-start "" %root%\pecmd.exe LINK "%Desktop%\Microsoft Edge","%ProgramFiles%\edge\edge.bat",,"%ProgramFiles%\edge\edge.ico"
-start "" %root%\pecmd.exe LINK "%Desktop%\腾讯QQ","%ProgramFiles%\qq\qq.bat",,"%ProgramFiles%\QQ\QQ.ico"
-start "" %root%\pecmd.exe LINK "%Desktop%\微信","%ProgramFiles%\Wechat\Wechat.bat",,"%ProgramFiles%\Wechat\WeChat.ico"
-
 :startmenu
 %say% "加载开始菜单..."
 if exist "X:\Program Files\Classic Shell\ClassicStartMenu.exe" (
@@ -226,9 +212,9 @@ start "" pecmd load %systemroot%\pecmd.ini
 ::网络图标指示
 net start netprofm
 start "" pecmd exec! net share X=X:\ /grant:everyone,full /y
-
+if not exist X:\windows\gnwinfo.exe start "" "X:\Program Files\wxsUI\UI_info\nbinfo.lua"
+if exist "X:\windows\gnwinfo.exe" start "" "X:\windows\gnwinfo.exe"
 if exist %systemroot%\system32\startup.bat start "" %systemroot%\system32\startup.bat
 %xsay%
 %xsay%
 exit
-
