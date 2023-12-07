@@ -111,7 +111,7 @@ iseq ${selected} config && config ||
 iseq ${selected} shell && shell ||
 iseq ${selected} reboot && reboot ||
 iseq ${selected} poweroff && poweroff ||
-iseq ${selected} bootlocal && goto ${platform}bootlocal
+iseq ${selected} bootlocal && goto ${platform}bootlocal ||
 iseq ${selected} ratio && goto ratio ||
 iseq ${selected} RyanBoot && chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe ||
 iseq ${selected} netboot.xyz.pcbios && chain --autofree https://boot.netboot.xyz/ipxe/netboot.xyz.lkrn ||
