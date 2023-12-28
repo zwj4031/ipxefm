@@ -9,11 +9,9 @@ on:
   pull_request:
     branches:
       - main
-      - dev
   push:
     branches:
       - main
-      - dev
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -51,7 +49,9 @@ jobs:
           body: |
             - 发布时间：${{ github.event.head_commit.timestamp }}
             - 发布者：${{ github.event.head_commit.author.name }}
+            - 发布分支：${{ github.ref_name }}
             - 更新信息：${{ github.event.head_commit.message }}
+
             - You can download the complete `ipxefm.7z` package from **Tencent QQ group** `146859089`, which contains the demo `mini.wim` (edited)
             - 可以从**腾讯QQ群**`146859089`下载完整的`ipxefm.7z`包，里面包含演示的`mini.wim`
           tag_name: ${{ steps.tag.outputs.release_tag }}
