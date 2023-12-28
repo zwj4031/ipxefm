@@ -40,7 +40,7 @@ jobs:
       - name: Generate release tag
         id: tag
         run: |
-          echo "::set-output name=release_tag::UserBuild_$(date +"%Y.%m.%d_%H-%M")_$(echo ${{ github.ref }} | sed's/refs\/heads\///g')"
+          echo "::set-output name=release_tag::UserBuild_$(date +"%Y.%m.%d_%H-%M")_${{ github.ref_name }}"
 
       - name: Release
         uses: softprops/action-gh-release@v1
