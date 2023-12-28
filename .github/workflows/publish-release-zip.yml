@@ -1,7 +1,7 @@
 # 这个工作流作用：
 # 1. 在提交 `main` 分支时
-# 2. 将代码打包到 `zip` 文件
-# 3. 发布到`github release`中
+# 2. 将代码打包到 `zip` 和 `7z` 文件
+# 3. 发布到`github release`中,tag 以 yyyy-mm-dd_HH-MM 命名
 
 name: Publish Release Zip and 7Z
 
@@ -26,6 +26,10 @@ jobs:
       - name: 7z
         # 使用7z压缩，排除.git和.github目录
         run: 7z a -t7z -r release.7z * -xr!*.git* -xr!*.github* -xr!release.zip -xr!release.7z
+      - name: Generate release tag
+        id: tag
+        run: |
+          echo "::set-output name=release_tag::UserBuild_$(date +"%Y.%m.%d_%H-%M")"
 
       - name: Release
         uses: softprops/action-gh-release@v1
@@ -39,3 +43,4 @@ jobs:
             - 更新信息：${{ github.event.head_commit.message }}
             - You can download the complete `ipxefm.7z` package from **Tencent QQ group** `146859089`, which contains the demo `mini.wim` (edited)
             - 可以从**腾讯QQ群**`146859089`下载完整的`ipxefm.7z`包，里面包含演示的`mini.wim`
+          tag_name: ${{ steps.tag.outputs.release_tag }}
