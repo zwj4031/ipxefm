@@ -4,7 +4,7 @@ goto ${bootmode}
 :efiisowithimgboot
 initrd -n boot.iso http://${booturl}${bootfile} ||
 chain http://${booturl}/app/${platform}/imgboot.efi ||
-boot || chain ${prefix}/types/${ext} 
+boot || chain ${prefix}/types/${ext}.ipxe
 
 :pcbiosbootimg
 kernel http://${booturl}/app/${platform}/grub.exe ||
@@ -12,7 +12,7 @@ cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --l
 initrd http://${booturl}${bootfile} ||
 initrd http://${booturl}/app/${platform}/512 ||
 imgargs grub.exe --config-file="map (rd)+1 (${diskmode}0);map --hook; root (${diskmode}0);chainloader (${diskmode}0)+1;boot" ||
-boot || chain ${prefix}/types/${ext} 
+boot || chain ${prefix}/types/${ext}.ipxe
 
 :efibootimg
 kernel http://${booturl}/app/wimboot/wimboot gui ||
@@ -20,14 +20,14 @@ initrd -n bootmgfw.efi http://${booturl}/app/${platform}/grub4uefi.efi ||
 initrd -n menu.lst http://${booturl}/app/${platform}/menu.lst ||
 cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
 initrd -n boot.iso http://${booturl}${bootfile} ||
-boot || chain ${prefix}/types/${ext} 
+boot || chain ${prefix}/types/${ext}.ipxe
 
 #用memdisk来启动img(仅legacybios)
 :memdiskimg
 cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
 initrd http://${booturl}${bootfile} ||
 kernel ${boot-url}/app/${platform}/memdisk ||
-boot || chain ${prefix}/types/${ext} 
+boot || chain ${prefix}/types/${ext}.ipxe
 
 #启动img结束
 :pcbiosbootvhd
@@ -36,7 +36,7 @@ cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --l
 initrd http://${booturl}${bootfile} ||
 initrd http://${booturl}/app/${platform}/512 ||
 imgargs grub.exe --config-file="map (rd)+1 (hd0);map --hook;chainloader (hd0);boot" ||
-boot || chain ${prefix}/types/${ext} 
+boot || chain ${prefix}/types/${ext}.ipxe
 
 :efibootvhd
 kernel http://${booturl}/app/wimboot/wimboot gui ||
@@ -44,4 +44,4 @@ initrd -n bootmgfw.efi http://${booturl}/app/${platform}/grubfmx64.efi ||
 initrd -n menu.lst http://${booturl}/app/${platform}/menu.lst ||
 cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
 initrd -n boot.iso http://${booturl}${bootfile} ||
-boot || chain ${prefix}/types/${ext} 
+boot || chain ${prefix}/types/${ext}.ipxe

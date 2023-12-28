@@ -1,0 +1,32 @@
+#!ipxe
+
+#vhd类型文件的启动菜单
+:pcbiosvhd
+menu  iPXE's Boot Menu boot:${bootfile} QQGroup(Qun):146859089
+   item --gap --             ------------------------${platform} boot:${bootfile} -----------------------------
+	item  --key 1 ${platform}sanbootvhd    1. Boot with sanboot
+	item  --key 2 ${platform}bootvhd       2. Boot with grub (ramos)
+	item  --key m menu                     M. back to menu
+choose --timeout 8000 --default ${${platform}vhdbootmode} selected
+iseq ${selected} pcbiossanbootvhd && set keep-san 1 && sanboot --drive 0x80 http://${booturl}${bootfile} && boot ||
+iseq ${selected} pcbiosbootvhd && goto pcbiosbootvhd ||
+iseq ${selected} efisanbootvhd && set keep-san 1 && sanboot --no-describe http://${booturl}${bootfile} && boot ||
+iseq ${selected} efibootvhd && goto efibootvhd ||
+iseq ${selected} menu && chain ${prefix}/init.ipxe ||
+set bootmode ${selected} && chain ${prefix}/rules/disk.ipxe ||
+chain ${prefix}/Boot/ipxefm/rules/burn.ipxe ||
+#启动vhd结束
+ 
+:efivhd
+menu  iPXE's Boot Menu boot:${bootfile} QQGroup(Qun):146859089
+   item --gap --             ------------------------${platform} boot:${bootfile} -----------------------------
+	item  --key 1 ${platform}sanbootvhd    1. Boot with sanboot
+	item  --key 2 ${platform}bootvhd       2. Boot with grub (ramos)
+	item  --key m menu                     M. back to menu
+choose --timeout 8000 --default ${${platform}vhdbootmode} selected
+iseq ${selected} pcbiossanbootvhd && set keep-san 1 && sanboot --drive 0x80 http://${booturl}${bootfile} && boot ||
+iseq ${selected} efisanbootvhd && set keep-san 1 && sanboot --no-describe http://${booturl}${bootfile} && boot ||
+iseq ${selected} menu && chain ${prefix}/init.ipxe ||
+set bootmode ${selected} && chain ${prefix}/rules/disk.ipxe ||
+chain ${prefix}/Boot/ipxefm/rules/burn.ipxe ||
+#启动vhd结束 
