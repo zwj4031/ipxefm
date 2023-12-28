@@ -25,7 +25,7 @@ jobs:
 
       - name: 7z
         # 使用7z压缩，排除.git和.github目录
-        run: 7z a -t7z -r release.7z -xr!*.git* -xr!*.github* *
+        run: 7z a -t7z -r release.7z * -xr!*.git* -xr!*.github* -xr!release.zip -xr!release.7z
 
       - name: Release
         uses: softprops/action-gh-release@v1
