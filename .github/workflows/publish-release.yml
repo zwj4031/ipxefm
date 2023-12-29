@@ -1,0 +1,59 @@
+# 这个工作流作用：
+# 1. 在提交 `main` 分支时
+# 2. 将代码打包到 `zip` 和 `7z` 文件
+# 3. 发布到`github release`中,tag 以 UserBuild_yyyy-mm-dd_HH-MM_${branch} 命名
+
+name: Publish Release Zip and 7Z
+
+on:
+  pull_request:
+    branches:
+      - main
+
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        if: github.event_name == 'pull_request'
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Checkout
+        if: github.event_name == 'push'
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+
+      - name: zip
+        # 使用zip压缩，排除.git和.github目录
+        run: zip -r ipxefm.zip * -x "*.git*" "*.github*"
+
+      - name: 7z
+        # 使用7z压缩，排除.git和.github目录
+        run: 7z a -t7z -r ipxefm.7z * -xr!*.git* -xr!*.github* -xr!ipxefm.zip -xr!ipxefm.7z
+      - name: Generate release tag
+        id: tag
+        run: |
+          echo "::set-output name=release_tag::UserBuild_$(date +"%Y.%m.%d_%H-%M")_${{ github.ref_name }}"
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ipxefm.7z
+            ipxefm.zip
+          body: |
+            - 发布时间：${{ github.event.head_commit.timestamp }}
+            - 发布者：${{ github.event.head_commit.author.name }}
+            - 发布分支：${{ github.ref_name }}
+            - 更新信息：${{ github.event.head_commit.message }}
+
+            - You can download the complete `ipxefm.7z` package from **Tencent QQ group** `146859089`, which contains the demo `mini.wim` (edited)
+            - 可以从**腾讯QQ群**`146859089`下载完整的`ipxefm.7z`包，里面包含演示的`mini.wim`
+          tag_name: ${{ steps.tag.outputs.release_tag }}

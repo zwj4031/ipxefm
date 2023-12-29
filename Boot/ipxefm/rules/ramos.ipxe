@@ -7,7 +7,7 @@ initrd -n mapramosmem http://${booturl}/ ||
 cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
 initrd -n boot.ramos http://${booturl}${bootfile} ||
 initrd -n bootx64.efi http://${booturl}/app/${platform}/grub2toy.efi ||
-boot || chain ${prefix}/types/${ext} 
+boot || chain ${prefix}/types/${ext}.ipxe
 
 :pcbiosramosg4d
 kernel http://${booturl}/app/${platform}/grub.exe ||
@@ -15,4 +15,4 @@ cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --l
 initrd http://${booturl}${bootfile} ||
 initrd http://${booturl}/app/${platform}/512 ||
 imgargs grub.exe --config-file="map --mem --top (rd)+1 (hd0);map (hd0) (hd1);map --hook;root (hd0,0);chainloader /bootmgr;" ||
-boot || chain ${prefix}/types/${ext} 
+boot || chain ${prefix}/types/${ext}.ipxe

@@ -1,10 +1,10 @@
 #!ipxe
-##################高级工具burnimg##################  
+##################高级工具burnimg##################
 iseq ${quiet} 1 && console --x ${x} -y ${y} && cpair --foreground 0 0 || #静默背景
 :burn
 echo Burn ${img}........................
 kernel ${burnpath}${kernel} showmounts toram root=/dev/nfs initrd=${initrd} netboot=nfs nfsroot=${nfsroot} share=${share} img=${img} ip=dhcp ipv6.disable=1 ro splash biosdevname=0 ||
 cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
 initrd ${burnpath}${initrd} ||
-boot || chain ${prefix}/types/${ext} 
+boot || chain ${prefix}/types/${ext}.ipxe
 ##################高级工具##################  
