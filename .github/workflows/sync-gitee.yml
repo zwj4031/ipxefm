@@ -11,8 +11,8 @@ jobs:
     steps:
       - name: check_gitee_token
         run: |
-          if [ -z "${{ secrets.GITEE_RSA_PRIVATE_KEY }}" ]; then
-            echo "Error: GITEE_RSA_PRIVATE_KEY is not set."
+          if [ -z "${{ secrets.GITEE_USER_NAME }}" ] || [ -z "${{ secrets.GITEE_RSA_PRIVATE_KEY }}" ]; then
+          echo "Error: GITEE_USER_NAME or GITEE_RSA_PRIVATE_KEY is not set."
             echo see https://github.com/pixta-dev/repository-mirroring-action for help.
             echo 打开 https://zhuanlan.zhihu.com/p/353862378 , 查看 "Gitee 和 Github 添加公钥" "3.Github仓库添加私钥"
             exit 1
@@ -24,5 +24,5 @@ jobs:
       - name: "Mirror to gitee"
         uses: pixta-dev/repository-mirroring-action@v1
         with:
-          target_repo_url: git@gitee.com:zwj4031/ipxefm.git
+          target_repo_url: git@gitee.com:${{secrets.GITEE_USER_NAME}}/ipxefm.git
           ssh_private_key: ${{ secrets.GITEE_RSA_PRIVATE_KEY }}
