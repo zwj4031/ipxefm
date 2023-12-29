@@ -14,7 +14,7 @@ jobs:
           if [ -z "${{ secrets.GITEE_RSA_PRIVATE_KEY }}" ]; then
             echo "Error: GITEE_RSA_PRIVATE_KEY is not set."
             echo see https://github.com/pixta-dev/repository-mirroring-action for help.
-            echo 打开 https://zhuanlan.zhihu.com/p/353862378 , `Gitee 和 Github 添加公钥` `3.Github仓库添加私钥`
+            echo 打开 https://zhuanlan.zhihu.com/p/353862378 , 查看 "Gitee 和 Github 添加公钥" "3.Github仓库添加私钥"
             exit 1
           fi
 
