@@ -15,6 +15,10 @@ jobs:
           echo "Error: GITEE_USER_NAME or GITEE_RSA_PRIVATE_KEY is not set."
             echo see https://github.com/pixta-dev/repository-mirroring-action for help.
             echo 打开 https://zhuanlan.zhihu.com/p/353862378 , 查看 "Gitee 和 Github 添加公钥" "3.Github仓库添加私钥"
+            echo 打开 https://gitee.com/profile/sshkeys ， 添加GITEE公钥
+            echo 打开 https://github.com/<YOUR_USERNAME>/ipxefm/settings/secrets/actions ， 添加 GITEE_USER_NAME 和 GITEE_RSA_PRIVATE_KEY
+          exit 1
+          fi
             exit 1
           fi
 
