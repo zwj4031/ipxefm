@@ -1,0 +1,18 @@
+#!ipxe
+#系统设置#
+set burnpath http://${booturl}/ctos/boot/ #kernel和initrd启动文件所在路径
+set kernel vmlinuz-4.13.0-11-generic #kernel名称
+set initrd initrd.img-4.13.0-11-generic #initrd名称
+set share //${booturl}/images             #SMB共享目录，根目录必须有img镜像    
+set nfsroot ${booturl}:/S/ipxefm/ctos #注意大小写                               
+#系统设置结束#
+#burn工具菜单
+menu  iPXE's Boot Menu boot:${bootfile} QQGroup(Qun):146859089
+   item --gap --             ------------------------${platform} boot:${bootfile} -----------------------------
+   item --key 1 CTOS_STD_x64_20180426.img        1. Burn CTOS_STD_x64_20180426.img
+   item --key 2 CTOS_STD_x64_20210101.img        2. Burn CTOS_STD_x64_20210101.img
+   item --key 3 lede.img                         3. Burn lede.img
+   item --key m menu                             M. back to menu       
+choose --timeout 80000000 --default 20180426 selected   #倒计时自动选择菜单，风险！
+set img ${selected} && chain ${prefix}/rules/burn.ipxe ||
+chain ${prefix}/init.ipxe ||

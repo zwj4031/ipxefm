@@ -1,0 +1,33 @@
+#!ipxe
+goto ${platform}img
+
+#启动img开始
+#legacybios环境下img类型文件的启动菜单
+:pcbiosimg
+menu  iPXE's Boot Menu boot:${bootfile} QQGroup(Qun):146859089
+   item --gap --             ------------------------${platform} boot:${bootfile} -----------------------------
+   item  --key 1 ${platform}sanbootimg    1. Boot with sanboot
+   item  --key 2 memdiskimg               2. Boot with memdisk
+   item  --key 3 ${platform}bootimgfdd    3. Boot with grub (FDD)
+   item  --key 4 ${platform}bootimghdd    4. Boot with grub (HDD)
+   item  --key m menu                     M. back to menu
+choose --timeout 8000 --default ${pcbiosimgbootmode} selected
+iseq ${selected} menu && chain ${prefix}/init.ipxe  ||
+iseq ${selected} ${platform}sanbootimg && set keep-san 1 && sanboot http://${booturl}${bootfile} ||
+iseq ${selected} ${platform}bootimgfdd && set diskmode fd && set bootmode ${platform}bootimg && chain ${prefix}/rules/disk.ipxe ||
+iseq ${selected} ${platform}bootimghdd && set diskmode hd && set bootmode ${platform}bootimg && chain ${prefix}/rules/disk.ipxe ||
+set bootmode ${selected} && chain ${prefix}/rules/disk.ipxe ||
+chain ${prefix}/Boot/ipxefm/rules/burn.ipxe ||
+
+#uefi环境下的img类型文件启动菜单
+:efiimg
+menu  iPXE's Boot Menu boot:${bootfile} QQGroup(Qun):146859089
+   item --gap --             ------------------------${platform} boot:${bootfile} -----------------------------
+   item  --key 1 ${platform}sanbootimg    1.Boot with sanboot
+   item  --key 2 ${platform}bootimg       2.Boot with grub
+   item  --key m menu                     M.back to menu
+choose --timeout 8000 --default ${efiimgbootmode} selected
+iseq ${selected} menu && chain ${prefix}/init.ipxe  ||
+iseq ${selected} ${platform}bootimg && sanboot --no-describe http://${booturl}${bootfile} ||
+set bootmode ${selected} && chain ${prefix}/rules/disk.ipxe ||
+chain ${prefix}/Boot/ipxefm/rules/burn.ipxe ||
