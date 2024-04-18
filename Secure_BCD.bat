@@ -40,6 +40,7 @@ bcdedit.exe /store Boot\BCD /set %pxeid% osdevice ramdisk=[boot]\%bootwim%,{ramd
 bcdedit.exe /store Boot\BCD /set %pxeid% systemroot \windows
 bcdedit.exe /store Boot\BCD /set %pxeid% detecthal Yes
 bcdedit.exe /store Boot\BCD /set %pxeid% winpe Yes
+bcdedit.exe /store Boot\BCD /set %pxeid% highestmode Yes
 bcdedit.exe /store Boot\BCD /create {bootmgr} /d "boot manager"
 bcdedit.exe /store Boot\BCD /set {bootmgr} timeout 30 
 bcdedit.exe /store Boot\BCD -displayorder %pxeid% -addlast
