@@ -1,0 +1,51 @@
+#!ipxe
+##############初级止步！中级进阶用户修改区域######
+##wimboot射入pe的文件暂时可射5个，5个文件在/app/inject目录下(不能为空~会蓝屏!)
+##看得懂脚本的可以射数个(不能为空~会蓝屏!)
+##################################################
+isset ${${sel}injectdir} && set injectdir ${${sel}injectdir} || set injectdir default 
+isset ${${sel}winpeshl} && set winpeshl ${${sel}winpeshl} || set winpeshl winpeshl.ini 
+isset ${${sel}job} && set job ${${sel}job} ||
+isset ${${sel}args2} && set args2 ${${sel}args2} ||
+isset ${${sel}startup} && set startup ${${sel}startup} || set startup startup.bat
+isset ${${sel}inject1} && set inject1 ${${sel}inject1} ||
+isset ${${sel}inject2} && set inject2 ${${sel}inject2} ||
+isset ${${sel}inject3} && set inject3 ${${sel}inject3} ||
+isset ${${sel}inject4} && set inject4 ${${sel}inject4} ||
+isset ${${sel}inject5} && set inject5 ${${sel}inject5} ||
+# 选择smb共享的，需要默认共享本目录名称为PXE 
+# 使用共享功能，至少要把本目录也就是ipxeboot权限设置为everyone可读!
+isset ${job} && set bootmode wimboot-inject && chain ${prefix}/rules/wimboot.ipxe ||
+#wim类型文件启动菜单
+:wimmenu
+menu  iPXE's Boot Menu boot:${bootfile} QQGroup(Qun):146859089 ${platform} 
+   item --key 1 wimboot                1. Boot with wimboot 
+   item --key 2 netghost               2. Boot with wimboot (job->NetGhost->safely)
+   item --key 3 smbcli                 3. Boot with wimboot (job->SMB->safely)
+   item --key 4 cloud                  4. Boot with wimboot (job->cloud->safely)
+   item --gap -- Universal Deployment System
+   item --key a p2pmbr                 a. Boot with wimboot (job->p2pmbr->Warning: diskdata_destory)
+   item --key b p2pgpt                 b. Boot with wimboot (job->p2pgpt->Warning: diskdata_destory)
+   item --key c dbmbr                  c. Boot with wimboot (job->dbmbr->Warning: diskdata_destory)
+   item --key d dbpgpt                 d. Boot with wimboot (job->dbgpt->Warning: diskdata_destory)
+   item --key 9 ${winpeshl}            9. Switch ${winpeshl} (winpeshl->${winpeshl}) 
+   item --key m menu                   M. Back to menu 
+   item --gap -- --------------------------Wimboot Option----------------------------
+   item --gap -- Wimboot injectdir:${injectdir}
+   item --gap -- Wimboot job:${job}
+   item --gap -- Wimboot inject filelist:winpeshl --${winpeshl}
+   item --gap -- startup     --${startup}
+   item --gap -- inject1     --${inject1}
+   item --gap -- inject2     --${inject2}
+   item --gap -- inject3     --${inject3}
+   item --gap -- inject4     --${inject4}
+   item --gap -- inject5     --${inject5}
+   
+   choose --timeout 8000 --default ${${platform}wimbootmode} selected
+iseq ${selected} wimboot && set bootmode wimboot && chain ${prefix}/rules/wimboot.ipxe ||
+iseq ${selected} menu && chain ${prefix}/init.ipxe  ||
+iseq ${selected} winpeshl.ini && set winpeshl winpeshl_winxshell.ini && set bootmode wimboot-inject && goto wimmenu ||
+iseq ${selected} winpeshl_winxshell.ini && set winpeshl winpeshl.ini && set bootmode wimboot-inject && goto wimmenu ||
+set job ${selected} && set bootmode wimboot-inject && chain ${prefix}/rules/wimboot.ipxe ||
+chain ${prefix}/init.ipxe ||
+ 
