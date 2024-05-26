@@ -138,7 +138,9 @@ echo ^)^|diskpart
 echo exit
 )>%~dp0_temp.bat
 set xrunfile=_temp.bat&&call :xrun
+timeout 5 /nobreak
 if exist %~dp0_temp.bat del /q /f %~dp0_temp.bat
+call :menu
 exit /b
 ::::::::::::::::危险的磁盘操作任务
 
