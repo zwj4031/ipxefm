@@ -15,7 +15,7 @@ set vhdbootfile-default 1
 set iqnbootfile-default 1
 set ramosbootfile-default 1
 #设置wim启动默认方式
-set pcbioswimbootmode wimboot #(不注入文件) 
+set pcbioswimbootmode wimboot #(不注入文件)
 #set pcbioswimbootmode startup.bat #(注入默认的startup.bat文件)
 set efiwimbootmode wimboot
 #set efiwimbootmode  startup.bat #(注入默认的startup.bat文件)
@@ -25,9 +25,9 @@ set pcbiosisobootmode pcbiosisowithmemdisk #其它方式有isowithgrub isowithme
 set efiisobootmode efiisowithimgboot #其它方式有efiisowithgrubmemrt efiisowithimgboot efiisowithgrub efiisowithsanboot
 
 #设置img启动默认方式
-set pcbiosimgbootmode memdiskimg #其它方式有pcbiossanbootimg pcbiosbootimgfdd pcbiosbootimghdd imgwithimgboot memdiskimg 
+set pcbiosimgbootmode memdiskimg #其它方式有pcbiossanbootimg pcbiosbootimgfdd pcbiosbootimghdd imgwithimgboot memdiskimg
 set efiimgbootmode efibootimg #方式有其它efisanbootimg efibootimg
- 
+
 #设置vhd启动默认方式
 set pcbiosvhdbootmode ${platform}sanbootvhd
 set efivhdbootmode ${platform}sanbootvhd
@@ -42,15 +42,15 @@ set efiramosbootmode ${platform}ramos
 #设置第一个菜单的超时时间
 set ext-timeout 8000
 #设置第二个选择文件界面菜单的超时时间
-set bootfile-timeout 8000 
+set bootfile-timeout 8000
 ##############高级秃顶用户修改区域结束######
 
 ################系统设置开始####################
-#设置分辨率图片                           
-isset ${x} || set x 800   
-isset ${y} || set y 600     
-isset ${bg} || set bg 800x600.png        
-isset ${ld} || set ld loading.png                              
+#设置分辨率图片
+isset ${x} || set x 800
+isset ${y} || set y 600
+isset ${bg} || set bg 800x600.png
+isset ${ld} || set ld loading.png
 #这句脚本是读取本地文件用，不用管
 ifopen net0
 #同上
@@ -67,7 +67,7 @@ isset ${proxydhcp/next-server} && set booturl ${proxydhcp/next-server} || set bo
 #备用 prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
 
 #设置永久环境变量
-#修改booturl的地址(默认是自动获取，要生效就去掉#号) 
+#修改booturl的地址(默认是自动获取，要生效就去掉#号)
 #set booturl 169.254.1.1:8080
 #没有设置iscsiurl就设置为booturl
 isset ${iscsiurl} || set iscsiurl ${booturl}
@@ -83,8 +83,8 @@ console --picture ${themes}/${bg} --left 32 --right 32 --top 32 --bottom 48 ||
 #主菜单
 :bootmenu
  menu  iPXE's Boot Menu BootServer:http://${booturl} QQGroup(Qun):146859089
-   
-   item --gap -- Choose BootFile 
+
+   item --gap -- Choose BootFile
    item --key 1 wim            1.  Boot Wimfile
    item --key 2 iso            2.  Boot Isofile
    item --key 3 img            3.  Boot Imgfile
@@ -96,15 +96,15 @@ console --picture ${themes}/${bg} --left 32 --right 32 --top 32 --bottom 48 ||
    item --gap -- Cloud Boot
    item  RyanBoot              RyanBoot
    item  netboot.xyz.${platform}  netboot.xyz
-   
-   item --gap -- Advanced options 
+
+   item --gap -- Advanced options
    item --key l reload         L.  Reload iPXE Menu
-   item --key c config   	   C.  Configure settings   
+   item --key c config   	   C.  Configure settings
    item --key s shell          S.  Drop to iPXE shell
    item --key r reboot         R.  Reboot computer
    item --key p poweroff       P.  Poweroff computer
-   item --key x bootlocal      X.  Exit iPXE and continue BIOS boot  
-   item ratio                Resolution ratio [1920x1080 1024x768 800x600]    
+   item --key x bootlocal      X.  Exit iPXE and continue BIOS boot
+   item ratio                Resolution ratio [1920x1080 1024x768 800x600]
 choose --timeout ${ext-timeout} --default ${ext-default} selected ||
 set ext ${selected} ||
 iseq ${selected} config && config ||
@@ -116,7 +116,7 @@ iseq ${selected} ratio && goto ratio ||
 iseq ${selected} RyanBoot && chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe ||
 iseq ${selected} netboot.xyz.pcbios && chain --autofree https://boot.netboot.xyz/ipxe/netboot.xyz.lkrn ||
 iseq ${selected} netboot.xyz.efi && chain --autofree https://boot.netboot.xyz/ipxe/netboot.xyz.efi ||
-iseq ${selected} burn && chain ${prefix}/types/burn ||
+iseq ${selected} burn && chain ${prefix}/types/burn.ipxe ||
 iseq ${selected} reload && chain http://${booturl}${scriptfile} ||
 
 
@@ -140,7 +140,7 @@ isset ${${ext}ename} && set titlee ${${ext}cname} || set titlee ${${ext}e}
 isset ${${ext}fname} && set titlef ${${ext}dname} || set titlef ${${ext}f}
 isset ${${ext}gname} && set titleg ${${ext}dname} || set titleg ${${ext}g}
 menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
-   item --gap -- Choose  ${ext}file 
+   item --gap -- Choose  ${ext}file
    item --key 1 ${ext}1          1. ${title1}
    item --key 2 ${ext}2          2. ${title2}
    item --key 3 ${ext}3          3. ${title3}
@@ -164,11 +164,11 @@ menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
   set sel ${selected} ||
   set bootfile ${${sel}} ||
   iseq ${selected} menu && goto bootmenu ||
-  chain ${prefix}/types/${ext} ||
+  chain ${prefix}/types/${ext}.ipxe ||
   goto ${ext} ||
 chain ${prefix}/init.ipxe ||
 
- 
+
 #分辨率调整
 :ratio
  menu  Boot:${ext}file BootServer:http://${booturl} QQGroup(Qun):146859089
