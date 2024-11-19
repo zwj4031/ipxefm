@@ -118,4 +118,4 @@ set wimdjob hougpt
 
 
 ################Æô¶¯ÇøÓò£¬½ûÖ¹É¾³ı##################
-chain /boot/ipxefm/init.ipxe
+chain /Boot/ipxefm/init.ipxe
