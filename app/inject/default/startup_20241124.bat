@@ -431,9 +431,9 @@ exit /b
 %xsay%
 net use * /delete /y >nul
 set /a n=%n%+1
-%say% "第%n%(5)次连接\\%ip%\%smbshare%为B盘"
+%say% "第%n%(5)次连接\\%ip%\pxe为B盘"
 if "%n%" == "5" %xsay%&&%say% "到达尝试次数上限!" &&%wait%&&%xsay%&&exit /b
-net use B: \\%ip%\%smbshare% "" /user:guest
+net use B: \\%ip%\pxe "" /user:guest
 if "%errorlevel%" == "0" (
 %xsay%
 %say% "连接服务器成功！进入桌面!"
@@ -443,7 +443,7 @@ exit /b
 ) else (
 %wait%
 %xsay%
-%say% "连接超时！请确认共享名为%smbshare%或PE未加载网卡驱动!"
+%say% "连接超时！请确认共享名为PXE或PE未加载网卡驱动!"
 ipconfig /renew>nul
 %wait%
 %xsay%
@@ -454,8 +454,8 @@ exit /b
 ::::::执行一次性尝试映射任务
 :smbdp
 net use * /delete /y >nul
-%say% "连接\\%ip%\%smbshare%为B盘" %font%
-net use B: \\%ip%\%smbshare% "" /user:guest
+%say% "连接\\%ip%\pxe为B盘" %font%
+net use B: \\%ip%\pxe "" /user:guest
 %xsay%
 %xsay%
 exit /b

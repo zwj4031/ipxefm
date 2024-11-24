@@ -3,6 +3,10 @@
 ##############中级止步!高级秃顶用户修改区域######
 #修改iscsi server的地址(默认是next-server)
 #set iscsiurl 169.254.1.1
+#修改共享SMB server的地址(默认是next-server)
+#set smburl 169.254.1.1
+#修改共享目录名称        (默认是pxe)
+#set smbshare AiDisk_a3
 #修改本菜单的名称(默认是/ipxeboot.txt)
 set scriptfile /ipxeboot.txt
 #修改默认启动的文件类型(wim iso img)
@@ -68,9 +72,11 @@ isset ${proxydhcp/next-server} && set booturl ${proxydhcp/next-server} || set bo
 
 #设置永久环境变量
 #修改booturl的地址(默认是自动获取，要生效就去掉#号) 
-#set booturl 169.254.1.1:8080
+set booturl 192.168.11.1:881/ipxefm
 #没有设置iscsiurl就设置为booturl
 isset ${iscsiurl} || set iscsiurl ${booturl}
+#没有设置smbserver就设置为next-server
+isset ${smburl} || set smburl ${next-server}
 set prefix /Boot/ipxefm
 set themes http://${booturl}/Boot/ipxefm/themes/jnygc
 set quiet 1 #静默启动，1打开，注释掉不打开
@@ -194,4 +200,5 @@ boot ||
 chain ${prefix}/init.ipxe ||
 
 :biosbootlocal
+exitl
 exit
