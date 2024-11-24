@@ -7,10 +7,10 @@
 \windows\system32\zh-CN\mount.exe.mui
 \windows\system32\zh-CN\unmount.exe.mui
 \windows\system32\nfsclnt.exe
-\Windows\WinSxS\nfs
-\Windows\WinSxS\nfs
+\windows\system32\drivers\nfsrdr.sys
+\windows\system32\wbem\nfsrdr.mof
 \windows\system32\zh-CN\nfsclnt.exe.mui
-\Windows\WinSxS\nfs
+\windows\system32\drivers\zh-CN\nfsrdr.sys.mui
 \windows\system32\nfscprop.dll
 \windows\system32\zh-CN\nfscprop.dll.mui
 \windows\system32\drivers\rpcxdr.sys
@@ -19,6 +19,11 @@
 \windows\system32\nfsnp.dll
 \windows\system32\zh-CN\nfsnp.dll.mui
 \windows\system32\zh-CN\nfsrc.dll.mui
+\windows\system32\showmount.exe
+\windows\system32\nfsadmin.exe
+\windows\system32\rpcinfo.exe
+\windows\system32\zh-CN\showmount.exe.mui
+\windows\system32\zh-CN\rpcinfo.exe.mui
 ;nfs_QwPE
 \windows\WinSxS\amd64_microsoft-windows-n..tshellext.resources_*
 \Windows\System32\spp\tokens\ppdlic\nfs-admincmdtools-ppdlic.xrm-ms
