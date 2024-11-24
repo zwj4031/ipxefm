@@ -1,5 +1,6 @@
 ::公用脚本1如果有两个参数，立即执行任务
 @echo off
+set smbshare=pxe
 set root=X:\windows\system32
 set rootx86=X:\windows
 set wait=pecmd wait 1000 
