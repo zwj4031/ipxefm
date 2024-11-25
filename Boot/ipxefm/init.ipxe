@@ -73,7 +73,7 @@ isset ${proxydhcp/next-server} && set booturl ${proxydhcp/next-server} || set bo
 
 #设置永久环境变量
 #修改booturl的地址(默认是自动获取，要生效就去掉#号) 
-set booturl 192.168.11.1:881/ipxefm
+#set booturl 192.168.11.1:881/ipxefm
 #没有设置iscsiurl就设置为booturl
 isset ${iscsiurl} || set iscsiurl ${booturl}
 #没有设置smbserver就设置为next-server
