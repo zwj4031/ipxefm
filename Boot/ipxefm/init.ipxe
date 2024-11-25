@@ -6,6 +6,7 @@
 #修改共享SMB(NFS) server的地址(默认是next-server)
 #set smburl 192.168.11.1
 #修改共享目录名称        (默认是pxe)
+set smbshare pxe
 #set smbshare media/AiDisk_a3
 #修改本菜单的名称(默认是/ipxeboot.txt)
 set scriptfile /ipxeboot.txt
