@@ -452,6 +452,34 @@ goto smbcli
 )
 exit /b
 
+
+
+::::::执行5次尝试映射nfs任务
+:nfscli
+net start nfsclnt
+%xsay%
+net use * /delete /y >nul
+set /a n=%n%+1
+%say% "第%n%(5)次连接\\%ip%\%smbshare%为B盘"
+if "%n%" == "5" %xsay%&&%say% "到达尝试次数上限!" &&%wait%&&%xsay%&&exit /b
+mount -o retry=6 timeout=6 B: \\%ip%\%smbshare%
+if "%errorlevel%" == "0" (
+%xsay%
+%say% "连接服务器成功！进入桌面!"
+%wait%
+%xsay%
+exit /b
+) else (
+%wait%
+%xsay%
+%say% "连接超时！请确认共享名为%smbshare%或PE未加载网卡驱动!"
+ipconfig /renew>nul
+%wait%
+%xsay%
+goto :nfscli
+)
+exit /b
+
 ::::::执行一次性尝试映射任务
 :smbdp
 net use * /delete /y >nul
@@ -576,4 +604,4 @@ start "" %root%\pecmd.exe LINK "%ProgramFiles%\Remote Control Tool\mstsc远程","%
 start "" %root%\pecmd.exe LINK "%Desktop%\Microsoft Edge","%ProgramFiles%\edge\edge.bat",,"%ProgramFiles%\edge\edge.ico"
 start "" %root%\pecmd.exe LINK "%Desktop%\腾讯QQ","%ProgramFiles%\qq\qq.bat",,"%ProgramFiles%\QQ\QQ.ico"
 start "" %root%\pecmd.exe LINK "%Desktop%\微信","%ProgramFiles%\Wechat\Wechat.bat",,"%ProgramFiles%\Wechat\WeChat.ico"
-exit /b
+exit /b/b

@@ -9,15 +9,15 @@ set wim4 /mini.wim
 set wim5 /mini.wim
 set wim6 /mini.wim
 set wim7 /mini.wim
-set wim8 
-set wim9 
+set wim8 /mini.wim
+set wim9 /NewBeePlus.wim
 set wim0 
 #字母菜单一般为系统部署区域，放分区格盘的危险脚本
 set wima /mini.wim
 set wimb /mini.wim
 set wimc /mini.wim
 set wimd /mini.wim
-set iso1 /netpe_multiarch.iso
+set iso1 /NewBeePlus.iso
 set img1 /max.img
 set vhd1 /ventoyx.vhd
 set iqn1 iqn.1991-05.com.microsoft:target1
@@ -87,10 +87,10 @@ set wim7job iscsi #iscsi连接所有服务器目标
 #set wim7inject1 start.ini
 #set wim7job smbcli
 #
-#set wim8name chobitpe:netghost
-#set wim8injectdir chobitpe
-#set wim8inject1 start.ini
-#set wim8job netghost
+set wim8name minipe:nfscli
+set wim8injectdir default
+set wim8inject1 start.ini
+set wim8job nfscli
 #
 #set wim9name chobitpe:netcopy
 #set wim9injectdir chobitpe
@@ -119,3 +119,6 @@ set wimdjob hougpt
 
 ################启动区域，禁止删除##################
 chain /Boot/ipxefm/init.ipxe
+pxe
+e
+
