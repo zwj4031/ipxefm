@@ -101,7 +101,8 @@ console --picture ${themes}/${bg} --left 32 --right 32 --top 32 --bottom 48 ||
    item --gap -- Choose Advanced tools
    item --key b burn           B.  Burn images
    item --gap -- Cloud Boot
-   item  RyanBoot              RyanBoot
+  #item  RyanBoot              RyanBoot
+   item  alpinelinux alpinelinux
    item  netboot.xyz.${platform}  netboot.xyz
    
    item --gap -- Advanced options 
@@ -120,7 +121,8 @@ iseq ${selected} reboot && reboot ||
 iseq ${selected} poweroff && poweroff ||
 iseq ${selected} bootlocal && goto ${platform}bootlocal ||
 iseq ${selected} ratio && goto ratio ||
-iseq ${selected} RyanBoot && chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe ||
+#iseq ${selected} RyanBoot && chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe ||
+iseq ${selected} alpinelinux && chain --autofree https://boot.alpinelinux.org/boot.ipxe ||
 iseq ${selected} netboot.xyz.pcbios && chain --autofree https://boot.netboot.xyz/ipxe/netboot.xyz.lkrn ||
 iseq ${selected} netboot.xyz.efi && chain --autofree https://boot.netboot.xyz/ipxe/netboot.xyz.efi ||
 iseq ${selected} burn && chain ${prefix}/types/burn ||
