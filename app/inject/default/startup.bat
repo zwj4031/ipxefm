@@ -263,7 +263,7 @@ goto checkp2pfile
 exit /b
 
 ::::::Ö´ÐÐÈÎÎñ
-:dpmbr
+:dbmbr
 set p2pfile=I:\system.wim
 set smbfile=b:\system.wim
 set diskpartdir=mbr
@@ -274,7 +274,7 @@ call :checksmbfile
 call :cloud
 exit /b
 
-:dpgpt
+:dbgpt
 set p2pfile=I:\system.wim
 set smbfile=b:\system.wim
 set diskpartdir=gpt
