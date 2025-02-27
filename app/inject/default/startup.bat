@@ -201,7 +201,7 @@ exit /b
 
 
 :houmbr
-set dbfile=i:\system.wim
+set dpfile=i:\system.wim
 set diskpartdir=mbr
 call :checkdiskspace
 call :initdiskpart
@@ -263,7 +263,7 @@ goto checkp2pfile
 exit /b
 
 ::::::Ö´ÐÐÈÎÎñ
-:dbmbr
+:dpmbr
 set p2pfile=I:\system.wim
 set smbfile=b:\system.wim
 set diskpartdir=mbr
@@ -274,7 +274,7 @@ call :checksmbfile
 call :cloud
 exit /b
 
-:dbgpt
+:dpgpt
 set p2pfile=I:\system.wim
 set smbfile=b:\system.wim
 set diskpartdir=gpt
