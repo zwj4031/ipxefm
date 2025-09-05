@@ -1,0 +1,54 @@
+#!ipxe
+ifopen net0
+ifstat
+#set quiet 1 #
+set protocol http    #初始化协议变量，走http
+isset ${proxydhcp/next-server} && set booturl ${proxydhcp/next-server} || set booturl ${next-server} #有代理dhcp信息就直接取值，智能获取启动ip
+
+
+:bootmenu  #启动菜单查看基本情况
+ menu  iPXE's Boot Menu BootServer:${protocol}://${booturl}
+   
+   item --gap -- Choose BootFile 
+   item --key 1 newbeeplus.wim      2.  Boot newbeepe #启动newbeepe.wim
+   item --key 2 mini.wim      2.  Boot mini.wim  #同上
+
+   item --gap -- Advanced options 
+   item --key c config   	   C.  Configure settings   
+   item --key s shell          S.  Drop to iPXE shell
+   item --key r reboot         R.  Reboot computer
+   item --key p poweroff       P.  Poweroff computer
+choose --timeout 100000 --default newbeeplus.wim selected || #默认选newbeeplus.wim来启动
+iseq ${selected} config && config ||
+iseq ${selected} shell && shell ||
+iseq ${selected} reboot && reboot ||
+iseq ${selected} poweroff && poweroff ||
+set bootfile ${selected} && echo bootfile:${selected} && goto wimboot  #启动菜单上选中的wim文件，也就是pe ||
+
+
+
+
+:switch_protocol #http不能启动？就改协议成tftp，然后继续启动
+console
+echo error! swich_protocol! 
+set protocol tftp
+echo now boofile is ${protocol}://${booturl}/${bootfile}
+sleep 1 && goto wimboot
+
+
+
+:wimboot #启动菜单上选中的PE
+echo ${bootfile}
+kernel ${protocol}://${booturl}/app/wimboot/wimboot ${wimbootcmd} gui || goto switch_protocol #第一个文件都取不成功，肯定http走不起了，换tftp协议
+iseq ${platform} pcbios && initrd ${protocol}://${booturl}/app/wimboot/bootmgr  bootmgr ||
+iseq ${platform} efi && initrd -n bootx64.efi ${protocol}://${booturl}/app/wimboot/bootmgfw.efi ||
+initrd ${protocol}://${booturl}/app/wimboot/BCD  BCD ||
+initrd ${protocol}://${booturl}/app/wimboot/boot.sdi boot.sdi ||
+initrd ${protocol}://${booturl}/app/wimboot/segoen_slboot.ttf segoen_slboot.ttf ||
+initrd ${protocol}://${booturl}/app/wimboot/segoe_slboot.ttf segoe_slboot.ttf ||
+initrd ${protocol}://${booturl}/app/wimboot/segmono_boot.ttf segmono_boot.ttf || 
+initrd ${protocol}://${booturl}/app/wimboot/wgl4_boot.ttf wgl4_boot.ttf ||  
+initrd ${protocol}://${booturl}/app/wimboot/bootres.dll bootres.dll ||
+iseq ${platform} pcbios && initrd ${protocol}://${booturl}/${bootfile} boot.wim ||
+iseq ${platform} efi && initrd -n boot.wim ${protocol}://${booturl}/${bootfile} || goto bootmenu #启到这里不成功，说明没这个wim文件，回菜单重新选另一个文件启动 
+boot ||
