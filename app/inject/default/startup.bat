@@ -130,7 +130,7 @@ if exist "X:\Program Files\wxsUI\UI_AppStore\PEwtip.lua" start "" /w "X:\Program
 %xshow%
 ::显示ip-newbeepe中要注释掉下面一行
 :::%show% %myip% 
-%say% "获取IP成功！本机ip:%myip% 上报中......" %font%
+%say% "获取IP成功！本机ip:%myip% 检测硬件并上报中......" %font%
 %wait%
 echo .>%myip%
 nwinfo --disk --net --format=json --output=%myip%

@@ -69,6 +69,7 @@ isset ${next-server} || set next-server ${dhcp-server}
 isset ${proxydhcp/next-server} || set proxydhcp/next-server ${proxydhcp/dhcp-server}
 #如果proxydhcp/next-server变量值存在，那么赋给booturl，不然就使用next-server的变量值
 isset ${proxydhcp/next-server} && set booturl ${proxydhcp/next-server} || set booturl ${next-server}
+isset ${proxydhcp/next-server} && set bootip ${proxydhcp/next-server} || set bootip ${next-server}
 #备用 prompt --key 0x02 --timeout 2000 Press Ctrl-B for the iPXE command line... && shell ||
 
 #设置永久环境变量
@@ -77,7 +78,7 @@ isset ${proxydhcp/next-server} && set booturl ${proxydhcp/next-server} || set bo
 #没有设置iscsiurl就设置为booturl
 isset ${iscsiurl} || set iscsiurl ${booturl}
 #没有设置smbserver就设置为next-server
-isset ${smburl} || set smburl ${next-server}
+isset ${smburl} || set smburl ${bootip}
 set prefix /Boot/ipxefm
 set themes http://${booturl}/Boot/ipxefm/themes/jnygc
 set quiet 1 #静默启动，1打开，注释掉不打开
@@ -101,8 +102,7 @@ console --picture ${themes}/${bg} --left 32 --right 32 --top 32 --bottom 48 ||
    item --gap -- Choose Advanced tools
    item --key b burn           B.  Burn images
    item --gap -- Cloud Boot
-  #item  RyanBoot              RyanBoot
-   item  alpinelinux alpinelinux
+   item  RyanBoot              RyanBoot
    item  netboot.xyz.${platform}  netboot.xyz
    
    item --gap -- Advanced options 
@@ -121,8 +121,7 @@ iseq ${selected} reboot && reboot ||
 iseq ${selected} poweroff && poweroff ||
 iseq ${selected} bootlocal && goto ${platform}bootlocal ||
 iseq ${selected} ratio && goto ratio ||
-#iseq ${selected} RyanBoot && chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe ||
-iseq ${selected} alpinelinux && chain --autofree https://boot.alpinelinux.org/boot.ipxe ||
+iseq ${selected} RyanBoot && chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe ||
 iseq ${selected} netboot.xyz.pcbios && chain --autofree https://boot.netboot.xyz/ipxe/netboot.xyz.lkrn ||
 iseq ${selected} netboot.xyz.efi && chain --autofree https://boot.netboot.xyz/ipxe/netboot.xyz.efi ||
 iseq ${selected} burn && chain ${prefix}/types/burn ||
