@@ -224,18 +224,18 @@ set dpfile=i:\system.wim
 set diskpartdir=mbr
 call :checkdiskspace
 call :initdiskpart
-%say% "正在下载%dbfile%，请等待..." %font%
+%say% "正在下载%dpfile%，请等待..." %font%
 start "" /w houcx86 I:\
 cd /d %root%
 start "" /w %root%\cgix64.exe dp.ini
 exit /b
 
 :hougpt
-set dbfile=i:\system.wim
+set dpfile=i:\system.wim
 set diskpartdir=gpt
 call :checkdiskspace
 call :initdiskpart
-%say% "正在下载%dbfile%，请等待..." %font%
+%say% "正在下载%dpfile%，请等待..." %font%
 start "" /w houcx86 I:\
 cd /d %root%
 start "" /w %root%\cgix64.exe dp.ini
