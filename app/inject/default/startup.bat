@@ -115,6 +115,7 @@ if exist "X:\Program Files\wxsUI\UI_AppStore\PEwtip.lua" start "" /w "X:\Program
 %say% "获取IP成功！本机ip:%myip% 上报中......" %font%
 %wait%
 echo .>%myip%
+nwinfo --disk --net --format=json --output=%myip%
 tftp %ip% put %myip% client/%myip%
 %xsay%
 %say% "上报完毕!" %font%
