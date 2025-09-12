@@ -19,8 +19,26 @@ set xsay=start "" "X:\Program Files\WinXShell.exe" -code "QuitWindow(nil,'UI_LED
 set xshow=start "" "X:\Program Files\WinXShell.exe" -code "QuitWindow(nil,'UI_show')"
 set wait=%root%\pecmd.exe wait 800
 )
-if not "%3" == "" set args3=%3
-if not "%2" == "" set args1=%1&&set args2=%2&&goto startjob
+rem --- 这是修正的部分 ---
+::获得执行的任务名称%job%
+for /f "tokens=1-2 delims=@ " %%a in ('dir /b %root%\*@*') do (
+set %%a
+set %%b
+)
+if not "%1" == "" set job=%1
+echo 服务器IP地址为  %ip%
+echo 本次执行的任务  %job%
+echo 本次执行的任务参数  %args2%
+if not "%3" == "" set "args3=%~3"
+
+rem 检查第二个参数是否存在
+if not "%2" == "" (
+    rem 如果存在，则设置参数并跳转
+    set "args1=%~1"
+    set "args2=%~2"
+    goto :startjob
+)
+
 ::公用脚本1结束
 
 
