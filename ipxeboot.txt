@@ -1,7 +1,7 @@
 #!ipxe
-##############³õ¼¶ÈëÃÅÓÃ»§ĞŞ¸ÄÇøÓò¿ªÊ¼################
-#ÉèÖÃ¸÷ÖÖÎÄ¼şÂ·¾¶Ä¬ÈÏ¸÷ÀàĞÍÖ§³Ö10¸ö,×Ô¼ºĞŞ¸Ä
-#Êı×Ö²Ëµ¥Ò»°ãÎªÓ³Éä¹²Ïí¡¢½öp2pÏÂÔØ¡¢ghost¡¢Ô¶³Ì¼¯ÖĞ¿ØÖÆÖ®ÀàµÄÔ¶³Ì°²È«½Å±¾
+##############åˆçº§å…¥é—¨ç”¨æˆ·ä¿®æ”¹åŒºåŸŸå¼€å§‹################
+#è®¾ç½®å„ç§æ–‡ä»¶è·¯å¾„é»˜è®¤å„ç±»å‹æ”¯æŒ10ä¸ª,è‡ªå·±ä¿®æ”¹
+#æ•°å­—èœå•ä¸€èˆ¬ä¸ºæ˜ å°„å…±äº«ã€ä»…p2pä¸‹è½½ã€ghostã€è¿œç¨‹é›†ä¸­æ§åˆ¶ä¹‹ç±»çš„è¿œç¨‹å®‰å…¨è„šæœ¬
 set wim1 /mini.wim
 set wim2 /mini.wim
 set wim3 /mini.wim
@@ -9,116 +9,193 @@ set wim4 /mini.wim
 set wim5 /mini.wim
 set wim6 /mini.wim
 set wim7 /mini.wim
-set wim8 /mini.wim
-set wim9 /NewBeePlus.wim
+set wim8 
+set wim9 
 set wim0 
-#×ÖÄ¸²Ëµ¥Ò»°ãÎªÏµÍ³²¿ÊğÇøÓò£¬·Å·ÖÇø¸ñÅÌµÄÎ£ÏÕ½Å±¾
+set iso1 /netpe_multiarch.iso
+set iso2 /udpcd.iso
+set iso3 
+set iso4 
+set iso5 
+set iso6 
+set iso7 
+set iso8 
+set iso9 
+set iso0 
+set img1 /max.img
+set img2 
+set img3 
+set img4 
+set img5 
+set img6 
+set img7 
+set img8 
+set img9 
+set img0 
+set vhd1 /ventoyx.vhd
+set vhd2 
+set vhd3 
+set vhd4 
+set vhd5 
+set vhd6 
+set vhd7 
+set vhd8 
+set vhd9 
+set vhd0 
+set iqn1 iqn.1991-05.com.microsoft:target1
+set iqn2 
+set iqn3 
+set iqn4 
+set iqn5 
+set iqn6 
+set iqn7 
+set iqn8 
+set iqn9 
+set iqn0 
+set ramos1 /win10.vhd.gz
+set ramos2 
+set ramos3 
+set ramos4 
+set ramos5 
+set ramos6 
+set ramos7 
+set ramos8 
+set ramos9 
+set ramos0 
+#å­—æ¯èœå•ä¸€èˆ¬ä¸ºç³»ç»Ÿéƒ¨ç½²åŒºåŸŸï¼Œæ”¾åˆ†åŒºæ ¼ç›˜çš„å±é™©è„šæœ¬
 set wima /mini.wim
 set wimb /mini.wim
 set wimc /mini.wim
 set wimd /mini.wim
-set iso1 /NewBeePlus.iso
-set img1 /max.img
-set vhd1 /ventoyx.vhd
-set iqn1 iqn.1991-05.com.microsoft:target1
-set ramos1 /win10.vhd.gz
-##############³õ¼¶ÈëÃÅÓÃ»§ĞŞ¸ÄÇøÓò½áÊø############
+
+##############åˆçº§å…¥é—¨ç”¨æˆ·ä¿®æ”¹åŒºåŸŸç»“æŸ############
 
 
 
-##############ÖĞ¼¶½ø½×ÓÃ»§ĞŞ¸ÄÇøÓò¿ªÊ¼############
-##Êı×Ö²Ëµ¥Ò»°ãÎªÓ³Éä¹²Ïí¡¢½öp2pÏÂÔØ¡¢ghost¡¢Ô¶³Ì¼¯ÖĞ¿ØÖÆÖ®ÀàµÄÔ¶³Ì°²È«½Å±¾
-#Ìâname£¬È«ÀàĞÍÖ§³Ö
-#ÈÎÎñÃû³Æjob: ½öÖ§³ÖwimĞèÒªÅäºÏstartup.batÄÚÈİÊ¹ÓÃ£¬
-#ÈÎÎñÃû³ÆÖ§³Önetghost(Íø¿Ë)¡¢smbcli(¹ÒÔØ¹²Ïí)¡¢clound(¶à²¥)¡¢p2pmbr/p2pgpt(p2p·½Ê½deploy×Ô¶¯·ÖÇø²¿Êğ)¡¢dbmbr/dbgpt(¶à²¥deploy×Ô¶¯·ÖÇø²¿Êğ)¡¢btonly£¨²»·ÖÇø)¡¢houmbr/hougpt£¨hou¶à²¥×Ô¶¯·ÖÇø²¿Êğ)¡¢iscsi(×Ô¶¯Á¬½Óiscsi·şÎñ)
-#ÉèÖÃÉäÈëÎÄ¼şËùÔÚÄ¿Â¼injectdir:½öÖ§³ÖwimÈçnetcopy£¬»á´Ó/inject/netcopyÄ¿Â¼È¡ÎÄ¼ş£¬Ä¬ÈÏdefault
-#ÉèÖÃÉäÈëÎÄ¼şinject:0-5
-##ËùÎ½minipe¾ÍÊÇ±¾°ü¸½ÔùµÄÃÔÄãpe ÒÔºó½Å±¾ÒÔÕâ¸öÎªÖ÷
-set wim1name minipe:smbclient  #±êÌâ
-set wim1injectdir default #ÉäÈëÎÄ¼şÄ¿Â¼£¬¶ÔÓ¦¸÷ÖÖpe
-set wim1job smbcli #pe½øÈë×ÀÃæºóÒªÖ´ĞĞµÄÈÎÎñ£¬¶ÔÓ¦Åú´¦Àístartup.batÄÚÈİ
+##############ä¸­çº§è¿›é˜¶ç”¨æˆ·ä¿®æ”¹åŒºåŸŸå¼€å§‹############
+##æ•°å­—èœå•ä¸€èˆ¬ä¸ºæ˜ å°„å…±äº«ã€ä»…p2pä¸‹è½½ã€ghostã€è¿œç¨‹é›†ä¸­æ§åˆ¶ä¹‹ç±»çš„è¿œç¨‹å®‰å…¨è„šæœ¬
+#é¢˜nameï¼Œå…¨ç±»å‹æ”¯æŒ
+#ä»»åŠ¡åç§°job: ä»…æ”¯æŒwiméœ€è¦é…åˆstartup.batå†…å®¹ä½¿ç”¨ï¼Œ
+#ä»»åŠ¡åç§°æ”¯æŒnetghost(ç½‘å…‹)ã€smbcli(æŒ‚è½½å…±äº«)ã€clound(å¤šæ’­)ã€p2pmbr/p2pgpt(p2pæ–¹å¼deployè‡ªåŠ¨åˆ†åŒºéƒ¨ç½²)ã€dbmbr/dbgpt(å¤šæ’­deployè‡ªåŠ¨åˆ†åŒºéƒ¨ç½²)ã€btonlyï¼ˆä¸åˆ†åŒº)ã€houmbr/hougptï¼ˆhouå¤šæ’­è‡ªåŠ¨åˆ†åŒºéƒ¨ç½²)ã€iscsi(è‡ªåŠ¨è¿æ¥iscsiæœåŠ¡)
+#è®¾ç½®å°„å…¥æ–‡ä»¶æ‰€åœ¨ç›®å½•injectdir:ä»…æ”¯æŒwimå¦‚netcopyï¼Œä¼šä»/inject/netcopyç›®å½•å–æ–‡ä»¶ï¼Œé»˜è®¤default
+#è®¾ç½®å°„å…¥æ–‡ä»¶inject:0-5
+##æ‰€è°“minipeå°±æ˜¯æœ¬åŒ…é™„èµ çš„è¿·ä½ pe ä»¥åè„šæœ¬ä»¥è¿™ä¸ªä¸ºä¸»
+set wim1name test
+set wim1injectdir default #å°„å…¥æ–‡ä»¶ç›®å½•ï¼Œå¯¹åº”å„ç§pe
+set wim1job smbcli #peè¿›å…¥æ¡Œé¢åè¦æ‰§è¡Œçš„ä»»åŠ¡ï¼Œå¯¹åº”æ‰¹å¤„ç†startup.batå†…å®¹
 
 set wim2name minipe:Netghost_mousedos
-set wim2injectdir default 
-set wim2job netghost #ghostÍøÂçÈÎÎñ
-set wim2args2 mousedos #×Ô¶¨Òå»á»°Ãû³Æ£¬¿ÉÒÔÓÃÀ´¶àÅäÖÃÇé¿öÏÂµÄÎŞÈËÖµÊØµã²¥¿ËÂ¡
+set wim2injectdir default
+set wim2job netghost #ghostç½‘ç»œä»»åŠ¡
+set wim2args2 mousedos #è‡ªå®šä¹‰ä¼šè¯åç§°ï¼Œå¯ä»¥ç”¨æ¥å¤šé…ç½®æƒ…å†µä¸‹çš„æ— äººå€¼å®ˆç‚¹æ’­å…‹éš†
 
-set wim3name minipe:Netcopy 
-set wim3injectdir default 
-set wim3job netcopy #netcopyÍøÂçÍ¬´«ÈÎÎñ
+set wim3name minipe:Netcopy
+set wim3injectdir default
+set wim3job netcopy #netcopyç½‘ç»œåŒä¼ ä»»åŠ¡
 
-set wim4name minipe:Gakataka Student 
-set wim4injectdir default 
-set wim4job gaka #Ù¤¿¨Ëü¿¨Ñ§Éú¶ËÈÎÎñ
+set wim4name minipe:Gakataka Student
+set wim4injectdir default
+set wim4job gaka #ä¼½å¡å®ƒå¡å­¦ç”Ÿç«¯ä»»åŠ¡
 
 set wim5name minipe:Btonly
 set wim5injectdir default
 set wim5inject1 start.ini
-set wim5job btonly #½öp2pÏÂÔØµÄÈÎÎñ£¬²»·ÖÇø
+set wim5job btonly #ä»…p2pä¸‹è½½çš„ä»»åŠ¡ï¼Œä¸åˆ†åŒº
 
 set wim6name minipe:IFW_Multicast
 set wim6injectdir default
 set wim6inject1 start.ini
-set wim6job ifw #ifw¶à²¥¾µÏñ
+set wim6job ifw #ifwå¤šæ’­é•œåƒ
 
 set wim7name minipe:ISCSI_Client
 set wim7injectdir default
 set wim7inject1 start.ini
-set wim7job iscsi #iscsiÁ¬½ÓËùÓĞ·şÎñÆ÷Ä¿±ê
-##×¢ÊÍ±¸ÓÃ,³õÑ§ÕßÖ¹²½:ËùÎ½netcopy.wimÊÇÄÇ¸önetpe_multiarch.isoÖĞµÄpe
-#set wim4name netcopy.wim:smbclient
-#set wim4injectdir netcopy
-#set wim4inject1 start.ini
-#set wim4job smbcli
-
-#set wim5name netcopy.wim:netghost
-#set wim5injectdir netcopy
-#set wim5inject1 start.ini
-#set wim5job netghost
-
-#set wim6name netcopy.wim:netcopy
-#set wim6injectdir netcopy
-#set wim6inject1 start.ini
-#set wim6job netcopy
-	   
-##ËùÎ½chobitpeÊÇÄÇ¸ö64Î»µÄÊ·ÉÏ×îÎ°´óÍø¿Ëpe ÀíÂÛÉÏÒ²Ö§³ÖljycslgµÄPE£¨64Î»)
-#set wim7name chobitpe:smbclient
-#set wim7injectdir chobitpe
-#set wim7inject1 start.ini
-#set wim7job smbcli
-#
-set wim8name minipe:nfscli
-set wim8injectdir default
+set wim7job iscsi #iscsiè¿æ¥æ‰€æœ‰æœåŠ¡å™¨ç›®æ ‡
+##æ³¨é‡Šå¤‡ç”¨,åˆå­¦è€…æ­¢æ­¥:æ‰€è°“netcopy.wimæ˜¯é‚£ä¸ªnetpe_multiarch.isoä¸­çš„pe
+set wim8name 
+set wim8injectdir 
 set wim8inject1 start.ini
-set wim8job nfscli
-#
-#set wim9name chobitpe:netcopy
-#set wim9injectdir chobitpe
-#set wim9inject1 start.ini
-#set wim9job netcopy
-##×¢ÊÍ±¸ÓÃ³õÑ§ÕßÖ¹²½
+set wim8job 
 
-##×ÖÄ¸²Ëµ¥Ò»°ãÎªÏµÍ³²¿ÊğÇøÓò£¬·Å·ÖÇø¸ñÅÌµÄÎ£ÏÕ½Å±¾
+set wim9name 
+set wim9injectdir 
+set wim9inject1 start.ini
+set wim9job 
+
+set wim0name 
+set wim0injectdir 
+set wim0inject1 start.ini
+set wim0job 
+##æ³¨é‡Šå¤‡ç”¨åˆå­¦è€…æ­¢æ­¥
+
+##å­—æ¯èœå•ä¸€èˆ¬ä¸ºç³»ç»Ÿéƒ¨ç½²åŒºåŸŸï¼Œæ”¾åˆ†åŒºæ ¼ç›˜çš„å±é™©è„šæœ¬
 set wimaname minipe:p2pmbr->Warning: diskdata_destory #p2pgpt
-set wimainjectdir default 
+set wimainjectdir default
 set wimajob p2pmbr #p2pgpt
 
 set wimbname minipe:p2pgpt->Warning: diskdata_destory
-set wimbinjectdir default 
+set wimbinjectdir default
 set wimbjob p2pgpt
 
 set wimcname minipe:houmbr->Warning: diskdata_destory
-set wimcinjectdir default 
+set wimcinjectdir default
 set wimcjob houmbr
 
 set wimdname minipe:hougpt->Warning: diskdata_destory
-set wimdinjectdir default 
+set wimdinjectdir default
 set wimdjob hougpt
-##############ÖĞ¼¶½ø½×ÓÃ»§ĞŞ¸ÄÇøÓò½áÊø############
 
-
-################Æô¶¯ÇøÓò£¬½ûÖ¹É¾³ı##################
-chain /Boot/ipxefm/init.ipxe
-pxe
-e
-
+################å…¶å®ƒé¡¹ç›®åç§°ä¿®æ”¹
+set iso1name 
+set iso2name 
+set iso3name 
+set iso4name 
+set iso5name 
+set iso6name 
+set iso7name 
+set iso8name 
+set iso9name 
+set iso0name 
+set img1name MaxDos2025
+set img2name 
+set img3name 
+set img4name 
+set img5name 
+set img6name 
+set img7name 
+set img8name 
+set img9name 
+set img0name 
+set vhd1name 
+set vhd2name 
+set vhd3name 
+set vhd4name 
+set vhd5name 
+set vhd6name 
+set vhd7name 
+set vhd8name 
+set vhd9name 
+set vhd0name 
+set iqn1name 
+set iqn2name 
+set iqn3name 
+set iqn4name 
+set iqn5name 
+set iqn6name 
+set iqn7name 
+set iqn8name 
+set iqn9name 
+set iqn0name 
+set ramos1name Win10RamOS
+set ramos2name 
+set ramos3name 
+set ramos4name 
+set ramos5name 
+set ramos6name 
+set ramos7name 
+set ramos8name 
+set ramos9name 
+set ramos0name 
+##############ä¸­çº§è¿›é˜¶ç”¨æˆ·ä¿®æ”¹åŒºåŸŸç»“æŸ############
+################å¯åŠ¨åŒºåŸŸï¼Œç¦æ­¢åˆ é™¤##################
+chain /boot/ipxefm/init.ipxe
