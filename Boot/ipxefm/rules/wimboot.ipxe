@@ -14,6 +14,9 @@ initrd http://${booturl}/app/wimboot/segoe_slboot.ttf segoe_slboot.ttf ||
 initrd http://${booturl}/app/wimboot/segmono_boot.ttf segmono_boot.ttf || 
 initrd http://${booturl}/app/wimboot/wgl4_boot.ttf wgl4_boot.ttf ||  #bootres.dll和wgl4_boot.ttf负责出窗，其它三个负责旋转出水
 initrd http://${booturl}/app/wimboot/bootres.dll bootres.dll ||
+iseq ${platform} pcbios && initrd http://${booturl}/dynamic.ipxe?bootfile=getmyxml unattend.xml || #射入无人值守文件修改计算机名 有问题可删除!
+iseq ${platform} efi && initrd -n unattend.xml http://${booturl}/dynamic.ipxe?bootfile=getmyxml || #射入无人值守文件修改计算机名 有问题可删除!
+
 cpair --foreground 2 0 && console --x ${x} -y ${y} --picture ${themes}/${ld} --left 32 --right 32 --top 32 --bottom 48 || #loading
 iseq ${platform} pcbios  && initrd http://${booturl}${bootfile} boot.wim ||
 iseq ${platform} efi && initrd -n boot.wim http://${booturl}${bootfile} ||
@@ -46,11 +49,11 @@ initrd http://${booturl}/app/inject/default/DiskGeniusx86.exe DiskGeniusx86.exe 
 initrd http://${booturl}/app/inject/default/btx64.exe btx64.exe || #BT服务端&客户端 有问题可删除!
 initrd http://${booturl}/app/inject/default/drivers.7z drivers.7z || #注入驱动 不需要可删除
 initrd http://${booturl}/app/inject/default/gakax86.exe gakax86.exe || #注入教师端 不需要可删除
-iseq ${platform} pcbios && initrd http://${booturl}/ipxeboot.txt @ip=${smburl} || #射入IP地址 有问题可删除!
-iseq ${platform} pcbios && initrd http://${booturl}/ipxeboot.txt @smbshare=${smbshare} || #射入IP地址 有问题可删除!
+iseq ${platform} pcbios && initrd http://${booturl}/ipxeboot.txt @ip=${booturl} || #射入IP地址 有问题可删除!
+iseq ${platform} pcbios && initrd http://${booturl}/dynamic.ipxe?bootfile=getmyxml unattend.xml || #射入无人值守文件修改计算机名 有问题可删除!
 iseq ${platform} pcbios && initrd http://${booturl}/ipxeboot.txt @job=${job} || #射入任务 有问题可删除!
-iseq ${platform} efi && initrd -n @ip=${smburl} http://${booturl}/ipxeboot.txt || #射入IP地址 有问题可删除!
-iseq ${platform} efi && initrd -n @smbshare=${smbshare} http://${booturl}/ipxeboot.txt || #射入共享目录名称 有问题可删除!
+iseq ${platform} efi && initrd -n @ip=${booturl} http://${booturl}/ipxeboot.txt || #射入IP地址 有问题可删除!
+iseq ${platform} efi && initrd -n unattend.xml http://${booturl}/dynamic.ipxe?bootfile=getmyxml || #射入无人值守文件修改计算机名 有问题可删除!
 iseq ${platform} efi && initrd -n @job=${job} http://${booturl}/ipxeboot.txt || #射入任务 有问题可删除!
 
 iseq ${platform} pcbios && initrd http://${booturl}/ipxeboot.txt @args2=${args2} || #射入第二个参数 有问题可删除!
