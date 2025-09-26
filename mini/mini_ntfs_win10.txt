@@ -1,3 +1,11 @@
+;suppoert_ver>19045.6216
+\Windows\system32\perfnet.dll
+\Windows\syswow64\perfnet.dll
+\Windows\system32\wdscore.dll
+\Windows\syswow64\wdscore.dll
+;support_luasocket_core.dll
+;\Windows\System32\vcruntime140d.dll
+;\Windows\System32\ucrtbased.dll
 ;nfs_winsxs_rem
 \windows\system32\nfscimprov.dll
 \windows\system32\nfscimprov.mof
@@ -99,7 +107,16 @@
 ;nwinfo_gnwinfo
 \Windows\System32\pdh.dll
 \Windows\gnwinfo.exe
+\Windows\nwinfo.exe
 \Windows\gnwinfo.ini
+\Windows\pci.ids
+\Windows\pnp.ids
+\Windows\usb.ids
+\Windows\libcdix64.dll
+\Windows\ryzenadjx64.dll
+\Windows\jep106.dll
+
+
 ;nbpsupport
 \Windows\nbp.bat
 \Windows\mknbp.bat
@@ -284,7 +301,10 @@
 \Program files\WinXShell*
 \Program files\wxsStub*.dll
 \Program files\wxsStub32*.dll
+\Program files\getmyip.lua
+\Program files\lua54.dll
 \Program Files\wxsUI
+\Program Files\Libs
 \Program files\WiFi.BAT
 \Program files (x86)\Common Files
 \Windows\apppatch\sysmain.sdb
