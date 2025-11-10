@@ -80,7 +80,7 @@ set wimd /mini.wim
 #设置射入文件所在目录injectdir:仅支持wim如netcopy，会从/inject/netcopy目录取文件，默认default
 #设置射入文件inject:0-5
 ##所谓minipe就是本包附赠的迷你pe 以后脚本以这个为主
-set wim1name test
+set wim1name minipe:smbcli
 set wim1injectdir default #射入文件目录，对应各种pe
 set wim1job smbcli #pe进入桌面后要执行的任务，对应批处理startup.bat内容
 
