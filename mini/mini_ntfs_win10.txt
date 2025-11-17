@@ -1,3 +1,6 @@
+;httpdisk
+\WINDOWS\System32\httpdisk.exe
+\Windows\System32\Drivers\httpdisk.sys
 ;suppoert_ver>19045.6216
 \Windows\system32\perfnet.dll
 \Windows\syswow64\perfnet.dll
@@ -46,6 +49,7 @@
 \windows\WinSxS\amd64_microsoft-windows-n..ncmdtools.resources_*
 \WINDOWS\System32\mi.dll
 \WINDOWS\System32\miutils.dll
+
 ;nfs_client
 \WINDOWS\System32\iologmsg.dll
 \windows\system32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\Microsoft-Windows-NFS-ClientSKU-Package~*~amd64~zh-CN~*.*.*.*.cat

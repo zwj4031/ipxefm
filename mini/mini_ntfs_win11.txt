@@ -1,3 +1,6 @@
+;httpdisk
+\WINDOWS\System32\httpdisk.exe
+\Windows\System32\Drivers\httpdisk.sys
 ;suppoert_ver>19045.6216
 \Windows\system32\perfnet.dll
 \Windows\syswow64\perfnet.dll
