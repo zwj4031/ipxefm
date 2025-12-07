@@ -4,17 +4,9 @@ mode con cols=50 lines=2
 for /f %%a in ('dir /b /s \pe_*.txt') do del /s /f %%a
 title 制作MINI.WIM中......
 copy "X:\Program Files\GhostCGI\ghost64.exe" X:\ipxefm\mini\Windows\System32\. /y
-@echo off
-ver | findstr "22 26" >nul
-if %errorlevel% == 0 (
-    set pelist=mini_ntfs_win11.txt
-    echo win11
-) else (
-    set pelist=mini_ntfs_win10.txt
-    echo win10
-)
-
-
+ver |find "22"
+if errorlevel 0 set pelist=NewBeePlus.txt&&echo win11
+if errorlevel 1 set pelist=NewBeePlus.txt&&echo win10
 echo 隐藏网络图标
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" /v "Settings" /t REG_BINARY /d "30000000feffffff22020000030000003e0000002800000000000000d802000056050000000300006000000001000000" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v HideSCANetwork /t REG_DWORD /d 1 /f
@@ -55,6 +47,7 @@ title 第三阶段把文件添加到wim
 title 收尾阶段再次覆盖配置文件
 timeout 5 /nobreak
 echo 再次覆盖配置文件
+%wimlib% update mini.wim --command="add \windows\system32\config \windows\system32\config "
 %wimlib% update mini.wim --command="add mini \ "
 %wimlib% optimize mini.wim
 start "" "%programfiles%\WinXShell.exe" -code "QuitWindow(nil,'UI_LED')"
