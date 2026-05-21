@@ -124,7 +124,7 @@ if "%n%" == "15" goto getipbuok
 goto checkip
 ::获取ip成功
 :getipok
-if exist "%ProgramFiles%\GhostCGI\client.exe" start "" "%ProgramFiles%\GhostCGI\client.exe"
+
 for /f "tokens=4 delims=." %%a in ("%myip%") do set lastip=%%a
 rem 修改动态ip地址为固定，防止dhcp服务器崩溃时无法传输文件
 if exist "X:\Program Files\wxsUI\UI_AppStore\PEwtip.lua" start "" /w "X:\Program Files\wxsUI\UI_AppStore\PEwtip.lua"
@@ -133,12 +133,14 @@ if exist "X:\Program Files\wxsUI\UI_AppStore\PEwtip.lua" start "" /w "X:\Program
 ::显示ip-newbeepe中要注释掉下面一行
 %show% %lastip% 
 %say% "获取IP成功！本机ip:%myip% 检测硬件并上报中......" %font%
+
 %wait%
 echo .>%myip%
 nwinfo --disk --net --format=json --output=%myip%
 tftp %ip% put %myip% client/%myip%
 %xsay%
 %say% "上报完毕!" %font%
+if exist "%ProgramFiles%\GhostCGI\client.exe" start "" "%ProgramFiles%\GhostCGI\client.exe"
 %wait%
 %xsay%
 goto init
@@ -170,7 +172,7 @@ reg add "HKCU\SOFTWARE\TightVNC\Server" /v DisconnectAction /t REG_DWORD /d 0x0 
 start "" %root%\tightvnc\tvnserver.exe -run
 ::反向连接模式start "" "%root%\tightvnc\tvnserver.exe" -controlapp -connect %ip%
 ::::启动tightvnc
-if "%job%" == "nbctrl" exit
+if "%job%"=="nbctrl" exit
 call :%job%&&exit
 exit
 ::::从txt中提取服务器地址
@@ -448,7 +450,6 @@ exit
 cd /d "X:\windows\system32" >nul
 netcopyx64.exe
 exit /b
-
 
 ::::::执行5次尝试映射共享任务
 :smbcli
