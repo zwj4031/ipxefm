@@ -169,6 +169,7 @@ reg add "HKCU\SOFTWARE\TightVNC\Server" /v DisconnectAction /t REG_DWORD /d 0x0 
 start "" %root%\tightvnc\tvnserver.exe -run
 ::反向连接模式start "" "%root%\tightvnc\tvnserver.exe" -controlapp -connect %ip%
 ::::启动tightvnc
+if "%job%" == "nbctrl" exit
 call :%job%&&exit
 exit
 ::::从txt中提取服务器地址
@@ -216,7 +217,7 @@ exit /b
 
 :gaka
 if exist "%rootx86%\gakax86.exe" start "" /min "%rootx86%\gakax86.exe" student
-call :smbcli
+::call :smbcli
 exit /b
 
 
@@ -446,6 +447,7 @@ exit
 cd /d "X:\windows\system32" >nul
 netcopyx64.exe
 exit /b
+
 
 ::::::执行5次尝试映射共享任务
 :smbcli

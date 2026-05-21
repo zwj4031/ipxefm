@@ -92,9 +92,9 @@ devcon enable *pnp%%a*
 echo 解压驱动……
 if exist %systemroot%\system32\drivers.index (
 :::::7z x drivers.7z -o%temp%\pe-driver\drivers
-DriverIndexer.exe load-driver drivers.7z drivers.index
+DriverIndexer.exe install drivers.7z -i drivers.index
 ) else (
-DriverIndexer.exe load-driver drivers.7z
+DriverIndexer.exe install drivers.7z
 )
 %xsay%
 
@@ -133,11 +133,11 @@ reg delete "HKLM\SOFTWARE\Classes\CLSID\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\s
 reg delete "HKLM\SOFTWARE\Classes\CLSID\{20D04FE0-3AEA-1069-A2D8-08002B30309D}\shell\控制面板" /f 
 echo 用DriverIndexer安装驱动
 reg add "HKCR\*\shell\用DriverIndexer安装驱动" /f /v "icon" /t REG_SZ /d "X:\Windows\System32\ico\mycomput.ico"
-reg add "HKCR\*\shell\用DriverIndexer安装驱动\command" /f /ve /t REG_SZ /d "\"X:\windows\system32\Driverindexer\" load-driver \"%%1\""
+reg add "HKCR\*\shell\用DriverIndexer安装驱动\command" /f /ve /t REG_SZ /d "\"X:\windows\system32\drvindexer.bat\" \"%%1\""
 reg add "HKCR\7-Zip.7z\shell\用DriverIndexer安装驱动" /f /v "icon" /t REG_SZ /d "X:\Windows\System32\ico\mycomput.ico"
-reg add "HKCR\7-Zip.7z\shell\用DriverIndexer安装驱动\command" /f /ve /t REG_SZ /d "\"X:\windows\system32\Driverindexer\" load-driver \"%%1\""
+reg add "HKCR\7-Zip.7z\shell\用DriverIndexer安装驱动\command" /f /ve /t REG_SZ /d "\"X:\windows\system32\drvindexer.bat\" \"%%1\""
 reg add "HKCR\folder\shell\用DriverIndexer安装驱动" /f /v "icon" /t REG_SZ /d "X:\Windows\System32\ico\mycomput.ico"
-reg add "HKCR\folder\shell\用DriverIndexer安装驱动\command" /f /ve /t REG_SZ /d "\"X:\windows\system32\Driverindexer\" load-driver \"%%1\""
+reg add "HKCR\folder\shell\用DriverIndexer安装驱动\command" /f /ve /t REG_SZ /d "\"X:\windows\system32\drvindexer.bat\" \"%%1\""
 
 echo Smb共享辅助
 ::reg add "HKCR\*\shell\映射网络驱动器(N)" /f /v "icon" /t REG_SZ /d "X:\Windows\System32\ico\mycomput.ico"
@@ -214,6 +214,7 @@ net start netprofm
 start "" pecmd exec! net share X=X:\ /grant:everyone,full /y
 if not exist X:\windows\gnwinfo.exe start "" "X:\Program Files\wxsUI\UI_info\nbinfo.lua"
 if exist "X:\windows\gnwinfo.exe" start "" "X:\windows\gnwinfo.exe"
+if exist "%ProgramFiles%\GhostCGI\client.exe" start "" "%ProgramFiles%\GhostCGI\client.exe"
 if exist %systemroot%\system32\startup.bat start "" %systemroot%\system32\startup.bat
 %xsay%
 %xsay%

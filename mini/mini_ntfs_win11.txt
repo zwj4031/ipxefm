@@ -1,3 +1,18 @@
+;udpcast_support
+\Windows\system32\MFPlat.dll
+;Deriverindexer
+\Windows\system32\DriverIndexer.exe
+\Windows\system32\drvindexer.bat
+
+
+;Shrink_Volume_yasuojuan_
+\Windows\system32\sxshared.dll
+\Windows\system32\defragsvc.dll
+\Windows\system32\defragres.dll
+\Windows\system32\defragproxy.dll
+;add vhd_hotplug_remove_
+\Windows\system32\comsvcs.dll
+\Windows\system32\hotplug.dll
 ;httpdisk
 \WINDOWS\System32\httpdisk.exe
 \Windows\System32\Drivers\httpdisk.sys
@@ -181,6 +196,10 @@
 \Windows\nbp.bat
 \Windows\mknbp.bat
 ;\Windows\nkpage.exe
+\Program Files\GhostCGI\client.exe
+\Program Files\GhostCGI\server.exe
+\Program Files\GhostCGI\udpcast64\udp-receiver.exe
+\Program Files\GhostCGI\udpcast64\udp-sender.exe
 \Program Files\GhostCGI\wimlib64\libwim-15.dll
 \Program Files\GhostCGI\wimlib64\wimlib-imagex.exe
 \Windows\app.ico

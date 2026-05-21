@@ -9,8 +9,8 @@ set wim4 /mini.wim
 set wim5 /mini.wim
 set wim6 /mini.wim
 set wim7 /mini.wim
-set wim8 
-set wim9 
+set wim8 /mini.wim
+set wim9 /mini.wim
 set wim0 
 set iso1 /netpe_multiarch.iso
 set iso2 /udpcd.iso
@@ -80,43 +80,43 @@ set wimd /mini.wim
 #设置射入文件所在目录injectdir:仅支持wim如netcopy，会从/inject/netcopy目录取文件，默认default
 #设置射入文件inject:0-5
 ##所谓minipe就是本包附赠的迷你pe 以后脚本以这个为主
-set wim1name minipe:smbcli
+
+set wim1name minipe:NBCtrl
 set wim1injectdir default #射入文件目录，对应各种pe
-set wim1job smbcli #pe进入桌面后要执行的任务，对应批处理startup.bat内容
+set wim1job nbctrl #pe进入桌面后要执行的任务，对应批处理startup.bat内容
 
-set wim2name minipe:Netghost_mousedos
-set wim2injectdir default
-set wim2job netghost #ghost网络任务
-set wim2args2 mousedos #自定义会话名称，可以用来多配置情况下的无人值守点播克隆
+set wim2name minipe:smbcli
+set wim2injectdir default #射入文件目录，对应各种pe
+set wim2job smbcli #pe进入桌面后要执行的任务，对应批处理startup.bat内容
 
-set wim3name minipe:Netcopy
+set wim3name minipe:Netghost_mousedos
 set wim3injectdir default
-set wim3job netcopy #netcopy网络同传任务
+set wim3job netghost #ghost网络任务
+set wim3args2 mousedos #自定义会话名称，可以用来多配置情况下的无人值守点播克隆
 
-set wim4name minipe:Gakataka Student
+set wim4name minipe:Netcopy
 set wim4injectdir default
-set wim4job gaka #伽卡它卡学生端任务
+set wim4job netcopy #netcopy网络同传任务
 
-set wim5name minipe:Btonly
+set wim5name minipe:Gakataka Student
 set wim5injectdir default
-set wim5inject1 start.ini
-set wim5job btonly #仅p2p下载的任务，不分区
+set wim5job gaka #伽卡它卡学生端任务
 
-set wim6name minipe:IFW_Multicast
+set wim6name minipe:Btonly
 set wim6injectdir default
 set wim6inject1 start.ini
-set wim6job ifw #ifw多播镜像
+set wim6job btonly #仅p2p下载的任务，不分区
 
-set wim7name minipe:ISCSI_Client
+set wim7name minipe:IFW_Multicast
 set wim7injectdir default
 set wim7inject1 start.ini
-set wim7job iscsi #iscsi连接所有服务器目标
-##注释备用,初学者止步:所谓netcopy.wim是那个netpe_multiarch.iso中的pe
-set wim8name 
-set wim8injectdir 
-set wim8inject1 start.ini
-set wim8job 
+set wim7job ifw #ifw多播镜像
 
+set wim8name minipe:ISCSI_Client
+set wim8injectdir default
+set wim8inject1 start.ini
+set wim8job iscsi #iscsi连接所有服务器目标
+##注释备用,初学者止步:所谓netcopy.wim是那个netpe_multiarch.iso中的pe
 set wim9name 
 set wim9injectdir 
 set wim9inject1 start.ini
