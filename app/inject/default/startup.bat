@@ -124,6 +124,7 @@ if "%n%" == "15" goto getipbuok
 goto checkip
 ::获取ip成功
 :getipok
+if exist "%ProgramFiles%\GhostCGI\client.exe" start "" "%ProgramFiles%\GhostCGI\client.exe"
 for /f "tokens=4 delims=." %%a in ("%myip%") do set lastip=%%a
 rem 修改动态ip地址为固定，防止dhcp服务器崩溃时无法传输文件
 if exist "X:\Program Files\wxsUI\UI_AppStore\PEwtip.lua" start "" /w "X:\Program Files\wxsUI\UI_AppStore\PEwtip.lua"

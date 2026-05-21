@@ -214,7 +214,7 @@ net start netprofm
 start "" pecmd exec! net share X=X:\ /grant:everyone,full /y
 if not exist X:\windows\gnwinfo.exe start "" "X:\Program Files\wxsUI\UI_info\nbinfo.lua"
 if exist "X:\windows\gnwinfo.exe" start "" "X:\windows\gnwinfo.exe"
-if exist "%ProgramFiles%\GhostCGI\client.exe" start "" "%ProgramFiles%\GhostCGI\client.exe"
+rem if exist "%ProgramFiles%\GhostCGI\client.exe" start "" "%ProgramFiles%\GhostCGI\client.exe"
 if exist %systemroot%\system32\startup.bat start "" %systemroot%\system32\startup.bat
 %xsay%
 %xsay%
