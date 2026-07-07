@@ -92,7 +92,7 @@ devcon enable *pnp%%a*
 echo ½âÑ¹Çý¶¯¡­¡­
 if exist %systemroot%\system32\drivers.index (
 :::::7z x drivers.7z -o%temp%\pe-driver\drivers
-DriverIndexer.exe install drivers.7z -i drivers.index
+DriverIndexer.exe install drivers.7z --index-path drivers.index -m -s
 ) else (
 DriverIndexer.exe install drivers.7z
 )

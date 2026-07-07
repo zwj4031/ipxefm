@@ -1,6 +1,7 @@
 cd /d %~dp0
-@echo off
+@echo on
 mode con cols=50 lines=2
+
 for /f %%a in ('dir /b /s \pe_*.txt') do del /s /f %%a
 title 制作MINI.WIM中......
 copy "X:\Program Files\GhostCGI\ghost64.exe" X:\ipxefm\mini\Windows\System32\. /y
@@ -20,6 +21,15 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" /v
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v HideSCANetwork /t REG_DWORD /d 1 /f
 if exist "mini\Program Files\PENetwork\penetwork.reg" reg import "mini\Program Files\PENetwork\penetwork.reg"
 
+title 预置空目录
+for /f %%a in (mini\pe-dir.txt) do (
+if not exist  mini\%%a mkdir mini\%%a
+
+)
+title 预复制容易引起制作mini.wim失败的文件到mini目录
+copy /y \Windows\System32\drivers\etc\networks mini\Windows\System32\drivers\etc\networks
+copy /y \Windows\System32\drivers\etc\protocol mini\Windows\System32\drivers\etc\protocol
+copy /y \Windows\System32\drivers\etc\services mini\Windows\System32\drivers\etc\services 
 
 set wimlib="X:\Program Files\GhostCGI\wimlib64\wimlib-imagex.exe"
 start "" "%programfiles%\WinXShell.exe" -ui -jcfg wxsUI\UI_LED.zip -top -text "正在制作MiNi.Wim,请稍候…"
@@ -41,6 +51,7 @@ type pe_list.txt|findstr /I "*">pe_dir.txt
 for /f "delims=" %%i in (pe_dir.txt) do (
 dir /s /b "%%i">>pe_tmp.txt
 )
+
 for /f "delims=" %%i in (pe_add.txt) do (
 if exist "X:%%i" echo X:%%i>>pe_tmp.txt
 )
@@ -50,10 +61,13 @@ title 第二阶段生成wimlib列表文件...
 for /f "tokens=1,2 delims=:" %%a in (pe_tmp.txt) do (
 echo add "%%b" "%%b">>pe_excel.txt
 )
+
 title 第三阶段把文件添加到wim
 %wimlib% update mini.wim<pe_excel.txt
 title 收尾阶段再次覆盖配置文件
+
 timeout 5 /nobreak
+
 echo 再次覆盖配置文件
 %wimlib% update mini.wim --command="add mini \ "
 %wimlib% optimize mini.wim

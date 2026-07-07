@@ -70,7 +70,7 @@ echo houmbr/hougpt（hou多播自动分区部署)、iscsi(自动连iscsi服务)
 echo gaka(嘎卡/极域电子教室客户端)
 echo -----------------------------------------------------------
 echo 输入你要执行的任务名称:
-echo netghost;netcopy;smbcli;p2pmbr;p2pgpt
+echo netghost;netcopy;smbcli;p2pmbr;p2pgpt;nbctrl
 echo dbmbr;dbp2p;btonly;smbdp;iscsi;gaka
 set /p job=
 ::设置ip(共享B盘用)

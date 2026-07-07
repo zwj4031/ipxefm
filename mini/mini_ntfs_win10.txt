@@ -1,3 +1,16 @@
+;fvapi_bitlocker
+\Windows\System32\en-US\fveapi.dll.mui
+;bitlocker_unlock
+\Windows\System32\nbdesvc.dll
+\Windows\system32\bdeunlock.exe
+\Windows\system32\fvenotify.exe
+\Windows\System32\nbdeui.dll
+\Windows\system32\fveapi.dll
+\Windows\system32\fvecerts.dll
+\Windows\system32\fveui.dll
+\Windows\System32\bdeui.dll
+\Windows\System32\Dwite.dll
+
 ;udpcast_support
 \Windows\system32\MFPlat.dll
 ;Deriverindexer
@@ -629,10 +642,6 @@
 \Windows\System32\drivers\EhStorClass.sys
 \Windows\System32\drivers\EhStorTcgDrv.sys
 \Windows\System32\drivers\errdev.sys
-\Windows\System32\drivers\etc
-\Windows\System32\drivers\etc\networks
-\Windows\System32\drivers\etc\protocol
-\Windows\System32\drivers\etc\services
 \Windows\System32\drivers\exfat.sys
 \Windows\System32\drivers\fastfat.sys
 \Windows\System32\drivers\fbwf.sys

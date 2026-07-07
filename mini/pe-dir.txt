@@ -1,0 +1,1546 @@
+\
+\inetpub
+\PerfLogs
+\Program Files
+\Program Files\Common Files
+\Program Files\Common Files\microsoft shared
+\Program Files\Common Files\microsoft shared\ink
+\Program Files\Common Files\microsoft shared\ink\ar-SA
+\Program Files\Common Files\microsoft shared\ink\bg-BG
+\Program Files\Common Files\microsoft shared\ink\cs-CZ
+\Program Files\Common Files\microsoft shared\ink\da-DK
+\Program Files\Common Files\microsoft shared\ink\de-DE
+\Program Files\Common Files\microsoft shared\ink\el-GR
+\Program Files\Common Files\microsoft shared\ink\en-GB
+\Program Files\Common Files\microsoft shared\ink\en-US
+\Program Files\Common Files\microsoft shared\ink\es-ES
+\Program Files\Common Files\microsoft shared\ink\es-MX
+\Program Files\Common Files\microsoft shared\ink\et-EE
+\Program Files\Common Files\microsoft shared\ink\fi-FI
+\Program Files\Common Files\microsoft shared\ink\fr-CA
+\Program Files\Common Files\microsoft shared\ink\fr-FR
+\Program Files\Common Files\microsoft shared\ink\fsdefinitions
+\Program Files\Common Files\microsoft shared\ink\fsdefinitions\auxpad
+\Program Files\Common Files\microsoft shared\ink\fsdefinitions\insert
+\Program Files\Common Files\microsoft shared\ink\fsdefinitions\keypad
+\Program Files\Common Files\microsoft shared\ink\fsdefinitions\main
+\Program Files\Common Files\microsoft shared\ink\fsdefinitions\oskclearui
+\Program Files\Common Files\microsoft shared\ink\fsdefinitions\oskmenu
+\Program Files\Common Files\microsoft shared\ink\fsdefinitions\osknav
+\Program Files\Common Files\microsoft shared\ink\fsdefinitions\osknumpad
+\Program Files\Common Files\microsoft shared\ink\fsdefinitions\oskpred
+\Program Files\Common Files\microsoft shared\ink\fsdefinitions\symbols
+\Program Files\Common Files\microsoft shared\ink\he-IL
+\Program Files\Common Files\microsoft shared\ink\hr-HR
+\Program Files\Common Files\microsoft shared\ink\hu-HU
+\Program Files\Common Files\microsoft shared\ink\HWRCustomization
+\Program Files\Common Files\microsoft shared\ink\it-IT
+\Program Files\Common Files\microsoft shared\ink\ja-JP
+\Program Files\Common Files\microsoft shared\ink\ko-KR
+\Program Files\Common Files\microsoft shared\ink\LanguageModel
+\Program Files\Common Files\microsoft shared\ink\lt-LT
+\Program Files\Common Files\microsoft shared\ink\lv-LV
+\Program Files\Common Files\microsoft shared\ink\nb-NO
+\Program Files\Common Files\microsoft shared\ink\nl-NL
+\Program Files\Common Files\microsoft shared\ink\pl-PL
+\Program Files\Common Files\microsoft shared\ink\pt-BR
+\Program Files\Common Files\microsoft shared\ink\pt-PT
+\Program Files\Common Files\microsoft shared\ink\ro-RO
+\Program Files\Common Files\microsoft shared\ink\ru-RU
+\Program Files\Common Files\microsoft shared\ink\sk-SK
+\Program Files\Common Files\microsoft shared\ink\sl-SI
+\Program Files\Common Files\microsoft shared\ink\sr-Latn-RS
+\Program Files\Common Files\microsoft shared\ink\sv-SE
+\Program Files\Common Files\microsoft shared\ink\th-TH
+\Program Files\Common Files\microsoft shared\ink\tr-TR
+\Program Files\Common Files\microsoft shared\ink\uk-UA
+\Program Files\Common Files\microsoft shared\ink\zh-CN
+\Program Files\Common Files\microsoft shared\ink\zh-TW
+\Program Files\Common Files\microsoft shared\MSInfo
+\Program Files\Common Files\microsoft shared\MSInfo\en-US
+\Program Files\Common Files\microsoft shared\MSInfo\zh-CN
+\Program Files\Common Files\microsoft shared\Stationery
+\Program Files\Common Files\microsoft shared\TextConv
+\Program Files\Common Files\microsoft shared\TextConv\en-US
+\Program Files\Common Files\microsoft shared\Triedit
+\Program Files\Common Files\microsoft shared\Triedit\en-US
+\Program Files\Common Files\microsoft shared\VGX
+\Program Files\Common Files\Services
+\Program Files\Common Files\System
+\Program Files\Common Files\System\ado
+\Program Files\Common Files\System\ado\en-US
+\Program Files\Common Files\System\ado\zh-CN
+\Program Files\Common Files\System\en-US
+\Program Files\Common Files\System\msadc
+\Program Files\Common Files\System\msadc\en-US
+\Program Files\Common Files\System\msadc\zh-CN
+\Program Files\Common Files\System\Ole DB
+\Program Files\Common Files\System\Ole DB\en-US
+\Program Files\Common Files\System\Ole DB\zh-CN
+\Program Files\Common Files\System\zh-CN
+\Program Files\Internet Explorer
+\Program Files\Internet Explorer\en-US
+\Program Files\Internet Explorer\images
+\Program Files\Internet Explorer\SIGNUP
+\Program Files\Internet Explorer\zh-CN
+\Program Files\ModifiableWindowsApps
+\Program Files\Windows Defender
+\Program Files\Windows Defender\Offline
+\Program Files\Windows Defender\zh-CN
+\Program Files\Windows Defender Advanced Threat Protection
+\Program Files\Windows Defender Advanced Threat Protection\Classification
+\Program Files\Windows Defender Advanced Threat Protection\Classification\Configuration
+\Program Files\Windows Defender Advanced Threat Protection\Classification\Dprt
+\Program Files\Windows Defender Advanced Threat Protection\Classification\Dprt\x64
+\Program Files\Windows Defender Advanced Threat Protection\ThirdPartyNotice
+\Program Files\Windows Defender Advanced Threat Protection\zh-CN
+\Program Files\Windows Mail
+\Program Files\Windows Media Player
+\Program Files\Windows Media Player\Icons
+\Program Files\Windows Media Player\Media Renderer
+\Program Files\Windows Media Player\Network Sharing
+\Program Files\Windows Media Player\Skins
+\Program Files\Windows Media Player\Visualizations
+\Program Files\Windows Media Player\zh-CN
+\Program Files\Windows Multimedia Platform
+\Program Files\Windows NT
+\Program Files\Windows NT\Accessories
+\Program Files\Windows NT\Accessories\en-US
+\Program Files\Windows NT\Accessories\zh-CN
+\Program Files\Windows NT\TableTextService
+\Program Files\Windows NT\TableTextService\en-US
+\Program Files\Windows NT\TableTextService\zh-CN
+\Program Files\Windows Photo Viewer
+\Program Files\Windows Photo Viewer\zh-CN
+\Program Files\Windows Portable Devices
+\Program Files\Windows Security
+\Program Files\Windows Security\BrowserCore
+\Program Files\Windows Security\BrowserCore\en-US
+\Program Files\Windows Sidebar
+\Program Files\Windows Sidebar\Gadgets
+\Program Files\Windows Sidebar\Shared Gadgets
+\Program Files\WindowsApps
+\Program Files\WindowsApps\Deleted
+\Program Files\WindowsApps\Mutable
+\Program Files\WindowsApps\MutableBackup
+\Program Files\WindowsPowerShell
+\Program Files\WindowsPowerShell\Configuration
+\Program Files\WindowsPowerShell\Configuration\Registration
+\Program Files\WindowsPowerShell\Configuration\Schema
+\Program Files\WindowsPowerShell\Modules
+\Program Files\WindowsPowerShell\Modules\PackageManagement
+\Program Files\WindowsPowerShell\Modules\Pester
+\Program Files\WindowsPowerShell\Modules\PowerShellGet
+\Program Files\WindowsPowerShell\Modules\PSReadline
+\Program Files (x86)
+\Program Files (x86)\Common Files
+\Program Files (x86)\Common Files\Microsoft Shared
+\Program Files (x86)\Common Files\Microsoft Shared\DAO
+\Program Files (x86)\Common Files\Microsoft Shared\Filters
+\Program Files (x86)\Common Files\Microsoft Shared\ink
+\Program Files (x86)\Common Files\Microsoft Shared\ink\en-US
+\Program Files (x86)\Common Files\Microsoft Shared\ink\HWRCustomization
+\Program Files (x86)\Common Files\Microsoft Shared\ink\zh-CN
+\Program Files (x86)\Common Files\Microsoft Shared\MSInfo
+\Program Files (x86)\Common Files\Microsoft Shared\MSInfo\en-US
+\Program Files (x86)\Common Files\Microsoft Shared\Stationery
+\Program Files (x86)\Common Files\Microsoft Shared\TextConv
+\Program Files (x86)\Common Files\Microsoft Shared\TextConv\en-US
+\Program Files (x86)\Common Files\Microsoft Shared\Triedit
+\Program Files (x86)\Common Files\Microsoft Shared\Triedit\en-US
+\Program Files (x86)\Common Files\Microsoft Shared\VGX
+\Program Files (x86)\Common Files\Services
+\Program Files (x86)\Common Files\System
+\Program Files (x86)\Common Files\System\ado
+\Program Files (x86)\Common Files\System\ado\en-US
+\Program Files (x86)\Common Files\System\ado\zh-CN
+\Program Files (x86)\Common Files\System\en-US
+\Program Files (x86)\Common Files\System\msadc
+\Program Files (x86)\Common Files\System\msadc\en-US
+\Program Files (x86)\Common Files\System\msadc\zh-CN
+\Program Files (x86)\Common Files\System\Ole DB
+\Program Files (x86)\Common Files\System\Ole DB\en-US
+\Program Files (x86)\Common Files\System\Ole DB\zh-CN
+\Program Files (x86)\Common Files\System\zh-CN
+\Program Files (x86)\Internet Explorer
+\Program Files (x86)\Internet Explorer\en-US
+\Program Files (x86)\Internet Explorer\images
+\Program Files (x86)\Internet Explorer\SIGNUP
+\Program Files (x86)\Internet Explorer\zh-CN
+\Program Files (x86)\Microsoft
+\Program Files (x86)\Microsoft\Edge
+\Program Files (x86)\Microsoft\Edge\Application
+\Program Files (x86)\Microsoft\EdgeCore
+\Program Files (x86)\Microsoft\EdgeUpdate
+\Program Files (x86)\Microsoft\EdgeWebView
+\Program Files (x86)\Microsoft\EdgeWebView\Application
+\Program Files (x86)\Windows Defender
+\Program Files (x86)\Windows Defender\zh-CN
+\Program Files (x86)\Windows Mail
+\Program Files (x86)\Windows Media Player
+\Program Files (x86)\Windows Media Player\Icons
+\Program Files (x86)\Windows Media Player\Media Renderer
+\Program Files (x86)\Windows Media Player\Network Sharing
+\Program Files (x86)\Windows Media Player\Skins
+\Program Files (x86)\Windows Media Player\Visualizations
+\Program Files (x86)\Windows Media Player\zh-CN
+\Program Files (x86)\Windows Multimedia Platform
+\Program Files (x86)\Windows NT
+\Program Files (x86)\Windows NT\Accessories
+\Program Files (x86)\Windows NT\Accessories\en-US
+\Program Files (x86)\Windows NT\Accessories\zh-CN
+\Program Files (x86)\Windows NT\TableTextService
+\Program Files (x86)\Windows NT\TableTextService\en-US
+\Program Files (x86)\Windows NT\TableTextService\zh-CN
+\Program Files (x86)\Windows Photo Viewer
+\Program Files (x86)\Windows Photo Viewer\zh-CN
+\Program Files (x86)\Windows Portable Devices
+\Program Files (x86)\Windows Sidebar
+\Program Files (x86)\Windows Sidebar\Gadgets
+\Program Files (x86)\Windows Sidebar\Shared Gadgets
+\Program Files (x86)\WindowsPowerShell
+\Program Files (x86)\WindowsPowerShell\Configuration
+\Program Files (x86)\WindowsPowerShell\Configuration\Registration
+\Program Files (x86)\WindowsPowerShell\Configuration\Schema
+\Program Files (x86)\WindowsPowerShell\Modules
+\Program Files (x86)\WindowsPowerShell\Modules\PackageManagement
+\Program Files (x86)\WindowsPowerShell\Modules\Pester
+\Program Files (x86)\WindowsPowerShell\Modules\PowerShellGet
+\ProgramData
+\ProgramData\Microsoft
+\ProgramData\Microsoft\AppV
+\ProgramData\Microsoft\AppV\Setup
+\ProgramData\Microsoft\Crypto
+\ProgramData\Microsoft\Crypto\DSS
+\ProgramData\Microsoft\Crypto\DSS\MachineKeys
+\ProgramData\Microsoft\Crypto\Keys
+\ProgramData\Microsoft\Crypto\PCPKSP
+\ProgramData\Microsoft\Crypto\PCPKSP\WindowsAIK
+\ProgramData\Microsoft\Crypto\RSA
+\ProgramData\Microsoft\Crypto\RSA\MachineKeys
+\ProgramData\Microsoft\Device Stage
+\ProgramData\Microsoft\Device Stage\Device
+\ProgramData\Microsoft\Device Stage\Device\{113527a4-45d4-4b6f-b567-97838f1b04b0}
+\ProgramData\Microsoft\Device Stage\Device\{8702d817-5aad-4674-9ef3-4d3decd87120}
+\ProgramData\Microsoft\Device Stage\Task
+\ProgramData\Microsoft\Device Stage\Task\{07deb856-fc6e-4fb9-8add-d8f2cf8722c9}
+\ProgramData\Microsoft\Device Stage\Task\{07deb856-fc6e-4fb9-8add-d8f2cf8722c9}\zh-CN
+\ProgramData\Microsoft\Device Stage\Task\{e35be42d-f742-4d96-a50a-1775fb1a7a42}
+\ProgramData\Microsoft\Device Stage\Task\{e35be42d-f742-4d96-a50a-1775fb1a7a42}\zh-CN
+\ProgramData\Microsoft\DeviceSync
+\ProgramData\Microsoft\Diagnosis
+\ProgramData\Microsoft\Diagnosis\Siufloc
+\ProgramData\Microsoft\DRM
+\ProgramData\Microsoft\DRM\Server
+\ProgramData\Microsoft\MapData
+\ProgramData\Microsoft\MF
+\ProgramData\Microsoft\NetFramework
+\ProgramData\Microsoft\NetFramework\BreadcrumbStore
+\ProgramData\Microsoft\Network
+\ProgramData\Microsoft\Network\Connections
+\ProgramData\Microsoft\Network\Downloader
+\ProgramData\Microsoft\Provisioning
+\ProgramData\Microsoft\Provisioning\AssetCache
+\ProgramData\Microsoft\Provisioning\AssetCache\CellularUx
+\ProgramData\Microsoft\Settings
+\ProgramData\Microsoft\Settings\Accounts
+\ProgramData\Microsoft\SmsRouter
+\ProgramData\Microsoft\Spectrum
+\ProgramData\Microsoft\Speech_OneCore
+\ProgramData\Microsoft\Storage Health
+\ProgramData\Microsoft\UEV
+\ProgramData\Microsoft\UEV\InboxTemplates
+\ProgramData\Microsoft\UEV\Scripts
+\ProgramData\Microsoft\UEV\Templates
+\ProgramData\Microsoft\User Account Pictures
+\ProgramData\Microsoft\Vault
+\ProgramData\Microsoft\WDF
+\ProgramData\Microsoft\Windows
+\ProgramData\Microsoft\Windows\AppRepository
+\ProgramData\Microsoft\Windows\AppRepository\Families
+\ProgramData\Microsoft\Windows\AppRepository\Packages
+\ProgramData\Microsoft\Windows\ClipSVC
+\ProgramData\Microsoft\Windows\ClipSVC\Archive
+\ProgramData\Microsoft\Windows\ClipSVC\GenuineTicket
+\ProgramData\Microsoft\Windows\ClipSVC\Import
+\ProgramData\Microsoft\Windows\ClipSVC\Install
+\ProgramData\Microsoft\Windows\ClipSVC\Install\Apps
+\ProgramData\Microsoft\Windows\DeviceMetadataStore
+\ProgramData\Microsoft\Windows\DeviceMetadataStore\en-US
+\ProgramData\Microsoft\Windows\GameExplorer
+\ProgramData\Microsoft\Windows\LfSvc
+\ProgramData\Microsoft\Windows\OneSettings
+\ProgramData\Microsoft\Windows\PackagedEventProviders
+\ProgramData\Microsoft\Windows\Parental Controls
+\ProgramData\Microsoft\Windows\Parental Controls\settings
+\ProgramData\Microsoft\Windows\Power Efficiency Diagnostics
+\ProgramData\Microsoft\Windows\RetailDemo
+\ProgramData\Microsoft\Windows\RetailDemo\OfflineContent
+\ProgramData\Microsoft\Windows\RetailDemo\OfflineContent\Microsoft
+\ProgramData\Microsoft\Windows\RetailDemo\OfflineContent\Microsoft\Content
+\ProgramData\Microsoft\Windows\RetailDemo\OfflineContent\Microsoft\Content\Neutral
+\ProgramData\Microsoft\Windows\RetailDemo\OfflineContent\Packages
+\ProgramData\Microsoft\Windows\Ringtones
+\ProgramData\Microsoft\Windows\Start Menu
+\ProgramData\Microsoft\Windows\Start Menu\Programs
+\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessibility
+\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories
+\ProgramData\Microsoft\Windows\Start Menu\Programs\Accessories\System Tools
+\ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools
+\ProgramData\Microsoft\Windows\Start Menu\Programs\Maintenance
+\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp
+\ProgramData\Microsoft\Windows\Start Menu\Programs\System Tools
+\ProgramData\Microsoft\Windows\Start Menu\Programs\Windows PowerShell
+\ProgramData\Microsoft\Windows\Templates
+\ProgramData\Microsoft\Windows\WER
+\ProgramData\Microsoft\Windows\WER\ReportArchive
+\ProgramData\Microsoft\Windows\WER\ReportQueue
+\ProgramData\Microsoft\Windows\WER\Temp
+\ProgramData\Microsoft\Windows\wfp
+\ProgramData\Microsoft\Windows Defender
+\ProgramData\Microsoft\Windows Defender\Clean Store
+\ProgramData\Microsoft\Windows Defender\Definition Updates
+\ProgramData\Microsoft\Windows Defender\Definition Updates\Backup
+\ProgramData\Microsoft\Windows Defender\Definition Updates\Default
+\ProgramData\Microsoft\Windows Defender\Definition Updates\NisBackup
+\ProgramData\Microsoft\Windows Defender\Definition Updates\Updates
+\ProgramData\Microsoft\Windows Defender\Features
+\ProgramData\Microsoft\Windows Defender\LocalCopy
+\ProgramData\Microsoft\Windows Defender\Network Inspection System
+\ProgramData\Microsoft\Windows Defender\Network Inspection System\Support
+\ProgramData\Microsoft\Windows Defender\Platform
+\ProgramData\Microsoft\Windows Defender\Quarantine
+\ProgramData\Microsoft\Windows Defender\Scans
+\ProgramData\Microsoft\Windows Defender\Support
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\Cache
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\Cyber
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\DataCollection
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\DataScan
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\DataScan\Classification
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\DataScan\Database
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\DLP
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\DLP\Archive
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\DLP\Classification
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\Downloads
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\Platform
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\SenseCM
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\SenseNDR
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\Temp
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\Temp\Platform
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\Temp\PSScriptOutputs
+\ProgramData\Microsoft\Windows Defender Advanced Threat Protection\Trace
+\ProgramData\Microsoft\Windows NT
+\ProgramData\Microsoft\Windows NT\MSFax
+\ProgramData\Microsoft\Windows NT\MSFax\ActivityLog
+\ProgramData\Microsoft\Windows NT\MSFax\Common Coverpages
+\ProgramData\Microsoft\Windows NT\MSFax\Common Coverpages\zh-CN
+\ProgramData\Microsoft\Windows NT\MSFax\Inbox
+\ProgramData\Microsoft\Windows NT\MSFax\Queue
+\ProgramData\Microsoft\Windows NT\MSFax\SentItems
+\ProgramData\Microsoft\Windows NT\MSFax\VirtualInbox
+\ProgramData\Microsoft\Windows NT\MSFax\VirtualInbox\zh-CN
+\ProgramData\Microsoft\Windows NT\MSScan
+\ProgramData\Microsoft\Windows Security Health
+\ProgramData\Microsoft\Windows Security Health\Health Advisor
+\ProgramData\Microsoft\Windows Security Health\Logs
+\ProgramData\Microsoft\WinMSIPC
+\ProgramData\Microsoft\WinMSIPC\Server
+\ProgramData\Microsoft\WwanSvc
+\ProgramData\Microsoft\WwanSvc\DMProfiles
+\ProgramData\Microsoft\WwanSvc\Profiles
+\ProgramData\SoftwareDistribution
+\ProgramData\ssh
+\ProgramData\USOPrivate
+\ProgramData\USOPrivate\ExpeditedAppRegistrations
+\ProgramData\USOPrivate\ExpeditedAppRegistrations\MS_Outlook
+\ProgramData\USOShared
+\ProgramData\USOShared\Logs
+\ProgramData\USOShared\Logs\System
+\ProgramData\USOShared\Logs\User
+\ProgramData\WindowsHolographicDevices
+\ProgramData\WindowsHolographicDevices\SpatialStore
+\Users
+\Users\All Users
+\Users\Default
+\Users\Default\AppData
+\Users\Default\AppData\Local
+\Users\Default\AppData\Local\Microsoft
+\Users\Default\AppData\Local\Microsoft\InputPersonalization
+\Users\Default\AppData\Local\Microsoft\InputPersonalization\TrainedDataStore
+\Users\Default\AppData\Local\Microsoft\Windows
+\Users\Default\AppData\Local\Microsoft\Windows\CloudStore
+\Users\Default\AppData\Local\Microsoft\Windows\GameExplorer
+\Users\Default\AppData\Local\Microsoft\Windows\History
+\Users\Default\AppData\Local\Microsoft\Windows\INetCache
+\Users\Default\AppData\Local\Microsoft\Windows\INetCookies
+\Users\Default\AppData\Local\Microsoft\Windows\Shell
+\Users\Default\AppData\Local\Microsoft\Windows\WinX
+\Users\Default\AppData\Local\Microsoft\Windows\WinX\Group1
+\Users\Default\AppData\Local\Microsoft\Windows\WinX\Group2
+\Users\Default\AppData\Local\Microsoft\Windows\WinX\Group3
+\Users\Default\AppData\Local\Microsoft\Windows Sidebar
+\Users\Default\AppData\Local\Microsoft\Windows Sidebar\Gadgets
+\Users\Default\AppData\Local\Microsoft\WindowsApps
+\Users\Default\AppData\Local\Temp
+\Users\Default\AppData\Roaming
+\Users\Default\AppData\Roaming\Microsoft
+\Users\Default\AppData\Roaming\Microsoft\Internet Explorer
+\Users\Default\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch
+\Users\Default\AppData\Roaming\Microsoft\Windows
+\Users\Default\AppData\Roaming\Microsoft\Windows\CloudStore
+\Users\Default\AppData\Roaming\Microsoft\Windows\Network Shortcuts
+\Users\Default\AppData\Roaming\Microsoft\Windows\Printer Shortcuts
+\Users\Default\AppData\Roaming\Microsoft\Windows\Recent
+\Users\Default\AppData\Roaming\Microsoft\Windows\SendTo
+\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu
+\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs
+\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Accessibility
+\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Accessories
+\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Maintenance
+\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\System Tools
+\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Windows PowerShell
+\Users\Default\AppData\Roaming\Microsoft\Windows\Templates
+\Users\Default\Desktop
+\Users\Default\Documents
+\Users\Default\Downloads
+\Users\Default\Favorites
+\Users\Default\Links
+\Users\Default\Music
+\Users\Default\Pictures
+\Users\Default\Saved Games
+\Users\Default\Videos
+\Users\Default User
+\Users\Public
+\Users\Public\Desktop
+\Users\Public\Documents
+\Users\Public\Downloads
+\Users\Public\Libraries
+\Users\Public\Music
+\Users\Public\Pictures
+\Users\Public\Videos
+\Windows
+\Windows\addins
+\Windows\appcompat
+\Windows\appcompat\appraiser
+\Windows\appcompat\appraiser\Telemetry
+\Windows\appcompat\Backup
+\Windows\appcompat\Programs
+\Windows\apppatch
+\Windows\apppatch\AppPatch64
+\Windows\apppatch\Custom
+\Windows\apppatch\Custom\Custom64
+\Windows\apppatch\CustomSDB
+\Windows\apppatch\en-US
+\Windows\apppatch\zh-CN
+\Windows\AppReadiness
+\Windows\assembly
+\Windows\assembly\GAC_32
+\Windows\assembly\GAC_32\srmlib
+\Windows\assembly\GAC_64
+\Windows\assembly\GAC_64\srmlib
+\Windows\assembly\GAC_MSIL
+\Windows\assembly\GAC_MSIL\MMCEx
+\Windows\assembly\GAC_MSIL\MMCFxCommon
+\Windows\bcastdvr
+\Windows\BitLockerDiscoveryVolumeContents
+\Windows\Boot
+\Windows\Boot\DVD
+\Windows\Boot\DVD\EFI
+\Windows\Boot\DVD\EFI\BCD
+\Windows\Boot\DVD\EFI\en-US
+\Windows\Boot\DVD\PCAT
+\Windows\Boot\DVD\PCAT\BCD
+\Windows\Boot\DVD\PCAT\en-US
+\Windows\Boot\DVD_EX
+\Windows\Boot\DVD_EX\EFI
+\Windows\Boot\DVD_EX\EFI\en-US
+\Windows\Boot\EFI
+\Windows\Boot\EFI\bg-BG
+\Windows\Boot\EFI\cs-CZ
+\Windows\Boot\EFI\da-DK
+\Windows\Boot\EFI\de-DE
+\Windows\Boot\EFI\el-GR
+\Windows\Boot\EFI\en-GB
+\Windows\Boot\EFI\en-US
+\Windows\Boot\EFI\es-ES
+\Windows\Boot\EFI\es-MX
+\Windows\Boot\EFI\et-EE
+\Windows\Boot\EFI\fi-FI
+\Windows\Boot\EFI\fr-CA
+\Windows\Boot\EFI\fr-FR
+\Windows\Boot\EFI\hr-HR
+\Windows\Boot\EFI\hu-HU
+\Windows\Boot\EFI\it-IT
+\Windows\Boot\EFI\ja-JP
+\Windows\Boot\EFI\ko-KR
+\Windows\Boot\EFI\lt-LT
+\Windows\Boot\EFI\lv-LV
+\Windows\Boot\EFI\nb-NO
+\Windows\Boot\EFI\nl-NL
+\Windows\Boot\EFI\pl-PL
+\Windows\Boot\EFI\pt-BR
+\Windows\Boot\EFI\pt-PT
+\Windows\Boot\EFI\qps-ploc
+\Windows\Boot\EFI\ro-RO
+\Windows\Boot\EFI\ru-RU
+\Windows\Boot\EFI\sk-SK
+\Windows\Boot\EFI\sl-SI
+\Windows\Boot\EFI\sr-Latn-RS
+\Windows\Boot\EFI\sv-SE
+\Windows\Boot\EFI\tr-TR
+\Windows\Boot\EFI\uk-UA
+\Windows\Boot\EFI\zh-CN
+\Windows\Boot\EFI\zh-TW
+\Windows\Boot\EFI_EX
+\Windows\Boot\EFI_EX\bg-BG
+\Windows\Boot\EFI_EX\cs-CZ
+\Windows\Boot\EFI_EX\da-DK
+\Windows\Boot\EFI_EX\de-DE
+\Windows\Boot\EFI_EX\el-GR
+\Windows\Boot\EFI_EX\en-GB
+\Windows\Boot\EFI_EX\en-US
+\Windows\Boot\EFI_EX\es-ES
+\Windows\Boot\EFI_EX\es-MX
+\Windows\Boot\EFI_EX\et-EE
+\Windows\Boot\EFI_EX\fi-FI
+\Windows\Boot\EFI_EX\fr-CA
+\Windows\Boot\EFI_EX\fr-FR
+\Windows\Boot\EFI_EX\hr-HR
+\Windows\Boot\EFI_EX\hu-HU
+\Windows\Boot\EFI_EX\it-IT
+\Windows\Boot\EFI_EX\ja-JP
+\Windows\Boot\EFI_EX\ko-KR
+\Windows\Boot\EFI_EX\lt-LT
+\Windows\Boot\EFI_EX\lv-LV
+\Windows\Boot\EFI_EX\nb-NO
+\Windows\Boot\EFI_EX\nl-NL
+\Windows\Boot\EFI_EX\pl-PL
+\Windows\Boot\EFI_EX\pt-BR
+\Windows\Boot\EFI_EX\pt-PT
+\Windows\Boot\EFI_EX\ro-RO
+\Windows\Boot\EFI_EX\ru-RU
+\Windows\Boot\EFI_EX\sk-SK
+\Windows\Boot\EFI_EX\sl-SI
+\Windows\Boot\EFI_EX\sr-Latn-RS
+\Windows\Boot\EFI_EX\sv-SE
+\Windows\Boot\EFI_EX\tr-TR
+\Windows\Boot\EFI_EX\uk-UA
+\Windows\Boot\EFI_EX\zh-CN
+\Windows\Boot\EFI_EX\zh-TW
+\Windows\Boot\Fonts
+\Windows\Boot\Fonts_EX
+\Windows\Boot\Misc
+\Windows\Boot\Misc\PCAT
+\Windows\Boot\PCAT
+\Windows\Boot\PCAT\bg-BG
+\Windows\Boot\PCAT\bootmgr
+\Windows\Boot\PCAT\bootnxt
+\Windows\Boot\PCAT\cs-CZ
+\Windows\Boot\PCAT\da-DK
+\Windows\Boot\PCAT\de-DE
+\Windows\Boot\PCAT\el-GR
+\Windows\Boot\PCAT\en-GB
+\Windows\Boot\PCAT\en-US
+\Windows\Boot\PCAT\es-ES
+\Windows\Boot\PCAT\es-MX
+\Windows\Boot\PCAT\et-EE
+\Windows\Boot\PCAT\fi-FI
+\Windows\Boot\PCAT\fr-CA
+\Windows\Boot\PCAT\fr-FR
+\Windows\Boot\PCAT\hr-HR
+\Windows\Boot\PCAT\hu-HU
+\Windows\Boot\PCAT\it-IT
+\Windows\Boot\PCAT\ja-JP
+\Windows\Boot\PCAT\ko-KR
+\Windows\Boot\PCAT\lt-LT
+\Windows\Boot\PCAT\lv-LV
+\Windows\Boot\PCAT\nb-NO
+\Windows\Boot\PCAT\nl-NL
+\Windows\Boot\PCAT\pl-PL
+\Windows\Boot\PCAT\pt-BR
+\Windows\Boot\PCAT\pt-PT
+\Windows\Boot\PCAT\qps-ploc
+\Windows\Boot\PCAT\qps-plocm
+\Windows\Boot\PCAT\ro-RO
+\Windows\Boot\PCAT\ru-RU
+\Windows\Boot\PCAT\sk-SK
+\Windows\Boot\PCAT\sl-SI
+\Windows\Boot\PCAT\sr-Latn-RS
+\Windows\Boot\PCAT\sv-SE
+\Windows\Boot\PCAT\tr-TR
+\Windows\Boot\PCAT\uk-UA
+\Windows\Boot\PCAT\zh-CN
+\Windows\Boot\PCAT\zh-TW
+\Windows\Boot\Resources
+\Windows\Boot\Resources\en-US
+\Windows\Boot\Resources\zh-CN
+\Windows\Branding
+\Windows\Branding\Basebrd
+\Windows\Branding\Basebrd\zh-CN
+\Windows\Branding\shellbrd
+\Windows\CbsTemp
+\Windows\Containers
+\Windows\Containers\serviced
+\Windows\Cursors
+\Windows\debug
+\Windows\diagnostics
+\Windows\diagnostics\index
+\Windows\diagnostics\scheduled
+\Windows\diagnostics\scheduled\Maintenance
+\Windows\diagnostics\scheduled\Maintenance\zh-CN
+\Windows\diagnostics\system
+\Windows\diagnostics\system\Apps
+\Windows\diagnostics\system\Apps\zh-CN
+\Windows\diagnostics\system\Audio
+\Windows\diagnostics\system\Audio\zh-CN
+\Windows\diagnostics\system\BITS
+\Windows\diagnostics\system\BITS\zh-CN
+\Windows\diagnostics\system\Bluetooth
+\Windows\diagnostics\system\Bluetooth\zh-CN
+\Windows\diagnostics\system\Device
+\Windows\diagnostics\system\Device\zh-CN
+\Windows\diagnostics\system\DeviceCenter
+\Windows\diagnostics\system\DeviceCenter\zh-CN
+\Windows\diagnostics\system\IEBrowseWeb
+\Windows\diagnostics\system\IEBrowseWeb\zh-CN
+\Windows\diagnostics\system\IESecurity
+\Windows\diagnostics\system\IESecurity\zh-CN
+\Windows\diagnostics\system\Keyboard
+\Windows\diagnostics\system\Keyboard\zh-CN
+\Windows\diagnostics\system\Networking
+\Windows\diagnostics\system\Networking\zh-CN
+\Windows\diagnostics\system\PCW
+\Windows\diagnostics\system\PCW\zh-CN
+\Windows\diagnostics\system\Power
+\Windows\diagnostics\system\Power\zh-CN
+\Windows\diagnostics\system\Printer
+\Windows\diagnostics\system\Printer\zh-CN
+\Windows\diagnostics\system\Search
+\Windows\diagnostics\system\Search\zh-CN
+\Windows\diagnostics\system\Speech
+\Windows\diagnostics\system\Speech\zh-CN
+\Windows\diagnostics\system\Video
+\Windows\diagnostics\system\Video\zh-CN
+\Windows\diagnostics\system\WindowsMediaPlayerConfiguration
+\Windows\diagnostics\system\WindowsMediaPlayerConfiguration\zh-CN
+\Windows\diagnostics\system\WindowsMediaPlayerMediaLibrary
+\Windows\diagnostics\system\WindowsMediaPlayerMediaLibrary\zh-CN
+\Windows\diagnostics\system\WindowsMediaPlayerPlayDVD
+\Windows\diagnostics\system\WindowsMediaPlayerPlayDVD\zh-CN
+\Windows\diagnostics\system\WindowsUpdate
+\Windows\diagnostics\system\WindowsUpdate\zh-CN
+\Windows\DiagTrack
+\Windows\DiagTrack\Scenarios
+\Windows\DiagTrack\Settings
+\Windows\DigitalLocker
+\Windows\DigitalLocker\en-US
+\Windows\Downloaded Program Files
+\Windows\ELAMBKUP
+\Windows\en-US
+\Windows\Fonts
+\Windows\GameBarPresenceWriter
+\Windows\Globalization
+\Windows\Globalization\ELS
+\Windows\Globalization\ELS\SpellDictionaries
+\Windows\Globalization\ELS\SpellDictionaries\Fluency
+\Windows\Globalization\ELS\Transliteration
+\Windows\Globalization\ICU
+\Windows\Globalization\Sorting
+\Windows\Globalization\Time Zone
+\Windows\Help
+\Windows\Help\Corporate
+\Windows\Help\en-US
+\Windows\Help\Help
+\Windows\Help\mui
+\Windows\Help\mui\0409
+\Windows\Help\mui\0804
+\Windows\Help\OEM
+\Windows\Help\OEM\ContentStore
+\Windows\Help\OEM\IndexStore
+\Windows\Help\Windows
+\Windows\Help\Windows\ContentStore
+\Windows\Help\Windows\ContentStore\en-US
+\Windows\Help\Windows\IndexStore
+\Windows\Help\Windows\IndexStore\en-US
+\Windows\IdentityCRL
+\Windows\IdentityCRL\INT
+\Windows\IdentityCRL\production
+\Windows\IME
+\Windows\IME\en-US
+\Windows\IME\IMEJP
+\Windows\IME\IMEJP\Assets
+\Windows\IME\IMEJP\DICTS
+\Windows\IME\IMEJP\help
+\Windows\IME\IMEKR
+\Windows\IME\IMEKR\DICTS
+\Windows\IME\IMEKR\HELP
+\Windows\IME\IMETC
+\Windows\IME\IMETC\DICTS
+\Windows\IME\IMETC\HELP
+\Windows\IME\zh-CN
+\Windows\ImmersiveControlPanel
+\Windows\ImmersiveControlPanel\images
+\Windows\ImmersiveControlPanel\pris
+\Windows\ImmersiveControlPanel\Settings
+\Windows\ImmersiveControlPanel\SystemSettings
+\Windows\ImmersiveControlPanel\SystemSettings\Assets
+\Windows\ImmersiveControlPanel\SystemSettings\View
+\Windows\ImmersiveControlPanel\zh-CN
+\Windows\InboxApps
+\Windows\INF
+\Windows\INF\BITS
+\Windows\INF\BITS\0000
+\Windows\INF\BITS\0804
+\Windows\INF\en-US
+\Windows\INF\ESENT
+\Windows\INF\ESENT\0000
+\Windows\INF\ESENT\0804
+\Windows\INF\LSM
+\Windows\INF\LSM\0000
+\Windows\INF\LSM\0804
+\Windows\INF\MSDTC
+\Windows\INF\MSDTC\0000
+\Windows\INF\MSDTC\0804
+\Windows\INF\PERFLIB
+\Windows\INF\PERFLIB\0000
+\Windows\INF\PERFLIB\0409
+\Windows\INF\PERFLIB\0804
+\Windows\INF\PNRPSvc
+\Windows\INF\PNRPSvc\0000
+\Windows\INF\PNRPSvc\0804
+\Windows\INF\rdyboost
+\Windows\INF\rdyboost\0000
+\Windows\INF\rdyboost\0804
+\Windows\INF\RemoteAccess
+\Windows\INF\RemoteAccess\0000
+\Windows\INF\RemoteAccess\0409
+\Windows\INF\RemoteAccess\0804
+\Windows\INF\TAPISRV
+\Windows\INF\TAPISRV\0000
+\Windows\INF\TAPISRV\0804
+\Windows\INF\TermService
+\Windows\INF\TermService\0000
+\Windows\INF\TermService\0804
+\Windows\INF\UGatherer
+\Windows\INF\UGatherer\0000
+\Windows\INF\UGatherer\0804
+\Windows\INF\UGTHRSVC
+\Windows\INF\UGTHRSVC\0000
+\Windows\INF\UGTHRSVC\0804
+\Windows\INF\usbhub
+\Windows\INF\usbhub\0000
+\Windows\INF\usbhub\0804
+\Windows\INF\wsearchidxpi
+\Windows\INF\wsearchidxpi\0000
+\Windows\INF\wsearchidxpi\0804
+\Windows\InputMethod
+\Windows\InputMethod\CHS
+\Windows\InputMethod\CHT
+\Windows\InputMethod\SHARED
+\Windows\Installer
+\Windows\L2Schemas
+\Windows\LanguageOverlayCache
+\Windows\LiveKernelReports
+\Windows\Logs
+\Windows\Logs\CBS
+\Windows\Logs\HomeGroup
+\Windows\Logs\MeasuredBoot
+\Windows\Logs\SettingSync
+\Windows\Logs\Telephony
+\Windows\Media
+\Windows\Media\Afternoon
+\Windows\Media\Calligraphy
+\Windows\Media\Characters
+\Windows\Media\Cityscape
+\Windows\Media\Delta
+\Windows\Media\Festival
+\Windows\Media\Garden
+\Windows\Media\Heritage
+\Windows\Media\Landscape
+\Windows\Media\Quirky
+\Windows\Media\Raga
+\Windows\Media\Savanna
+\Windows\Media\Sonata
+\Windows\Migration
+\Windows\Migration\WTR
+\Windows\ModemLogs
+\Windows\OCR
+\Windows\OCR\zh-cn
+\Windows\Offline Web Pages
+\Windows\Performance
+\Windows\Performance\WinSAT
+\Windows\Performance\WinSAT\DataStore
+\Windows\PLA
+\Windows\PLA\Reports
+\Windows\PLA\Reports\zh-CN
+\Windows\PLA\Rules
+\Windows\PLA\Rules\zh-CN
+\Windows\PLA\System
+\Windows\PLA\Templates
+\Windows\PolicyDefinitions
+\Windows\PolicyDefinitions\en-US
+\Windows\PolicyDefinitions\zh-CN
+\Windows\PrintDialog
+\Windows\PrintDialog\Assets
+\Windows\PrintDialog\en-US
+\Windows\PrintDialog\pris
+\Windows\Provisioning
+\Windows\Provisioning\Autopilot
+\Windows\Provisioning\Cosa
+\Windows\Provisioning\Cosa\Microsoft
+\Windows\Provisioning\Cosa\MO
+\Windows\Provisioning\Cosa\OEM
+\Windows\Provisioning\Packages
+\Windows\Registration
+\Windows\Registration\CRMLog
+\Windows\RemotePackages
+\Windows\RemotePackages\RemoteApps
+\Windows\RemotePackages\RemoteDesktops
+\Windows\rescache
+\Windows\rescache\_merged
+\Windows\Resources
+\Windows\Resources\Ease of Access Themes
+\Windows\Resources\Themes
+\Windows\Resources\Themes\aero
+\Windows\Resources\Themes\aero\en-US
+\Windows\Resources\Themes\aero\Shell
+\Windows\Resources\Themes\aero\Shell\NormalColor
+\Windows\Resources\Themes\aero\Shell\NormalColor\en-US
+\Windows\Resources\Themes\aero\VSCache
+\Windows\Resources\Themes\aero\zh-CN
+\Windows\SchCache
+\Windows\schemas
+\Windows\schemas\AvailableNetwork
+\Windows\schemas\CodeIntegrity
+\Windows\schemas\CodeIntegrity\ExamplePolicies
+\Windows\schemas\EAPHost
+\Windows\schemas\EAPMethods
+\Windows\schemas\Provisioning
+\Windows\schemas\TSWorkSpace
+\Windows\schemas\VpnProfile
+\Windows\security
+\Windows\security\ApplicationId
+\Windows\security\ApplicationId\PolicyManagement
+\Windows\security\audit
+\Windows\security\cap
+\Windows\security\database
+\Windows\security\EDP
+\Windows\security\EDP\Logs
+\Windows\security\logs
+\Windows\security\templates
+\Windows\ServiceState
+\Windows\servicing
+\Windows\servicing\Editions
+\Windows\servicing\FodMetadata
+\Windows\servicing\FodMetadata\metadata
+\Windows\servicing\InboxFodMetadataCache
+\Windows\servicing\InboxFodMetadataCache\metadata
+\Windows\servicing\Packages
+\Windows\servicing\Sessions
+\Windows\servicing\SQM
+\Windows\servicing\Version
+\Windows\servicing\zh-CN
+\Windows\Setup
+\Windows\Setup\State
+\Windows\ShellComponents
+\Windows\ShellExperiences
+\Windows\SKB
+\Windows\SKB\LanguageModels
+\Windows\Speech
+\Windows\Speech\Common
+\Windows\Speech\Common\zh-CN
+\Windows\Speech\Engines
+\Windows\Speech\Engines\Lexicon
+\Windows\Speech\Engines\Lexicon\zh-CN
+\Windows\Speech\Engines\SR
+\Windows\Speech\Engines\SR\zh-CN
+\Windows\Speech\Engines\TTS
+\Windows\Speech\Engines\TTS\en-US
+\Windows\Speech_OneCore
+\Windows\Speech_OneCore\Engines
+\Windows\Speech_OneCore\Engines\Lexicon
+\Windows\Speech_OneCore\Engines\Lexicon\zh-CN
+\Windows\Speech_OneCore\Engines\SR
+\Windows\Speech_OneCore\Engines\SR\zh-CN-N
+\Windows\Speech_OneCore\Engines\TTS
+\Windows\Speech_OneCore\Engines\TTS\en-US
+\Windows\Speech_OneCore\Engines\TTS\zh-CN
+\Windows\Speech_OneCore\Engines\TTS\zh-CN\NUSData
+\Windows\System
+\Windows\System\Speech
+\Windows\System32
+\Windows\System32\0409
+\Windows\System32\AdvancedInstallers
+\Windows\System32\am-et
+\Windows\System32\AppLocker
+\Windows\System32\appraiser
+\Windows\System32\AppV
+\Windows\System32\ar-SA
+\Windows\System32\bg-BG
+\Windows\System32\Boot
+\Windows\System32\Boot\zh-CN
+\Windows\System32\Bthprops
+\Windows\System32\CatRoot
+\Windows\System32\CatRoot\{127D0A1D-4EF2-11D1-8608-00C04FC295EE}
+\Windows\System32\CatRoot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}
+\Windows\System32\catroot2
+\Windows\System32\catroot2\{127D0A1D-4EF2-11D1-8608-00C04FC295EE}
+\Windows\System32\catroot2\{127D0A1D-4EF2-11D1-8608-00C04FC295EE}\catdb
+\Windows\System32\catroot2\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}
+\Windows\System32\catroot2\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}\catdb
+\Windows\System32\CodeIntegrity
+\Windows\System32\CodeIntegrity\CiPolicies
+\Windows\System32\CodeIntegrity\CiPolicies\Active
+\Windows\System32\CodeIntegrity\CiPolicies\Internal
+\Windows\System32\CodeIntegrity\CiPolicies\Staged
+\Windows\System32\CodeIntegrity\Tokens
+\Windows\System32\CodeIntegrity\Tokens\Active
+\Windows\System32\CodeIntegrity\Tokens\Staged
+\Windows\System32\Com
+\Windows\System32\Com\dmp
+\Windows\System32\Com\en-US
+\Windows\System32\Com\zh-CN
+\Windows\System32\compatrel
+\Windows\System32\Configuration
+\Windows\System32\Configuration\BaseRegistration
+\Windows\System32\Configuration\BaseRegistration\zh-CN
+\Windows\System32\Configuration\ConfigurationStatus
+\Windows\System32\Configuration\JobLogs
+\Windows\System32\Configuration\PartialConfigurations
+\Windows\System32\Configuration\Registration
+\Windows\System32\Configuration\Registration\MSFT_FileDirectoryConfiguration
+\Windows\System32\Configuration\Registration\MSFT_FileDirectoryConfiguration\zh-CN
+\Windows\System32\Configuration\Schema
+\Windows\System32\Configuration\Schema\MSFT_FileDirectoryConfiguration
+\Windows\System32\Configuration\Schema\MSFT_FileDirectoryConfiguration\zh-CN
+\Windows\System32\ContainerSettingsProviders
+\Windows\System32\cs-CZ
+\Windows\System32\da-DK
+\Windows\System32\DDFs
+\Windows\System32\de-DE
+\Windows\System32\DiagSvcs
+\Windows\System32\DiagSvcs\zh-CN
+\Windows\System32\Dism
+\Windows\System32\Dism\en-US
+\Windows\System32\Dism\zh-CN
+\Windows\System32\downlevel
+\Windows\System32\drivers
+\Windows\System32\drivers\DriverData
+\Windows\System32\drivers\en-US
+\Windows\System32\drivers\etc
+\Windows\System32\drivers\etc\hosts
+\Windows\System32\drivers\etc\networks
+\Windows\System32\drivers\etc\protocol
+\Windows\System32\drivers\etc\services
+\Windows\System32\drivers\mde
+\Windows\System32\drivers\UMDF
+\Windows\System32\drivers\UMDF\en-US
+\Windows\System32\drivers\UMDF\zh-CN
+\Windows\System32\drivers\zh-CN
+\Windows\System32\DriverState
+\Windows\System32\DriverState\Devices
+\Windows\System32\DriverStore
+\Windows\System32\DriverStore\en-US
+\Windows\System32\DriverStore\FileRepository
+\Windows\System32\DriverStore\zh-CN
+\Windows\System32\dsc
+\Windows\System32\dsc\zh-CN
+\Windows\System32\el-GR
+\Windows\System32\en
+\Windows\System32\en-GB
+\Windows\System32\en-US
+\Windows\System32\en-US\Licenses
+\Windows\System32\es-ES
+\Windows\System32\es-MX
+\Windows\System32\et-EE
+\Windows\System32\F12
+\Windows\System32\F12\zh-CN
+\Windows\System32\ff-Adlm-SN
+\Windows\System32\fi-FI
+\Windows\System32\fr-CA
+\Windows\System32\fr-FR
+\Windows\System32\FxsTmp
+\Windows\System32\GroupPolicy
+\Windows\System32\GroupPolicyUsers
+\Windows\System32\he-IL
+\Windows\System32\hr-HR
+\Windows\System32\hu-HU
+\Windows\System32\Hydrogen
+\Windows\System32\Hydrogen\BakedPlugins
+\Windows\System32\Hydrogen\BakedPlugins\Animation
+\Windows\System32\Hydrogen\BakedPlugins\Fx
+\Windows\System32\Hydrogen\BakedPlugins\Fx\textures
+\Windows\System32\Hydrogen\BakedPlugins\Physics
+\Windows\System32\ias
+\Windows\System32\icsxml
+\Windows\System32\IME
+\Windows\System32\IME\IMEJP
+\Windows\System32\IME\IMEJP\APPLETS
+\Windows\System32\IME\IMEKR
+\Windows\System32\IME\IMEKR\APPLETS
+\Windows\System32\IME\IMEKR\DICTS
+\Windows\System32\IME\IMETC
+\Windows\System32\IME\IMETC\applets
+\Windows\System32\IME\SHARED
+\Windows\System32\IME\SHARED\res
+\Windows\System32\inetsrv
+\Windows\System32\InputMethod
+\Windows\System32\InputMethod\CHS
+\Windows\System32\InputMethod\CHT
+\Windows\System32\InputMethod\JPN
+\Windows\System32\InputMethod\SHARED
+\Windows\System32\Ipmi
+\Windows\System32\it-IT
+\Windows\System32\ja-jp
+\Windows\System32\Keywords
+\Windows\System32\ko-KR
+\Windows\System32\Licenses
+\Windows\System32\Licenses\neutral
+\Windows\System32\Licenses\neutral\OEM
+\Windows\System32\Licenses\neutral\OEM\Professional
+\Windows\System32\Licenses\neutral\Volume
+\Windows\System32\Licenses\neutral\Volume\Professional
+\Windows\System32\Licenses\neutral\_Default
+\Windows\System32\Licenses\neutral\_Default\Professional
+\Windows\System32\LogFiles
+\Windows\System32\LogFiles\CloudFiles
+\Windows\System32\LogFiles\Fax
+\Windows\System32\LogFiles\Fax\Incoming
+\Windows\System32\LogFiles\Fax\Outgoing
+\Windows\System32\LogFiles\Firewall
+\Windows\System32\LogFiles\SAM
+\Windows\System32\LogFiles\Scm
+\Windows\System32\LogFiles\Windows Portable Devices
+\Windows\System32\LogFiles\WMI
+\Windows\System32\LogFiles\WMI\RtBackup
+\Windows\System32\lt-LT
+\Windows\System32\lv-LV
+\Windows\System32\MailContactsCalendarSync
+\Windows\System32\migration
+\Windows\System32\migration\en-US
+\Windows\System32\migration\zh-CN
+\Windows\System32\migwiz
+\Windows\System32\migwiz\dlmanifests
+\Windows\System32\migwiz\dlmanifests\Microsoft-ActiveDirectory-WebServices-DL
+\Windows\System32\migwiz\dlmanifests\Microsoft-Windows-ADFS-DL
+\Windows\System32\migwiz\dlmanifests\Microsoft-Windows-Bluetooth-Config
+\Windows\System32\migwiz\dlmanifests\Microsoft-Windows-COM-ComPlus-Setup-DL
+\Windows\System32\migwiz\dlmanifests\Microsoft-Windows-COM-DTC-Setup-DL
+\Windows\System32\migwiz\dlmanifests\Microsoft-Windows-DirectoryServices-ADAM-DL
+\Windows\System32\migwiz\dlmanifests\Microsoft-Windows-IE-ESC
+\Windows\System32\migwiz\dlmanifests\Microsoft-Windows-MediaPlayer
+\Windows\System32\migwiz\dlmanifests\Microsoft-Windows-msmq-messagingcoreservice
+\Windows\System32\migwiz\dlmanifests\Microsoft-Windows-StorageMigration
+\Windows\System32\migwiz\dlmanifests\Microsoft-Windows-TapiSetup
+\Windows\System32\migwiz\dlmanifests\Microsoft-Windows-TextServicesFramework-Migration-DL
+\Windows\System32\migwiz\dlmanifests\Microsoft-Windows-WMI-Core
+\Windows\System32\migwiz\en-US
+\Windows\System32\migwiz\replacementmanifests
+\Windows\System32\migwiz\replacementmanifests\hwvid-migration-2
+\Windows\System32\migwiz\replacementmanifests\microsoft-activedirectory-webservices
+\Windows\System32\migwiz\replacementmanifests\microsoft-international-core
+\Windows\System32\migwiz\replacementmanifests\microsoft-windows-audio-mmecore-other
+\Windows\System32\migwiz\replacementmanifests\Microsoft-Windows-COM-ComPlus-Setup
+\Windows\System32\migwiz\replacementmanifests\Microsoft-Windows-DirectoryServices-ADAM-Client
+\Windows\System32\migwiz\replacementmanifests\microsoft-windows-iis-rm
+\Windows\System32\migwiz\replacementmanifests\Microsoft-Windows-Mup
+\Windows\System32\migwiz\replacementmanifests\microsoft-windows-ndis
+\Windows\System32\migwiz\replacementmanifests\Microsoft-Windows-OfflineFiles-Core
+\Windows\System32\migwiz\replacementmanifests\Microsoft-Windows-RasApi-Mig
+\Windows\System32\migwiz\replacementmanifests\Microsoft-Windows-RasServer-MigPlugin
+\Windows\System32\migwiz\replacementmanifests\microsoft-windows-shmig
+\Windows\System32\migwiz\replacementmanifests\Microsoft-Windows-StorageMigration
+\Windows\System32\migwiz\replacementmanifests\Microsoft-Windows-TerminalServices-AppServer-Licensing
+\Windows\System32\migwiz\replacementmanifests\Microsoft-Windows-TerminalServices-LicenseServer
+\Windows\System32\migwiz\replacementmanifests\Microsoft-Windows-TextServicesFramework-Migration
+\Windows\System32\migwiz\replacementmanifests\SppMig
+\Windows\System32\migwiz\replacementmanifests\Usb
+\Windows\System32\migwiz\replacementmanifests\WindowsSearchEngine
+\Windows\System32\migwiz\zh-CN
+\Windows\System32\MSDRM
+\Windows\System32\MsDtc
+\Windows\System32\MsDtc\Trace
+\Windows\System32\MUI
+\Windows\System32\MUI\0409
+\Windows\System32\MUI\dispspec
+\Windows\System32\my-mm
+\Windows\System32\nb-NO
+\Windows\System32\NDF
+\Windows\System32\networklist
+\Windows\System32\networklist\icons
+\Windows\System32\networklist\icons\StockIcons
+\Windows\System32\nl-NL
+\Windows\System32\Nui
+\Windows\System32\oobe
+\Windows\System32\oobe\en-US
+\Windows\System32\oobe\zh-CN
+\Windows\System32\OpenSSH
+\Windows\System32\osa-Osge-001
+\Windows\System32\PerceptionSimulation
+\Windows\System32\PerceptionSimulation\Assets
+\Windows\System32\PerceptionSimulation\pris
+\Windows\System32\PerceptionSimulation\zh-CN
+\Windows\System32\pl-PL
+\Windows\System32\PointOfService
+\Windows\System32\PointOfService\ProtocolProviders
+\Windows\System32\PointOfService\ProtocolProviders\zh-CN
+\Windows\System32\Printing_Admin_Scripts
+\Windows\System32\Printing_Admin_Scripts\zh-CN
+\Windows\System32\ProximityToast
+\Windows\System32\pt-BR
+\Windows\System32\pt-PT
+\Windows\System32\ras
+\Windows\System32\ras\SSTPProxy
+\Windows\System32\RasToast
+\Windows\System32\Recovery
+\Windows\System32\ResPriHMImageList
+\Windows\System32\ResPriHMImageListLowCost
+\Windows\System32\ResPriImageList
+\Windows\System32\ResPriImageListLowCost
+\Windows\System32\restore
+\Windows\System32\ro-RO
+\Windows\System32\ru-RU
+\Windows\System32\SecureBootUpdates
+\Windows\System32\setup
+\Windows\System32\setup\en-US
+\Windows\System32\ShellExperiences
+\Windows\System32\si-lk
+\Windows\System32\sk-SK
+\Windows\System32\sl-SI
+\Windows\System32\slmgr
+\Windows\System32\slmgr\0804
+\Windows\System32\SMI
+\Windows\System32\SMI\Manifests
+\Windows\System32\SMI\Schema
+\Windows\System32\SMI\Store
+\Windows\System32\SMI\Store\Machine
+\Windows\System32\Speech
+\Windows\System32\Speech\Common
+\Windows\System32\Speech\Common\zh-CN
+\Windows\System32\Speech\Engines
+\Windows\System32\Speech\Engines\SR
+\Windows\System32\Speech\Engines\SR\zh-CN
+\Windows\System32\Speech\Engines\TTS
+\Windows\System32\Speech\SpeechUX
+\Windows\System32\Speech\SpeechUX\zh-CN
+\Windows\System32\Speech_OneCore
+\Windows\System32\Speech_OneCore\common
+\Windows\System32\Speech_OneCore\common\en-US
+\Windows\System32\Speech_OneCore\common\zh-CN
+\Windows\System32\Speech_OneCore\Engines
+\Windows\System32\Speech_OneCore\Engines\SR
+\Windows\System32\Speech_OneCore\Engines\TTS
+\Windows\System32\Speech_OneCore\VoiceActivation
+\Windows\System32\Speech_OneCore\VoiceActivation\zh-CN
+\Windows\System32\spool
+\Windows\System32\spool\drivers
+\Windows\System32\spool\drivers\color
+\Windows\System32\spool\drivers\x64
+\Windows\System32\spool\drivers\x64\3
+\Windows\System32\spool\drivers\x64\3\zh-CN
+\Windows\System32\spool\PRINTERS
+\Windows\System32\spool\prtprocs
+\Windows\System32\spool\prtprocs\x64
+\Windows\System32\spool\SERVERS
+\Windows\System32\spool\tools
+\Windows\System32\spool\tools\en-US
+\Windows\System32\spool\tools\Microsoft Print To PDF
+\Windows\System32\spool\tools\Microsoft XPS Document Writer
+\Windows\System32\spool\tools\zh-CN
+\Windows\System32\spp
+\Windows\System32\spp\plugin-manifests-signed
+\Windows\System32\spp\store
+\Windows\System32\spp\tokens
+\Windows\System32\spp\tokens\addons
+\Windows\System32\spp\tokens\addons\Client-ESU-Year1
+\Windows\System32\spp\tokens\addons\Client-ESU-Year2
+\Windows\System32\spp\tokens\addons\Client-ESU-Year3
+\Windows\System32\spp\tokens\addons\Client-ESU-Year4
+\Windows\System32\spp\tokens\addons\Client-ESU-Year5
+\Windows\System32\spp\tokens\addons\Client-ESU-Year6
+\Windows\System32\spp\tokens\addons\Client-IoT-ESU-Year1
+\Windows\System32\spp\tokens\addons\Client-IoT-ESU-Year2
+\Windows\System32\spp\tokens\addons\Client-IoT-ESU-Year3
+\Windows\System32\spp\tokens\addons\Client-IoT-ESU-Year4
+\Windows\System32\spp\tokens\addons\Client-IoT-ESU-Year5
+\Windows\System32\spp\tokens\addons\Client-IoT-ESU-Year6
+\Windows\System32\spp\tokens\issuance
+\Windows\System32\spp\tokens\legacy
+\Windows\System32\spp\tokens\pkeyconfig
+\Windows\System32\spp\tokens\ppdlic
+\Windows\System32\spp\tokens\rules
+\Windows\System32\spp\tokens\skus
+\Windows\System32\spp\tokens\skus\csvlk-pack
+\Windows\System32\spp\tokens\skus\Education
+\Windows\System32\spp\tokens\skus\Enterprise
+\Windows\System32\spp\tokens\skus\IoTEnterprise
+\Windows\System32\spp\tokens\skus\Professional
+\Windows\System32\spp\tokens\skus\ProfessionalCountrySpecific
+\Windows\System32\spp\tokens\skus\ProfessionalEducation
+\Windows\System32\spp\tokens\skus\ProfessionalSingleLanguage
+\Windows\System32\spp\tokens\skus\ProfessionalWorkstation
+\Windows\System32\spp\tokens\skus\ServerRdsh
+\Windows\System32\sppui
+\Windows\System32\sr-Latn-RS
+\Windows\System32\sru
+\Windows\System32\sv-SE
+\Windows\System32\Sysprep
+\Windows\System32\Sysprep\ActionFiles
+\Windows\System32\Sysprep\en-US
+\Windows\System32\Sysprep\zh-CN
+\Windows\System32\SystemResetPlatform
+\Windows\System32\SystemResetPlatform\zh-CN
+\Windows\System32\ta-in
+\Windows\System32\ta-lk
+\Windows\System32\Tasks
+\Windows\System32\Tasks\Microsoft
+\Windows\System32\Tasks\Microsoft\Windows
+\Windows\System32\Tasks\Microsoft\Windows\PLA
+\Windows\System32\Tasks\Microsoft\Windows\PLA\System
+\Windows\System32\Tasks\Microsoft\Windows\RemoteApp and Desktop Connections Update
+\Windows\System32\Tasks\Microsoft\Windows\SyncCenter
+\Windows\System32\Tasks\Microsoft\Windows\TaskScheduler
+\Windows\System32\Tasks\Microsoft\Windows\WCM
+\Windows\System32\th-TH
+\Windows\System32\ti-et
+\Windows\System32\tr-TR
+\Windows\System32\uk-UA
+\Windows\System32\UNP
+\Windows\System32\wbem
+\Windows\System32\wbem\AutoRecover
+\Windows\System32\wbem\en-US
+\Windows\System32\wbem\Logs
+\Windows\System32\wbem\Repository
+\Windows\System32\wbem\tmf
+\Windows\System32\wbem\xml
+\Windows\System32\wbem\zh-CN
+\Windows\System32\wbem\zh-HANS
+\Windows\System32\WCN
+\Windows\System32\WCN\zh-CN
+\Windows\System32\WDI
+\Windows\System32\WDI\LogFiles
+\Windows\System32\WinBioDatabase
+\Windows\System32\WinBioPlugIns
+\Windows\System32\WinBioPlugIns\FaceDriver
+\Windows\System32\WinBioPlugIns\FaceDriver\amd64
+\Windows\System32\WinBioPlugIns\zh-CN
+\Windows\System32\WindowsPowerShell
+\Windows\System32\winevt
+\Windows\System32\winevt\Logs
+\Windows\System32\winevt\TraceFormat
+\Windows\System32\WinMetadata
+\Windows\System32\winrm
+\Windows\System32\winrm\0804
+\Windows\System32\zh-CN
+\Windows\System32\zh-CN\Licenses
+\Windows\System32\zh-CN\Licenses\OEM
+\Windows\System32\zh-CN\Licenses\OEM\Professional
+\Windows\System32\zh-CN\Licenses\Volume
+\Windows\System32\zh-CN\Licenses\Volume\Professional
+\Windows\System32\zh-CN\Licenses\_Default
+\Windows\System32\zh-CN\Licenses\_Default\Professional
+\Windows\System32\zh-HANS
+\Windows\System32\zh-TW
+\Windows\SystemApps
+\Windows\SystemApps\NcsiUwpApp_8wekyb3d8bbwe
+\Windows\SystemApps\NcsiUwpApp_8wekyb3d8bbwe\Assets
+\Windows\SystemApps\NcsiUwpApp_8wekyb3d8bbwe\pris
+\Windows\SystemApps\ParentalControls_cw5n1h2txyewy
+\Windows\SystemApps\ParentalControls_cw5n1h2txyewy\Assets
+\Windows\SystemApps\ParentalControls_cw5n1h2txyewy\pris
+\Windows\SystemApps\Shared
+\Windows\SystemApps\Shared\WebView2SDK
+\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy
+\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy\Assets
+\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy\pris
+\Windows\SystemResources
+\Windows\SystemResources\CallingShellApp
+\Windows\SystemResources\CallingShellApp\Assets
+\Windows\SystemResources\CallingShellApp\Assets\Fonts
+\Windows\SystemResources\ShellComponents
+\Windows\SystemResources\ShellComponents\pris
+\Windows\SystemResources\ShellComponents\TimelineUI
+\Windows\SystemResources\Windows-NFC-SEManagement
+\Windows\SystemResources\Windows-NFC-SEManagement\pris
+\Windows\SystemTemp
+\Windows\SysWOW64
+\Windows\SysWOW64\0409
+\Windows\SysWOW64\AdvancedInstallers
+\Windows\SysWOW64\AppLocker
+\Windows\SysWOW64\ar-SA
+\Windows\SysWOW64\bg-BG
+\Windows\SysWOW64\Bthprops
+\Windows\SysWOW64\catroot
+\Windows\SysWOW64\catroot\{F750E6C3-38EE-11D1-85E5-00C04FC295EE}
+\Windows\SysWOW64\Com
+\Windows\SysWOW64\Com\dmp
+\Windows\SysWOW64\Com\en-US
+\Windows\SysWOW64\Com\zh-CN
+\Windows\SysWOW64\config
+\Windows\SysWOW64\config\Journal
+\Windows\SysWOW64\config\RegBack
+\Windows\SysWOW64\config\systemprofile
+\Windows\SysWOW64\config\systemprofile\AppData
+\Windows\SysWOW64\config\systemprofile\AppData\Local
+\Windows\SysWOW64\config\systemprofile\AppData\LocalLow
+\Windows\SysWOW64\config\systemprofile\AppData\Roaming
+\Windows\SysWOW64\config\TxR
+\Windows\SysWOW64\Configuration
+\Windows\SysWOW64\Configuration\BaseRegistration
+\Windows\SysWOW64\Configuration\BaseRegistration\zh-CN
+\Windows\SysWOW64\Configuration\ConfigurationStatus
+\Windows\SysWOW64\Configuration\JobLogs
+\Windows\SysWOW64\Configuration\PartialConfigurations
+\Windows\SysWOW64\Configuration\Registration
+\Windows\SysWOW64\Configuration\Registration\MSFT_FileDirectoryConfiguration
+\Windows\SysWOW64\Configuration\Registration\MSFT_FileDirectoryConfiguration\zh-CN
+\Windows\SysWOW64\Configuration\Schema
+\Windows\SysWOW64\Configuration\Schema\MSFT_FileDirectoryConfiguration
+\Windows\SysWOW64\Configuration\Schema\MSFT_FileDirectoryConfiguration\zh-CN
+\Windows\SysWOW64\cs-CZ
+\Windows\SysWOW64\da-DK
+\Windows\SysWOW64\de-DE
+\Windows\SysWOW64\DiagSvcs
+\Windows\SysWOW64\DiagSvcs\zh-CN
+\Windows\SysWOW64\Dism
+\Windows\SysWOW64\Dism\en-US
+\Windows\SysWOW64\Dism\zh-CN
+\Windows\SysWOW64\downlevel
+\Windows\SysWOW64\drivers
+\Windows\SysWOW64\drivers\en-US
+\Windows\SysWOW64\drivers\UMDF
+\Windows\SysWOW64\drivers\UMDF\en-US
+\Windows\SysWOW64\drivers\zh-CN
+\Windows\SysWOW64\DriverStore
+\Windows\SysWOW64\DriverStore\en-US
+\Windows\SysWOW64\DriverStore\FileRepository
+\Windows\SysWOW64\DriverStore\zh-CN
+\Windows\SysWOW64\el-GR
+\Windows\SysWOW64\en
+\Windows\SysWOW64\en-GB
+\Windows\SysWOW64\en-US
+\Windows\SysWOW64\en-US\Licenses
+\Windows\SysWOW64\es-ES
+\Windows\SysWOW64\es-MX
+\Windows\SysWOW64\et-EE
+\Windows\SysWOW64\F12
+\Windows\SysWOW64\F12\zh-CN
+\Windows\SysWOW64\fi-FI
+\Windows\SysWOW64\fr-CA
+\Windows\SysWOW64\fr-FR
+\Windows\SysWOW64\FxsTmp
+\Windows\SysWOW64\GroupPolicy
+\Windows\SysWOW64\GroupPolicyUsers
+\Windows\SysWOW64\he-IL
+\Windows\SysWOW64\hr-HR
+\Windows\SysWOW64\hu-HU
+\Windows\SysWOW64\icsxml
+\Windows\SysWOW64\IME
+\Windows\SysWOW64\IME\IMEJP
+\Windows\SysWOW64\IME\IMEJP\APPLETS
+\Windows\SysWOW64\IME\IMEKR
+\Windows\SysWOW64\IME\IMEKR\APPLETS
+\Windows\SysWOW64\IME\IMEKR\DICTS
+\Windows\SysWOW64\IME\IMETC
+\Windows\SysWOW64\IME\IMETC\applets
+\Windows\SysWOW64\IME\SHARED
+\Windows\SysWOW64\IME\SHARED\res
+\Windows\SysWOW64\inetsrv
+\Windows\SysWOW64\InputMethod
+\Windows\SysWOW64\InputMethod\CHS
+\Windows\SysWOW64\InputMethod\JPN
+\Windows\SysWOW64\InstallShield
+\Windows\SysWOW64\InstallShield\setupdir
+\Windows\SysWOW64\InstallShield\setupdir\0003
+\Windows\SysWOW64\InstallShield\setupdir\0005
+\Windows\SysWOW64\InstallShield\setupdir\0006
+\Windows\SysWOW64\InstallShield\setupdir\0007
+\Windows\SysWOW64\InstallShield\setupdir\0008
+\Windows\SysWOW64\InstallShield\setupdir\0009
+\Windows\SysWOW64\InstallShield\setupdir\000a
+\Windows\SysWOW64\InstallShield\setupdir\000b
+\Windows\SysWOW64\InstallShield\setupdir\000e
+\Windows\SysWOW64\InstallShield\setupdir\0010
+\Windows\SysWOW64\InstallShield\setupdir\0011
+\Windows\SysWOW64\InstallShield\setupdir\0012
+\Windows\SysWOW64\InstallShield\setupdir\0013
+\Windows\SysWOW64\InstallShield\setupdir\0014
+\Windows\SysWOW64\InstallShield\setupdir\0015
+\Windows\SysWOW64\InstallShield\setupdir\0019
+\Windows\SysWOW64\InstallShield\setupdir\001a
+\Windows\SysWOW64\InstallShield\setupdir\001b
+\Windows\SysWOW64\InstallShield\setupdir\001d
+\Windows\SysWOW64\InstallShield\setupdir\001e
+\Windows\SysWOW64\InstallShield\setupdir\001f
+\Windows\SysWOW64\InstallShield\setupdir\0021
+\Windows\SysWOW64\InstallShield\setupdir\0024
+\Windows\SysWOW64\InstallShield\setupdir\002d
+\Windows\SysWOW64\InstallShield\setupdir\0404
+\Windows\SysWOW64\InstallShield\setupdir\040c
+\Windows\SysWOW64\InstallShield\setupdir\0416
+\Windows\SysWOW64\InstallShield\setupdir\0804
+\Windows\SysWOW64\InstallShield\setupdir\0816
+\Windows\SysWOW64\InstallShield\setupdir\0c0c
+\Windows\SysWOW64\Ipmi
+\Windows\SysWOW64\it-IT
+\Windows\SysWOW64\ja-JP
+\Windows\SysWOW64\Keywords
+\Windows\SysWOW64\ko-KR
+\Windows\SysWOW64\Licenses
+\Windows\SysWOW64\Licenses\neutral
+\Windows\SysWOW64\Licenses\neutral\OEM
+\Windows\SysWOW64\Licenses\neutral\OEM\Professional
+\Windows\SysWOW64\Licenses\neutral\Volume
+\Windows\SysWOW64\Licenses\neutral\Volume\Professional
+\Windows\SysWOW64\Licenses\neutral\_Default
+\Windows\SysWOW64\Licenses\neutral\_Default\Professional
+\Windows\SysWOW64\LogFiles
+\Windows\SysWOW64\LogFiles\LSA
+\Windows\SysWOW64\LogFiles\SAM
+\Windows\SysWOW64\LogFiles\Windows Portable Devices
+\Windows\SysWOW64\lt-LT
+\Windows\SysWOW64\lv-LV
+\Windows\SysWOW64\MailContactsCalendarSync
+\Windows\SysWOW64\migration
+\Windows\SysWOW64\migration\en-US
+\Windows\SysWOW64\migration\zh-CN
+\Windows\SysWOW64\migwiz
+\Windows\SysWOW64\MSDRM
+\Windows\SysWOW64\Msdtc
+\Windows\SysWOW64\Msdtc\Trace
+\Windows\SysWOW64\MUI
+\Windows\SysWOW64\MUI\0409
+\Windows\SysWOW64\MUI\dispspec
+\Windows\SysWOW64\nb-NO
+\Windows\SysWOW64\NDF
+\Windows\SysWOW64\networklist
+\Windows\SysWOW64\networklist\icons
+\Windows\SysWOW64\networklist\icons\StockIcons
+\Windows\SysWOW64\nl-NL
+\Windows\SysWOW64\Nui
+\Windows\SysWOW64\oobe
+\Windows\SysWOW64\oobe\en-US
+\Windows\SysWOW64\oobe\zh-CN
+\Windows\SysWOW64\PerceptionSimulation
+\Windows\SysWOW64\pl-PL
+\Windows\SysWOW64\Printing_Admin_Scripts
+\Windows\SysWOW64\Printing_Admin_Scripts\zh-CN
+\Windows\SysWOW64\pt-BR
+\Windows\SysWOW64\pt-PT
+\Windows\SysWOW64\ras
+\Windows\SysWOW64\RasToast
+\Windows\SysWOW64\Recovery
+\Windows\SysWOW64\restore
+\Windows\SysWOW64\ro-RO
+\Windows\SysWOW64\ru-RU
+\Windows\SysWOW64\setup
+\Windows\SysWOW64\setup\en-US
+\Windows\SysWOW64\sk-SK
+\Windows\SysWOW64\sl-SI
+\Windows\SysWOW64\slmgr
+\Windows\SysWOW64\slmgr\0804
+\Windows\SysWOW64\SMI
+\Windows\SysWOW64\SMI\Manifests
+\Windows\SysWOW64\SMI\Store
+\Windows\SysWOW64\SMI\Store\Machine
+\Windows\SysWOW64\Speech
+\Windows\SysWOW64\Speech\Common
+\Windows\SysWOW64\Speech\Common\zh-CN
+\Windows\SysWOW64\Speech\Engines
+\Windows\SysWOW64\Speech\Engines\SR
+\Windows\SysWOW64\Speech\Engines\SR\zh-CN
+\Windows\SysWOW64\Speech\Engines\TTS
+\Windows\SysWOW64\Speech\SpeechUX
+\Windows\SysWOW64\Speech\SpeechUX\zh-CN
+\Windows\SysWOW64\Speech_OneCore
+\Windows\SysWOW64\Speech_OneCore\Common
+\Windows\SysWOW64\Speech_OneCore\Common\en-US
+\Windows\SysWOW64\Speech_OneCore\Common\zh-CN
+\Windows\SysWOW64\Speech_OneCore\Engines
+\Windows\SysWOW64\Speech_OneCore\Engines\SR
+\Windows\SysWOW64\Speech_OneCore\Engines\TTS
+\Windows\SysWOW64\Speech_OneCore\VoiceActivation
+\Windows\SysWOW64\spp
+\Windows\SysWOW64\spp\tokens
+\Windows\SysWOW64\spp\tokens\legacy
+\Windows\SysWOW64\spp\tokens\pkeyconfig
+\Windows\SysWOW64\spp\tokens\ppdlic
+\Windows\SysWOW64\spp\tokens\skus
+\Windows\SysWOW64\spp\tokens\skus\csvlk-pack
+\Windows\SysWOW64\sppui
+\Windows\SysWOW64\sr-Latn-RS
+\Windows\SysWOW64\sru
+\Windows\SysWOW64\sv-SE
+\Windows\SysWOW64\sysprep
+\Windows\SysWOW64\sysprep\en-US
+\Windows\SysWOW64\Tasks
+\Windows\SysWOW64\Tasks\Microsoft
+\Windows\SysWOW64\Tasks\Microsoft\Windows
+\Windows\SysWOW64\Tasks\Microsoft\Windows\PLA
+\Windows\SysWOW64\Tasks\Microsoft\Windows\PLA\System
+\Windows\SysWOW64\Tasks\Microsoft\Windows\RemoteApp and Desktop Connections Update
+\Windows\SysWOW64\Tasks\Microsoft\Windows\SyncCenter
+\Windows\SysWOW64\Tasks\Microsoft\Windows\TaskScheduler
+\Windows\SysWOW64\Tasks\Microsoft\Windows\WCM
+\Windows\SysWOW64\th-TH
+\Windows\SysWOW64\tr-TR
+\Windows\SysWOW64\uk-UA
+\Windows\SysWOW64\wbem
+\Windows\SysWOW64\wbem\AutoRecover
+\Windows\SysWOW64\wbem\en-US
+\Windows\SysWOW64\wbem\Logs
+\Windows\SysWOW64\wbem\Repository
+\Windows\SysWOW64\wbem\tmf
+\Windows\SysWOW64\wbem\xml
+\Windows\SysWOW64\wbem\zh-CN
+\Windows\SysWOW64\wbem\zh-HANS
+\Windows\SysWOW64\WCN
+\Windows\SysWOW64\WCN\zh-CN
+\Windows\SysWOW64\WindowsPowerShell
+\Windows\SysWOW64\WinMetadata
+\Windows\SysWOW64\winrm
+\Windows\SysWOW64\winrm\0804
+\Windows\SysWOW64\zh-CN
+\Windows\SysWOW64\zh-CN\Licenses
+\Windows\SysWOW64\zh-CN\Licenses\OEM
+\Windows\SysWOW64\zh-CN\Licenses\OEM\Professional
+\Windows\SysWOW64\zh-CN\Licenses\Volume
+\Windows\SysWOW64\zh-CN\Licenses\Volume\Professional
+\Windows\SysWOW64\zh-CN\Licenses\_Default
+\Windows\SysWOW64\zh-CN\Licenses\_Default\Professional
+\Windows\SysWOW64\zh-HANS
+\Windows\SysWOW64\zh-TW
+\Windows\TAPI
+\Windows\Tasks
+\Windows\Temp
+\Windows\tracing
+\Windows\twain_32
+\Windows\Vss
+\Windows\Vss\Writers
+\Windows\Vss\Writers\Application
+\Windows\Vss\Writers\System
+\Windows\WaaS
+\Windows\WaaS\services
+\Windows\WaaS\tasks
+\Windows\Web
+\Windows\Web\4K
+\Windows\Web\4K\Wallpaper
+\Windows\Web\4K\Wallpaper\Windows
+\Windows\Web\Screen
+\Windows\Web\Wallpaper
+\Windows\Web\Wallpaper\Spotlight
+\Windows\Web\Wallpaper\Theme1
+\Windows\Web\Wallpaper\Theme2
+\Windows\Web\Wallpaper\Windows
+\Windows\WinSxS
+\Windows\WinSxS\Backup
+\Windows\WinSxS\Catalogs
+\Windows\WinSxS\FileMaps
+\Windows\WinSxS\InstallTemp
+\Windows\WinSxS\Manifests
+\Windows\WinSxS\Temp
+\Windows\WinSxS\Temp\InFlight
+\Windows\WinSxS\Temp\PendingDeletes
+\Windows\WinSxS\Temp\PendingRenames
+\Windows\zh-CN

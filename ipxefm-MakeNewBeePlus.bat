@@ -11,8 +11,6 @@ echo 隐藏网络图标
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3" /v "Settings" /t REG_BINARY /d "30000000feffffff22020000030000003e0000002800000000000000d802000056050000000300006000000001000000" /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v HideSCANetwork /t REG_DWORD /d 1 /f
 if exist "mini\Program Files\PENetwork\penetwork.reg" reg import "mini\Program Files\PENetwork\penetwork.reg"
-
-
 set wimlib="X:\Program Files\GhostCGI\wimlib64\wimlib-imagex.exe"
 start "" "%programfiles%\WinXShell.exe" -ui -jcfg wxsUI\UI_LED.zip -top -text "正在制作MiNi.Wim,请稍候…"
 echo 获取WINPE文件夹所有权
@@ -45,9 +43,12 @@ echo add "%%b" "%%b">>pe_excel.txt
 title 第三阶段把文件添加到wim
 %wimlib% update mini.wim<pe_excel.txt
 title 收尾阶段再次覆盖配置文件
-timeout 5 /nobreak
 echo 再次覆盖配置文件
-%wimlib% update mini.wim --command="add \windows\system32\config \windows\system32\config "
+%wimlib% update mini.wim --command="add \Windows\System32\config\DEFAULT \Windows\System32\config\DEFAULT "
+%wimlib% update mini.wim --command="add \Windows\System32\config\SAM \Windows\System32\config\SAM "
+%wimlib% update mini.wim --command="add \Windows\System32\config\SECURITY \Windows\System32\config\SECURITY "
+%wimlib% update mini.wim --command="add \Windows\System32\config\SOFTWARE \Windows\System32\config\SOFTWARE "
+%wimlib% update mini.wim --command="add \Windows\System32\config\SYSTEM \Windows\System32\config\SYSTEM "
 %wimlib% update mini.wim --command="add mini \ "
 %wimlib% optimize mini.wim
 start "" "%programfiles%\WinXShell.exe" -code "QuitWindow(nil,'UI_LED')"

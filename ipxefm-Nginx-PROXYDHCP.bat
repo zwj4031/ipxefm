@@ -61,6 +61,11 @@ echo             root  %cd%;
 echo			 autoindex on;
 echo             index  index.html index.htm;
 echo         }
+echo         location /x/ {
+echo             alias X://;
+echo			  autoindex on;
+echo             index  index.html index.htm;
+echo         }
 echo         error_page   500 502 503 504  /50x.html;
 echo         location = /50x.html {
 echo             root   html;
